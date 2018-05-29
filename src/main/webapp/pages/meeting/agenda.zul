@@ -44,8 +44,8 @@
                                     <!-- Control Menu -->
                                     <hlayout sclass="z-valign-middle">
                                         <button id="today" label="Today" />
-                                        <button id="prev" image="@load(vm.imagePath.concat('/arrow-180.png'))"/>
-                                        <button id="next" image="@load(vm.imagePath.concat('/arrow.png'))"/>
+                                        <button id="prev"/>
+                                        <button id="next"/>
                                         <datebox format="medium" id="focus"/>
                                         <separator width="50px" />
                                         <button id="pageDay" label="Day" />

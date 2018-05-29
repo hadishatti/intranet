@@ -48,12 +48,6 @@
                     style="border: none;"
                     hflex="1">
 
-                <!-- Title Bar -->
-                <caption>
-                    <include src="/pages/include/titlebar.zul" />
-                </caption>
-                <!--  -->
-
                 <!-- Content Area -->
                 <borderlayout>
                     <west border="0"  collapsible="true" open="false" style="border: none;">

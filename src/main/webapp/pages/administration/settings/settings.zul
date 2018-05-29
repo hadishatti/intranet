@@ -36,7 +36,11 @@
             color: #1a4280;
             }
         </style>
-
+        <!-- Title Bar -->
+        <caption>
+            <include src="/pages/include/titlebar.zul" />
+        </caption>
+        <!--  -->
         <borderlayout  animationDisabled="true">
 
             <!-- Content Panel -->
@@ -46,12 +50,6 @@
                     border="0"
                     style="border: none;"
                     hflex="1">
-
-                <!-- Title Bar -->
-                <caption>
-                    <include src="/pages/include/titlebar.zul" />
-                </caption>
-                <!--  -->
 
                 <!-- Content Area -->
                 <borderlayout>
