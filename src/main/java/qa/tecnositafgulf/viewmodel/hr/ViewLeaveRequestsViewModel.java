@@ -129,6 +129,11 @@ public class ViewLeaveRequestsViewModel extends IntranetVM{
         load();
     }
 
+    @Command
+    public void exportPDF(){
+        
+    }
+
 
     private int requestSize(){
         List<LeaveRequest> leaveRequests = service.listLastLeaveRequestsByApplicant(leaveSearchCriteria);
