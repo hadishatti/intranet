@@ -23,6 +23,7 @@ public class ReadNotificationEmployeeViewModel {
     private Employee employee;
     private Desktop desktop;
     public AuthenticationService authenticationService;
+    private String css;
 
     @AfterCompose
     public void afterCompose(@ContextParam(ContextType.VIEW) Component view) {
@@ -34,6 +35,7 @@ public class ReadNotificationEmployeeViewModel {
             timer.cancel();
         timer = new Timer();
         timer.schedule(readNotifications(),0,1000);
+        css = "/style/intranet.css";
     }
 
     public List<Notification> getNotifications() {
@@ -91,5 +93,9 @@ public class ReadNotificationEmployeeViewModel {
                 }
             }
         };
+    }
+
+    public String getCss() {
+        return css;
     }
 }
