@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?init class="qa.tecnositafgulf.init.AuthenticationInit"?>
+<?page title="Save Employee's Leave Managerment" contentType="text/html;charset=UTF-8" ?>
+<?meta name="viewport" content="width=device-width, initial-scale=1"?>
+<?link href="assets/css/bootstrap-responsive.css" rel="stylesheet"?>
+<?link rel="stylesheet" type="text/css" href="/pages/company-info/bootstrap/css/bootstrap.min.css" ?>
+<?link rel="stylesheet" type="text/css" href="/style/intranet.css" ?>
+<?script src="/pages/company-info/bootstrap/js/bootstrap.min.js"?>
+
+<zk>
+
+    <!-- Main Window -->
+    <window
+            apply="org.zkoss.bind.BindComposer"
+            viewModel="@id('vm') @init('qa.tecnositafgulf.viewmodel.hr.SaveLeaveManagementViewModel')"
+            sclass="intranet-popup" width="80%" closable="true" title="Manage Leave Request" style="@load(vm.css)">
+            <vlayout>
+                <groupbox closable="true" mold="3d" form="@id('fx') @load(vm.employee) @save(vm.employee, before='saveEmployee')" vflex="1" contentStyle="overflow:auto;">
+                    <listbox hflex="1">
+                        <listhead sizable="true">
+                            <listheader label=""/>
+                            <listheader label=""/>
+                        </listhead>
+                        <listitem>
+                            <listcell>
+                                <label value="Employee"/>
+                            </listcell>
+                            <listcell>
+                                <label  value="@load(fx.name.concat(' ').concat(fx.familyName))"/>
+                            </listcell>
+                        </listitem>
+                        <listitem>
+                            <listcell>
+                                <label value="Current Annual Leave Balance "/>
+                            </listcell>
+                            <listcell>
+                                <hlayout>
+                                    <spinner value="@bind(vm.currentAnnualLeaveBalance)"/>
+                                    <label value="Days"/>
+                                    <separator orient="vertical"/>
+                                    <button label="Reset Annual Leave Balance to Default Balance" onClick="@command('resetAnnualLeaveBalance')"/>
+                                </hlayout>
+                            </listcell>
+                        </listitem>
+                        <listitem>
+                            <listcell>
+                                <label value="Current Casual Leave Balance "/>
+                            </listcell>
+                            <listcell>
+                                <hlayout>
+                                    <spinner value="@bind(vm.currentCasualLeaveBalance)"/>
+                                    <label value="Days"/>
+                                    <separator orient="vertical"/>
+                                    <button label="Reset Casual Leave Balance to Default Balance" onClick="@command('resetCasualLeaveBalance')"/>
+                                </hlayout>
+                            </listcell>
+                        </listitem>
+                        <listitem>
+                            <listcell>
+                                <label value="Current Emergency Leave Balance "/>
+                                <label value="Days"/>
+                            </listcell>
+                            <listcell>
+                                <hlayout>
+                                    <spinner value="@bind(vm.currentEmergencyLeaveBalance)"/>
+                                    <label value="Hours"/>
+                                    <separator orient="vertical"/>
+                                    <button label="Reset Casual Leave Balance to Default Balance" onClick="@command('resetEmergencyLeaveBalance')"/>
+                                </hlayout>
+                            </listcell>
+                        </listitem>
+                        <listitem>
+                            <listcell>
+                                <label value="Current Sick Leave Balance "/>
+                            </listcell>
+                            <listcell>
+                                <hlayout>
+                                    <spinner value="@bind(vm.currentSickLeaveBalance)"/>
+                                    <label value="Days"/>
+                                    <separator orient="vertical"/>
+                                    <button label="Reset Casual Leave Balance to Default Balance" onClick="@command('resetSickLeaveBalance')"/>
+                                </hlayout>
+                            </listcell>
+                        </listitem>
+                        <listitem>
+                            <listcell>
+                                <label value="Is Leave Manager?"/>
+                            </listcell>
+                            <listcell>
+                                <checkbox checked="@bind(vm.leaveManager)"/>
+                            </listcell>
+                        </listitem>
+                        <listitem>
+                            <listcell>
+                                <label value="Is HR Leave Manager?"/>
+                            </listcell>
+                            <listcell>
+                                <checkbox checked="@bind(vm.HRLeaveManager)" />
+                            </listcell>
+                        </listitem>
+                        <listitem>
+                            <listcell>
+                                <label value="Is Finance Leave Manager?"/>
+                            </listcell>
+                            <listcell>
+                                <checkbox checked="@bind(vm.financeLeaveManager)"/>
+                            </listcell>
+                        </listitem>
+                        <listitem>
+                            <listcell>
+                                <label value="Is Ticket Leave Manager?"/>
+                            </listcell>
+                            <listcell>
+                                <checkbox checked="@bind(vm.ticketLeaveManager)"/>
+                            </listcell>
+                        </listitem>
+                        <listitem>
+                            <listcell>
+                                <label value="Leave Manager"/>
+                            </listcell>
+                            <listcell>
+                                <combobox readonly="true"  model="@load(vm.leaveManagers)" selectedItem="@bind(vm.selectedLeaveManager)"/>
+                            </listcell>
+                        </listitem>
+                        <listitem>
+                            <listcell>
+                                <label value="HR Leave Manager"/>
+                            </listcell>
+                            <listcell>
+                                <combobox readonly="true"  model="@load(vm.HRLeaveManagers)" selectedItem="@bind(vm.selectedHRLeaveManager)"/>
+                            </listcell>
+                        </listitem>
+                        <listitem>
+                            <listcell>
+                                <label value="Finance Leave Manager"/>
+                            </listcell>
+                            <listcell>
+                                <combobox readonly="true"  model="@load(vm.financeLeaveManagers)" selectedItem="@bind(vm.selectedFinanceLeaveManager)"/>
+                            </listcell>
+                        </listitem>
+                        <listitem>
+                            <listcell>
+                                <label value="Ticket Leave Manager"/>
+                            </listcell>
+                            <listcell>
+                                <combobox readonly="true"  model="@load(vm.ticketLeaveManagers)" selectedItem="@bind(vm.selectedTicketLeaveManager)"/>
+                            </listcell>
+                        </listitem>
+                    </listbox>
+                </groupbox>
+
+                <div align="center" sclass="global-footer" width="100%" vflex="min">
+                    <button iconSclass="z-icon-save" label="Save Employee Configuration" onClick="@command('saveEmployee')" sclass="btn-footer"/>
+                </div>
+            </vlayout>
+        <!--  -->
+    </window>
+    <!--  -->
+</zk>

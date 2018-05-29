@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?init class="qa.tecnositafgulf.init.AuthenticationInit"?>
+<?page title="Who is in Leave?" contentType="text/html;charset=UTF-8" ?>
+<?meta name="viewport" content="width=device-width, initial-scale=1"?>
+<?link href="assets/css/bootstrap-responsive.css" rel="stylesheet"?>
+<?link rel="stylesheet" type="text/css" href="/pages/company-info/bootstrap/css/bootstrap.min.css" ?>
+<?link rel="stylesheet" type="text/css" href="/style/intranet.css" ?>
+<?script src="/pages/company-info/bootstrap/js/bootstrap.min.js"?>
+<zk>
+
+    <window apply="org.zkoss.bind.BindComposer"  viewModel="@id('vm') @init('qa.tecnositafgulf.viewmodel.hr.WhoIsInLeaveVM')" height="100%" width="100%" style="@load(vm.css)">
+        <!-- Title Bar-->
+        <div width="100%" >
+            <include src="/pages/include/titlebar.zul"/>
+        </div>
+        <borderlayout animationDisabled="true">
+
+            <!-- Content Panel -->
+            <center
+                    id="contentPanel"
+                    sclass="contentPanel"
+                    border="0"
+                    hflex="1"
+                    style="border: none;">
+
+                <!-- Content Area -->
+                <borderlayout>
+                    <!-- Newsfeed Panel  -->
+                    <west border="0" collapsible="true" open="false" style="border: none;" visible="@load(not vm.mobile)">
+                        <caption vflex="max" width="95%">
+                            <include src="/pages/include/panels.zul"/>
+                        </caption>
+
+                    </west>
+                    <center
+                            border="2"
+                            sclass="newsfeedPanel"
+                            autoscroll="true" >
+
+
+                        <div>
+                            <vlayout>
+                                <div>
+                                    <!-- Control Menu -->
+                                    <hlayout sclass="z-valign-middle">
+                                        <button id="today" label="Today" onClick="@command('gotoToday')"/>
+                                        <button id="prev" image="@load(vm.imagePath.concat('/arrow-180.png'))" onClick="@command('gotoPrev')"/>
+                                        <button id="next" image="@load(vm.imagePath.concat('/arrow.png'))" onClick="@command('gotoNext')"/>
+                                        <datebox format="medium" id="focus" value="@bind(vm.focusDate)" onChange="@command('gotoDate', date=focus.value)"/>
+                                        <separator width="50px" />
+                                        <button id="pageDay" label="Day" onClick="@command('changeToDay')"/>
+                                        <button id="pageWeek" label="Week" onClick="@command('changeToWeek')"/>
+                                        <button id="pageMonth" label="Month" onClick="@command('changeToYear')"/>
+                                        <separator width="50px" />
+                                        Filter :
+                                        <textbox id="filter" value="@bind(vm.filter)"/>
+                                        <button id="applyFilter" label="Apply" onClick="@command('applyFilter')"/>
+                                        <button id="resetFilter" label="Reset" onClick="@command('resetFilter')"/>
+                                    </hlayout>
+                                    <separator bar="true" height="20px"/>
+                                    <vlayout>
+                                        <label value="@bind(vm.current)"/>
+                                        <calendars id="calendars" model="@load(vm.calendarModel)" firstDayOfWeek="Saturday" height="600px"
+                                                   timeZone="Main=GMT+3" mold="month" readonly="true" />
+                                    </vlayout>
+
+                                </div>
+
+                                <!-- Create/Update CompanyEvent Popup
+                                <include src="/pages/editor/agenda-editor.zul" />
+                                -->
+                                <!-- Server+Client Fusion - Mouse Scroll Handling -->
+                                <script type="text/javascript" src="/js/jquery.mousewheel.min.js" />
+                                <script type="text/javascript" src="/js/scroll.js" />
+                            </vlayout>
+                        </div>
+                    </center>
+                </borderlayout>
+                <!--  -->
+            </center>
+            <!--  -->
+        </borderlayout>
+        <!--  -->
+    </window>
+    <!--  -->
+</zk>

@@ -1,0 +1,191 @@
+<?init class="qa.tecnositafgulf.init.AuthenticationInit"?>
+<?page
+		title="View Company Events"
+		contentType="text/html;charset=UTF-8" ?>
+<?meta name="viewport" content="width=device-width, initial-scale=1"?>
+<?link href="assets/css/bootstrap-responsive.css" rel="stylesheet"?>
+<?link rel="stylesheet" type="text/css" href="/pages/company-info/bootstrap/css/bootstrap.min.css" ?>
+<?link rel="stylesheet" type="text/css" href="/style/intranet.css" ?>
+<?script src="/pages/company-info/bootstrap/js/bootstrap.min.js"?>
+
+<zk xmlns:ca="client/attribute">
+
+	<window
+			id="mainWindow"
+			apply="org.zkoss.bind.BindComposer"
+			viewModel="@id('vm') @init('qa.tecnositafgulf.viewmodel.companyEvent.ViewEventsViewModel')"
+			onClientInfo="@command('onClientInfo',width=event.desktopWidth, height=event.desktopHeight)"
+			height="100%" width="100%" style="padding: 0px;">
+        <!-- Title Bar-->
+        <div width="100%" >
+            <include src="/pages/include/titlebar.zul"/>
+        </div>
+		<borderlayout>
+
+			<center
+					sclass="contentPanel"
+					style="border: none;"
+					border="0"
+					hflex="1">
+
+				<borderlayout>
+					<west border="0" collapsible="true" open="false" style="border: none;" visible="@load(not vm.mobile)">
+						<caption vflex="1" width="95%">
+							<include src="/pages/include/panels.zul"/>
+						</caption>
+
+					</west>
+					<center border="2" autoscroll="true">
+						<vlayout >
+							<div style="text-align:center;" visible="@bind(vm.viewNewEvent)">
+								<button sclass="icon-add" width="200px" label="New Company Event" onClick="@command('newEvent')"/>
+							</div>
+							<div align="right">
+								<div hflex="4"/>
+								<div hflex="4"/>
+								<bandbox autodrop="true" hflex="2" readonly="true" placeholder="Search...">
+									<bandpopup width="30%">
+										<grid hflex="1" vflex="1">
+											<columns>
+												<column hflex="1" align="right"/>
+												<column hflex="1"/>
+											</columns>
+											<rows>
+												<row>
+
+													<label value="Author: " hflex="1"/>
+													<textbox value="@load(vm.companyEventsSearchCriteria.likeAuthor) @save(vm.companyEventsSearchCriteria.likeAuthor, before='filter')"  hflex="1" onOK="@command('filter')" />
+
+												</row>
+												<row>
+
+													<label value="Created On: " hflex="1"/>
+													<bandbox autodrop="true" hflex="1" readonly="true">
+														<bandpopup hflex="1" height="100%">
+															<vlayout>
+																<hlayout>
+																	<label value="Filter From" hflex="1"/>
+																	<datebox format="long+medium" value="@load(vm.companyEventsSearchCriteria.likeDateFrom) @save(vm.companyEventsSearchCriteria.likeDateFrom, before='filter')" onOK="@command('filter')" hflex="1"/>
+																</hlayout>
+																<hlayout>
+																	<label value="Filter To" hflex="1"/>
+																	<datebox format="long+medium" value="@load(vm.companyEventsSearchCriteria.likeDateTo) @save(vm.companyEventsSearchCriteria.likeDateTo, before='filter')" onOK="@command('filter')" hflex="1"/>
+																</hlayout>
+															</vlayout>
+														</bandpopup>
+													</bandbox>
+
+												</row>
+												<row>
+
+													<label value="Title: " hflex="1"/>
+													<textbox value="@load(vm.companyEventsSearchCriteria.likeTitle) @save(vm.companyEventsSearchCriteria.likeTitle, before='filter')"  hflex="1" onOK="@command('filter')" />
+
+												</row>
+												<row>
+
+													<label value="Content: " hflex="1"/>
+													<textbox value="@load(vm.companyEventsSearchCriteria.likeContent) @save(vm.companyEventsSearchCriteria.likeContent, before='filter')"  hflex="1" onOK="@command('filter')" />
+
+												</row>
+												<row>
+													<cell colspan="2" align="center">
+														<hlayout>
+															<button iconSclass="z-icon-search " sclass="btn-filter" tooltiptext="Filter" onClick=" @command('filter')" />
+															<button iconSclass="z-icon-eraser " sclass="btn-filter" tooltiptext="Clear Filter" onClick="@command('clearFilters')" />
+														</hlayout>
+													</cell>
+												</row>
+											</rows>
+										</grid>
+									</bandpopup>
+								</bandbox>
+							</div>
+							<listbox children="@bind(vm.companyEventModel)">
+								<template name="children" var="companyEvent">
+									<listitem>
+										<listcell>
+											<div>
+												<vlayout>
+													<hlayout>
+														<image
+																sclass="post-avatar"
+																src="@load('/images/staff/'.concat(companyEvent.author.image))" width="60px"/>
+														<vlayout spacing="0">
+															<label
+																	sclass="post-user"
+																	style="font-weight:bold;font-size:x-large;"
+																	value="@load(companyEvent.author.name.concat(' ').concat(companyEvent.author.familyName))" />
+
+															<label
+																	sclass="post-time"
+																	style="font-style:italic;"
+																	value="@load(companyEvent.date)" />
+														</vlayout>
+													</hlayout>
+													<div width="100%" align="center">
+														<vbox>
+															<cell align="center">
+																<label
+																		sclass="post-user"
+																		style="font-weight:bold;font-size:xx-large;"
+																		value="@load(companyEvent.title)"/>
+															</cell>
+															<cell align="center">
+																<image
+																		sclass="post-avatar"
+																		src="@load(companyEvent.image)"
+																		width="@load(''.concat(companyEvent.imageWidth).concat('px'))"
+																/>
+															</cell>
+														</vbox>
+													</div>
+												</vlayout>
+												<html sclass="post-article" content="@load(companyEvent.content)" />
+												<div>
+													<hbox width="100%" >
+															<cell width="70%">
+																<hlayout>
+																<toolbarbutton
+																		style="color: #1a4280; font-size: 15px; font-weight:bold;"
+																		onClick='@command("comment", companyEvent=companyEvent)'
+																		label="Comment"
+																		autodisable="true"/>
+																<separator/>
+																<toolbarbutton
+																		style="color: #1a4280; font-size: 15px;"
+																		onClick='@command("editEvent", companyEvent=companyEvent)'
+																		label="Edit"
+																		visible="@bind(vm.viewNewEvent)"
+																		autodisable="true" />
+																<separator/>
+																<toolbarbutton
+																		style="color: #1a4280; font-size: 15px;"
+																		onClick='@command("deleteEvent", companyEvent=companyEvent)'
+																		label="Delete"
+																		visible="@bind(vm.viewNewEvent)"
+																		autodisable="true" />
+																</hlayout>
+																<separator spacing="50px"/>
+															</cell>
+															<cell width="30%" align="right" >
+																<span visible="@bind(vm.commentNumbers[companyEvent]>0)" onClick="@command('comment', companyEvent=companyEvent)">
+																	<image src="/images/comment.png" width="30px"/>
+																	<label value="@bind(vm.commentNumbers[companyEvent])" />
+																</span>
+															</cell>
+													</hbox>
+												</div>
+											</div>
+										</listcell>
+									</listitem>
+								</template>
+							</listbox>
+							<paging pageSize="@load(vm.companyEventsSearchCriteria.pageSize)" focus="true" totalSize="@load(vm.totalSize)" left="true" detailed="true" activePage="@save(vm.activePage)" />
+						</vlayout>
+					</center>
+				</borderlayout>
+			</center>
+		</borderlayout>
+	</window>
+</zk>

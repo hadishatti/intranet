@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?init class="qa.tecnositafgulf.init.AuthenticationInit"?>
+<?meta name="viewport" content="width=device-width, initial-scale=1"?>
+<?link href="assets/css/bootstrap-responsive.css" rel="stylesheet"?>
+<?link rel="stylesheet" type="text/css" href="/pages/company-info/bootstrap/css/bootstrap.min.css" ?>
+<?link rel="stylesheet" type="text/css" href="/style/intranet.css" ?>
+<?script src="/pages/company-info/bootstrap/js/bootstrap.min.js"?>
+<zk>
+
+    <window title="@load(vm.title)" border="normal" closable="true" apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('qa.tecnositafgulf.viewmodel.hr.LeaveRequestReasonViewModel')" style="@load(vm.css)">
+        <vlayout>
+            <div sclass="z-messagebox" width="auto">
+                <vlayout hflex="1">
+                    <label value="@load(vm.message)" multiline="true"/>
+                    <radiogroup id="reasons"/>
+                    <radio id="rsn1" label="@load(vm.reason1)" visible="@load(not empty vm.reason1)" radiogroup="reasons" onCheck="@command('option1Selected')"/>
+                    <radio id="rsn2" label="@load(vm.reason2)" visible="@load(not empty vm.reason2)" radiogroup="reasons" onCheck="@command('option2Selected')"/>
+                    <radio id="rsn3" label="@load(vm.reason3)" visible="@load(not empty vm.reason3)" radiogroup="reasons" onCheck="@command('option3Selected')"/>
+                    <radio id="rsn4" label="@load(vm.reason4)" visible="@load(not empty vm.reason4)" radiogroup="reasons" onCheck="@command('option4Selected')"/>
+                    <hlayout>
+                        <radio id="rsn5" label="@load(vm.reason5)" visible="@load(not empty vm.reason5)" radiogroup="reasons" onCheck="@command('option5Selected')"/>
+                        <textbox id="reason" value="@bind(vm.reason)" constraint="@bind(vm.constraint)" visible="@bind(vm.viewTextbox)" multiline="true" hflex="1" vflex="1"/>
+                    </hlayout>
+                </vlayout>
+            </div>
+            <div align="center">
+                <button id="btn1" label="Submit" onClick="@command('submit')"/>
+            </div>
+        </vlayout>
+
+    </window>
+</zk>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zk>
+    <language-config>
+        <addon-uri>/WEB-INF/ckez-bind-addon.xml</addon-uri>
+    </language-config>
+    <client-config>
+        <debug-js>true</debug-js>
+    </client-config>
+    <library-property>
+        <name>org.zkoss.web.classWebResource.cache</name>
+        <value>false</value>
+    </library-property>
+    <library-property>
+        <name>org.zkoss.zul.nativebar</name>
+        <value>true</value>
+    </library-property>
+
+	<language-config>
+		<addon-uri>/WEB-INF/ckez-bind-addon.xml</addon-uri>
+	</language-config>
+	<device-config>
+		<device-type>ajax</device-type>
+		<embed><![CDATA[
+	<script type="text/javascript">
+	var old2 = zAu.cmd0.obsolete;
+	zAu.cmd0.obsolete = function (dtid, msg) {
+		var cus = msg == 'true';
+		msg = cus ? 'Oops! Time out!\n Click Reload to continue.' : msg;
+		if (msg.startsWith("script:"))
+			return $eval(msg.substring(7));
+
+		var v = zk.Desktop.$(dtid);
+		if (v && (v = v.requestPath))
+			msg = msg.replace(dtid, v + ' (' + dtid + ')');
+
+		jq.alert(msg, {
+			icon: cus ? 'None': 'ERROR',
+			title: cus ? 'Session Timeout': '',
+			button: {
+				Reload: function () {location.reload();}
+			}
+		});
+	}
+	</script>
+	<style>
+	.z-msgbox-none {
+		display: none;
+	}</style>
+		]]></embed>
+	</device-config>
+	<session-config>
+    <timeout-message>true</timeout-message>
+	</session-config>
+    <device-config>
+        <device-type>ajax</device-type>
+        <timeout-uri></timeout-uri><!-- An empty URL can cause the browser to reload
+			the same URL -->
+    </device-config>
+    <desktop-config>
+        <desktop-timeout>-1</desktop-timeout><!-- no timeout -->
+    </desktop-config>
+    <!--
+    <system-config>
+        <disable-event-thread>false</disable-event-thread>
+    </system-config>
+    -->
+</zk>

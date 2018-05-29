@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?init class="qa.tecnositafgulf.init.AuthenticationInit"?>
+<?page title="Manage Leave Request" contentType="text/html;charset=UTF-8" ?>
+<?meta name="viewport" content="width=device-width, initial-scale=1"?>
+<?link href="assets/css/bootstrap-responsive.css" rel="stylesheet"?>
+<?link rel="stylesheet" type="text/css" href="/pages/company-info/bootstrap/css/bootstrap.min.css" ?>
+<?link rel="stylesheet" type="text/css" href="/style/intranet.css" ?>
+<?script src="/pages/company-info/bootstrap/js/bootstrap.min.js"?>
+<zk>
+
+    <window apply="org.zkoss.bind.BindComposer"
+            viewModel="@id('vm') @init('qa.tecnositafgulf.viewmodel.hr.ApproveLeaveRequestViewModel')" sclass="intranet-popup" width="80%" closable="true" title="Manage Leave Request" style="@load(vm.css)">
+            <vlayout>
+                <groupbox closable="true" mold="3d" contentStyle="overflow:auto;">
+                    <listbox hflex="1">
+                        <listhead sizable="true">
+                            <listheader label=""/>
+                            <listheader label=""/>
+                        </listhead>
+                        <listitem>
+                            <listcell>
+                                <label value="Leave Request Number"/>
+                            </listcell>
+                            <listcell>
+                                <label value="@load(vm.leaveRequest.number)"/>
+                            </listcell>
+                        </listitem>
+                        <listitem>
+                            <listcell>
+                                <label value="Employee"/>
+                            </listcell>
+                            <listcell>
+                                <label value="@load(vm.leaveRequest.applicant)"/>
+                            </listcell>
+                        </listitem>
+                        <listitem>
+                            <listcell>
+                                <label value="Type"/>
+                            </listcell>
+                            <listcell>
+                                <label value="@load(vm.leaveRequest.type)"/>
+                            </listcell>
+                        </listitem>
+                        <listitem>
+                            <listcell>
+                                <label value="Period"/>
+                            </listcell>
+                            <listcell>
+                                <hlayout>
+                                    <label value="@load(vm.leaveRequest.leaveFrom)"/><label value=" to "/><label value="@load(vm.leaveRequest.leaveTo)"/><label value=" - "/><label value="@load(vm.days)"/><label value=" day(s)"/>
+                                </hlayout>
+                            </listcell>
+                        </listitem>
+                        <listitem visible="@load(vm.leaveRequest.status eq 7?false:true)">
+                            <listcell>
+                                <hlayout>
+                                    <label value="Employee's"/><label value="@load(vm.leaveRequest.type)"/><label value="Leave Balance (in "/><label value="@load(vm.leaveRequest.type eq 'Emergency'?'Hours)':'Days)')"/>
+                                </hlayout>
+                            </listcell>
+                            <listcell>
+                                <hlayout>
+                                    <label value="@load(vm.leaveBalance)"/><label value="@load('('.concat(vm.newBalance).concat(' if approved)'))"/>
+                                </hlayout>
+                            </listcell>
+                        </listitem>
+                        <listitem visible="@load(vm.others.size()>0)">
+                            <listcell>
+                                <label value="Warning: the following Employees have a Pending or Approved Leave Request overlapping with the Leave Request" style="font-weight:bold;"/>
+                            </listcell>
+                            <listcell>
+                                <combobox model="@load(vm.others)" readonly="true">
+                                    <template name="model">
+                                        <comboitem label="@load(each)" />
+                                    </template>
+                                </combobox>
+                            </listcell>
+                        </listitem>
+                        <listitem visible="@load(vm.others.size()>0)">
+                            <listcell>
+                                <label value="@load(vm.leaveRequest.status eq 1?'Message From Employee':'Message From Manager who Approved')"/>
+                            </listcell>
+                            <listcell>
+                                <label value="@load(not empty vm.leaveRequest.message?vm.leaveRequest.message:'Not Specified')"/>
+                            </listcell>
+                        </listitem>
+                        <listitem>
+                            <listcell span="2">
+                                <div align="center">
+                                    <hlayout>
+                                        <button label="@load(vm.allowRefuse?'Approve':'Submit')"
+                                            style="background-color : green;"
+                                            onClick="@command('approve')"/>
+                                            <separator orient="vertical" visible="@load(vm.allowRefuse)"/>
+                                            <button visible="@load(vm.allowRefuse)" label="Refuse"
+                                                style="background-color : red;"
+                                                onClick="@command('refuse')"/>
+                                            </hlayout>
+                                        </div>
+                                    </listcell>
+                                </listitem>
+                            </listbox>
+                        </groupbox>
+                    </vlayout>
+        <!--  -->
+    </window>
+    <!--  -->
+</zk>

@@ -1,0 +1,356 @@
+<zk>
+    <!--<zscript><![CDATA[
+        void onClientInfo(ClientInfoEvent evt) {
+                    if ("portrait".equals(evt.getOrientation())) {
+                           hLayout.setWidth(""+evt.getScreenWidth()+"x");
+                           hLayout.setHeight(""+evt.getScreenHeight()+"x");
+                           Clients.resize(hLayout);
+
+                           if (evt.getDesktopWidth() < 640){
+                              hLayout.setWidth(""+evt.getScreenWidth()+"x");
+                              Clients.resize(hLayout);
+                           }
+                    } else {
+                           if (!execution.isBrowser("mobile"))
+                                hLayout.setWidth(""+evt.getScreenWidth()+"px");
+                                Clients.resize(hLayout);
+                           }
+                    }
+
+
+        ]]></zscript>-->
+    <style>
+        .z-caption-content {
+        width:95%;
+        }
+        .z-menu-text {
+        color: #1a4280;
+        }
+        .z-menuitem-text {
+        color: #1a4280;
+        }
+        .z-menu-image {
+        max-width:30px;
+        }
+        .blink {
+        animation: blink-animation 1s steps(5, start) infinite;
+        -webkit-animation: blink-animation 1s steps(5, start) infinite;
+        }
+        @keyframes blink-animation {
+        to {
+        visibility: hidden;
+        }
+        }
+        @-webkit-keyframes blink-animation {
+        to {
+        visibility: hidden;
+        }
+        }
+        .z-menubar-hor, .z-menubar-ver {}
+        .content {overflow-x: hidden;overflow-y: scroll;}
+
+
+        @media screen and (max-width: 600px) {  <!-- this for small screen -->
+        .z-menubar ul{display: absolute;}
+        }
+
+        @media screen and (max-width: 600px) {
+        .hLayout.responsive {position: relative;}
+        .z-menubar ul{
+        display: block;
+        text-align: left;
+        float: left;
+        }
+
+        }
+
+
+    </style>
+    <hbox vflex="1" hflex="1" align="center" style="margin-top:-18px;" apply="org.zkoss.bind.BindComposer"
+          viewModel="@id('vm') @init('qa.tecnositafgulf.viewmodel.home.TitlebarViewModel')">
+        <!-- Menu Toggle Button -->
+        <cell align="left" width="95%" >
+            <hlayout id="hLayout" sclass="contents" hflex="1" vflex="1" >
+                <a image="@load(vm.imagePath.concat('/gbdg-logo.png'))" href="/pages/home.zul" tooltiptext="Home Page"/>
+                <separator/>
+                <menubar id="menubar" autodrop="true" style="border: none;">
+                    <menuitem label="Your Agenda" href="/pages/meeting/agenda.zul" image="@load(vm.imagePath.concat('/calendar.png'))"/>
+                    <menu label="What New?" image="@load(vm.imagePath.concat('/exclamation.png'))">
+                        <menupopup>
+                            <menuitem label="Tenders" href="/pages/tender/view-tenders.zul"
+                                      image="@load(vm.imagePath.concat('/tender.png'))"/>
+                            <menuitem label="Company Events" href="/pages/companyEvent/view-companyEvents.zul"
+                                      image="@load(vm.imagePath.concat('/news.png'))"/>
+                        </menupopup>
+                    </menu>
+                    <menu label="Services" image="@load(vm.imagePath.concat('/services.png'))">
+                        <menupopup>
+                            <menu id="adminMenu" visible="@load(vm.isAdministrator())" label="Administration"
+                                  image="@load(vm.imagePath.concat('/administration/administration.png'))">
+                                <menupopup>
+                                    <menu label="Manage Employee Profiles"
+                                          image="@load(vm.imagePath.concat('/administration/authorization.png'))">
+                                        <menupopup>
+                                            <menuitem label="View Profiles"
+                                                      href="/pages/administration/profiles/viewProfiles.zul"
+                                                      image="@load(vm.imagePath.concat('/administration/view.png'))"/>
+                                            <menuitem label="Create New Profiles"
+                                                      href="/pages/administration/profiles/saveProfile.zul"
+                                                      image="@load(vm.imagePath.concat('/administration/add.png'))"/>
+                                        </menupopup>
+                                    </menu>
+                                    <menu label="Manage Employees" image="@load(vm.imagePath.concat('/administration/employee.png'))">
+                                        <menupopup>
+                                            <menuitem label="View Employees"
+                                                      href="/pages/administration/employees/viewEmployees.zul"
+                                                      image="@load(vm.imagePath.concat('/administration/view.png'))"/>
+                                            <menuitem label="Create New Employee"
+                                                      href="/pages/administration/employees/saveEmployee.zul"
+                                                      image="@load(vm.imagePath.concat('/administration/add.png'))"/>
+                                            <menuitem label="Configure Leave Management"
+                                                      href="/pages/administration/employees/viewLeaveManager.zul"
+                                                      image="@load(vm.imagePath.concat('/leave.png'))"/>
+                                        </menupopup>
+                                    </menu>
+                                    <menu label="Manage Company Roles"
+                                          image="@load(vm.imagePath.concat('/administration/organigram.png'))">
+                                        <menupopup>
+                                            <menuitem label="View Roles"
+                                                      href="/pages/administration/roles/viewRoles.zul"
+                                                      image="@load(vm.imagePath.concat('/administration/view.png'))"/>
+                                            <menuitem label="Create New Role"
+                                                      href="/pages/administration/roles/saveRole.zul"
+                                                      image="@load(vm.imagePath.concat('/administration/add.png'))"/>
+                                        </menupopup>
+                                    </menu>
+                                    <menu label="Manage Company Departments"
+                                          image="@load(vm.imagePath.concat('/administration/department.png'))">
+                                        <menupopup>
+                                            <menuitem label="View Departments"
+                                                      href="/pages/administration/departments/viewDepartments.zul"
+                                                      image="@load(vm.imagePath.concat('/administration/view.png'))"/>
+                                            <menuitem label="Create New Department"
+                                                      href="/pages/administration/departments/saveDepartment.zul"
+                                                      image="@load(vm.imagePath.concat('/administration/add.png'))"/>
+                                        </menupopup>
+                                    </menu>
+
+                                    <menu label="Manage Companies" image="@load(vm.imagePath.concat('/administration/location.png'))">
+                                        <menupopup>
+                                            <menuitem label="View Companies"
+                                                      href="/pages/administration/companies/viewCompanies.zul"
+                                                      image="@load(vm.imagePath.concat('/administration/view.png'))"/>
+                                            <menuitem label="Create New Company"
+                                                      href="/pages/administration/companies/saveCompany.zul"
+                                                      image="@load(vm.imagePath.concat('/administration/add.png'))"/>
+                                        </menupopup>
+                                    </menu>
+                                    <menuitem label="Settings"
+                                              href="/pages/administration/settings/settings.zul"
+                                              image="@load(vm.imagePath.concat('/administration/settings.png'))"/>
+                                </menupopup>
+                            </menu>
+                            <menu label="Human Resources" image="@load(vm.imagePath.concat('/hr.png'))">
+                                <menupopup>
+                                    <menu label="Leaves" image="@load(vm.imagePath.concat('/leave.png'))">
+                                        <menupopup>
+                                            <menuitem label="Your Leave Requests" image="@load(vm.imagePath.concat('/leave.png'))"
+                                                      href="/pages/hr/viewLeaveRequests.zul"/>
+                                            <menuitem label="Who is in Leave?" image="@load(vm.imagePath.concat('/calendar-leave.png'))"
+                                                      href="/pages/hr/whoisinleave.zul"/>
+                                            <menuitem id="sickLeaveMenuItem" label="Register Employee Sick Leave"
+                                                      image="@load(vm.imagePath.concat('/calendar.png'))"
+                                                      href="/pages/hr/viewSickLeaveRegistrations.zul"
+                                                      visible="@load(vm.isHRLeaveManager())"/>
+                                            <menuitem id="leaveRequestApprovalMenuItem"
+                                                      label="Leave Requests To Approve" image="@load(vm.imagePath.concat('/leave.png'))"
+                                                      href="/pages/hr/viewLeaveRequestsToManage.zul"
+                                                      visible="@load(vm.isManager())"/>
+                                        </menupopup>
+                                    </menu>
+                                </menupopup>
+                            </menu>
+                            <!-- Payroll Menus -->
+                            <menu label="Accounts" image="@load(vm.imagePath.concat('/hr.png'))" visible="@load(vm.isFinanceLeaveManager())">
+                                <menupopup>
+                                    <menu label="Payroll" image="@load(vm.imagePath.concat('/leave.png'))">
+                                        <menupopup>
+                                            <menuitem label="Create Employee Payroll" image="@load(vm.imagePath.concat('/leave.png'))"
+                                                      href="/pages/payroll/createEmployeePayDetails.zul" />
+                                            <menuitem label="Generate Employee Salary" image="@load(vm.imagePath.concat('/calendar-leave.png'))"
+                                                      href="/pages/payroll/createEmployeeSalary.zul" />
+                                            <menuitem label="Generate Employee Salary Slip" image="@load(vm.imagePath.concat('/calendar-leave.png'))"
+                                                      href="/pages/payroll/salarySlip.zul" />
+                                        </menupopup>
+                                    </menu>
+                                </menupopup>
+                            </menu>
+
+
+                        </menupopup>
+                    </menu>
+                    <menu label="Our Company" image="@load(vm.imagePath.concat('/gbdg-g.png'))">
+                        <menupopup>
+                            <menuitem label="About Us" image="@load(vm.imagePath.concat('/people.png'))"
+                                      href="/pages/company-info/aboutus.zul"/>
+                            <menuitem label="Policies &amp; Procedures" image="@load(vm.imagePath.concat('/policies.png'))"
+                                      href="/pages/company-info/policies/policies-procedures.zul"/>
+                            <menuitem label="Organization Chart" image="@load(vm.imagePath.concat('/administration/organigram.png'))"
+                                      href="/pages/company-info/organization.zul"/>
+                            <!-- Clients Meny-->
+                            <menu label="Clients" image="@load(vm.imagePath.concat('/client.png'))">
+                                <menupopup>
+                                    <menuitem label="View Clients"
+                                              image="@load(vm.imagePath.concat('/administration/view.png'))"
+                                              href="/pages/company-info/clients/viewClients.zul"/>
+
+                                    <menuitem label="Add New Client"
+                                              image="@load(vm.imagePath.concat('/administration/add.png'))"
+                                              href="/pages/company-info/clients/addClient.zul"
+                                              visible="@load(vm.isAdministrator())"/>
+                                </menupopup>
+                            </menu>
+                            <!-- Partners Menu-->
+                            <menu label="Partners" image="@load(vm.imagePath.concat('/partner.png'))">
+                                <menupopup>
+                                    <menuitem label="View Partners"
+                                              image="@load(vm.imagePath.concat('/administration/view.png'))"
+                                              href="/pages/company-info/partners/partners.zul"/>
+
+                                    <menuitem label="Add New Partner"
+                                              image="@load(vm.imagePath.concat('/administration/add.png'))"
+                                              href="/pages/company-info/partners/partners/savePartner.zul"
+                                              visible="@load(vm.isAdministrator())"/>
+                                </menupopup>
+                            </menu>
+                            <!-- Contacts Meny-->
+                            <menu label="Contacts" image="@load(vm.imagePath.concat('/contacts.png'))">
+                                <menupopup>
+                                    <menuitem label="View Contacts"
+                                              image="@load(vm.imagePath.concat('/administration/view.png'))"
+                                              href="/pages/company-info/contacts/viewContacts.zul"/>
+
+                                    <menuitem label="Add New Contact"
+                                              image="@load(vm.imagePath.concat('/administration/add.png'))"
+                                              href="/pages/company-info/contacts/saveContact.zul"
+                                              visible="@load(vm.isAdministrator())"/>
+                                </menupopup>
+                            </menu>
+                            <!-- Projects Meny-->
+                            <menu  label="Projects" image="@load(vm.imagePath.concat('/project.png'))">
+                                <menupopup>
+                                    <menuitem label="View Projects"
+                                              image="@load(vm.imagePath.concat('/administration/view.png'))"
+                                              href="/pages/company-info/projects/projects.zul"/>
+
+                                    <menuitem label="Add New Project"
+                                              image="@load(vm.imagePath.concat('/administration/add.png'))"
+                                              href="/pages/company-info/projects/saveProject.zul"
+                                              visible="@load(vm.isAdministrator())"/>
+                                </menupopup>
+                            </menu>
+                            <menuitem label="Suppliers" image="@load(vm.imagePath.concat('/suppliers.png'))"
+                                      href="/pages/company-info/suppliers/suppliers.zul"/>
+                        </menupopup>
+                    </menu>
+                    <menuitem label="Chat Room" image="@load(vm.imagePath.concat('/chat.png'))" onClick="@command('chat')"/>
+                    <menu visible="@load(vm.isStoreManager())" label="Inventory"
+                          image="@load(vm.imagePath.concat('/inventory/mainInventory.png'))">
+                        <menupopup>
+                            <menu label="Manage Product Category" image="@load(vm.imagePath.concat('/inventory/invent_product_cat.png'))">
+                                <menupopup>
+                                    <menuitem label="View Product Category"
+                                              href="/pages/inventory/productCategory/viewProductsCategory.zul"
+                                              image="@load(vm.imagePath.concat('/administration/view.png'))"/>
+                                    <menuitem label="Create New Product Category"
+                                              href="/pages/inventory/productCategory/saveProductsCategory.zul"
+                                              image="@load(vm.imagePath.concat('/administration/add.png'))"/>
+                                </menupopup>
+                            </menu>
+                            <menu label="Manage Products" image="@load(vm.imagePath.concat('/inventory/INV-Product_create.png'))">
+                                <menupopup>
+                                    <menuitem label="View Products"
+                                              href="/pages/inventory/product/viewProducts.zul"
+                                              image="@load(vm.imagePath.concat('/administration/view.png'))"/>
+                                    <menuitem label="Create New Products"
+                                              href="/pages/inventory/product/saveProduct.zul"
+                                              image="@load(vm.imagePath.concat('/administration/add.png'))"/>
+                                </menupopup>
+                            </menu>
+                            <menu label="Manage Location" image="@load(vm.imagePath.concat('/inventory/InventoryLocker.png'))">
+                                <menupopup>
+                                    <menuitem label="View Location"
+                                              href="/pages/inventory/location/viewLocation.zul"
+                                              image="@load(vm.imagePath.concat('/administration/view.png'))"/>
+                                    <menuitem label="Create New Location"
+                                              href="/pages/inventory/location/saveLocation.zul"
+                                              image="@load(vm.imagePath.concat('/administration/add.png'))"/>
+                                </menupopup>
+                            </menu>
+                            <menu label="Manage Product Stock" image="@load(vm.imagePath.concat('/inventory/ProductStock.jpg">
+                                <menupopup>
+                                    <menuitem label="View Product Stock"
+                                              href="/pages/inventory/productLocation/viewProductLocation.zul"
+                                              image="@load(vm.imagePath.concat('/administration/view.png'))"/>
+                                    <menuitem label="Create New Product Stock"
+                                              href="/pages/inventory/productLocation/saveProductLocation.zul"
+                                              image="@load(vm.imagePath.concat('/administration/add.png'))"/>
+                                    <menuitem label="Transfer Product Stock"
+                                              href="/pages/inventory/productLocation/transferProductToLocation.zul"
+                                              image="@load(vm.imagePath.concat('/administration/add.png'))"/>
+                                </menupopup>
+                            </menu>
+                        </menupopup>
+                    </menu>
+                </menubar>
+            </hlayout>
+        </cell>
+        <!--  -->
+
+        <cell valign="middle" style="padding-top: 10px; padding-right: 10px">
+            <hbox style="border:none;" vflex="1" pack="end">
+                <div id="managerNotificationDiv" visible="@bind(vm.managerNotifications > 0)">
+                    <a id="managerNotificationA" sclass="@bind(vm.managerNotifications > 0?'blink':'')"
+                       onClick="@command('viewManagerNotifications')">
+                        <image id="managerNotificationImage" src="@load(vm.imagePath.concat('/leave.png'))" width="40px"
+                               onClick="@command('viewManagerNotifications')"
+                               sclass="z-menu-image"/>
+                        <label id="managerNotificationLabel" value="@bind(vm.managerNotifications)"
+                               style="color:#3e8dca;font-weight:bold;font-size: 20px;"
+                               onClick="@command('viewManagerNotifications')"/>
+                    </a>
+                </div>
+                <div id="notificationDiv" visible="@bind(vm.notifications > 0)">
+                    <a id="notificationA" sclass="@bind(vm.notifications > 0?'blink':'')"
+                       onClick="@command('viewEmployeeNotifications')">
+                        <image id="notificationImage" src="@load(vm.imagePath.concat('/bell.png'))" width="40px"
+                               onClick="@command('viewEmployeeNotifications')"
+                               sclass="z-menu-image"/>
+                        <label id="notificationLabel" value="@bind(vm.notifications)"
+                               style="color:#3e8dca;font-weight:bold;font-size: 20px;"
+                               onClick="@command('viewEmployeeNotifications')"/>
+                    </a>
+                </div>
+            </hbox>
+        </cell>
+        
+        <!-- Push Notifications -->
+        <!-- Friend requests, Instant Messages, Notification Messages -->
+        <cell align="right" valign="middle">
+            <hbox hflex="1" style="border:none;" vflex="1" pack="end" align="end">
+                <menubar vflex="1" hflex="1" autodrop="true" style="border-top: none;">
+                    <menu id="menu"
+                          label="@load(sessionScope.employee.name.concat(' ').concat(sessionScope.employee.familyName))"
+                          image="@load(vm.getImage())">
+                        <menupopup>
+                            <menuitem id="changePasswordMenuItem" label="Change Password"
+                                      onClick="@command('changePassword')" image="@load(vm.imagePath.concat('/gear.png'))"/>
+                            <menuitem id="logoutMenuItem" label="Logout" onClick="@command('logout')"
+                                      image="@load(vm.imagePath.concat('/logout.png'))"/>
+                        </menupopup>
+                    </menu>
+                </menubar>
+            </hbox>
+        </cell>
+    </hbox>
+</zk>

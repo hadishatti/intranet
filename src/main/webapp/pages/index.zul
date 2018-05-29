@@ -1,0 +1,59 @@
+<?page title="ZK Menu's Navigation Demo" ?>
+<window ctrlKeys="@k" onCtrlKey='menubar.firstChild.open();'>
+    The short cut to open menu is ALT + K
+    <separator />
+    <menubar id="menubar" hflex="min">
+        <menu id="m1" label="Project"
+              image="/img/Centigrade-Widget-Icons/Briefcase-16x16.png">
+            <menupopup id="pp1">
+                <menuitem
+                        image="/img/Centigrade-Widget-Icons/BriefcaseSpark-16x16.png"
+                        label="New" onClick="alert(self.label)" />
+                <menuitem
+                        image="/img/Centigrade-Widget-Icons/BriefcaseOpen-16x16.png"
+                        label="Open" onClick="alert(self.label)" />
+                <menuitem
+                        image="/img/Centigrade-Widget-Icons/DisketteBlack-16x16.png"
+                        label="Save" onClick="alert(self.label)" />
+                <menuseparator />
+                <menuitem label="Exit"
+                          image="/img/Centigrade-Widget-Icons/DoorOpen-16x16.png"
+                          onClick="alert(self.label)" />
+            </menupopup>
+        </menu>
+        <menuseparator />
+        <menu id="m2" label="Help"
+              image="/img/Centigrade-Widget-Icons/QuestionmarkButton-16x16.png">
+            <menupopup id="pp2">
+                <menuitem label="Index" onClick="alert(self.label)" />
+                <menu label="About" id="m21">
+                    <menupopup id="pp21">
+                        <menuitem label="About ZK"
+                                  onClick="alert(self.label)" />
+                        <menuitem label="About Potix"
+                                  onClick="alert(self.label)" />
+                    </menupopup>
+                </menu>
+            </menupopup>
+        </menu>
+        <menu id="m3"
+              image="/img/Centigrade-Widget-Icons/Spyglass-16x16.png">
+            <menupopup id="pp3">
+                <menuitem label="Index" onClick="alert(self.label)" />
+                <menu label="Color Picker" content="#color=#184dc6" />
+            </menupopup>
+        </menu>
+        <menu id="m4" label="Clickable"
+              onClick='alert("Menu clicked");'>
+            <menupopup id="pp4">
+                <menuitem label="Index" onClick="alert(self.label)" />
+                <menu label="Color Picker" content="#color=#184dc6" />
+            </menupopup>
+        </menu>
+    </menubar>
+    <checkbox label="Vertical orient">
+        <attribute name="onCheck">
+            menubar.orient = self.checked ? "vertical" : "horizontal";
+        </attribute>
+    </checkbox>
+</window>

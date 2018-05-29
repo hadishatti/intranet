@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<?init class="qa.tecnositafgulf.init.AuthenticationInit"?>
+<?init class="qa.tecnositafgulf.init.AdministratorInit"?>
+<?page
+        title="Settings" contentType="text/html;charset=UTF-8" ?>
+
+<zk>
+    <window
+            apply="org.zkoss.bind.BindComposer"
+            viewModel="@id('vm') @init('qa.tecnositafgulf.viewmodel.administration.settings.SettingsViewModel')"
+            height="100%" width="100%" style="padding: 0px;">
+        <style>
+            .z-button {
+            background-color: #1a4280;
+            }
+            .z-button:hover {
+            background-color: #0090cf;
+            }
+            .z-icon-angle-double-left {
+            color: #1a4280;
+            font-size:30px;
+            }
+            .z-west-collapsed>.z-borderlayout-icon {
+            top: 0; bottom: 0; right: 0; left: 0;
+            width: 100%; height: 100%;
+            }
+            .z-west-collapsed>.z-borderlayout-icon::before {
+            color: #1a4280;
+            font-size:30px;
+            }
+            .z-listheader {
+            background-color: #1a4280;
+            }
+            .z-icon-calendar {
+            color: #1a4280;
+            }
+        </style>
+
+        <borderlayout  animationDisabled="true">
+
+            <!-- Content Panel -->
+            <center
+                    id="contentPanel"
+                    sclass="contentPanel"
+                    border="0"
+                    style="border: none;"
+                    hflex="1">
+
+                <!-- Title Bar -->
+                <caption>
+                    <include src="/pages/include/titlebar.zul" />
+                </caption>
+                <!--  -->
+
+                <!-- Content Area -->
+                <borderlayout>
+                    <west border="0"  collapsible="true" open="false" style="border: none;">
+                        <caption vflex="1"  width="95%">
+                            <include src="/pages/include/panels.zul"/>
+                        </caption>
+
+                    </west>
+                    <center
+                            border="2"
+                            sclass="newsfeedPanel"
+                            autoscroll="true" >
+
+
+                        <div>
+                            <vlayout>
+                                <listbox hflex="1" model="@load(vm.propertyModel) @save(vm.propertyModel, before='changeProperties')">
+                                    <listhead sizable="true">
+                                        <listheader label="Key" sort="none" onClick="@command('order', orderBy='key')" align="center"/>
+                                        <listheader label="Description" sort="none" onClick="@command('order', orderBy='description')" align="center"/>
+                                        <listheader label="Path" sort="none" onClick="@command('order', orderBy='value')" align="center"/>
+                                        <listheader hflex="min">
+                                            <div align="center" sclass="global-footer" width="100%" vflex="min">
+                                                <button iconSclass="z-icon-plus" label="New" onClick="@command('addNew')" sclass="btn-footer"/>
+                                            </div>
+                                        </listheader>
+                                    </listhead>
+                                    <auxhead>
+                                        <auxheader sclass="z-auxheader">
+                                            <textbox value="@load(vm.propertySearchCriteria.likeKey) @save(vm.propertySearchCriteria.likeKey, before='filter')"  hflex="1" onOK="@command('filter')" />
+                                        </auxheader>
+                                        <auxheader sclass="z-auxheader">
+                                            <textbox value="@load(vm.propertySearchCriteria.likeDescription) @save(vm.propertySearchCriteria.likeDescription, before='filter')"  hflex="1" onOK="@command('filter')" />
+                                        </auxheader>
+                                        <auxheader sclass="z-auxheader">
+                                            <textbox value="@load(vm.propertySearchCriteria.likeValue) @save(vm.propertySearchCriteria.likeValue, before='filter')"  hflex="1" onOK="@command('filter')" />
+                                        </auxheader>
+                                        <auxheader sclass="z-auxheader" align="center">
+                                            <button iconSclass="z-icon-search " sclass="btn-filter" tooltiptext="Filter" onClick=" @command('filter')" />
+                                            <button iconSclass="z-icon-eraser " sclass="btn-filter" tooltiptext="Clear Filter" onClick="@command('clearFilters')" />
+                                        </auxheader>
+                                    </auxhead>
+                                    <template name="model" var="item">
+                                        <listitem>
+                                            <listcell>
+                                                <label value="@load(item.key)"/>
+                                            </listcell>
+                                            <listcell>
+                                                <label value="@load(item.description)"/>
+                                            </listcell>
+                                            <listcell>
+                                                <textbox constraint="no empty"  value="@load(item.value) @save(item.value,before='changeProperties')"/>
+                                            </listcell>
+                                            <listcell>
+                                                <hlayout>
+                                                    <button iconSclass="z-icon-pencil" tooltiptext="Modify" onClick="@command('modify', item=item)"/>
+                                                    <button iconSclass="z-icon-trash" tooltiptext="Delete" onClick="@command('delete', item=item)"/>
+                                                </hlayout>
+                                            </listcell>
+                                        </listitem>
+                                    </template>
+                                </listbox>
+
+                                <paging pageSize="@load(vm.propertySearchCriteria.pageSize)" focus="true" totalSize="@load(vm.totalSize)" left="true" detailed="true" activePage="@save(vm.activePage)" />
+
+                                <div align="center" sclass="global-footer" width="100%" vflex="min">
+                                    <button label="Save Settings" onClick="@command('changeProperties')" sclass="btn-footer" style="padding:10px"/>
+                                </div>
+                            </vlayout>
+                        </div>
+                    </center>
+                </borderlayout>
+                <!--  -->
+            </center>
+            <!--  -->
+        </borderlayout>
+        <!--  -->
+    </window>
+    <!--  -->
+</zk>

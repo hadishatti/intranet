@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?init class="qa.tecnositafgulf.init.AuthenticationInit"?>
+<?page title="Projects" contentType="text/html;charset=UTF-8" ?>
+<?meta name="viewport" content="width=device-width, initial-scale=1"?>
+<?link href="assets/css/bootstrap-responsive.css" rel="stylesheet"?>
+<?link rel="stylesheet" type="text/css" href="/pages/company-info/bootstrap/css/bootstrap.min.css" ?>
+<?link rel="stylesheet" type="text/css" href="/style/intranet.css" ?>
+<?script src="/pages/company-info/bootstrap/js/bootstrap.min.js"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c"?>
+
+
+<zk xmlns:ca="client/attribute">
+
+    <window apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('qa.tecnositafgulf.viewmodel.companyInfo.projects.ProjectsViewModel')"  height="100%" width="100%" style="@load(vm.css)">
+        <zscript><![CDATA[
+	    import qa.tecnositafgulf.config.ProjectsStatusEnum;
+	    ListModelList model = new ListModelList(ProjectsStatusEnum.values()); //use enum class's values as model.
+	    ]]></zscript>
+        <!-- Title Bar-->
+        <div width="100%" >
+            <include src="/pages/include/titlebar.zul"/>
+        </div>
+        <borderlayout animationDisabled="true">
+
+            <!-- Content Panel -->
+            <center
+                    id="contentPanel"
+                    sclass="contentPanel"
+                    border="0"
+                    hflex="1"
+                    style="border: none;">
+
+                <!-- Content Area -->
+                <borderlayout>
+                    <!-- Newsfeed Panel  -->
+                    <west border="0" collapsible="true" open="false" style="border: none;" visible="@load(not vm.mobile)">
+                        <caption vflex="max" width="95%">
+                            <include src="/pages/include/panels.zul"/>
+                        </caption>
+
+                    </west>
+                    <center
+                            border="2"
+                            sclass="newsfeedPanel"
+                            autoscroll="true" >
+                        <div>
+
+                            <label class="my-4" width="80%" value="Our Projects" style="font-size: 30pt;font-weight:bold;padding: 50px;"/>
+                            <separator/>
+                            <div width="80%"  style="margin: auto;">
+                                <bandbox  autodrop="true" readonly="true" style="float:right;" placeholder="Search...">
+                                    <bandpopup  hflex="1" height="100%">
+                                        <tablelayout columns="2">
+                                            <tablechildren style = "padding:5px;">
+                                                <hlayout>
+                                                    <label hflex="1"  value = "Code: "/>
+                                                    <textbox  value="@load(vm.searchCriteria.likeCode) @save(vm.searchCriteria.likeCode, before='filter')"   onOK="@command('filter')" />
+                                                </hlayout>
+                                            </tablechildren>
+                                            <tablechildren style = "padding:5px;">
+                                                <hlayout>
+                                                    <label hflex="1" style = "margin-right:20px;" value = "Manager: "/>
+                                                    <combobox model="@load(vm.employeeList)" selectedItem="@load(vm.searchCriteria.likeEmployee) @save(vm.searchCriteria.likeEmployee,before='filter')" onOK="@command('filter')"/>
+                                                </hlayout>
+                                            </tablechildren>
+                                            <tablechildren style = "padding:5px;">
+                                                <hlayout>
+                                                    <label hflex="1" style = "margin-right:20px;" value = "Desc: "/>
+                                                    <textbox value="@load(vm.searchCriteria.likeDesc) @save(vm.searchCriteria.likeDesc, before='filter')"  onOK="@command('filter')" />
+                                                </hlayout>
+                                            </tablechildren>
+                                            <tablechildren style = "padding:5px;">
+                                                <hlayout>
+                                                    <label hflex="1" style = "margin-right:20px;" value = "Starting Date: "/>
+                                                    <bandbox  autodrop="true" readonly="true">
+                                                        <bandpopup hflex="min" height="100%">
+                                                            <vlayout>
+                                                                <hlayout>
+                                                                    <label value="Filter From"  hflex="1"/>
+                                                                    <datebox value="@load(vm.searchCriteria.likeStartingFrom) @save(vm.searchCriteria.likeStartingFrom, before='filter')"  hflex="1"                                                onChange="@command('filter')"/>
+                                                                </hlayout>
+                                                                <hlayout>
+                                                                    <label value="Filter To"  hflex="1"/>
+                                                                    <datebox value="@load(vm.searchCriteria.likeStartingTo) @save(vm.searchCriteria.likeStartingTo, before='filter')"  hflex="1"                                                onChange="@command('filter')"/>
+                                                                </hlayout>
+                                                            </vlayout>
+                                                        </bandpopup>
+                                                    </bandbox>
+                                                </hlayout>
+                                            </tablechildren>
+                                            <tablechildren style = "padding:5px;">
+                                                <hlayout>
+                                                    <label hflex="1" style = "margin-right:20px;" value = "Name: "/>
+                                                    <textbox  value="@load(vm.searchCriteria.likeName) @save(vm.searchCriteria.likeName, before='filter')"  onOK="@command('filter')" />
+                                                </hlayout>
+                                            </tablechildren>
+                                            <tablechildren style = "padding:5px;">
+                                                <hlayout>
+                                                    <label hflex="1" style = "margin-right:20px;" value = "Ending Date: "/>
+                                                    <bandbox  autodrop="true" readonly="true">
+                                                        <bandpopup hflex="min" height="100%">
+                                                            <vlayout>
+                                                                <hlayout>
+                                                                    <label value="Filter From"  hflex="1"/>
+                                                                    <datebox value="@load(vm.searchCriteria.likeEndingFrom) @save(vm.searchCriteria.likeEndingFrom, before='filter')"  hflex="1"                                                onChange="@command('filter')"/>
+                                                                </hlayout>
+                                                                <hlayout>
+                                                                    <label value="Filter To"  hflex="1"/>
+                                                                    <datebox value="@load(vm.searchCriteria.likeEndingTo) @save(vm.searchCriteria.likeEndingTo, before='filter')"  hflex="1"                                                onChange="@command('filter')"/>
+                                                                </hlayout>
+                                                            </vlayout>
+                                                        </bandpopup>
+                                                    </bandbox>
+                                                </hlayout>
+                                            </tablechildren>
+                                            <tablechildren style = "padding:5px;">
+                                                <hlayout>
+                                                    <label hflex="1" style = "margin-right:20px;" value = "Status: "/>
+                                                    <combobox hflex="1" model="${model}" selectedItem="@load(vm.searchCriteria.likeStatus) @save(vm.searchCriteria.likeStatus ,before='filter')" onOK="@command('filter')"/>
+                                                </hlayout>
+                                            </tablechildren>
+                                        </tablelayout>
+                                        <hlayout style="vertical-align:bottom; padding-top: 20px; text-align: right;">
+                                            <button iconSclass="z-icon-search " sclass="btn-filter" tooltiptext="Filter" onClick=" @command('filter')" />
+                                            <button iconSclass="z-icon-eraser " sclass="btn-filter" tooltiptext="Clear Filter" onClick="@command('clearFilters')" />
+                                        </hlayout>
+                                    </bandpopup>
+                                </bandbox>
+                            </div>
+                            <listbox width="80%" height="100%" id="projects" model="@load(vm.projects)" style="align:center;margin: auto;border:none; clear:both; padding: 15px;" emptyMessage="No Projects">
+                                <template name="model">
+                                    <listitem >
+                                        <listcell style="max-width: 700px;">
+                                            <image class="img-fluid rounded" src="@load(vm.getImage(each))"/>
+                                        </listcell>
+                                        <listcell  style="text-align: left; vertical-align:top;height: 300px;">
+                                            <label style="font-size: 24pt;font-weight:bold" value = "@load(each.name)"></label>
+                                            <separator/>
+                                            <label id="${c:cat('tabPanel',forEachStatus.index)}"  value = "@load(vm.getLabelText(each))"/>
+                                            <separator/>
+                                            <button  id="${c:cat('tabButton',forEachStatus.index)}" label="View More" visible="@load(vm.textExtentsLimit(each))" sclass=" btn-footer btn-rmt">
+                                                <attribute ca:name="onClick"><![CDATA[
+                                                    var id ='$${c:cat('tabPanel',forEachStatus.index)}';
+						                            var id1 ='$${c:cat('tabButton',forEachStatus.index)}';
+                                                    var tb = zk.Widget.$(jq(id));
+							                        var tbu = zk.Widget.$(jq(id1));
+                                                    if (tb.getValue().length == 600){
+                                                        val = ${vm.fullText(each)};
+                                                        but = 'Hide';
+                                                    } else{
+                                                        val = ${vm.shortText(each)};
+                                                        but = 'View More';
+                                                    }
+                                                    tb.setValue(val);
+                                                    tbu.setLabel(but);
+                                                    tb.smartUpdate('value', val);
+                                                    tbu.smartUpdate('label', but);
+                                            ]]></attribute>
+                                            </button>
+                                            <hlayout visible="@load(vm.isAdministrator())" style="vertical-align:bottom; padding-top: 20px; text-align: right;">
+                                                <button  iconSclass="z-icon-pencil" tooltiptext="Modify" onClick="@command('modify', item=each)"/>
+                                                <button  iconSclass="z-icon-trash" tooltiptext="Delete" onClick="@command('delete', item=each)"/>
+                                            </hlayout>
+                                        </listcell>
+                                    </listitem>
+                                </template>
+                            </listbox>
+                            <paging pageSize="@load(vm.searchCriteria.pageSize)" focus="true" totalSize="@load(vm.totalSize)" left="true" detailed="true" activePage="@save(vm.activePage)" />
+                            <div align="center" style="padding-top: 20px;">
+                                <button visible="@load(vm.isAdministrator())" iconSclass="z-icon-plus" onClick="@command('add')" label="Add New Project" sclass=" btn-footer btn-rmt"/>
+                            </div>
+                        </div>
+                    </center>
+                </borderlayout>
+                <!--  -->
+            </center>
+            <!--  -->
+        </borderlayout>
+        <!--  -->
+    </window>
+    <!--  -->
+</zk>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?init class="qa.tecnositafgulf.init.AuthenticationInit"?>
+<?page title="Save Location" contentType="text/html;charset=UTF-8" ?>
+<?meta name="viewport" content="width=device-width, initial-scale=1"?>
+<?link href="assets/css/bootstrap-responsive.css" rel="stylesheet"?>
+<?link rel="stylesheet" type="text/css" href="/pages/company-info/bootstrap/css/bootstrap.min.css" ?>
+<?link rel="stylesheet" type="text/css" href="/style/intranet.css" ?>
+<?script src="/pages/company-info/bootstrap/js/bootstrap.min.js"?>
+
+<zk>
+    <window apply="org.zkoss.bind.BindComposer" closable="true" title="Save Location"
+            viewModel="@id('vm') @load(vm.location) @init('qa.tecnositafgulf.viewmodel.inventory.location.SaveLocationViewModel')"
+            sclass="intranet-popup" width="80%" style="@load(vm.css)">
+            <vlayout>
+                <groupbox closable="true" mold="3d"
+                  vflex="1" contentStyle="overflow:auto;">
+                  <listbox hflex="1">
+                    <listhead sizable="true">
+                        <listheader label=""/>
+                        <listheader label=""/>
+                    </listhead>
+                    <listitem>
+                        <listcell>
+                            <label value="Company Name"/>
+                        </listcell>
+                        <listcell>
+                            <combobox readonly="true" model="@load(vm.companyList)"
+                              selectedItem="@bind(vm.selectedCompany)"/>
+                          </listcell>
+                      </listitem>
+                      <listitem>
+                        <listcell>
+                            <label value="Location Name"/>
+                        </listcell>
+                        <listcell>
+                            <textbox constraint="no empty"
+                               value="@load(vm.location.name) @save(vm.location.name, before='saveLocation')"/>
+                           </listcell>
+                       </listitem>
+                       <listitem>
+                        <listcell>
+                            <label value="Description"/>
+                        </listcell>
+                        <listcell>
+                            <textbox constraint="no empty"
+                               value="@load(vm.location.description) @save(vm.location.description, before='saveLocation')"/>
+                           </listcell>
+                       </listitem>
+                       <listitem>
+                        <listcell>
+                            <label value="Address"/>
+                        </listcell>
+                        <listcell>
+                            <textbox constraint="no empty"
+                               value="@load(vm.location.address) @save(vm.location.address, before='saveLocation')"/>
+                           </listcell>
+                       </listitem>
+                   </listbox>
+               </groupbox>
+               <div align="center" sclass="global-footer" width="100%" vflex="min">
+                <button iconSclass="icon-save" label="Save Location"
+                    onClick="@command('saveLocation')" sclass="btn-footer"/>
+                </div>
+            </vlayout>
+    </window>
+</zk>

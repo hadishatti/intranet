@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<?init class="qa.tecnositafgulf.init.AuthenticationInit"?>
+<?init class="qa.tecnositafgulf.init.AdministratorInit"?>
+<?page title="Save Contact" contentType="text/html;charset=UTF-8" ?>
+<?meta name="viewport" content="width=device-width, initial-scale=1"?>
+<?link href="assets/css/bootstrap-responsive.css" rel="stylesheet"?>
+<?link rel="stylesheet" type="text/css" href="/pages/company-info/bootstrap/css/bootstrap.min.css" ?>
+<?link rel="stylesheet" type="text/css" href="/style/intranet.css" ?>
+<?script src="/pages/company-info/bootstrap/js/bootstrap.min.js"?>
+
+
+<zk>
+    <window
+            apply="org.zkoss.bind.BindComposer"
+            viewModel="@id('vm') @init('qa.tecnositafgulf.viewmodel.companyInfo.contacts.SaveContactViewModel')"
+            sclass="intranet-popup" width="80%" closable="true" title="Save Contact" style="@load(vm.css)">
+            <vlayout>
+                <groupbox closable="true" mold="3d" form="@id('fx') @load(vm.contact) @save(vm.contact, before='saveContact')" vflex="1" contentStyle="overflow:auto;">
+                    <listbox hflex="1">
+                        <listhead sizable="true">
+                            <listheader label=""/>
+                            <listheader label=""/>
+                        </listhead>
+                        <listitem>
+                            <listcell>
+                                <label value="Name"/>
+                            </listcell>
+                            <listcell>
+                                <textbox constraint="no empty"  value="@load(fx.name) @save(fx.name,before='saveContact')"/>
+                            </listcell>
+                        </listitem>
+                        <listitem>
+                            <listcell>
+                                <label value="Surname"/>
+                            </listcell>
+                            <listcell>
+                                <textbox constraint="no empty"  value="@load(fx.surname) @save(fx.surname,before='saveContact')"/>
+                            </listcell>
+                        </listitem>
+                        <listitem>
+                            <listcell>
+                                <label value="Mobile"/>
+                            </listcell>
+                            <listcell>
+                                <textbox constraint="no empty"  value="@load(fx.number) @save(fx.number,before='saveContact')"/>
+                            </listcell>
+                        </listitem>
+                        <listitem>
+                            <listcell>
+                                <label value="Email"/>
+                            </listcell>
+                            <listcell>
+                                <textbox constraint="no empty"  value="@load(fx.email) @save(fx.email,before='saveContact')"/>
+                            </listcell>
+                        </listitem>
+                        <listitem>
+                            <listcell>
+                                <label value="Position"/>
+                            </listcell>
+                            <listcell>
+                                <textbox constraint="no empty"  value="@load(fx.position) @save(fx.position,before='saveContact')"/>
+                            </listcell>
+                        </listitem>
+                        <listitem>
+                            <listcell>
+                                <label value="Bussiness Card Scan"/>
+                            </listcell>
+                            <listcell>
+                                <textbox value="@bind(vm.link)" width="60%"/>
+                                <button  mold="trendy" iconSclass="z-icon-link" onClick="@command('link')" />
+                                <separator orient="vertical"/>
+                                <button id="btnUpload" mold="trendy" upload="true" iconSclass="z-icon-upload" onUpload="@command('upload')" />
+                            </listcell>
+                        </listitem>
+                        <listitem>
+                            <listcell>
+                                <label value="Image Preview"/>
+                            </listcell>
+                            <listcell height="400px" span="2">
+                                <image style="align:left;" id="image"/>
+                            </listcell>
+                        </listitem>
+                    </listbox>
+                </groupbox>
+
+                <div align="center" sclass="global-footer" width="100%" vflex="min">
+                    <button iconSclass="icon-save" label="Save Contact" onClick="@command('saveContact')" sclass="btn-footer"/>
+                </div>
+            </vlayout>
+        <!--  -->
+    </window>
+    <!--  -->
+</zk>

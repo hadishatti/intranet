@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?init class="qa.tecnositafgulf.init.AuthenticationInit"?>
+<?page title="Company Events" contentType="text/html;charset=UTF-8" ?>
+<?meta name="viewport" content="width=device-width, initial-scale=1"?>
+<?link href="assets/css/bootstrap-responsive.css" rel="stylesheet"?>
+<?link rel="stylesheet" type="text/css" href="/pages/company-info/bootstrap/css/bootstrap.min.css" ?>
+<?link rel="stylesheet" type="text/css" href="/style/intranet.css" ?>
+<?script src="/pages/company-info/bootstrap/js/bootstrap.min.js"?>
+<zk>
+	<window sclass="scroll" sizable="true" title="@load('Comments of Company Event '.concat(vm.currentCompanyEvent.title))" apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('qa.tecnositafgulf.viewmodel.companyEvent.ViewEventCommentsViewModel')" width="70%" height="70%" style="@load(vm.css)" closable="true">
+		<borderlayout sclass="eventComment" >
+			<center autoscroll="true">
+				<vlayout children="@bind(vm.eventComments)" style="background: white;">
+					<template name="children" var="eventComment">
+						<separator spacing="2px" />
+						<vlayout>
+							<hlayout>
+								<image
+										sclass="post-avatar"
+										src="@load('/images/staff/'.concat(eventComment.author.image))" width="60px"/>
+
+								<vlayout spacing="0">
+									<label
+											style="font-weight:bold;font-size:x-large;"
+											sclass="post-user"
+											value="@load(eventComment.author.name.concat(' ').concat(eventComment.author.familyName))" />
+
+									<label
+											sclass="post-time"
+											value="@load(eventComment.date)" />
+								</vlayout>
+							</hlayout>
+
+							<label
+									sclass="post-article"
+									value="@load(eventComment.content)" />
+						</vlayout>
+						<separator bar="true" />
+					</template>
+				</vlayout>
+			</center>
+			<south>
+				<hbox width="100%">
+					<cell hflex="1">
+						<textbox
+								sclass="commentInput"
+								placeholder="Write a Comment..."
+								value='@bind(vm.currentComment)'
+								width="100%" />
+					</cell>
+					<cell width="50px">
+						<button label="Send" onClick='@command("addComment")'/>
+					</cell>
+				</hbox>
+			</south>
+		</borderlayout>
+	</window>
+</zk>

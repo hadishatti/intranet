@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?init class="qa.tecnositafgulf.init.AuthenticationInit"?>
+<?page title="Suppliers" contentType="text/html;charset=UTF-8" ?>
+<?link rel="stylesheet" type="text/css" href="/style/intranet.css" ?>
+<zk>
+
+    <window apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('qa.tecnositafgulf.viewmodel.supplier.JasperReportViewModel')" height="100%" width="100%" style="@load(vm.css)">
+        <borderlayout animationDisabled="true">
+
+            <!-- Content Panel -->
+            <center
+                    id="contentPanel"
+                    sclass="contentPanel"
+                    border="0"
+                    hflex="1"
+                    style="border: none;">
+                <!-- Title Bar -->
+                <caption>
+                    <include src="/pages/include/titlebar.zul" />
+                </caption>
+                <!--  -->
+
+                <!-- Content Area -->
+                <borderlayout>
+                    <!-- Newsfeed Panel  -->
+                    <west border="0" collapsible="true" open="false" style="border: none;">
+                        <caption vflex="max" width="95%">
+                            <include src="/pages/include/panels.zul"/>
+                        </caption>
+
+                    </west>
+                    <center
+                            border="2"
+                            sclass="newsfeedPanel"
+                            autoscroll="true" >
+                        <div>
+                            <div>
+                                Choose a File Type : <listbox id="format" mold="select" model="@load(vm.reportTypesModel)"
+                                                              selectedItem="@bind(vm.reportType)">
+                                <template name="model">
+                                    <listitem value="@load(each)" label="@load(each.label)"></listitem>
+                                </template>
+                            </listbox>
+
+                                <button label="Get Report" onClick="@command('showReport')" />
+
+                                <jasperreport id="report" height="360px"
+                                              src="@load(vm.reportConfig.source, after='showReport')"
+                                              parameters="@load(vm.reportConfig.parameters, after='showReport')"
+                                              type="@load(vm.reportConfig.type.value, after='showReport')"
+                                              datasource="@load(vm.reportConfig.dataSource, after='showReport')"/>
+
+                            </div>
+                        </div>
+                    </center>
+                </borderlayout>
+                <!--  -->
+            </center>
+            <!--  -->
+        </borderlayout>
+        <!--  -->
+    </window>
+    <!--  -->
+</zk>

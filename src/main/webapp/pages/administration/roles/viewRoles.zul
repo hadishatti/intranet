@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<?init class="qa.tecnositafgulf.init.AuthenticationInit"?>
+<?init class="qa.tecnositafgulf.init.AdministratorInit"?>
+<?page title="View Roles" contentType="text/html;charset=UTF-8" ?>
+<?meta name="viewport" content="width=device-width, initial-scale=1"?>
+<?link href="assets/css/bootstrap-responsive.css" rel="stylesheet"?>
+<?link rel="stylesheet" type="text/css" href="/pages/company-info/bootstrap/css/bootstrap.min.css" ?>
+<?link rel="stylesheet" type="text/css" href="/style/intranet.css" ?>
+<?script src="/pages/company-info/bootstrap/js/bootstrap.min.js"?>
+
+
+<zk>
+    <!-- Main Window -->
+    <window
+            apply="org.zkoss.bind.BindComposer"
+            viewModel="@id('vm') @init('qa.tecnositafgulf.viewmodel.administration.roles.ViewRolesViewModel')"
+            height="100%" width="100%" style="@load(vm.css)">
+        <!-- Title Bar-->
+        <div width="100%" >
+            <include src="/pages/include/titlebar.zul"/>
+        </div>
+        <borderlayout  animationDisabled="true">
+
+            <!-- Content Panel -->
+            <center
+                    id="contentPanel"
+                    sclass="contentPanel"
+                    border="0"
+                    style="border: none;"
+                    hflex="1">
+
+            <!-- Content Area -->
+                <borderlayout>
+                    <west border="0" collapsible="true" open="false" style="border: none;" visible="@load(not vm.mobile)">
+                        <caption vflex="1"  width="95%">
+                            <include src="/pages/include/panels.zul"/>
+                        </caption>
+
+                    </west>
+                    <center
+                            border="2"
+                            sclass="newsfeedPanel"
+                            autoscroll="true" >
+                                <vlayout hflex="1" vflex="1">
+                                    <listbox sclass="z-listbox-header-border" model="@load(vm.roles)" style="align:center;" emptyMessage="No Role Available" hflex="1" vflex="1">
+                                        <listhead sizable="true">
+                                            <listheader label="Name" sort="none" onClick="@command('order', orderBy='name')" align="center" />
+                                            <listheader label="Description" sort="none" onClick="@command('order', orderBy='description')" align="center"/>
+                                            <listheader hflex="max">
+                                                <div align="center">
+                                                    <button iconSclass="z-icon-plus" onClick="@command('add')" label="Add" visible="true" sclass="add-button"/>
+                                                </div>
+                                            </listheader>
+                                        </listhead>
+                                        <auxhead>
+                                            <auxheader>
+                                                <textbox value="@load(vm.roleSearchCriteria.likeName) @save(vm.roleSearchCriteria.likeName, before='filter')"  hflex="1" onOK="@command('filter')" />
+                                            </auxheader>
+                                            <auxheader>
+                                                <textbox value="@load(vm.roleSearchCriteria.likeDescription) @save(vm.roleSearchCriteria.likeDescription, before='filter')"  hflex="1" onOK="@command('filter')" />
+                                            </auxheader>
+                                            <auxheader align="center">
+                                                <button iconSclass="z-icon-search " sclass="btn-filter" tooltiptext="Filter" onClick=" @command('filter')" />
+                                                <button iconSclass="z-icon-eraser " sclass="btn-filter" tooltiptext="Clear Filter" onClick="@command('clearFilters')" />
+                                            </auxheader>
+                                        </auxhead>
+                                    <template name="model" var="item">
+                                        <listitem>
+                                            <listcell>
+                                                <label value="@load(item.name)" />
+                                            </listcell>
+                                            <listcell>
+                                                <label value="@load(item.description)"/>
+                                            </listcell>
+                                            <listcell>
+                                                <hlayout>
+                                                    <button iconSclass="z-icon-pencil" tooltiptext="Modify" onClick="@command('modify', item=item)"/>
+                                                    <button iconSclass="z-icon-trash" tooltiptext="Delete" onClick="@command('delete', item=item)"/>
+                                                </hlayout>
+                                            </listcell>
+                                        </listitem>
+                                    </template>
+                                    </listbox>
+                                    <paging pageSize="@load(vm.roleSearchCriteria.pageSize)" focus="true" totalSize="@load(vm.totalSize)" left="true" detailed="true" activePage="@save(vm.activePage)" />
+                                </vlayout>
+                    </center>
+                </borderlayout>
+                <!--  -->
+            </center>
+            <!--  -->
+        </borderlayout>
+        <!--  -->
+    </window>
+    <!--  -->
+</zk>

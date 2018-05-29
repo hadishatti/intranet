@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<?init class="qa.tecnositafgulf.init.AuthenticationInit"?>
+<?init class="qa.tecnositafgulf.init.AdministratorInit"?>
+<?page title="Save Partners" contentType="text/html;charset=UTF-8" ?>
+<?meta name="viewport" content="width=device-width, initial-scale=1"?>
+<?link href="assets/css/bootstrap-responsive.css" rel="stylesheet"?>
+<?link rel="stylesheet" type="text/css" href="/pages/company-info/bootstrap/css/bootstrap.min.css" ?>
+<?link rel="stylesheet" type="text/css" href="/style/intranet.css" ?>
+<?script src="/pages/company-info/bootstrap/js/bootstrap.min.js"?>
+
+
+<zk>
+    <window
+            apply="org.zkoss.bind.BindComposer"
+            viewModel="@id('vm') @init('qa.tecnositafgulf.viewmodel.companyInfo.partners.SavePartnerViewModel')"
+            sclass="intranet-popup" width="80%" closable="true" title="Save Partner" style="@load(vm.css)">
+            <vlayout>
+                <groupbox closable="true" mold="3d" form="@id('fx') @load(vm.partner) @save(vm.partner, before='savePartner')" vflex="1" contentStyle="overflow:auto;">
+                    <listbox hflex="1">
+                        <listhead sizable="true">
+                            <listheader label=""/>
+                            <listheader label=""/>
+                        </listhead>
+                        <listitem>
+                            <listcell>
+                                <label value="Name"/>
+                            </listcell>
+                            <listcell>
+                                <textbox constraint="no empty"  value="@load(fx.name) @save(fx.name,before='savePartner')"/>
+                            </listcell>
+                        </listitem>
+                        <listitem>
+                            <listcell>
+                                <label value="Link"/>
+                            </listcell>
+                            <listcell>
+                                <textbox constraint="no empty"  value="@load(fx.href) @save(fx.href,before='savePartner')"/>
+                            </listcell>
+                        </listitem>
+                        <listitem>
+                            <listcell>
+                                <label value="Source"/>
+                            </listcell>
+                            <listcell>
+                                <textbox constraint="no empty"  value="@load(fx.img) @save(fx.img,before='savePartner')"/>
+                            </listcell>
+                        </listitem>
+                    </listbox>
+                </groupbox>
+
+                <div align="center" sclass="global-footer" width="100%" vflex="min">
+                    <button iconSclass="icon-save" label="Save Partner" onClick="@command('savePartner')" sclass="btn-footer"/>
+                </div>
+            </vlayout>
+        <!--  -->
+    </window>
+    <!--  -->
+</zk>

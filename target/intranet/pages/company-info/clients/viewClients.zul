@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?init class="qa.tecnositafgulf.init.AuthenticationInit"?>
+<?page title="Clients" contentType="text/html;charset=UTF-8" ?>
+<?meta name="viewport" content="width=device-width, initial-scale=1"?>
+<?link href="assets/css/bootstrap-responsive.css" rel="stylesheet"?>
+<?link rel="stylesheet" type="text/css" href="/pages/company-info/bootstrap/css/bootstrap.min.css" ?>
+<?link rel="stylesheet" type="text/css" href="/style/intranet.css" ?>
+<?script src="/pages/company-info/bootstrap/js/bootstrap.min.js"?>
+
+<!--
+<?link rel="stylesheet" type="text/css"	href="/style/bootstrap/v3/bootstrap/themes/bootstrap-${param.theme}.min.css" if="${not empty param.theme}"?>
+<?link rel="stylesheet" type="text/css"	href="/style/bootstrap/v3/bootstrap/themes/bootstrap-default.min.css" if="${empty param.theme}"?>
+<?link rel="stylesheet" type="text/css"	href="/style/bootstrap/v3/assets/css/docs.css" ?>
+<?link rel="stylesheet" type="text/css"	href="/style/bootstrap/v3/assets/css/pygments-manni.css" ?>
+-->
+<zk>
+
+    <window apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('qa.tecnositafgulf.viewmodel.companyInfo.clients.ClientsVM')" height="100%" width="100%" style="@load(vm.css)">
+        <style>
+            .z-button {
+            background-color: #1a4280;
+            }
+            .z-button:hover {
+            background-color: #0090cf;
+            }
+            .z-icon-angle-double-left {
+            color: #1a4280;
+            font-size:30px;
+            }
+            .z-west-collapsed>.z-borderlayout-icon {
+            top: 0; bottom: 0; right: 0; left: 0;
+            width: 100%; height: 100%;
+            }
+            .z-west-collapsed>.z-borderlayout-icon::before {
+            color: #1a4280;
+            font-size:30px;
+            }
+            .z-listheader {
+            background-color: #1a4280;
+            }
+            .z-notification .z-notification-content {
+            color : #1a4280;
+            background-color: #dee9fb;
+            }
+            .z-icon-info-circle::before{
+            color : #1a4280;
+            }
+        </style>
+
+        <!-- Title Bar-->
+        <div width="100%" >
+            <include src="/pages/include/titlebar.zul"/>
+        </div>
+        <borderlayout animationDisabled="true">
+
+            <!-- Content Panel -->
+            <center
+                    id="contentPanel"
+                    sclass="contentPanel"
+                    border="0"
+                    hflex="1"
+                    style="border: none;">
+
+                <!-- Content Area -->
+                <borderlayout>
+                    <!-- Newsfeed Panel  -->
+                    <west border="0" collapsible="true" open="false" style="border: none;" visible="@load(not vm.mobile)">
+                        <caption vflex="max" width="95%">
+                            <include src="/pages/include/panels.zul"/>
+                        </caption>
+
+                    </west>
+                    <center
+                            border="2"
+                            sclass="newsfeedPanel"
+                            autoscroll="true" >
+                        <vlayout>
+                        <div>
+                            <html content="@load(vm.str)">
+                            </html>
+                        </div>
+
+                        <div visible="@load(vm.isAdministrator())" align="center">
+                            <button iconSclass="z-icon-pencil" onClick="@command('edit')" label="Modify Clients" visible="true" sclass=" btn-footer btn-rmt"/>
+                        </div>
+                        </vlayout>
+                    </center>
+                </borderlayout>
+                <!--  -->
+            </center>
+            <!--  -->
+        </borderlayout>
+        <!--  -->
+    </window>
+    <!--  -->
+</zk>

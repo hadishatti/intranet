@@ -1,0 +1,17 @@
+<zk>
+    <div apply="qa.tecnositafgulf.controller.meeting.AgendaTodayController" vflex="1">
+        <style>
+            .z-calevent-text {
+            font-weight: bold;
+            }
+            .z-calevent-header {
+            font-weight: bold;
+            }
+        </style>
+        <div style="text-align:center;">
+            <label id="appointments" style="font-weight:bold;color:#1a4280;font-size:18px;"/>
+        </div>
+        <separator height="20px"/>
+        <calendars vflex="1" id="calendars" readonly="true" days="1" timeZone="Main=GMT+3" firstDayOfWeek="Saturday" mold="default" />
+    </div>
+</zk>

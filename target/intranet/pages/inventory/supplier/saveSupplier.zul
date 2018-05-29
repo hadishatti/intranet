@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?init class="qa.tecnositafgulf.init.AuthenticationInit"?>
+<?page title="Save Supplier" contentType="text/html;charset=UTF-8" ?>
+<?meta name="viewport" content="width=device-width, initial-scale=1"?>
+<?link href="assets/css/bootstrap-responsive.css" rel="stylesheet"?>
+<?link rel="stylesheet" type="text/css" href="/pages/company-info/bootstrap/css/bootstrap.min.css" ?>
+<?link rel="stylesheet" type="text/css" href="/style/intranet.css" ?>
+<?script src="/pages/company-info/bootstrap/js/bootstrap.min.js"?>
+
+<zk>
+    <window  apply="org.zkoss.bind.BindComposer"
+             viewModel="@id('vm') @load(vm.selectedProductSupplier) @init('qa.tecnositafgulf.viewmodel.inventory.supplier.SaveSupplierViewModel')"
+             sclass="intranet-popup" width="80%" closable="true" title="Save Supplier" style="@load(vm.css)">
+             <vlayout>
+                <groupbox closable="true" mold="3d" vflex="1" contentStyle="overflow:auto;">
+                    <listbox hflex="1">
+                        <listhead sizable="true">
+                            <listheader label=""/>
+                            <listheader label=""/>
+                        </listhead>
+                        <listitem>
+                            <listcell>
+                                <label value="Name"/>
+                            </listcell>
+                            <listcell>
+                                <textbox constraint="no empty"  value="@load(vm.selectedProductSupplier.name) @save(vm.selectedProductSupplier.name, before='saveProductSupplier')"/>
+                            </listcell>
+                        </listitem>
+                        <listitem>
+                            <listcell>
+                                <label value="Address"/>
+                            </listcell>
+                            <listcell>
+                                <textbox constraint="no empty"  value="@load(vm.selectedProductSupplier.address) @save(vm.selectedProductSupplier.address, before='saveProductSupplier')"/>
+                            </listcell>
+                        </listitem>
+                        <listitem>
+                            <listcell>
+                                <label value="Mobile Number"/>
+                            </listcell>
+                            <listcell>
+                                <textbox constraint="no empty" value="@load(vm.selectedProductSupplier.mobileNumber) @save(vm.selectedProductSupplier.mobileNumber, before='saveProductSupplier')" />
+                            </listcell>
+                        </listitem>
+                        <listitem>
+                            <listcell>
+                                <label value="Land Line Number"/>
+                            </listcell>
+                            <listcell>
+                                <textbox constraint="no empty" value="@load(vm.selectedProductSupplier.landLineNumber) @save(vm.selectedProductSupplier.landLineNumber, before='saveProductSupplier')" />
+                            </listcell>
+                        </listitem>
+                        <listitem>
+                            <listcell>
+                                <label value="Email Id"/>
+                            </listcell>
+                            <listcell>
+                                <textbox constraint="no empty" value="@load(vm.selectedProductSupplier.emailId) @save(vm.selectedProductSupplier.emailId, before='saveProductSupplier')" />
+                            </listcell>
+                        </listitem>
+                    </listbox>
+                </groupbox>
+                <div align="center" sclass="global-footer" width="100%" vflex="min">
+                    <button iconSclass="icon-save" label="Save Product Supplier" onClick="@command('saveProductSupplier')" sclass="btn-footer"/>
+                </div>
+            </vlayout>
+    </window>
+</zk>

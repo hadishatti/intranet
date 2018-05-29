@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?init class="qa.tecnositafgulf.init.AuthenticationInit"?>
+<?page title="Organization Structure" contentType="text/html;charset=UTF-8" ?>
+<?meta name="viewport" content="width=device-width, initial-scale=1"?>
+<?link href="assets/css/bootstrap-responsive.css" rel="stylesheet"?>
+<?link rel="stylesheet" type="text/css" href="/pages/company-info/bootstrap/css/bootstrap.min.css" ?>
+<?link rel="stylesheet" type="text/css" href="/style/intranet.css" ?>
+<?script src="/pages/company-info/bootstrap/js/bootstrap.min.js"?>
+<zk>
+
+    <window apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('qa.tecnositafgulf.viewmodel.companyInfo.OrganizationChartVM')"  height="100%" width="100%" style="@load(vm.css)">
+        <!-- Title Bar-->
+        <div width="100%" >
+            <include src="/pages/include/titlebar.zul"/>
+        </div>
+        <borderlayout animationDisabled="true">
+
+            <!-- Content Panel -->
+            <center
+                    id="contentPanel"
+                    sclass="contentPanel"
+                    border="0"
+                    hflex="1"
+                    style="border: none;">
+
+                <!-- Content Area -->
+                <borderlayout>
+                    <!-- Newsfeed Panel  -->
+                    <west border="0" collapsible="true" open="false" style="border: none;" visible="@load(not vm.mobile)">
+                        <caption vflex="max" width="95%">
+                            <include src="/pages/include/panels.zul"/>
+                        </caption>
+
+                    </west>
+                    <center
+                            border="2"
+                            sclass="newsfeedPanel"
+                            autoscroll="true" >
+                        <div>
+                            <html><![CDATA[
+                                <head>
+                                    <title>GBDG Organization Chart</title>
+                                    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+                                    <script type="text/javascript" src="getorgchart/jquery.min.js"></script>
+                                    <script type="text/javascript" src="getorgchart/getorgchart.js"></script>
+                                    <link href="getorgchart/getorgchart.css"  rel="stylesheet"/>
+                                    <style type="text/css">
+                                        html, body {
+                                        margin: 0px;
+                                        padding: 0px;
+                                        width: 100%;
+                                        height: 100%;
+                                        overflow: hidden;
+                                        }
+
+                                        #people {
+                                        width: 100%;
+                                        height: 100%;
+                                        }
+                                    </style>
+                                </head>
+                                <body>
+                                    <div id="people"></div>
+                                </body>
+                                ]]>
+                            </html>
+                        </div>
+                    </center>
+                </borderlayout>
+                <!--  -->
+            </center>
+            <!--  -->
+        </borderlayout>
+        <!--  -->
+    </window>
+    <!--  -->
+</zk>

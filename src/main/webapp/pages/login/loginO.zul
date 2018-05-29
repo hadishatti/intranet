@@ -1,0 +1,54 @@
+<vlayout xmlns:c="client">
+	<window mode="overlapped" id="loginWindow" apply="org.zkoss.bind.BindComposer" viewModel="@id('vm')@init('qa.tecnositafgulf.viewmodel.login.LoginViewModel')" title="Login with zk/zk" width="300px"  minimizable="true" onOK="loginCheck()" border='normal'>
+		<style>
+		div.minimize {
+			border: 1px solid #79858E;
+			background: #D3E1EC;
+			position: absolute;
+			opacity: 0.8;		
+		}
+		div.loginGrid { 
+			border: none;
+		}
+		td.loginCtl {
+			text-align: center;
+		}
+		td.loginCtl .z-label {
+			color: red;			
+			font-style: italic;
+		}
+		</style>
+		<grid sclass="loginGrid">
+			<columns>
+				<column hflex="1" />
+				<column hflex="2" />
+			</columns>
+			<rows>
+				<row>User Name : <textbox id="name" value="@load(vm.username) @save(vm.username,before='login')" c:onFocus="this.select()" /></row>
+				<row>Password : <textbox id="pwd" type="password" value="@load(vm.password) @save(vm.password,before='login')" c:onFocus="this.select()"/></row>
+				<row><cell sclass="loginCtl" colspan="2"><vlayout>
+					<button label="Submit" onClick="@command('login')" width="100px"/>
+					<label id="mesg" />
+				</vlayout></cell></row>
+			</rows>
+		</grid>
+		<script type="text/javascript">
+			function loginFailed() { //Shake the window
+			var originalLeft = jq("$loginWindow").position().left;
+			var loginWin = jq("$loginWindow");
+			var previousBackgroundColor = loginWin.css('background-color');
+
+			loginWin.animate({left : originalLeft - 25, backgroundColor : "red"}, 50)
+			.animate({left : originalLeft}, 50)
+			.animate({left : originalLeft + 25}, 50)
+			.animate({left : originalLeft}, 50)
+			.animate({backgroundColor : previousBackgroundColor}, 250,
+			function() {
+			loginWin.css('background-color', '');
+			} );
+			}
+		</script>
+	</window>
+	<script type="text/javascript" src="/widgets/effects/login_effect/jquery-ui-1.10.3.custom.min.js" />
+	<script type="text/javascript" src="/widgets/effects/login_effect/customized_effect.js" />	
+</vlayout>

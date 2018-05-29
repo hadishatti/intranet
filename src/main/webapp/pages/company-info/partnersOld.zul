@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?init class="qa.tecnositafgulf.init.AuthenticationInit"?>
+<?page title="Partners" contentType="text/html;charset=UTF-8" ?>
+<!--
+<?link rel="stylesheet" type="text/css"	href="/style/bootstrap/v3/bootstrap/themes/bootstrap-${param.theme}.min.css" if="${not empty param.theme}"?>
+<?link rel="stylesheet" type="text/css"	href="/style/bootstrap/v3/bootstrap/themes/bootstrap-default.min.css" if="${empty param.theme}"?>
+<?link rel="stylesheet" type="text/css"	href="/style/bootstrap/v3/assets/css/docs.css" ?>
+<?link rel="stylesheet" type="text/css"	href="/style/bootstrap/v3/assets/css/pygments-manni.css" ?>
+-->
+<zk>
+
+    <window apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('qa.tecnositafgulf.viewmodel.companyInfo.CompanyInfoVM')"  height="100%" width="100%" style="padding: 0px;">
+        <style>
+            .z-button {
+            background-color: #1a4280;
+            }
+            .z-button:hover {
+            background-color: #0090cf;
+            }
+            .z-icon-angle-double-left {
+            color: #1a4280;
+            font-size:30px;
+            }
+            .z-west-collapsed>.z-borderlayout-icon {
+            top: 0; bottom: 0; right: 0; left: 0;
+            width: 100%; height: 100%;
+            }
+            .z-west-collapsed>.z-borderlayout-icon::before {
+            color: #1a4280;
+            font-size:30px;
+            }
+            .z-listheader {
+            background-color: #1a4280;
+            }
+            .z-notification .z-notification-content {
+            color : #1a4280;
+            background-color: #dee9fb;
+            }
+            .z-icon-info-circle::before{
+            color : #1a4280;
+            }
+        </style>
+        <borderlayout animationDisabled="true">
+
+            <!-- Content Panel -->
+            <center
+                    id="contentPanel"
+                    sclass="contentPanel"
+                    border="0"
+                    hflex="1"
+                    style="border: none;">
+                <!-- Title Bar -->
+                <caption>
+                    <include src="/pages/include/titlebar.zul" />
+                </caption>
+                <!--  -->
+
+                <!-- Content Area -->
+                <borderlayout>
+                    <!-- Newsfeed Panel  -->
+                    <west border="0" collapsible="true" open="false" style="border: none;">
+                        <caption vflex="max" width="95%">
+                            <include src="/pages/include/panels.zul"/>
+                        </caption>
+
+                    </west>
+                    <center
+                            border="2"
+                            sclass="newsfeedPanel"
+                            autoscroll="true" >
+                        <div>
+                            <html><![CDATA[
+                                <head>
+
+                                    <meta charset="utf-8">
+                                    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+                                    <meta name="description" content="">
+                                    <meta name="author" content="">
+
+                                    <title>Intranet</title>
+
+                                    <!-- Bootstrap core CSS -->
+                                    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+                                    <!-- Custom styles for this template -->
+                                    <link href="customized/css/partners_thumbnail_gallery.css" rel="stylesheet">
+
+                                  </head>
+
+                                  <body>
+
+                                    <!-- Page Content -->
+                                    <div class="container">
+
+                                      <h1 class="my-4 text-center text-lg-left" style="color:#1a4280">Our Partners</h1>
+
+                                      <div class="row text-center text-lg-left">
+
+                                        <div class="col-lg-3 col-md-4 col-xs-6">
+                                          <a href="http://www.tecnositaf.it/en/" class="d-block mb-4 h-100">
+                                            <img class="img-fluid img-thumbnail" src="logos/tecnositaf.jpg" alt="">
+                                          </a>
+                                        </div>
+                                        <div class="col-lg-3 col-md-4 col-xs-6">
+                                          <a href="http://www.stradeanas.it/en" class="d-block mb-4 h-100">
+                                            <img class="img-fluid img-thumbnail" src="logos/anas.jpg" alt="">
+                                          </a>
+                                        </div>
+                                        <div class="col-lg-3 col-md-4 col-xs-6">
+                                          <a href="http://www.vigilatevision.com/en/" class="d-block mb-4 h-100">
+                                            <img class="img-fluid img-thumbnail" src="logos/vigilate.jpg" alt="">
+                                          </a>
+                                        </div>
+                                        <div class="col-lg-3 col-md-4 col-xs-6">
+                                          <a href="http://www.tattile.com/" class="d-block mb-4 h-100">
+                                            <img class="img-fluid img-thumbnail" src="logos/tattile.jpg" alt="">
+                                          </a>
+                                        </div>
+                                        <div class="col-lg-3 col-md-4 col-xs-6">
+                                          <a href="https://www.aitek.it/en/" class="d-block mb-4 h-100">
+                                            <img class="img-fluid img-thumbnail" src="logos/aitek.jpg" alt="">
+                                          </a>
+                                        </div>
+                                        <div class="col-lg-3 col-md-4 col-xs-6">
+                                          <a href="https://www.genetec.com/" class="d-block mb-4 h-100">
+                                            <img class="img-fluid img-thumbnail" src="logos/genetec.jpg" alt="">
+                                          </a>
+                                        </div>
+                                        <div class="col-lg-3 col-md-4 col-xs-6">
+                                          <a href="http://www.flir.com/home/" class="d-block mb-4 h-100">
+                                            <img class="img-fluid img-thumbnail" src="logos/flir.jpg" alt="">
+                                          </a>
+                                        </div>
+                                        <div class="col-lg-3 col-md-4 col-xs-6">
+                                          <a href="http://www.gunnebo.ae/" class="d-block mb-4 h-100">
+                                            <img class="img-fluid img-thumbnail" src="logos/gunnebo.jpg" alt="">
+                                          </a>
+                                        </div>
+                                        <div class="col-lg-3 col-md-4 col-xs-6">
+                                          <a href="https://www.hidglobal.com/" class="d-block mb-4 h-100">
+                                            <img class="img-fluid img-thumbnail" src="logos/hid.jpg" alt="">
+                                          </a>
+                                        </div>
+                                        <div class="col-lg-3 col-md-4 col-xs-6">
+                                          <a href="http://ozak-t.com/?LNG=EN" class="d-block mb-4 h-100">
+                                            <img class="img-fluid img-thumbnail" src="logos/ozak.jpg" alt="">
+                                          </a>
+                                        </div>
+                                        <div class="col-lg-3 col-md-4 col-xs-6">
+                                          <a href="http://www.allgovision.com/" class="d-block mb-4 h-100">
+                                            <img class="img-fluid img-thumbnail" src="logos/allgovision.jpg" alt="">
+                                          </a>
+                                        </div>
+                                        <div class="col-lg-3 col-md-4 col-xs-6">
+                                          <a href="http://www.arhungary.hu/" class="d-block mb-4 h-100">
+                                            <img class="img-fluid img-thumbnail" src="logos/arh.jpg" alt="">
+                                          </a>
+                                        </div>
+                                        <div class="col-lg-3 col-md-4 col-xs-6">
+                                          <a href="https://www.tkhsecurity.com/" class="d-block mb-4 h-100">
+                                            <img class="img-fluid img-thumbnail" src="logos/siqura.jpg" alt="">
+                                          </a>
+                                        </div>
+                                        <div class="col-lg-3 col-md-4 col-xs-6">
+                                          <a href="http://greenarrow.com.qa/" class="d-block mb-4 h-100">
+                                            <img class="img-fluid img-thumbnail" src="logos/green-arrow.jpg" alt="">
+                                          </a>
+                                        </div>
+                                        <div class="col-lg-3 col-md-4 col-xs-6">
+                                          <a href="https://www.cisco.com/c/en_qa/index.html" class="d-block mb-4 h-100">
+                                            <img class="img-fluid img-thumbnail" src="logos/cisco.jpg" alt="">
+                                          </a>
+                                        </div>
+                                        <div class="col-lg-3 col-md-4 col-xs-6">
+                                          <a href="http://www.hp.com/country/us/en/welcome.html" class="d-block mb-4 h-100">
+                                            <img class="img-fluid img-thumbnail" src="logos/hp.jpg" alt="">
+                                          </a>
+                                        </div>
+                                        <div class="col-lg-3 col-md-4 col-xs-6">
+                                          <a href="http://e.huawei.com/en/" class="d-block mb-4 h-100">
+                                            <img class="img-fluid img-thumbnail" src="logos/huawei.jpg" alt="">
+                                          </a>
+                                        </div>
+                                        <div class="col-lg-3 col-md-4 col-xs-6">
+                                          <a href="http://www.bosch.qa/qatar/en/homepage/" class="d-block mb-4 h-100">
+                                            <img class="img-fluid img-thumbnail" src="logos/bosch.jpg" alt="">
+                                          </a>
+                                        </div>
+                                        <div class="col-lg-3 col-md-4 col-xs-6">
+                                          <a href="https://www.pelco.com/" class="d-block mb-4 h-100">
+                                            <img class="img-fluid img-thumbnail" src="logos/pelco.jpg" alt="">
+                                          </a>
+                                        </div>
+                                        <div class="col-lg-3 col-md-4 col-xs-6">
+                                          <a href="https://www.schneider-electric.com/ww/en/" class="d-block mb-4 h-100">
+                                            <img class="img-fluid img-thumbnail" src="logos/schneider.jpg" alt="">
+                                          </a>
+                                        </div>
+                                        <div class="col-lg-3 col-md-4 col-xs-6">
+                                          <a href="https://www.siemens.com/global/en/home.html" class="d-block mb-4 h-100">
+                                            <img class="img-fluid img-thumbnail" src="logos/siemens.jpg" alt="">
+                                          </a>
+                                        </div>
+                                        <div class="col-lg-3 col-md-4 col-xs-6">
+                                          <a href="http://www.axesstmc.com/" class="d-block mb-4 h-100">
+                                            <img class="img-fluid img-thumbnail" src="logos/zucchetti.jpg" alt="">
+                                          </a>
+                                        </div>
+                                        <div class="col-lg-3 col-md-4 col-xs-6">
+                                          <a href="https://www.saimasicurezza.com/en/" class="d-block mb-4 h-100">
+                                            <img class="img-fluid img-thumbnail" src="logos/saima.jpg" alt="">
+                                          </a>
+                                        </div>
+                                        <div class="col-lg-3 col-md-4 col-xs-6">
+                                          <a href="https://www.ctelettronica.it/en/index.php" class="d-block mb-4 h-100">
+                                            <img class="img-fluid img-thumbnail" src="logos/ct.jpg" alt="">
+                                          </a>
+                                        </div>
+                                        <div class="col-lg-3 col-md-4 col-xs-6">
+                                          <a href="https://www.aesys.com/default_en-US" class="d-block mb-4 h-100">
+                                            <img class="img-fluid img-thumbnail" src="logos/aesys.jpg" alt="">
+                                          </a>
+                                        </div>
+                                        <div class="col-lg-3 col-md-4 col-xs-6">
+                                          <a href="http://www.sensysnetworks.com/" class="d-block mb-4 h-100">
+                                            <img class="img-fluid img-thumbnail" src="logos/sensys.jpg" alt="">
+                                          </a>
+                                        </div>
+                                        <div class="col-lg-3 col-md-4 col-xs-6">
+                                          <a href="http://www.beldencables-emea.com/en/products/index.phtml" class="d-block mb-4 h-100">
+                                            <img class="img-fluid img-thumbnail" src="logos/belden.jpg" alt="">
+                                          </a>
+                                        </div>
+                                        <div class="col-lg-3 col-md-4 col-xs-6">
+                                          <a href="https://www.comnet.net/" class="d-block mb-4 h-100">
+                                            <img class="img-fluid img-thumbnail" src="logos/comnet.jpg" alt="">
+                                          </a>
+                                        </div>
+                                        <div class="col-lg-3 col-md-4 col-xs-6">
+                                          <a href="https://www.brand-rex.com/" class="d-block mb-4 h-100">
+                                            <img class="img-fluid img-thumbnail" src="logos/brandrex.jpg" alt="">
+                                          </a>
+                                        </div>
+                                        <div class="col-lg-3 col-md-4 col-xs-6">
+                                          <a href="http://www.nexsan.com/" class="d-block mb-4 h-100">
+                                            <img class="img-fluid img-thumbnail" src="logos/nexsan.jpg" alt="">
+                                          </a>
+                                        </div>
+                                      </div>
+
+                                    </div>
+                                    <!-- /.container -->
+
+                                    <!-- Bootstrap core JavaScript -->
+                                    <script src="customized/jquery/jquery.min.js"></script>
+                                    <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+
+                                  </body>
+
+                            ]]>
+                            </html>
+                        </div>
+                    </center>
+                </borderlayout>
+                <!--  -->
+            </center>
+            <!--  -->
+        </borderlayout>
+        <!--  -->
+    </window>
+    <!--  -->
+</zk>

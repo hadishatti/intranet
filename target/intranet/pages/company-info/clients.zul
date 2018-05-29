@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?init class="qa.tecnositafgulf.init.AuthenticationInit"?>
+<?page title="Clients" contentType="text/html;charset=UTF-8" ?>
+<?meta name="viewport" content="width=device-width, initial-scale=1"?>
+<?link href="assets/css/bootstrap-responsive.css" rel="stylesheet"?>
+<?link rel="stylesheet" type="text/css" href="/pages/company-info/bootstrap/css/bootstrap.min.css" ?>
+<?link rel="stylesheet" type="text/css" href="/style/intranet.css" ?>
+<?script src="/pages/company-info/bootstrap/js/bootstrap.min.js"?>
+<zk>
+
+    <window apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('qa.tecnositafgulf.viewmodel.companyInfo.CompanyInfoVM')"  height="100%" width="100%" style="@load(vm.css)">
+        <!-- Title Bar-->
+        <div width="100%" >
+            <include src="/pages/include/titlebar.zul"/>
+        </div>
+        <borderlayout animationDisabled="true">
+
+            <!-- Content Panel -->
+            <center
+                    id="contentPanel"
+                    sclass="contentPanel"
+                    border="0"
+                    hflex="1"
+                    style="border: none;">
+                <!-- Content Area -->
+                <borderlayout>
+                    <!-- Newsfeed Panel  -->
+                    <west border="0" collapsible="true" open="false" style="border: none;" visible="@load(not vm.mobile)">
+                        <caption vflex="max" width="95%">
+                            <include src="/pages/include/panels.zul"/>
+                        </caption>
+
+                    </west>
+                    <center
+                            border="2"
+                            sclass="newsfeedPanel"
+                            autoscroll="true" >
+                        <div>
+                            <html><![CDATA[
+                                <head>
+
+                                    <meta charset="utf-8">
+                                    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+                                    <meta name="description" content="">
+                                    <meta name="author" content="">
+
+                                    <title>Intranet</title>
+
+                                    <!-- Bootstrap core CSS -->
+                                    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+                                    <!-- Custom styles for this template -->
+                                    <link href="customized/css/partners_thumbnail_gallery.css" rel="stylesheet">
+
+                                  </head>
+
+                                  <body>
+
+                                    <!-- Page Content -->
+                                    <div class="container">
+
+                                      <h1 class="my-4 text-center text-lg-left" style="color:#1a4280">Our Clients</h1>
+
+                                      <div class="row text-center text-lg-left">
+
+                                        <div class="col-lg-3 col-md-4 col-xs-6">
+                                          <a href="http://www.ashghal.gov.qa/en/Pages/default.aspx" class="d-block mb-4 h-100">
+                                            <img class="img-fluid img-thumbnail" src="logos/ashghal-logo.jpg" alt="">
+                                          </a>
+                                        </div>
+                                        <div class="col-lg-3 col-md-4 col-xs-6">
+                                          <a href="http://www.motc.gov.qa/en" class="d-block mb-4 h-100">
+                                            <img class="img-fluid img-thumbnail" src="logos/motc.jpg" alt="">
+                                          </a>
+                                        </div>
+                                        <div class="col-lg-3 col-md-4 col-xs-6">
+                                          <a href="http://www.mit.gov.it/en" class="d-block mb-4 h-100">
+                                            <img class="img-fluid img-thumbnail" src="logos/mit.jpg" alt="">
+                                          </a>
+                                        </div>
+                                        <div class="col-lg-3 col-md-4 col-xs-6">
+                                          <a href="http://www.ccc.net/home.php" class="d-block mb-4 h-100">
+                                            <img class="img-fluid img-thumbnail" src="logos/ccc.jpg" alt="">
+                                          </a>
+                                        </div>
+                                        <div class="col-lg-3 col-md-4 col-xs-6">
+                                          <a href="http://www.teyseergroup.com/" class="d-block mb-4 h-100">
+                                            <img class="img-fluid img-thumbnail" src="logos/teyseer.jpg" alt="">
+                                          </a>
+                                        </div>
+                                        <div class="col-lg-3 col-md-4 col-xs-6">
+                                          <a href="https://www.midmac.net/" class="d-block mb-4 h-100">
+                                            <img class="img-fluid img-thumbnail" src="logos/midmac.jpg" alt="">
+                                          </a>
+                                        </div>
+                                        <div class="col-lg-3 col-md-4 col-xs-6">
+                                          <a href="https://www.sixconstruct.com/" class="d-block mb-4 h-100">
+                                            <img class="img-fluid img-thumbnail" src="logos/sixconstruct.jpg" alt="">
+                                          </a>
+                                        </div>
+                                        <div class="col-lg-3 col-md-4 col-xs-6">
+                                          <a href="http://www.qd-sbg.com.qa/" class="d-block mb-4 h-100">
+                                            <img class="img-fluid img-thumbnail" src="logos/qd-sbg.jpg" alt="">
+                                          </a>
+                                        </div>
+                                        <div class="col-lg-3 col-md-4 col-xs-6">
+                                          <a href="http://injaznational.ae/" class="d-block mb-4 h-100">
+                                            <img class="img-fluid img-thumbnail" src="logos/injaz.jpg" alt="">
+                                          </a>
+                                        </div>
+                                      </div>
+
+                                    </div>
+                                    <!-- /.container -->
+
+                                    <!-- Bootstrap core JavaScript -->
+                                    <script src="customized/jquery/jquery.min.js"></script>
+                                    <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+
+                                  </body>
+
+                            ]]>
+                            </html>
+                        </div>
+                    </center>
+                </borderlayout>
+                <!--  -->
+            </center>
+            <!--  -->
+        </borderlayout>
+        <!--  -->
+    </window>
+    <!--  -->
+</zk>

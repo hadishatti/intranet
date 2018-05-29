@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<?init class="qa.tecnositafgulf.init.AuthenticationInit"?>
+<?init class="qa.tecnositafgulf.init.AdministratorInit"?>
+<?page title="Save Role" contentType="text/html;charset=UTF-8" ?>
+<?meta name="viewport" content="width=device-width, initial-scale=1"?>
+<?link href="assets/css/bootstrap-responsive.css" rel="stylesheet"?>
+<?link rel="stylesheet" type="text/css" href="/pages/company-info/bootstrap/css/bootstrap.min.css" ?>
+<?script src="/pages/company-info/bootstrap/js/bootstrap.min.js"?>
+
+
+<zk>
+
+    <!-- Main Window -->
+    <window closable="true" title="Save Role"
+            apply="org.zkoss.bind.BindComposer"
+            viewModel="@id('vm') @init('qa.tecnositafgulf.viewmodel.administration.roles.SaveRoleViewModel')"
+            sclass="intranet-popup" width="100%" style="@load(vm.css)">
+        
+            <vlayout>
+                <groupbox closable="true" mold="3d" form="@id('fx') @load(vm.role) @save(vm.role, before='saveRole')" vflex="1" contentStyle="overflow:auto;">
+                    <listbox hflex="1">
+                        <listhead sizable="true">
+                            <listheader label=""/>
+                            <listheader label=""/>
+                        </listhead>
+                        <listitem>
+                            <listcell>
+                                <label value="Name"/>
+                            </listcell>
+                            <listcell>
+                                <textbox constraint="no empty"  value="@load(fx.name) @save(fx.name,before='saveRole')"/>
+                            </listcell>
+                        </listitem>
+                        <listitem>
+                            <listcell>
+                                <label value="Description"/>
+                            </listcell>
+                            <listcell>
+                                <textbox constraint="no empty" value="@load(fx.description) @save(fx.description,before='saveRole')" />
+                            </listcell>
+                        </listitem>
+                    </listbox>
+                </groupbox>
+
+                <div align="center" sclass="global-footer" width="100%" vflex="min">
+                    <button iconSclass="icon-save" label="Save Role" onClick="@command('saveRole')" sclass="btn-footer"/>
+                </div>
+            </vlayout>
+        <!--  -->
+    </window>
+    <!--  -->
+</zk>

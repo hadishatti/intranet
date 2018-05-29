@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="SampleReport" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e2578add-246e-4879-8deb-618127771363">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="salaryDataSet" whenResourceMissingType="Empty" uuid="2dfc987d-2280-483a-8638-52616feb60d8">
+		<queryString>
+			<![CDATA[]]>
+		</queryString>
+		<field name="lblBasicPay" class="java.lang.String"/>
+		<field name="lblHouseRentAllowance" class="java.lang.String"/>
+		<field name="lblTransportAllowance" class="java.lang.String"/>
+		<field name="lblOtherAllowance" class="java.lang.String"/>
+		<field name="total" class="java.lang.String"/>
+		<field name="txtBasicPay" class="java.lang.String"/>
+		<field name="txtHouseRentAllowance" class="java.lang.String"/>
+		<field name="txtTransportAllowance" class="java.lang.String"/>
+		<field name="otherAllowance" class="java.lang.String"/>
+		<field name="txtTotalAmount" class="java.lang.String"/>
+		<field name="otherDeductions" class="java.lang.String"/>
+	</subDataset>
+	<subDataset name="employeedDataSet" whenResourceMissingType="Empty" uuid="59a47c15-41e1-4fdd-83cb-0a47b3f6988f">
+		<field name="employee" class="java.lang.String"/>
+		<field name="department" class="java.lang.String"/>
+		<field name="designation" class="java.lang.String"/>
+		<field name="monthAndYear" class="java.lang.String"/>
+	</subDataset>
+	<parameter name="datasource" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<parameter name="datasource2" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="151" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="0" width="361" height="91" uuid="19d83c88-4e42-40c1-8944-59b32885135f"/>
+				<imageExpression><![CDATA["/home/tanveer/Documents/IntranetOnlineReportPro/gbdg-logo.jpeg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="181" y="108" width="207" height="30" uuid="5c2b7cf7-46d0-4d65-bfcc-0b697ce8181d"/>
+				<textElement>
+					<font size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Salary Reciept]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="261" splitType="Stretch">
+			<componentElement>
+				<reportElement key="table" style="table" x="0" y="133" width="360" height="80" uuid="6becf4b8-d006-4922-aea5-2bff4a89860a"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="salaryDataSet" uuid="a26cf4d0-2d10-4dbf-9d50-7a694efea195">
+						<dataSourceExpression><![CDATA[$P{datasource}]]></dataSourceExpression>
+					</datasetRun>
+					<jr:column width="162" uuid="1af801bd-4810-4266-bed0-1372b0e11a48">
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="e0bb1cd5-bb91-410f-b9d1-ae9569705d66"/>
+								<text><![CDATA[Earnings]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table_CH" height="30" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="30" uuid="e07a7775-faf4-40d3-a866-21ca682d7cc1"/>
+								<textFieldExpression><![CDATA[$F{total}]]></textFieldExpression>
+							</textField>
+						</jr:columnFooter>
+						<jr:detailCell style="table_TD" height="108" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="162" height="22" uuid="743ac567-4939-49e6-8aa4-cb728629c63c"/>
+								<textFieldExpression><![CDATA[$F{lblBasicPay}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement x="0" y="22" width="162" height="24" uuid="72efad08-1957-4d85-a1d2-5193f1415c48"/>
+								<textFieldExpression><![CDATA[$F{lblHouseRentAllowance}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement x="0" y="46" width="162" height="19" uuid="e4f5ec62-92be-47b5-9011-fb27fc9f1222"/>
+								<textFieldExpression><![CDATA[$F{lblTransportAllowance}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement x="0" y="65" width="162" height="17" uuid="731f7fc0-1609-4905-9e2d-5ba248e04e9a"/>
+								<textFieldExpression><![CDATA[$F{lblOtherAllowance}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="10a87367-42b4-458a-8dd9-e344ceb02b06">
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="7eb62c69-f29e-4c0f-9eff-29c3df85a1a1"/>
+								<text><![CDATA[QAR]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table_CH" height="30" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="30" uuid="90a3bd9d-1ea9-4958-a67e-5880f101aecd"/>
+								<textFieldExpression><![CDATA[$F{txtTotalAmount}]]></textFieldExpression>
+							</textField>
+						</jr:columnFooter>
+						<jr:detailCell style="table_TD" height="108" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="22" uuid="750ce62f-b14d-4b8e-aa17-0364bb3e71f3"/>
+								<textFieldExpression><![CDATA[$F{txtBasicPay}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement x="0" y="22" width="90" height="24" uuid="3c95bbfb-314b-480d-b952-613614de66d7"/>
+								<textFieldExpression><![CDATA[$F{txtHouseRentAllowance}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement x="0" y="46" width="90" height="19" uuid="59355304-3dc7-4c48-b9a6-f2f90b8c7074"/>
+								<textFieldExpression><![CDATA[$F{txtTransportAllowance}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement x="0" y="65" width="90" height="17" uuid="580651fe-b0d6-4cfa-8c8c-ee665583c80a"/>
+								<textFieldExpression><![CDATA[$F{otherAllowance}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="2281eaae-ca74-44ce-9783-d83e523ddd32">
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="fe85e669-166c-414c-8e73-3a2967b3faf7"/>
+								<text><![CDATA[Deductions]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table_TD" height="108" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="22" uuid="41745e1c-f037-4118-9469-6ac374366870"/>
+								<text><![CDATA[Other Deductions]]></text>
+							</staticText>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="e0f242a8-5bf5-4f9f-94c4-80f5cc9d08c4">
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="d97e51e7-8047-4559-9183-7b4894029d47"/>
+								<text><![CDATA[QAR]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table_TD" height="108" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="22" uuid="d060b1ab-17ab-4f59-8165-0011ea827209"/>
+								<textFieldExpression><![CDATA[$F{otherDeductions}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<componentElement>
+				<reportElement key="table 1" style="table 1" x="0" y="0" width="360" height="80" uuid="3277e536-704c-4db8-8868-1f7d349f5908"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="employeedDataSet" uuid="9afe7904-67af-488d-99be-ab52d72031cd">
+						<dataSourceExpression><![CDATA[$P{datasource2}]]></dataSourceExpression>
+					</datasetRun>
+					<jr:column width="90" uuid="80cf2589-afa1-4537-bc08-6c93d3c0d78c">
+						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="7a8d8dcb-45fd-4321-85e4-6c811f162f5c"/>
+								<text><![CDATA[Receivable]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 1_TD" height="73" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="18" uuid="50d7a3cc-2742-47cc-8baa-bb9c77ca9434"/>
+								<text><![CDATA[Employee]]></text>
+							</staticText>
+							<staticText>
+								<reportElement x="0" y="18" width="90" height="18" uuid="41af6ae9-25d6-48f7-88ea-2a371d54d79d"/>
+								<text><![CDATA[Department]]></text>
+							</staticText>
+							<staticText>
+								<reportElement x="0" y="36" width="90" height="18" uuid="69c08b82-763c-4944-a056-910055e8c0eb"/>
+								<text><![CDATA[Designation]]></text>
+							</staticText>
+							<staticText>
+								<reportElement x="0" y="54" width="90" height="18" uuid="77bb48a1-096b-41e4-a7ea-7d566718a74c"/>
+								<text><![CDATA[Month & Year]]></text>
+							</staticText>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="f3df4ad7-0e8a-4a55-8709-d93f6e995030">
+						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="5baceb99-296a-4642-a267-814f0cfe83b3"/>
+								<text><![CDATA[Details]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 1_TD" height="73" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="18" uuid="f399b7f8-9b57-4624-875c-c36faae240eb"/>
+								<textFieldExpression><![CDATA[$F{employee}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement x="0" y="18" width="90" height="18" uuid="757354e7-3647-4d6e-8712-0ca185fa1464"/>
+								<textFieldExpression><![CDATA[$F{department}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement x="0" y="36" width="90" height="18" uuid="fc12b53c-f4f6-4270-bddf-6b3d25ff9968"/>
+								<textFieldExpression><![CDATA[$F{designation}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement x="0" y="54" width="90" height="18" uuid="2580cbb6-4b50-4651-a014-ebaa0d1d4fc8"/>
+								<textFieldExpression><![CDATA[$F{monthAndYear}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

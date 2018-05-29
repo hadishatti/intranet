@@ -1,0 +1,101 @@
+<zk>
+    <style>
+        .the-tender-slider {
+        width: 100%;
+        height: 300px;
+        overflow: hidden;
+        position: relative;
+        z-index: 1;
+        }
+        .the-tender-slider div {
+        width: 100%;
+        }
+        .the-tender-slider div img {
+        margin: 5px 10px;
+        width: 100%;
+        height: 250px;
+        }
+    </style>
+    <script type="text/javascript"><![CDATA[
+		var tenderTitleList = [],
+		    tenderNumberList = [],
+		    tenderCategoryList = [],
+		    tenderIssuingDateList = [],
+		    tenderClosingDateList = [],
+			tenderContentLength,
+			tenderIndex = 1,
+			tenderAnimateTime = 500,
+			tenderSlideShow;
+		function setTenderNumber (number) {
+			tenderNumberList = number.split('$$$');
+			tenderContentLength = tenderNumberList.length;
+		}
+		function setTenderTitle (title) {
+			tenderTitleList = title.split('$$$');
+		}
+		function setTenderCategory (category) {
+			tenderCategoryList = category.split('$$$');
+		}
+		function setTenderIssuingDate (issuingDate) {
+			tenderIssuingDateList = issuingDate.split('$$$');
+		}
+		function setTenderClosingDate (closingDate) {
+			tenderClosingDateList = closingDate.split('$$$');
+		}
+
+		function startTenderSlideShow (delay) {
+			var $tenderSlider = jq('$tender-slider'),
+				$tenderContainer = jq('$tender-container');
+
+				$tenderNumber = jq('$tenderNumber')[0];
+				$tenderTitle = jq('$tenderTitle')[0];
+				$tenderCategory = jq('$tenderCategory')[0];
+				$tenderIssuingDate = jq('$tenderIssuingDate')[0];
+				$tenderClosingDate = jq('$tenderClosingDate')[0];
+
+			tenderSlideShow = setInterval (function () {
+
+				$tenderSlider.animate({'scrollLeft': '+=0px'}, tenderAnimateTime, null, function (){
+
+					$tenderNumber.textContent = tenderNumberList[tenderIndex];
+					$tenderTitle.textContent = tenderTitleList[tenderIndex];
+					$tenderCategory.textContent = tenderCategoryList[tenderIndex];
+					$tenderIssuingDate.textContent = tenderIssuingDateList[tenderIndex];
+					$tenderClosingDate.textContent = tenderClosingDateList[tenderIndex];
+
+					// update index
+					if(tenderIndex >= tenderContentLength-1){
+					    tenderIndex = 0;
+					}else{
+					    tenderIndex = tenderIndex+1;
+					}
+
+/*
+					$tenderContainer[0].appendChild($tenderTitle);
+					$tenderContainer[0].appendChild($tenderCategory);
+					$tenderContainer[0].appendChild($tenderIssuingDate);
+					$tenderContainer[0].appendChild($tenderClosingDate);
+*/
+					// reset the scrollLeft of slider
+					$tenderSlider[0].scrollLeft = 0;
+				});
+			}, delay);
+		}
+	]]></script>
+    <div apply="qa.tecnositafgulf.controller.TenderSliderController" hflex="1" vflex="1">
+        <div id="tender-slider" sclass="the-tender-slider" hflex="1" vflex="1">
+            <div id="tender-descriptionDiv" style="position: relative;top: 4px;z-index: 3;background-color:#1a4280;margin-right:100px;">
+                <label id="tenderNumber" style="font-weight:bold;font-size:1.1em;color:white;"/>
+            </div>
+            <vlayout id="tender-container" style="position: absolute;z-index: 2;border: 1px solid #1a4280;padding: 2px;" hflex="1">
+                <label id="tenderTitle" width="100%" style="font-weight:bold;font-size:1em;"/>
+                <separator/>
+                <label id="tenderCategory" width="100%" style="font-weight:bold;font-size:0.8em;" />
+                <separator/>
+                <label id="tenderIssuingDate" width="100%" style="font-weight:bold;font-size:0.7empx;"/>
+                <separator/>
+                <label id="tenderClosingDate" width="100%" style="font-weight:bold;font-size:0.7em;color:#1a4280;"/>
+            </vlayout>
+        </div>
+    </div>
+</zk>

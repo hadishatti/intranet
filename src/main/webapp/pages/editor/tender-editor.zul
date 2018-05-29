@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?init class="qa.tecnositafgulf.init.AuthenticationInit"?>
+<?link rel="stylesheet" type="text/css" href="/style/intranet.css" ?>
+<zk>
+    <window contentStyle="overflow:scroll;" closable="true" title="Post Tender" width="100%" height="100%" style="text-align:left;min-width:480px;" apply="org.zkoss.bind.BindComposer" viewModel="@id('vm')@init('qa.tecnositafgulf.viewmodel.editor.TenderEditorViewModel')" validationMessages="@id('vmsgs')">
+        <!--possible toolbars=Simple, Complex or Full-->
+        <listbox>
+            <listhead>
+                <listheader hflex="1"/>
+                <listheader hflex="1"/>
+                <listheader hflex="1"/>
+            </listhead>
+            <listitem>
+                <listcell style="text-align:left;">
+                    <label value="Title"/>
+                </listcell>
+                <listcell span="2">
+                    <textbox constraint="no empty" style="font-weight:bold;" value="@bind(vm.title)" width="100%"/>
+                </listcell>
+            </listitem>
+            <listitem style="text-align:left;">
+                <listcell>
+                    <label value="Tender Number"/>
+                </listcell>
+                <listcell span="2">
+                    <textbox constraint="no empty" style="font-weight:bold;" value="@bind(vm.number)" width="100%"/>
+                </listcell>
+            </listitem>
+            <listitem style="text-align:left;">
+                <listcell>
+                    <label value="Tender Category"/>
+                </listcell>
+                <listcell span="2">
+                    <combobox model="@bind(vm.types)" selectedItem="@bind(vm.selectedType)"/>
+                </listcell>
+            </listitem>
+            <listitem style="text-align:left;">
+                <listcell>
+                    <label value="Issuing Date"/>
+                </listcell>
+                <listcell span="2">
+                    <datebox format="long+medium" constraint="no empty" value="@bind(vm.issuingDate)"/>
+                </listcell>
+            </listitem>
+            <listitem style="text-align:left;">
+                <listcell>
+                    <label value="Closing Date"/>
+                </listcell>
+                <listcell span="2">
+                    <datebox format="long+medium" displayedTimeZones="GMT+3" timeZonesReadonly="true" constraint="no empty" value="@bind(vm.closingDate)"/>
+                </listcell>
+            </listitem>
+            <listitem>
+                <listcell style="text-align:left;">
+                    <label value="Link from Ashghal's Site"/>
+                </listcell>
+                <listcell span="2">
+                    <textbox constraint="no empty" value="@bind(vm.link)"/>
+                </listcell>
+            </listitem>
+        </listbox>
+        <separator height="50px"/>
+        <div width="100%">
+            <label value="Description:"/>
+        </div>
+        <hlayout>
+            <label value="Choose Your Editor "/>
+            <separator orient="vertical"/>
+            <radiogroup id="rad" style="border:1;" orient="horizontal" onCheck="ed.toolbar = self.selectedItem.label">
+                <radio label="Simple"/>
+                <radio selected="true" label="Complex"/>
+                <radio label="Full"/>
+            </radiogroup>
+        </hlayout>
+        <separator height="20px"/>
+        <ckeditor id="ed" toolbar="rad.selectedItem.label" value="@load(vm.content)" width="100%" height="300px" filebrowserImageBrowseUrl="@load(vm.imagePath.concat('/wysiwyg_editor/img'))" filebrowserFlashBrowseUrl="/editor/widgets/input/wysiwyg_editor/flash" customConfigurationsPath="/images/wysiwyg_editor/config.js">
+            <attribute name="value" ></attribute>
+            <attribute name="toolbar"></attribute>
+        </ckeditor>
+        <separator height="20px"/>
+        <div align="center">
+            <button width="200px" label="Submit" onClick="@command('post',content=ed.value)"/>
+        </div>
+        <separator height="20px"/>
+    </window>
+</zk>

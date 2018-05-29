@@ -1,0 +1,67 @@
+<div apply="org.zkoss.bind.BindComposer"
+	viewModel="@id('vm') @init('qa.tecnositafgulf.viewmodel.editor.AgendaEditorViewModel')"
+	validationMessages="@id('vmsgs')">
+	<window border="normal" width="30%"
+		form="@id('fx') @load(vm.calendarEvent) @save(vm.calendarEvent, before='ok') @validator(vm.dateValidator)"
+		allDay="@ref(vm.isAllDay(fx.beginDate,fx.endDate))"
+		mode="popup" visible="@load(vm.visible)" position="center,center" >
+		<vlayout hflex="1">
+			<hlayout>
+				All Day: <checkbox checked="@load(allDay)" disabled="true" />
+			</hlayout>
+			<grid hflex='1'>
+				<columns>
+					<column width="100px" align="right" />
+					<column />
+				</columns>
+				<rows>
+					<row>
+						BeginDate:
+						<div>
+							<datebox hflex="true" locale="en" timeZone="GMT+3"
+								format="@load(allDay ? 'long' : 'long+short')" onCreate="self.value = new Date()"
+								value="@bind(fx.beginDate)" errorMessage="@load(vmsgs.beginDate)" />
+						</div>
+					</row>
+					<row>
+						EndDate:
+						<div>
+							<datebox hflex="true" locale="en" timeZone="GMT+3"
+								format="@load(allDay ? 'long' : 'long+short')" onCreate="self.value = new Date()"
+								value="@bind(fx.endDate)" errorMessage="@load(vmsgs.endDate)"/>
+						</div>
+					</row>
+					<row>
+						Color:
+						<hlayout sclass="z-valign-middle">
+							Border -
+							<colorbox value="@bind(fx.headerColor)" height="20px" />
+							Content -
+							<colorbox value="@bind(fx.contentColor)" height="20px" />
+						</hlayout>
+		
+					</row>
+					<row>
+						Title:
+						<textbox multiline="true" rows="3" width="97%"
+							value="@bind(fx.content)" constraint="no empty"/>
+					</row>
+					<row>
+						Location:
+						<textbox multiline="true" rows="3" width="97%"
+								 value="@bind(vm.location)" />
+					</row>
+					<row>
+						<cell colspan="2" style="text-align:center;">
+							<button label="OK" onClick="@command('ok')"/>
+							<separator orient="vertical"/>
+							<button label="Cancel" onClick="@command('cancel')"/>
+							<separator orient="vertical"/>
+							<button label="Delete" onClick="@command('delete')"/>
+						</cell>
+					</row>
+				</rows>
+			</grid>
+		</vlayout>
+	</window>
+</div>

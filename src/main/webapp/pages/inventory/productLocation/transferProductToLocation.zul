@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?init class="qa.tecnositafgulf.init.AuthenticationInit"?>
+<?page title="View Product Stock" contentType="text/html;charset=UTF-8" ?>
+<?meta name="viewport" content="width=device-width, initial-scale=1"?>
+<?link href="assets/css/bootstrap-responsive.css" rel="stylesheet"?>
+<?link rel="stylesheet" type="text/css" href="/pages/company-info/bootstrap/css/bootstrap.min.css" ?>
+<?link rel="stylesheet" type="text/css" href="/style/intranet.css" ?>
+<?script src="/pages/company-info/bootstrap/js/bootstrap.min.js"?>
+<zk>
+    <window width="100%" height="100%"
+            apply="org.zkoss.bind.BindComposer"
+            viewModel="@id('vm') @init('qa.tecnositafgulf.viewmodel.inventory.productLocation.TransferProductViewModel')"
+            style="@load(vm.css)">
+        <!-- Title Bar-->
+        <div width="100%" >
+            <include src="/pages/include/titlebar.zul"/>
+        </div>
+        <borderlayout animationDisabled="true" width="100%" vflex="1">
+            <center
+                    id="contentPanel"
+                    sclass="contentPanel"
+                    border="0"
+                    style="border: none;"
+                    hflex="1">
+
+                <!-- Content Area -->
+                <borderlayout>
+                    <west border="0" collapsible="true" open="false" style="border: none;" visible="@load(not vm.mobile)">
+                        <caption vflex="1" width="95%">
+                            <include src="/pages/include/panels.zul"/>
+                        </caption>
+                    </west>
+                    <center
+                            border="2"
+                            sclass="newsfeedPanel"
+                            autoscroll="true">
+                        <vlayout>
+                            <groupbox closable="true" mold="3d"
+                                      form="@id('fx') @load(vm.transferStock) @save(vm.transferStock, before='saveProductTransfer')"
+                                      vflex="1" contentStyle="overflow:auto;">
+                                <listbox hflex="1">
+                                    <listhead sizable="true">
+                                        <listheader label=""/>
+                                        <listheader label=""/>
+                                    </listhead>
+                                    <listitem>
+                                        <listcell>
+                                            <label value="From Location"/>
+                                        </listcell>
+                                        <listcell>
+                                            <combobox model="@load(vm.fromLocationList)"
+                                                      selectedItem="@bind(vm.fromSelectedLocation)" onChange="@command('getProductInfo')"/>
+                                        </listcell>
+                                    </listitem>
+                                    <listitem>
+                                        <listcell>
+                                            <label value="Product"/>
+                                        </listcell>
+                                        <listcell>
+                                            <combobox model="@load(vm.productList)"
+                                                      selectedItem="@bind(vm.selectedProduct)" onChange="@command('getFromProductStockDetails')" />
+                                        </listcell>
+                                    </listitem>
+                                    <listitem>
+                                        <listcell>
+                                            <label value="Current Stock"/>
+                                        </listcell>
+                                        <listcell>
+                                            <textbox readonly="true" constraint="no empty"
+                                                     value="@load(vm.fromProductStock.currentStock) @save(vm.fromProductStock.currentStock, before='saveProductTransfer') "/>
+                                        </listcell>
+                                    </listitem>
+                                    <listitem>
+                                        <listcell>
+                                            <label value="To Location"/>
+                                        </listcell>
+                                        <listcell>
+                                            <combobox model="@load(vm.toLocationList)"
+                                                      selectedItem="@bind(vm.toSelectedLocation)" onChange="@command('getToProductStockDetails')" />
+                                        </listcell>
+                                    </listitem>
+                                    <listitem>
+                                        <listcell>
+                                            <label value="To Location Current Stock"/>
+                                        </listcell>
+                                        <listcell>
+                                            <textbox readonly="true" constraint="no empty"
+                                                     value="@load(vm.toProductStock.currentStock) @save(vm.toProductStock.currentStock, before='saveProductTransfer') "/>
+                                        </listcell>
+                                    </listitem>
+                                    <listitem>
+                                        <listcell>
+                                            <label value="No. of Stock to transfer"/>
+                                        </listcell>
+                                        <listcell>
+                                            <textbox constraint="no empty"
+                                                     value="@load(vm.updatedToStock) @save(vm.updatedToStock, before='saveProductTransfer') "/>
+                                        </listcell>
+                                    </listitem>
+                                </listbox>
+                            </groupbox>
+                                <div align="center" sclass="global-footer" width="100%" vflex="min">
+                                    <button iconSclass="icon-save" label="Transfer Product Stock"
+                                            onClick="@command('saveProductTransfer')" sclass="btn-footer"/>
+                                </div>
+                        </vlayout>
+                    </center>
+                </borderlayout>
+            </center>
+        </borderlayout>
+    </window>
+</zk>

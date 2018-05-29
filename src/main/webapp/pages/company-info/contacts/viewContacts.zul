@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<?init class="qa.tecnositafgulf.init.AuthenticationInit"?>
+<?page title="Modify Contacts" contentType="text/html;charset=UTF-8" ?>
+<?meta name="viewport" content="width=device-width, initial-scale=1"?>
+<?link href="assets/css/bootstrap-responsive.css" rel="stylesheet"?>
+<?link rel="stylesheet" type="text/css" href="/pages/company-info/bootstrap/css/bootstrap.min.css" ?>
+<?link rel="stylesheet" type="text/css" href="/style/intranet.css" ?>
+<?script src="/pages/company-info/bootstrap/js/bootstrap.min.js"?>
+
+<zk>
+    <!-- Main Window -->
+    <window
+            apply="org.zkoss.bind.BindComposer"
+            viewModel="@id('vm') @init('qa.tecnositafgulf.viewmodel.companyInfo.contacts.ViewContactsVM')"
+            height="100%" width="100%" style="@load(vm.css)">
+
+        <!-- Title Bar-->
+        <div width="100%" >
+            <include src="/pages/include/titlebar.zul"/>
+        </div>
+        <borderlayout  animationDisabled="true">
+
+            <!-- Content Panel -->
+            <center
+                    id="contentPanel"
+                    sclass="contentPanel"
+                    border="0"
+                    style="border: none;"
+                    hflex="1">
+
+                <!-- Content Area -->
+                <borderlayout>
+                    <west border="0"  style="border: none;" open="false" collapsible="true" visible="@load(not vm.mobile)">
+                        <caption vflex="1"  width="95%">
+                            <include src="/pages/include/panels.zul"/>
+                        </caption>
+
+                    </west>
+                    <center
+                            border="2"
+                            sclass="newsfeedPanel"
+                            autoscroll="true" >
+                        <vlayout hflex="1" vflex="1">
+                            <listbox sclass="z-listbox-header-border" id="contactlist" model="@load(vm.contacts)" style="align:center;" emptyMessage="No Contact Available" hflex="1" vflex="1">
+                                <listhead sizable="true">
+                                    <listheader label="Image" align="center" />
+                                    <listheader label="Info" align="center"/>
+                                    <listheader visible="@load(vm.isAdministrator())" hflex="min"/>
+                                </listhead>
+                                <auxhead>
+                                    <auxheader colspan="2" sclass="z-auxheader">
+                                        <textbox value="@load(vm.searchCriteria.likeContent) @save(vm.searchCriteria.likeContent, before='filter')"  hflex="1" onOK="@command('filter')" />
+                                        <button visible="@load(not vm.isAdministrator())"  iconSclass="z-icon-search " sclass="btn-filter" tooltiptext="Filter" onClick=" @command('filter')" />
+                                        <button visible="@load(not vm.isAdministrator())" iconSclass="z-icon-eraser " sclass="btn-filter" tooltiptext="Clear Filter" onClick="@command('clearFilters')" />
+                                    </auxheader>
+                                    <auxheader sclass="z-auxheader">
+                                        <button iconSclass="z-icon-search " sclass="btn-filter" tooltiptext="Filter" onClick=" @command('filter')" />
+                                        <button iconSclass="z-icon-eraser " sclass="btn-filter" tooltiptext="Clear Filter" onClick="@command('clearFilters')" />
+
+                                    </auxheader>
+
+                                </auxhead>
+                                <template name="model" var="item">
+                                    <listitem>
+                                        <listcell style="text-align: center">
+                                            <image style="max-width:400px" src="@load(vm.getImage(item))"/>
+                                        </listcell>
+                                        <listcell>
+                                            <grid>
+                                                <rows>
+                                                    <row>
+                                                        <label style="font-weight:bold; font-size:20pt;" value="@load(vm.getNameSurname(item))"/>
+                                                    </row>
+                                                    <row if="${not empty item.position}">
+                                                        <label style="font-weight:bold; font-size:15pt;" value="@load(vm.getPositionString(item))"/>
+                                                    </row>
+                                                    <row if="${not empty item.email}">
+                                                        <label value="@load(vm.getEmailAddress(item))"/>
+                                                    </row>
+                                                    <row if="${not empty item.number}">
+                                                        <label value="@load(vm.getPhoneNumber(item))"/>
+                                                    </row>
+                                                </rows>
+                                            </grid>
+                                        </listcell>
+                                        <listcell visible="@load(vm.isAdministrator())">
+                                            <hlayout >
+                                                <button  iconSclass="z-icon-pencil" tooltiptext="Modify" onClick="@command('modify', item=item)"/>
+                                                <button  iconSclass="z-icon-trash" tooltiptext="Delete" onClick="@command('delete', item=item)"/>
+                                            </hlayout>
+                                        </listcell>
+                                    </listitem>
+                                </template>
+                            </listbox>
+
+                            <paging pageSize="@load(vm.searchCriteria.pageSize)" focus="true" totalSize="@load(vm.totalSize)" left="true" detailed="true" activePage="@save(vm.activePage)" />
+                            <div align="center">
+                                <button visible="@load(vm.isAdministrator())" iconSclass="z-icon-plus" onClick="@command('add')" label="Add New Contact" sclass=" btn-footer btn-rmt"/>
+                            </div>
+                        </vlayout>
+                    </center>
+                </borderlayout>
+                <!--  -->
+            </center>
+            <!--  -->
+        </borderlayout>
+        <!--  -->
+    </window>
+    <!--  -->
+</zk>

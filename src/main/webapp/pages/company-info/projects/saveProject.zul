@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<?init class="qa.tecnositafgulf.init.AuthenticationInit"?>
+<?init class="qa.tecnositafgulf.init.AdministratorInit"?>
+<?page
+        title="Save Project" contentType="text/html;charset=UTF-8" ?>
+<?meta name="viewport" content="width=device-width, initial-scale=1"?>
+<?link href="assets/css/bootstrap-responsive.css" rel="stylesheet"?>
+<?link rel="stylesheet" type="text/css" href="/pages/company-info/bootstrap/css/bootstrap.min.css" ?>
+<?script src="/pages/company-info/bootstrap/js/bootstrap.min.js"?>
+
+
+<zk>
+    <window
+            apply="org.zkoss.bind.BindComposer"
+            viewModel="@id('vm') @init('qa.tecnositafgulf.viewmodel.companyInfo.projects.SaveProjectViewModel')"
+            height="80%" width="80%" closable="true" title="Save Project" style="@load(vm.css)">
+
+        <zscript><![CDATA[
+	    import qa.tecnositafgulf.config.ProjectsStatusEnum;
+	    ListModelList model = new ListModelList(ProjectsStatusEnum.values()); //use enum class's values as model.
+	    ]]></zscript>
+        
+        <vlayout>
+            <groupbox closable="true" mold="3d" form="@id('fx') @load(vm.project) @save(vm.project, before='saveProject')" vflex="1" contentStyle="overflow:auto;">
+                <listbox hflex="1">
+                    <listhead sizable="true">
+                        <listheader label=""/>
+                        <listheader label=""/>
+                    </listhead>
+                    <listitem>
+                        <listcell>
+                            <label value="Name"/>
+                        </listcell>
+                        <listcell>
+                            <textbox constraint="no empty"  value="@load(fx.name) @save(fx.name,before='saveProject')"/>
+                        </listcell>
+                    </listitem>
+                    <listitem>
+                        <listcell>
+                            <label value="Code"/>
+                        </listcell>
+                        <listcell>
+                            <textbox constraint="no empty"  value="@load(fx.projectCode) @save(fx.projectCode,before='saveProject')"/>
+                        </listcell>
+                    </listitem>
+                    <listitem>
+                        <listcell>
+                            <label value="Manager"/>
+                        </listcell>
+                        <listcell>
+                            <combobox model="@load(vm.employeeList)" selectedItem="@load(fx.manager) @save(fx.manager,before='saveProject')"/>
+                        </listcell>
+                    </listitem>
+                    <listitem>
+                        <listcell>
+                            <label value="Description"/>
+                        </listcell>
+                        <listcell>
+                            <textbox height = "400px;" width="400px" multiline="true" constraint="no empty"  value="@load(fx.content) @save(fx.content,before='saveProject')"/>
+                        </listcell>
+                    </listitem>
+                    <listitem>
+                        <listcell>
+                            <label value="Starting Date"/>
+                        </listcell>
+                        <listcell>
+                            <datebox value="@load(fx.startingDate) @save(fx.startingDate, before='saveProject')"/>
+                        </listcell>
+                    </listitem>
+                    <listitem>
+                        <listcell>
+                            <label value="Actual Starting Date"/>
+                        </listcell>
+                        <listcell>
+                            <datebox value="@load(fx.actualStartingDate) @save(fx.actualStartingDate, before='saveProject')"/>
+                        </listcell>
+                    </listitem>
+                    <listitem>
+                        <listcell>
+                            <label value="Ending Date"/>
+                        </listcell>
+                        <listcell>
+                            <datebox value="@load(fx.endingDate) @save(fx.endingDate, before='saveProject')"/>
+                        </listcell>
+                    </listitem>
+                    <listitem>
+                        <listcell>
+                            <label value="Actual Ending Date"/>
+                        </listcell>
+                        <listcell>
+                            <datebox value="@load(fx.actualEndingDate) @save(fx.actualEndingDate, before='saveProject')"/>
+                        </listcell>
+                    </listitem>
+                    <listitem>
+                        <listcell>
+                            <label value="Status"/>
+                        </listcell>
+                        <listcell>
+                            <combobox model="${model}" selectedItem="@load(fx.status) @save(fx.status,before='saveProject')"/>
+                        </listcell>
+                    </listitem>
+                    <listitem>
+                        <listcell>
+                            <label value="Image"/>
+                        </listcell>
+                        <listcell>
+                            <textbox value="@bind(vm.link)" width="60%"/>
+                            <button  mold="trendy" iconSclass="z-icon-link" onClick="@command('link')" />
+                            <separator orient="vertical"/>
+                            <button id="btnUpload" mold="trendy" upload="true" iconSclass="z-icon-upload" onUpload="@command('upload')" />
+                        </listcell>
+                    </listitem>
+                    <listitem>
+                        <listcell>
+                            <label value="Image Preview"/>
+                        </listcell>
+                        <listcell height="400px" span="2">
+                            <image style="align:left;" id="image"/>
+                        </listcell>
+                    </listitem>
+                </listbox>
+            </groupbox>
+
+            <div align="center" sclass="global-footer" width="100%" vflex="min">
+                <button iconSclass="icon-save" label="Save Project" onClick="@command('saveProject')" sclass="btn-footer"/>
+            </div>
+        </vlayout>
+        <!--  -->
+    </window>
+    <!--  -->
+</zk>

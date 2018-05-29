@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?init class="qa.tecnositafgulf.init.AuthenticationInit"?>
+<?page title="Save Product Stock" contentType="text/html;charset=UTF-8" ?>
+<?meta name="viewport" content="width=device-width, initial-scale=1"?>
+<?link href="assets/css/bootstrap-responsive.css" rel="stylesheet"?>
+<?link rel="stylesheet" type="text/css" href="/pages/company-info/bootstrap/css/bootstrap.min.css" ?>
+<?link rel="stylesheet" type="text/css" href="/style/intranet.css" ?>
+<?script src="/pages/company-info/bootstrap/js/bootstrap.min.js"?>
+
+<zk>
+    <window apply="org.zkoss.bind.BindComposer" closable="true" title="Save Product Location"
+            viewModel="@id('vm') @init('qa.tecnositafgulf.viewmodel.inventory.productLocation.SaveProductLocationViewModel')"
+            sclass="intranet-popup" width="100%" style="@load(vm.css)">
+            <vlayout>
+                <groupbox closable="true" mold="3d"
+                  form="@id('fx') @load(vm.productStock) @save(vm.productStock, before='saveProductLocation')"
+                  vflex="1" contentStyle="overflow:auto;">
+                  <listbox hflex="1">
+                    <listhead sizable="true">
+                        <listheader label=""/>
+                        <listheader label=""/>
+                    </listhead>
+                    <listitem>
+                        <listcell>
+                            <label value="Location"/>
+                        </listcell>
+                        <listcell>
+                            <combobox model="@load(vm.locationList)"
+                              selectedItem = "@bind(vm.selectedLocation)"
+                              onChange="@command('getProductDetails')" >
+                          </combobox>
+                      </listcell>
+                  </listitem>
+                  <listitem>
+                    <listcell>
+                        <label value="Product"/>
+                    </listcell>
+                    <listcell>
+                        <combobox model="@load(vm.productList)"
+                          selectedItem="@bind(vm.selectedProduct)"
+                          onChange="@command('getProductStockDetails', selectedProduct=vm.selectedProduct) ">
+                      </combobox>
+
+                  </listcell>
+              </listitem>
+              <listitem>
+                <listcell>
+                    <label value="Current Stock"/>
+                </listcell>
+                <listcell>
+                    <textbox constraint="no empty"
+                       value="@load(vm.productStock.currentStock) @save(vm.productStock.currentStock, before='saveProductLocation') "/>
+                   </listcell>
+               </listitem>
+               <listitem>
+                <listcell>
+                    <label value="Threshold Limit"/>
+                </listcell>
+                <listcell>
+                    <textbox constraint="no empty"
+                       value="@load(vm.productStock.thresholdLimit) @save(vm.productStock.thresholdLimit, before='saveProductLocation') "/>
+                   </listcell>
+               </listitem>
+               <listitem>
+                <listcell>
+                    <label value="Unit Price"/>
+                </listcell>
+                <listcell>
+                    <textbox constraint="no empty"
+                       value="@load(vm.productStock.unitPrice) @save(vm.productStock.unitPrice, before='saveProductLocation') "/>
+                   </listcell>
+               </listitem>
+           </listbox>
+       </groupbox>
+       <div align="center" sclass="global-footer" width="100%" vflex="min">
+        <button iconSclass="icon-save" label="Save Product Stock"
+            onClick="@command('saveProductLocation')" sclass="btn-footer"/>
+        </div>
+    </vlayout>
+    </window>
+</zk>

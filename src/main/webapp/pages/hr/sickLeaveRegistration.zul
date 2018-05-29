@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?init class="qa.tecnositafgulf.init.AuthenticationInit"?>
+<?page title="Sick Leave" contentType="text/html;charset=UTF-8" ?>
+<?meta name="viewport" content="width=device-width, initial-scale=1"?>
+<?link href="assets/css/bootstrap-responsive.css" rel="stylesheet"?>
+<?link rel="stylesheet" type="text/css" href="/pages/company-info/bootstrap/css/bootstrap.min.css" ?>
+<?link rel="stylesheet" type="text/css" href="/style/intranet.css" ?>
+<?script src="/pages/company-info/bootstrap/js/bootstrap.min.js"?>
+<zk>
+
+    <window apply="org.zkoss.bind.BindComposer"  viewModel="@id('vm') @init('qa.tecnositafgulf.viewmodel.hr.SaveSickLeaveViewModel')" sclass="intranet-popup" width="0%" style="@load(vm.css)">
+        <vlayout>
+            <groupbox closable="true" mold="3d" contentStyle="overflow:auto;">
+                <listbox hflex="1">
+                    <listhead sizable="true">
+                        <listheader label=""/>
+                        <listheader label=""/>
+                    </listhead>
+                    <listitem>
+                        <listcell>
+                            <label value="Employee"/>
+                        </listcell>
+                        <listcell>
+                            <combobox readonly="true" width="250px" model="@load(vm.employees)" selectedItem="@bind(vm.selectedEmployee)"/>
+                        </listcell>
+                    </listitem>
+                    <listitem>
+                        <listcell>
+                            <label value="From"/>
+                        </listcell>
+                        <listcell>
+                            <datebox width="250px" constraint="no empty" value="@bind(vm.leaveFrom)"/>
+                        </listcell>
+                    </listitem>
+                    <listitem>
+                        <listcell>
+                            <label value="To"/>
+                        </listcell>
+                        <listcell>
+                            <datebox width="250px" constraint="no empty" value="@bind(vm.leaveTo)"/>
+                        </listcell>
+                    </listitem>
+                    <listitem>
+                        <listcell>
+                            <label value="Upload Scan of Medical Certification (Optional)"/>
+                        </listcell>
+                        <listcell>
+                            <button id="btnUpload" mold="trendy" upload="true" iconSclass="z-icon-upload" onUpload="@command('upload')" />
+                            <label value="@bind(vm.fileName)" />
+                        </listcell>
+                    </listitem>
+                    <listitem>
+                        <listcell>
+                            <label value="Remarks"/>
+                        </listcell>
+                        <listcell>
+                            <textbox rows="10" cols="50" value="@bind(vm.message)"/>
+                        </listcell>
+                    </listitem>
+                </listbox>
+            </groupbox>
+
+            <div align="center" sclass="global-footer" width="100%" vflex="min">
+                <button iconSclass="icon-save" label="Submit" onClick="@command('save')" sclass="btn-footer"/>
+            </div>
+        </vlayout>
+        <!--  -->
+    </window>
+    <!--  -->
+</zk>
