@@ -40,7 +40,7 @@ public class SaveSupplierViewModel  extends IntranetVM {
             Messagebox.show("OK! Do you want to view all the Product Supplier?", "Warning", Messagebox.OK | Messagebox.CANCEL, Messagebox.INFORMATION, new EventListener<Event>() {
                 public void onEvent(Event event) throws Exception {
                     if (event.getName().equals("onOK")) {
-                        Executions.sendRedirect("/pages/inventory/supplier/viewProductSupplier.zul");
+                        Executions.sendRedirect("/pages/inventory/supplier/viewSupplier.zul");
                     }
                 }
             });

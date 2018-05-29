@@ -2,16 +2,14 @@ package qa.tecnositafgulf.dao.inventory;
 
 import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.stereotype.Repository;
+import qa.tecnositafgulf.model.calendar.QueueMessage;
 import qa.tecnositafgulf.model.inventory.location.Location;
 import qa.tecnositafgulf.model.inventory.product.Product;
 import qa.tecnositafgulf.model.inventory.productCategory.ProductCategory;
 import qa.tecnositafgulf.model.inventory.stocks.ProductStock;
 import qa.tecnositafgulf.model.inventory.stocks.TransferStock;
 import qa.tecnositafgulf.model.inventory.supplier.ProductSupplier;
-import qa.tecnositafgulf.searchcriteria.inventory.LocationSearchCriteria;
-import qa.tecnositafgulf.searchcriteria.inventory.ProductCategorySearchCriteria;
-import qa.tecnositafgulf.searchcriteria.inventory.ProductSearchCriteria;
-import qa.tecnositafgulf.searchcriteria.inventory.ProductStockSearchCriteria;
+import qa.tecnositafgulf.searchcriteria.inventory.*;
 
 import javax.persistence.*;
 import java.util.List;
@@ -124,6 +122,31 @@ public class InventoryDaoImpl implements InventoryDao {
     @Override
     public void saveProductSupplier(ProductSupplier productSupplier) {
         entityManager.merge(productSupplier);
+    }
+
+    @Override
+    public void removeProductSupplier(ProductSupplier productSupplier) {
+        entityManager.remove(entityManager.contains(productSupplier) ? productSupplier : entityManager.merge(productSupplier));
+    }
+
+    @Override
+    public List<ProductSupplier> listProductSuppliers() {
+        TypedQuery<ProductSupplier> query = entityManager.createNamedQuery("ProductSupplier.getAllSuppliers", ProductSupplier.class);
+
+        return query.getResultList();
+    }
+
+    @Override
+    public List<ProductSupplier> getAllProductSuppliers(ProductSupplierSearchCriteria productSupplierSearchCriteria) {
+        Query query = productSupplierSearchCriteria.toQuery(entityManager);
+        return query.getResultList();
+    }
+
+    @Override
+    public int getAllProductSuppliersCount(ProductSupplierSearchCriteria productSupplierSearchCriteria) {
+        Query query = productSupplierSearchCriteria.getCountQuery(entityManager);
+        Number cResults = (Number) query.getSingleResult();
+        return cResults.intValue();
     }
 
     @Override
