@@ -183,7 +183,7 @@ public class SaveLeaveManagementViewModel extends IntranetVM {
         Messagebox.show("OK! Do you want to view the Leave Configurations for all the Employees?", "Warning", Messagebox.OK, Messagebox.INFORMATION, new EventListener<Event>() {
             public void onEvent(Event event) throws Exception {
                 if (event.getName().equals("onOK")) {
-                    Executions.sendRedirect("/pages/hr/viewLeaveManager.zul");
+                    Executions.sendRedirect("/pages/hr/viewLeaveManagement.zul");
                 }
             }
         });

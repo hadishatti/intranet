@@ -18,7 +18,7 @@
         <div width="100%" >
             <include src="/pages/include/titlebar.zul"/>
         </div>
-        <borderlayout  animationDisabled="true" hflex="1" vflex="1" >
+        <borderlayout  animationDisabled="true" width="100%" vflex="1" >
 
             <!-- Content Panel -->
             <center

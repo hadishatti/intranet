@@ -114,7 +114,7 @@ public class ViewLeaveManagementViewModel extends IntranetVM {
     public void modify(@BindingParam("item") Employee employee){
         final Map<String, Employee> params = new HashMap<String, Employee>();
         params.put("employeeToModify", employee);
-        ((Window) Executions.getCurrent().createComponents("/pages/administration/employees/saveLeaveManagement.zul", null, params)).doModal();
+        ((Window) Executions.getCurrent().createComponents("/pages/hr/saveLeaveManagement.zul", null, params)).doModal();
     }
 
     public AdministrationService getService() {
