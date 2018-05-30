@@ -150,7 +150,8 @@ public class ViewLeaveRequestsViewModel extends IntranetVM{
             byte[] document = JasperExportManager.exportReportToPdf(jasperPrint);
             Filedownload.save(document, "application/pdf", "Leave_Request_Report_"+request.getNumber()+"_"+(new Date()).toString());
         }catch (Exception e){
-            e.printStackTrace();
+            Messagebox.show("An error occurred! \n"+e.getMessage(), "Error", Messagebox.OK, Messagebox.ERROR);
+            return;
         }
 
     }

@@ -56,11 +56,11 @@ public class LeaveRequestReportDataSource implements JRDataSource {
         if ("leaveTo".equals(fieldName))
             value = leaveRequest.getLeaveTo().toString().substring(0, 10);
         if ("addressOnHoliday".equals(fieldName))
-            value = leaveRequest.getAddressOnHoliday();
+            value = leaveRequest.getAddressOnHoliday() == null? "Not Specified": leaveRequest.getAddressOnHoliday();
         if ("phoneNumber".equals(fieldName))
-            value = leaveRequest.getPhoneNumber();
+            value = leaveRequest.getPhoneNumber() == null? "Not Specified": leaveRequest.getPhoneNumber();
         if ("approvedOn".equals(fieldName))
-            value = leaveRequest.getApprovedOn().toString();
+            value = leaveRequest.getApprovedOn().toString().substring(0, 10);
         if ("employeeOnBehalfName".equals(fieldName))
             value = leaveRequest.getEmployeeOnBehalf() == null? "Not Specified": leaveRequest.getEmployeeOnBehalf().getName();
         if ("employeeOnBehalfRole".equals(fieldName))
