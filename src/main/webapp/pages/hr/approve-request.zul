@@ -75,6 +75,14 @@
                                 </combobox>
                             </listcell>
                         </listitem>
+                        <listitem visible="@load(vm.leaveRequest.type eq 'Casual')">
+                            <listcell>
+                                <label value="Casual Leave Reason"/>
+                            </listcell>
+                            <listcell>
+                                <label value="@load(not empty vm.leaveRequest.casualLeaveReason?vm.leaveRequest.casualLeaveReason:'Not Specified')"/>
+                            </listcell>
+                        </listitem>
                         <listitem visible="@load(vm.others.size()>0)">
                             <listcell>
                                 <label value="@load(vm.leaveRequest.status eq 1?'Message From Employee':'Message From Manager who Approved')"/>

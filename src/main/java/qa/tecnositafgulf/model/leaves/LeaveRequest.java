@@ -78,6 +78,7 @@ public class LeaveRequest  implements Serializable {
     private String type;
     private String addressOnHoliday;
     private String phoneNumber;
+    private String casualLeaveReason;
     @OneToOne
     @JoinColumn(name = "employeeOnBehalf")
     private Employee employeeOnBehalf;
@@ -210,6 +211,14 @@ public class LeaveRequest  implements Serializable {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public String getCasualLeaveReason() {
+        return casualLeaveReason;
+    }
+
+    public void setCasualLeaveReason(String casualLeaveReason) {
+        this.casualLeaveReason = casualLeaveReason;
     }
 
     public Employee getEmployeeOnBehalf() {

@@ -134,6 +134,7 @@ public class ApproveLeaveRequestViewModel extends IntranetVM {
         leaveRequest.setAddressOnHoliday(this.leaveRequest.getAddressOnHoliday());
         leaveRequest.setPhoneNumber(this.leaveRequest.getPhoneNumber());
         leaveRequest.setEmployeeOnBehalf(this.leaveRequest.getEmployeeOnBehalf());
+        leaveRequest.setCasualLeaveReason(this.leaveRequest.getCasualLeaveReason());
         switch (this.leaveRequest.getStatus()) {
             case LeaveRequestStates.New:
                 leaveRequest.setApprover(this.leaveRequest.getApplicant().getHRLeaveManagerEmployee());
@@ -187,6 +188,7 @@ public class ApproveLeaveRequestViewModel extends IntranetVM {
         leaveRequest.setAddressOnHoliday(this.leaveRequest.getAddressOnHoliday());
         leaveRequest.setPhoneNumber(this.leaveRequest.getPhoneNumber());
         leaveRequest.setEmployeeOnBehalf(this.leaveRequest.getEmployeeOnBehalf());
+        leaveRequest.setCasualLeaveReason(this.leaveRequest.getCasualLeaveReason());
         switch (this.leaveRequest.getStatus()) {
             case LeaveRequestStates.New:
                 leaveRequest.setStatus(LeaveRequestStates.RefusedByManagement);

@@ -40,6 +40,14 @@
                             <datebox width="250px" constraint="no past,no empty" value="@bind(vm.leaveTo)"/>
                         </listcell>
                     </listitem>
+                    <listitem visible="@bind(vm.selectedType eq 'Casual')">
+                        <listcell>
+                            <label value="Reason for Casual Leave"/>
+                        </listcell>
+                        <listcell>
+                            <textbox value="@bind(vm.casualLeaveReason)" />
+                        </listcell>
+                    </listitem>
                     <listitem>
                         <listcell>
                             <label value="Address on Holiday"/>

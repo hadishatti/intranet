@@ -70,7 +70,7 @@ public class LeaveRequestReportDataSource implements JRDataSource {
         if ("employeeLeaveBalance".equals(fieldName))
             value = leaveBalance;
         if ("casualLeaveReason".equals(fieldName))
-            value = "TODO"; //TODO add reason for casual leave
+            value = leaveRequest.getCasualLeaveReason() == null? "Not specified":leaveRequest.getCasualLeaveReason();
         if ("refusal".equals(fieldName))
             value = leaveRequest.getReason() == null? "Not specified":leaveRequest.getReason();
         if ("status".equals(fieldName)) {
