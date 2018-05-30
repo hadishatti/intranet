@@ -39,7 +39,7 @@
                                 <label value="Mobile Number"/>
                             </listcell>
                             <listcell>
-                                <textbox constraint="no empty" value="@load(vm.selectedProductSupplier.mobileNumber) @save(vm.selectedProductSupplier.mobileNumber, before='saveProductSupplier')" />
+                                <textbox constraint="no empty, /[0-9]+/: Please enter a valid phone number" value="@load(vm.selectedProductSupplier.mobileNumber) @save(vm.selectedProductSupplier.mobileNumber, before='saveProductSupplier')" />
                             </listcell>
                         </listitem>
                         <listitem>
@@ -47,7 +47,7 @@
                                 <label value="Land Line Number"/>
                             </listcell>
                             <listcell>
-                                <textbox constraint="no empty" value="@load(vm.selectedProductSupplier.landLineNumber) @save(vm.selectedProductSupplier.landLineNumber, before='saveProductSupplier')" />
+                                <textbox constraint="no empty, /[0-9]+/: Please enter a valid phone number" value="@load(vm.selectedProductSupplier.landLineNumber) @save(vm.selectedProductSupplier.landLineNumber, before='saveProductSupplier')" />
                             </listcell>
                         </listitem>
                         <listitem>
@@ -55,7 +55,7 @@
                                 <label value="Email Id"/>
                             </listcell>
                             <listcell>
-                                <textbox constraint="no empty" value="@load(vm.selectedProductSupplier.emailId) @save(vm.selectedProductSupplier.emailId, before='saveProductSupplier')" />
+                                <textbox constraint="no empty, /.+@.+\.[a-z]+/: Please enter a valid e-mail address" value="@load(vm.selectedProductSupplier.emailId) @save(vm.selectedProductSupplier.emailId, before='saveProductSupplier')" />
                             </listcell>
                         </listitem>
                     </listbox>
