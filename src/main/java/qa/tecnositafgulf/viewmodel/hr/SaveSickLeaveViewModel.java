@@ -11,6 +11,7 @@ import org.zkoss.zk.ui.Sessions;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
 import org.zkoss.zk.ui.event.UploadEvent;
+import org.zkoss.zk.ui.sys.PageCtrl;
 import org.zkoss.zul.Messagebox;
 import qa.tecnositafgulf.config.MyProperties;
 import qa.tecnositafgulf.model.administration.Employee;
@@ -92,6 +93,8 @@ public class SaveSickLeaveViewModel extends IntranetVM {
             leaveTo = c.getTime();
         }
         imageChanged=false;
+
+        addCommonTags((PageCtrl) view.getPage());
     }
 
     public String checkNumber(String number, int i){

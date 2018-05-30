@@ -14,12 +14,14 @@ import org.zkoss.zk.ui.event.EventListener;
 import org.zkoss.zk.ui.event.UploadEvent;
 import org.zkoss.zk.ui.select.Selectors;
 import org.zkoss.zk.ui.select.annotation.Wire;
+import org.zkoss.zk.ui.sys.PageCtrl;
 import org.zkoss.zul.Image;
 import org.zkoss.zul.Messagebox;
 import qa.tecnositafgulf.model.administration.Employee;
 import qa.tecnositafgulf.model.helpDesk.HelpDesk;
 import qa.tecnositafgulf.service.HelpDeskService;
 import qa.tecnositafgulf.spring.config.AppConfig;
+import qa.tecnositafgulf.viewmodel.IntranetVM;
 
 import java.io.UnsupportedEncodingException;
 import java.util.Date;
@@ -28,7 +30,7 @@ import java.util.Map;
 /**
  * Created by klajdi on 20/05/18.
  */
-public class HelpDeskEditorViewModel {
+public class HelpDeskEditorViewModel extends IntranetVM{
     @Wire
     private Image imagePreview;
 
@@ -61,6 +63,7 @@ public class HelpDeskEditorViewModel {
 
         if(imagePreview.getSrc()==null || imagePreview.getSrc().isEmpty())
             imageWidth=400;
+        addCommonTags((PageCtrl) view.getPage());
     }
 
     @Command

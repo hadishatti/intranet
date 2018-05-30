@@ -4,6 +4,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.zkoss.bind.BindUtils;
 import org.zkoss.bind.annotation.*;
 import org.zkoss.zk.ui.*;
+import org.zkoss.zk.ui.sys.PageCtrl;
 import qa.tecnositafgulf.model.administration.Employee;
 import qa.tecnositafgulf.model.events.CompanyEvent;
 import qa.tecnositafgulf.model.events.EventComment;
@@ -38,6 +39,7 @@ public class ViewEventCommentsViewModel extends IntranetVM{
             timer.cancel();
         timer = new Timer();
         timer.schedule(updateComments(),0,1000);
+        addCommonTags((PageCtrl) view.getPage());
     }
 
 

@@ -6,7 +6,9 @@ import org.zkoss.bind.annotation.ContextParam;
 import org.zkoss.bind.annotation.ContextType;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Executions;
+import org.zkoss.zk.ui.sys.PageCtrl;
 import org.zkoss.zk.ui.util.Clients;
+import qa.tecnositafgulf.config.MyProperties;
 import qa.tecnositafgulf.model.administration.Department;
 import qa.tecnositafgulf.model.administration.Employee;
 import qa.tecnositafgulf.service.AdministrationService;
@@ -48,7 +50,15 @@ public class OrganizationChartVM extends IntranetVM {
                 "            });";
 
         Clients.evalJavaScript(script);
+        addCommonTags((PageCtrl) view.getPage());
+        addAdditionalTags((PageCtrl) view.getPage());
+    }
 
+    private void addAdditionalTags(PageCtrl page){
+        String path = MyProperties.getInstance().getProperty("resPath");
+        page.addAfterHeadTags("<link href=\"" + path + "/getorgchart/getorgchart.css\"  rel=\"stylesheet\"/>");
+        page.addAfterHeadTags("<script type=\"text/javascript\" src=\"" + path + "/getorgchart/getorgchart.js\"></script>");
+        page.addAfterHeadTags("<script type=\"text/javascript\" src=\"" + path + "/getorgchart/jquery.min.js\"></script>");
     }
 
     private String getThemes(){

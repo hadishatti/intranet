@@ -6,6 +6,7 @@ import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
+import org.zkoss.zk.ui.sys.PageCtrl;
 import org.zkoss.zul.Messagebox;
 import qa.tecnositafgulf.model.administration.Profile;
 import qa.tecnositafgulf.service.AdministrationService;
@@ -32,6 +33,8 @@ public class SaveProfileViewModel extends IntranetVM{
 			modify=false;
 			profile = new Profile();
 		}
+
+		addCommonTags((PageCtrl) view.getPage());
 	}
 
 	@Command

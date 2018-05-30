@@ -2,10 +2,7 @@
 <?init class="qa.tecnositafgulf.init.AuthenticationInit"?>
 <?page title="Manage Leave Requests" contentType="text/html;charset=UTF-8" ?>
 <?meta name="viewport" content="width=device-width, initial-scale=1"?>
-<?link href="assets/css/bootstrap-responsive.css" rel="stylesheet"?>
-<?link rel="stylesheet" type="text/css" href="/pages/company-info/bootstrap/css/bootstrap.min.css" ?>
-<?link rel="stylesheet" type="text/css" href="/style/intranet.css" ?>
-<?script src="/pages/company-info/bootstrap/js/bootstrap.min.js"?>
+
 <zk>
 
     <window apply="org.zkoss.bind.BindComposer"  viewModel="@id('vm') @init('qa.tecnositafgulf.viewmodel.hr.ViewLeaveRequestsAsManagerViewModel')" height="100%" width="100%" style="@load(vm.css)">

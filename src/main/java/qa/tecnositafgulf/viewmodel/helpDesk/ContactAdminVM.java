@@ -2,6 +2,10 @@ package qa.tecnositafgulf.viewmodel.helpDesk;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.zkoss.bind.annotation.AfterCompose;
+import org.zkoss.bind.annotation.ContextParam;
+import org.zkoss.bind.annotation.ContextType;
+import org.zkoss.zk.ui.Component;
+import org.zkoss.zk.ui.sys.PageCtrl;
 import org.zkoss.zk.ui.util.Clients;
 import qa.tecnositafgulf.config.MyProperties;
 import qa.tecnositafgulf.model.administration.Employee;
@@ -21,7 +25,7 @@ public class ContactAdminVM extends IntranetVM{
     private List<Employee> administrators;
 
     @AfterCompose
-    public void doAfterCompose(){
+    public void doAfterCompose(@ContextParam(ContextType.VIEW) Component view){
         init();
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
         service = context.getBean(AdministrationService.class);
@@ -35,6 +39,7 @@ public class ContactAdminVM extends IntranetVM{
         }
 
         showAdministrators();
+        addCommonTags((PageCtrl) view.getPage());
     }
 
     public void showAdministrators(){

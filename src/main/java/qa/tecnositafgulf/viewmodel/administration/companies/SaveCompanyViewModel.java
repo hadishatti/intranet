@@ -6,6 +6,7 @@ import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
+import org.zkoss.zk.ui.sys.PageCtrl;
 import org.zkoss.zul.Messagebox;
 import qa.tecnositafgulf.model.administration.Company;
 import qa.tecnositafgulf.service.AdministrationService;
@@ -31,6 +32,8 @@ public class SaveCompanyViewModel extends IntranetVM {
 		} else {
 			company = new Company();
 		}
+
+		addCommonTags((PageCtrl) view.getPage());
 	}
 
 	@Command

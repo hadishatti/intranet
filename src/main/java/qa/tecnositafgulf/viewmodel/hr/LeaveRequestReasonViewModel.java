@@ -4,6 +4,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.zkoss.bind.annotation.*;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Executions;
+import org.zkoss.zk.ui.sys.PageCtrl;
 import qa.tecnositafgulf.config.LeaveRequestStates;
 import qa.tecnositafgulf.model.leaves.LeaveBalance;
 import qa.tecnositafgulf.model.leaves.LeaveRequest;
@@ -101,7 +102,7 @@ public class LeaveRequestReasonViewModel extends IntranetVM{
                 message="Submit to approve the Leave Request. New Employee's "+leaveRequest.getType()+" Leave Balance will be "+days+".";
         }
         reason="";
-
+        addCommonTags((PageCtrl) view.getPage());
     }
 
     @Command

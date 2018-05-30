@@ -2,10 +2,6 @@
 <?init class="qa.tecnositafgulf.init.AuthenticationInit"?>
 <?page title="Company Events" contentType="text/html;charset=UTF-8" ?>
 <?meta name="viewport" content="width=device-width, initial-scale=1"?>
-<?link href="assets/css/bootstrap-responsive.css" rel="stylesheet"?>
-<?link rel="stylesheet" type="text/css" href="/pages/company-info/bootstrap/css/bootstrap.min.css" ?>
-<?link rel="stylesheet" type="text/css" href="/style/intranet.css" ?>
-<?script src="/pages/company-info/bootstrap/js/bootstrap.min.js"?>
 <zk>
 	<window sclass="scroll" sizable="true" title="@load('Comments of Company Event '.concat(vm.currentCompanyEvent.title))" apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('qa.tecnositafgulf.viewmodel.companyEvent.ViewEventCommentsViewModel')" width="70%" height="70%" style="@load(vm.css)" closable="true">
 		<borderlayout sclass="eventComment" >

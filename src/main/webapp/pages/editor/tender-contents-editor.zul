@@ -1,5 +1,4 @@
 <?page title="Tender Contents" contentType="text/html;charset=UTF-8"?>
-<?link rel="stylesheet" type="text/css" href="/style/intranet.css" ?>
 <zk>
     <window id="winDialog"
             title="Tender Contents" border="normal"

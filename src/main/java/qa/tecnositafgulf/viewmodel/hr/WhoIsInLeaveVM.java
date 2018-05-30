@@ -8,6 +8,7 @@ import org.zkoss.calendar.event.CalendarsEvent;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.select.Selectors;
 import org.zkoss.zk.ui.select.annotation.Wire;
+import org.zkoss.zk.ui.sys.PageCtrl;
 import qa.tecnositafgulf.model.calendar.IntranetCalendarDateFormatter;
 import qa.tecnositafgulf.model.calendar.IntranetCalendarEvent;
 import qa.tecnositafgulf.model.calendar.IntranetCalendarModel;
@@ -67,6 +68,8 @@ public class WhoIsInLeaveVM extends IntranetVM {
         current = sdf.format(start)+" - "+sdf.format(end);
         calendars.setDateFormatter(new IntranetCalendarDateFormatter());
         focusDate = null;
+
+        addCommonTags((PageCtrl) view.getPage());
     }
 
     public String toString(LeaveRequest request){

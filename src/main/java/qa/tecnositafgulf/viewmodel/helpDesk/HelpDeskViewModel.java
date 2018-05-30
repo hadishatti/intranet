@@ -8,6 +8,7 @@ import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Desktop;
 import org.zkoss.zk.ui.DesktopUnavailableException;
 import org.zkoss.zk.ui.Executions;
+import org.zkoss.zk.ui.sys.PageCtrl;
 import org.zkoss.zk.ui.util.Clients;
 import org.zkoss.zul.Window;
 import qa.tecnositafgulf.model.helpDesk.HelpDesk;
@@ -48,6 +49,7 @@ public class HelpDeskViewModel extends IntranetVM {
             timer.cancel();
         timer = new Timer();
         timer.schedule(updatePosts(),0,1000);
+        addCommonTags((PageCtrl) view.getPage());
     }
 
     public void loadHelpDesks(){
