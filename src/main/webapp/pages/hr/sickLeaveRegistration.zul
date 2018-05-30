@@ -8,7 +8,7 @@
 <?script src="/pages/company-info/bootstrap/js/bootstrap.min.js"?>
 <zk>
 
-    <window apply="org.zkoss.bind.BindComposer"  viewModel="@id('vm') @init('qa.tecnositafgulf.viewmodel.hr.SaveSickLeaveViewModel')" sclass="intranet-popup" width="0%" style="@load(vm.css)">
+    <window apply="org.zkoss.bind.BindComposer"  viewModel="@id('vm') @init('qa.tecnositafgulf.viewmodel.hr.SaveSickLeaveViewModel')" sclass="intranet-popup" width="80%" style="@load(vm.css)">
         <vlayout>
             <groupbox closable="true" mold="3d" contentStyle="overflow:auto;">
                 <listbox hflex="1">

@@ -173,6 +173,7 @@
                                                     <div align="center" width="100%">
                                                         <button iconSclass="z-icon-pencil" tooltiptext="Modify" onClick="@command('modify', item=item)"/>
                                                         <button iconSclass="z-icon-trash" tooltiptext="Delete" onClick="@command('delete', item=item)"/>
+                                                        <button iconSclass="z-icon-download" tooltiptext="Export to PDF" onClick="@command('exportPDF', item=item)"/>
                                                     </div>
                                                 </listcell>
                                             </listitem>

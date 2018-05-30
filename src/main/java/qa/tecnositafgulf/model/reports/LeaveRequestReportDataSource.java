@@ -52,15 +52,15 @@ public class LeaveRequestReportDataSource implements JRDataSource {
         if ("daysHoliday".equals(fieldName))
             value = daysBetween(leaveRequest.getLeaveFrom(), leaveRequest.getLeaveTo());
         if ("leaveFrom".equals(fieldName))
-            value = leaveRequest.getLeaveFrom().toString().substring(0, 10);
+            value = leaveRequest.getLeaveFrom().toString().substring(0, 16);
         if ("leaveTo".equals(fieldName))
-            value = leaveRequest.getLeaveTo().toString().substring(0, 10);
+            value = leaveRequest.getLeaveTo().toString().substring(0, 16);
         if ("addressOnHoliday".equals(fieldName))
             value = leaveRequest.getAddressOnHoliday() == null? "Not Specified": leaveRequest.getAddressOnHoliday();
         if ("phoneNumber".equals(fieldName))
             value = leaveRequest.getPhoneNumber() == null? "Not Specified": leaveRequest.getPhoneNumber();
         if ("approvedOn".equals(fieldName))
-            value = leaveRequest.getApprovedOn().toString().substring(0, 10);
+            value = leaveRequest.getApprovedOn().toString().substring(0, 16);
         if ("employeeOnBehalfName".equals(fieldName))
             value = leaveRequest.getEmployeeOnBehalf() == null? "Not Specified": leaveRequest.getEmployeeOnBehalf().getName();
         if ("employeeOnBehalfRole".equals(fieldName))
@@ -73,7 +73,7 @@ public class LeaveRequestReportDataSource implements JRDataSource {
             value = "TODO"; //TODO add reason for casual leave
         if ("refusal".equals(fieldName))
             value = leaveRequest.getReason() == null? "Not specified":leaveRequest.getReason();
-        if ("decision".equals(fieldName)) {
+        if ("status".equals(fieldName)) {
             if (leaveRequest.getStatus() == LeaveRequestStates.Approved)
                 value = "Approved";
             if (leaveRequest.getStatus() == LeaveRequestStates.RefusedByFinance)
@@ -84,6 +84,10 @@ public class LeaveRequestReportDataSource implements JRDataSource {
                 value = "Refused by HR";
             if (leaveRequest.getStatus() == LeaveRequestStates.RefusedByManagement)
                 value = "Refused by Management";
+            if (leaveRequest.getStatus() == LeaveRequestStates.EmergencyRegistered)
+                value = "Approved";
+            if (leaveRequest.getStatus() == LeaveRequestStates.SickRegistered)
+                value = "Approved";
         }
 
         return value;

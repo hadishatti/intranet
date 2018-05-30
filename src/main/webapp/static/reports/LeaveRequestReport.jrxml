@@ -21,7 +21,7 @@
 	<field name="refusal" class="java.lang.String"/>
 	<field name="holidayType" class="java.lang.String"/>
 	<field name="casualLeaveReason" class="java.lang.String"/>
-	<field name="decision" class="java.lang.String"/>
+	<field name="status" class="java.lang.String"/>
 	<background>
 		<band height="802" splitType="Stretch">
 			<frame>
@@ -107,27 +107,27 @@
 				<text><![CDATA[Duration of the holiday:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="178" y="160" width="70" height="20" uuid="db540ee1-4f72-4129-9fb0-7b830d4c6d53"/>
-				<text><![CDATA[No. Of Days:]]></text>
+				<reportElement x="178" y="160" width="31" height="20" uuid="db540ee1-4f72-4129-9fb0-7b830d4c6d53"/>
+				<text><![CDATA[Days:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="248" y="160" width="20" height="20" uuid="9dd4c2c4-41db-4e9f-83b1-29132ce4428f"/>
+				<reportElement x="209" y="160" width="20" height="20" uuid="9dd4c2c4-41db-4e9f-83b1-29132ce4428f"/>
 				<textFieldExpression><![CDATA[$F{daysHoliday}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="278" y="160" width="40" height="20" uuid="1f6b63a5-1b0d-4285-8427-a5daff293eba"/>
+				<reportElement x="238" y="160" width="64" height="20" uuid="1f6b63a5-1b0d-4285-8427-a5daff293eba"/>
 				<text><![CDATA[Begins:]]></text>
 			</staticText>
 			<textField pattern="MMMMM dd, yyyy">
-				<reportElement x="318" y="160" width="90" height="20" uuid="402ef9b5-3b5b-4642-9052-5746686acadd"/>
+				<reportElement x="278" y="160" width="114" height="20" uuid="402ef9b5-3b5b-4642-9052-5746686acadd"/>
 				<textFieldExpression><![CDATA[$F{leaveFrom}]]></textFieldExpression>
 			</textField>
 			<textField pattern="MMMMM dd, yyyy">
-				<reportElement x="442" y="160" width="100" height="20" uuid="225fa3e0-019b-4333-96aa-03c8a1f12adf"/>
+				<reportElement x="426" y="160" width="124" height="20" uuid="225fa3e0-019b-4333-96aa-03c8a1f12adf"/>
 				<textFieldExpression><![CDATA[$F{leaveTo}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="408" y="160" width="34" height="20" uuid="9b4a21a8-30a3-44f8-8c41-cbd1f21e5a20"/>
+				<reportElement x="392" y="160" width="58" height="20" uuid="9b4a21a8-30a3-44f8-8c41-cbd1f21e5a20"/>
 				<text><![CDATA[Ends:]]></text>
 			</staticText>
 			<staticText>
@@ -296,12 +296,12 @@
 			<staticText>
 				<reportElement x="9" y="550" width="139" height="30" uuid="981105e9-de5a-47d9-affc-c52f4c835408"/>
 				<textElement verticalAlignment="Middle"/>
-				<text><![CDATA[Decision:]]></text>
+				<text><![CDATA[Status:]]></text>
 			</staticText>
 			<textField>
 				<reportElement x="176" y="550" width="370" height="30" uuid="055e973f-8e08-4161-a13b-3adf8c7f17e9"/>
 				<textElement verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{decision}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{status}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
