@@ -4,7 +4,7 @@ import net.sf.jasperreports.engine.JRDataSource;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JRField;
 import org.zkoss.zul.Messagebox;
-import qa.tecnositafgulf.model.leaves.LeaveBalance;
+import qa.tecnositafgulf.config.LeaveRequestStates;
 import qa.tecnositafgulf.model.leaves.LeaveRequest;
 
 import java.util.Date;
@@ -15,15 +15,20 @@ import java.util.concurrent.TimeUnit;
  */
 public class LeaveRequestReportDataSource implements JRDataSource {
     private LeaveRequest leaveRequest;
-    private LeaveBalance leaveBalance;
+    private Integer leaveBalance;
+    private int index = -1;
 
-    public LeaveRequestReportDataSource(LeaveRequest leaveRequest, LeaveBalance leaveBalance){
+    public LeaveRequestReportDataSource(LeaveRequest leaveRequest, Integer leaveBalance){
         this.leaveRequest = leaveRequest;
         this.leaveBalance = leaveBalance;
     }
 
     @Override
     public boolean next() throws JRException {
+        index++;
+        if (index < 1){
+            return true;
+        }
         return false;
     }
 
@@ -42,12 +47,14 @@ public class LeaveRequestReportDataSource implements JRDataSource {
             value = leaveRequest.getApplicant().getDepartment().getName();
         if ("employeeRole".equals(fieldName))
             value = leaveRequest.getApplicant().getRole().getName();
+        if ("holidayType".equals(fieldName))
+            value = leaveRequest.getType();
         if ("daysHoliday".equals(fieldName))
             value = daysBetween(leaveRequest.getLeaveFrom(), leaveRequest.getLeaveTo());
         if ("leaveFrom".equals(fieldName))
-            value = leaveRequest.getLeaveFrom().toString();
+            value = leaveRequest.getLeaveFrom().toString().substring(0, 10);
         if ("leaveTo".equals(fieldName))
-            value = leaveRequest.getLeaveTo().toString();
+            value = leaveRequest.getLeaveTo().toString().substring(0, 10);
         if ("addressOnHoliday".equals(fieldName))
             value = leaveRequest.getAddressOnHoliday();
         if ("phoneNumber".equals(fieldName))
@@ -55,15 +62,29 @@ public class LeaveRequestReportDataSource implements JRDataSource {
         if ("approvedOn".equals(fieldName))
             value = leaveRequest.getApprovedOn().toString();
         if ("employeeOnBehalfName".equals(fieldName))
-            value = leaveRequest.getEmployeeOnBehalf().getName();
+            value = leaveRequest.getEmployeeOnBehalf() == null? "Not Specified": leaveRequest.getEmployeeOnBehalf().getName();
         if ("employeeOnBehalfRole".equals(fieldName))
-            value = leaveRequest.getEmployeeOnBehalf().getRole().getName();
+            value = leaveRequest.getEmployeeOnBehalf() == null? "Not Specified": leaveRequest.getEmployeeOnBehalf().getRole().getName();
         if ("employeeLeaveManager".equals(fieldName))
             value = leaveRequest.getApplicant().getLeaveManagerEmployee().getName();
         if ("employeeLeaveBalance".equals(fieldName))
-            value = leaveBalance.getValue();
+            value = leaveBalance;
+        if ("casualLeaveReason".equals(fieldName))
+            value = "TODO"; //TODO add reason for casual leave
         if ("refusal".equals(fieldName))
-            value = leaveRequest.getReason();
+            value = leaveRequest.getReason() == null? "Not specified":leaveRequest.getReason();
+        if ("decision".equals(fieldName)) {
+            if (leaveRequest.getStatus() == LeaveRequestStates.Approved)
+                value = "Approved";
+            if (leaveRequest.getStatus() == LeaveRequestStates.RefusedByFinance)
+                value = "Refused by Finance";
+            if (leaveRequest.getStatus() == LeaveRequestStates.RefusedByFinanceAfterTicketSelection)
+                value = "Refused by Finance after Ticket selection";
+            if (leaveRequest.getStatus() == LeaveRequestStates.RefusedByHR)
+                value = "Refused by HR";
+            if (leaveRequest.getStatus() == LeaveRequestStates.RefusedByManagement)
+                value = "Refused by Management";
+        }
 
         return value;
     }
