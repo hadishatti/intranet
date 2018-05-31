@@ -57,6 +57,7 @@ public class IntranetVM {
     private int notifications, managerNotifications;
     private boolean readManagerNotifications = false;
     private String imagePath;
+    private String resourcePath;
     private List<qa.tecnositafgulf.model.companyInfo.Project> activeProjects;
     private List<PhonePrefix> prefixes;
 
@@ -187,6 +188,7 @@ public class IntranetVM {
         window.doModal();
     }
 
+    public String getResourcePath(){ return  MyProperties.getInstance().getResourcePath(); }
 
     public String getImagePath(){
        return MyProperties.getInstance().getImagePath();

@@ -36,11 +36,10 @@
             color: #1a4280;
             }
         </style>
-        <!-- Title Bar -->
-        <caption>
-            <include src="/pages/include/titlebar.zul" />
-        </caption>
-        <!--  -->
+        <!-- Title Bar-->
+        <div width="100%" >
+            <include src="/pages/include/titlebar.zul"/>
+        </div>
         <borderlayout  animationDisabled="true">
 
             <!-- Content Panel -->

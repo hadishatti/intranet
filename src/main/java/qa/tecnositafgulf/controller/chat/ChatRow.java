@@ -4,6 +4,7 @@ import org.zkoss.zk.ui.Path;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
 import org.zkoss.zul.*;
+import qa.tecnositafgulf.config.MyProperties;
 import qa.tecnositafgulf.model.chat.ChatRoom;
 import qa.tecnositafgulf.model.chat.ChatUser;
 import qa.tecnositafgulf.model.chat.Message;
@@ -24,7 +25,7 @@ public class ChatRow extends Row {
             Hbox msgHb = new Hbox();
             //msgHb.setWidth("218px");
             this.appendChild(msgHb);
-            Image img = new Image("/images/chat.png");
+            Image img = new Image(MyProperties.getInstance().getImagePath() + "/chat.png");
             img.setParent(msgHb);
             img.setWidth("40px");
             Vbox vb = new Vbox();
@@ -40,7 +41,7 @@ public class ChatRow extends Row {
             div.setStyle("text-align:right;");
             //if the sender is IM enabled and the sender isn't this chatUser
             if (chatUser.isIMEnabled() && msg.getSender().compareTo(nickname)!=0) {
-                Image pmImg = new Image("/images/personal-message.png");
+                Image pmImg = new Image(MyProperties.getInstance().getImagePath() + "/personal-message.png");
                 pmImg.setTooltiptext("Click here to send a personal message");
                 pmImg.setParent(div);
                 pmImg.setHeight("30px");

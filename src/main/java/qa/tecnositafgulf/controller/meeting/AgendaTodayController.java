@@ -7,7 +7,9 @@ import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Sessions;
 import org.zkoss.zk.ui.select.SelectorComposer;
 import org.zkoss.zk.ui.select.annotation.Wire;
+import org.zkoss.zk.ui.sys.PageCtrl;
 import org.zkoss.zul.Label;
+import qa.tecnositafgulf.config.MyProperties;
 import qa.tecnositafgulf.model.administration.Employee;
 import qa.tecnositafgulf.model.calendar.IntranetCalendarDateFormatter;
 import qa.tecnositafgulf.model.calendar.IntranetCalendarEvent;
@@ -68,5 +70,12 @@ public class AgendaTodayController extends SelectorComposer<Component> {
         appointments.setValue("Today "+sdf.format(c.getTime())+" you have "+index+" registered appointments.");
         calendars.setCurrentDate(c.getTime());
         calendars.setDateFormatter(new IntranetCalendarDateFormatter());
+        addAdditionalTags((PageCtrl) comp.getPage());
+    }
+
+    public void addAdditionalTags(PageCtrl page){
+        String path = MyProperties.getInstance().getResourcePath();
+        page.addAfterHeadTags("<script src=\"" + path + "/js/jquery.mousewheel.min.js\"></script>");
+        page.addAfterHeadTags("<script src=\"" + path + "/js/scroll.js\"></script>");
     }
 }

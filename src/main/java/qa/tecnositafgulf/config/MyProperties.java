@@ -61,4 +61,6 @@ public class MyProperties{
     public String getImagePath(){
         return instance.getProperty("imagePath");
     }
+
+    public String getResourcePath() { return  instance.getProperty("resPath");}
 }

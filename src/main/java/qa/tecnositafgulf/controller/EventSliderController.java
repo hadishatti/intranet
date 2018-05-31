@@ -8,6 +8,7 @@ import org.zkoss.zk.ui.util.Clients;
 import org.zkoss.zk.ui.util.GenericForwardComposer;
 import org.zkoss.zul.Image;
 import org.zkoss.zul.Label;
+import qa.tecnositafgulf.config.MyProperties;
 import qa.tecnositafgulf.model.events.CompanyEvent;
 import qa.tecnositafgulf.service.EventService;
 import qa.tecnositafgulf.spring.config.AppConfig;
@@ -33,14 +34,14 @@ public class EventSliderController extends GenericForwardComposer {
         companyEvents = eventService.listEvents();
         if(companyEvents.size()==0){
             eventDescription.setValue("NO EVENT COMPANY SO FAR");
-            eventImage.setSrc("/images/gbdg-logo.jpeg");
+            eventImage.setSrc(MyProperties.getInstance().getImagePath() + "/gbdg-logo.jpeg");
         }
         else {
             // init first part image
             eventDescription.setValue(companyEvents.get(0).getTitle());
             String image = companyEvents.get(0).getImage();
             if (image == null)
-                image = "/images/gbdg-logo.jpeg";
+                image = MyProperties.getInstance().getImagePath() +  "/gbdg-logo.jpeg";
             eventImage.setSrc(image);
             Clients.evalJavaScript("setEventContent('" + getContentString() + "')");
             Clients.evalJavaScript("setEventDescription('" + getDescriptionString() + "')");
@@ -80,7 +81,7 @@ public class EventSliderController extends GenericForwardComposer {
             for (int i = 0; i < companyEvents.size(); i++) {
                 String image = companyEvents.get(i).getImage();
                 if(image==null)
-                    image = "/intranet/images/gbdg-logo.jpeg";
+                    image =MyProperties.getInstance().getImagePath() +  "/gbdg-logo.jpeg";
                 contentList.add(image);
             }
         }

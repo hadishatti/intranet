@@ -67,8 +67,8 @@
                                 <include src="/pages/editor/agenda-editor.zul" />
                                 -->
                                 <!-- Server+Client Fusion - Mouse Scroll Handling -->
-                                <script type="text/javascript" src="/js/jquery.mousewheel.min.js" />
-                                <script type="text/javascript" src="/js/scroll.js" />
+                                <script type="text/javascript" src="@load(vm.getResourcePath.concat('/js/jquery.mousewheel.min.js'))" />
+                                <script type="text/javascript" src="@load(vm.getResourcePath.concat('/js/scroll.js'))" />
                             </vlayout>
                         </div>
                     </center>

@@ -1,9 +1,11 @@
-package qa.tecnositafgulf.model.suppliers;
+package qa.tecnositafgulf.model.reports;
 
 import net.sf.jasperreports.engine.JRDataSource;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JRField;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import qa.tecnositafgulf.config.MyProperties;
+import qa.tecnositafgulf.model.suppliers.Supplier;
 import qa.tecnositafgulf.service.SupplierService;
 import qa.tecnositafgulf.spring.config.AppConfig;
 
@@ -50,7 +52,7 @@ public class CustomDataSource implements JRDataSource {
         } else if ("name".equals(fieldName)) {
             value = data.get(index).getName();
         } else if ("imgSrc".equals(fieldName)) {
-            value ="/home/ledio/Documents/Projects/Intranet/src/main/webapp/pages/company-info/" + data.get(index).getImgSrc();
+            value = MyProperties.getInstance().getImagePath() + "/" + data.get(index).getImgSrc();
         } else if ("id".equals(fieldName)){
             value = data.get(index).getId();
         }
