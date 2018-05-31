@@ -121,7 +121,7 @@ public class SuppliersVM extends IntranetVM{
 
     @Command
     public void viewReport(){
-        Executions.sendRedirect("/pages/company-info/suppliers/sampleReport.zul");
+        Executions.sendRedirect("/pages/company-info/suppliers/supplierReport.zul");
     }
 
     private void readSuppliers(){
