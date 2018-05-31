@@ -155,9 +155,15 @@ public class ViewSickLeavesViewModel extends IntranetVM {
     @Command
     @NotifyChange("leaveRequests")
     public void add(){
-        final Map<String, Company> params = new HashMap<String, Company>();
-        params.put("sickToModify", null);
-        ((Window) Executions.getCurrent().createComponents("/pages/hr/sickLeaveRegistration.zul", null, params)).doModal();
+        List<Employee> employeesDB = adminService.listEmployeesByHRManager(employee);
+        if (employeesDB.isEmpty()){
+            Messagebox.show("This account is not configured as manager to any employee!", "Warning", Messagebox.OK, Messagebox.EXCLAMATION);
+            return;
+        }else {
+            final Map<String, Company> params = new HashMap<String, Company>();
+            params.put("sickToModify", null);
+            ((Window) Executions.getCurrent().createComponents("/pages/hr/sickLeaveRegistration.zul", null, params)).doModal();
+        }
     }
 
     @Command
