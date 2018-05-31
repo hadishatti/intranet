@@ -5,7 +5,27 @@
 <?meta name="viewport" content="width=device-width, initial-scale=1"?>
 
 <zk xmlns:ca="client/attribute">
+	<style>
+		.z-row-inner:first-child{
+		background: #1a4280;
+		}
 
+		.z-row-inner:first-child:hover{
+		background: #0090cf;
+		}
+
+		.z-row-inner:last-child{
+		background: #0093f9;
+		}
+
+		.z-row-inner:last-child:hover{
+		background: #0090cf;
+		}
+
+		.rowtxt{
+		color: white;
+		}
+	</style>
 	<window
 			id="mainWindow"
 			apply="org.zkoss.bind.BindComposer"
@@ -40,22 +60,19 @@
 								<div hflex="4"/>
 								<div hflex="4"/>
 								<bandbox autodrop="true" hflex="2" readonly="true" placeholder="Search...">
-									<bandpopup width="30%">
-										<grid hflex="1" vflex="1">
+									<bandpopup style="max-width:330px">
+										<grid hflex="1">
 											<columns>
 												<column hflex="1" align="right"/>
 												<column hflex="1"/>
 											</columns>
 											<rows>
 												<row>
-
-													<label value="Author: " hflex="1"/>
+													<label value="Author: " hflex="1" sclass="rowtxt"/>
 													<textbox value="@load(vm.companyEventsSearchCriteria.likeAuthor) @save(vm.companyEventsSearchCriteria.likeAuthor, before='filter')"  hflex="1" onOK="@command('filter')" />
-
 												</row>
 												<row>
-
-													<label value="Created On: " hflex="1"/>
+													<label value="Created On: " hflex="1" sclass="rowtxt"/>
 													<bandbox autodrop="true" hflex="1" readonly="true">
 														<bandpopup hflex="1" height="100%">
 															<vlayout>
@@ -70,19 +87,14 @@
 															</vlayout>
 														</bandpopup>
 													</bandbox>
-
 												</row>
 												<row>
-
-													<label value="Title: " hflex="1"/>
+													<label value="Title: " hflex="1" sclass="rowtxt"/>
 													<textbox value="@load(vm.companyEventsSearchCriteria.likeTitle) @save(vm.companyEventsSearchCriteria.likeTitle, before='filter')"  hflex="1" onOK="@command('filter')" />
-
 												</row>
 												<row>
-
-													<label value="Content: " hflex="1"/>
+													<label value="Content: " hflex="1" sclass="rowtxt"/>
 													<textbox value="@load(vm.companyEventsSearchCriteria.likeContent) @save(vm.companyEventsSearchCriteria.likeContent, before='filter')"  hflex="1" onOK="@command('filter')" />
-
 												</row>
 												<row>
 													<cell colspan="2" align="center">

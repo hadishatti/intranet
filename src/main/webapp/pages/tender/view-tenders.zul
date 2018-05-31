@@ -9,6 +9,27 @@
 <?script src="/pages/company-info/bootstrap/js/bootstrap.min.js"?>
 
 <zk>
+    <style>
+        .z-row-inner:first-child{
+        background: #1a4280;
+        }
+
+        .z-row-inner:first-child:hover{
+        background: #0090cf;
+        }
+
+        .z-row-inner:last-child{
+        background: #0093f9;
+        }
+
+        .z-row-inner:last-child:hover{
+        background: #0090cf;
+        }
+
+        .rowtxt{
+        color: white;
+        }
+    </style>
     <window
             id="mainWindow"
             apply="org.zkoss.bind.BindComposer"
@@ -43,8 +64,8 @@
                                 <div hflex="4"/>
                                 <div hflex="4"/>
                                 <bandbox autodrop="true" hflex="2" readonly="true" placeholder="Search...">
-                                    <bandpopup width="30%">
-                                        <grid hflex="1" vflex="1">
+                                    <bandpopup style="max-width:330px">
+                                        <grid hflex="1">
                                             <columns>
                                                 <column hflex="1" align="right"/>
                                                 <column hflex="1"/>
@@ -52,13 +73,13 @@
                                             <rows>
                                                 <row>
 
-                                                    <label value="Author: " hflex="1"/>
+                                                    <label value="Author: " hflex="1" sclass="rowtxt"/>
                                                     <textbox value="@load(vm.tenderSearchCriteria.likeAuthor) @save(vm.tenderSearchCriteria.likeAuthor, before='filter')"  hflex="1" onOK="@command('filter')" />
 
                                                 </row>
                                                 <row>
 
-                                                    <label value="Created On: " hflex="1"/>
+                                                    <label value="Created On: " hflex="1" sclass="rowtxt"/>
                                                     <bandbox autodrop="true" hflex="1" readonly="true">
                                                         <bandpopup hflex="1" height="100%">
                                                             <vlayout>
@@ -77,24 +98,24 @@
                                                 </row>
                                                 <row>
 
-                                                    <label value="Number: " hflex="1"/>
+                                                    <label value="Number: " hflex="1" sclass="rowtxt"/>
                                                     <textbox value="@load(vm.tenderSearchCriteria.likeNumber) @save(vm.tenderSearchCriteria.likeNumber, before='filter')"  hflex="1" onOK="@command('filter')" />
 
                                                 </row>
                                                 <row>
 
-                                                    <label value="Category: " hflex="1"/>
+                                                    <label value="Category: " hflex="1" sclass="rowtxt"/>
                                                     <textbox value="@load(vm.tenderSearchCriteria.likeCategory) @save(vm.tenderSearchCriteria.likeCategory, before='filter')"  hflex="1" onOK="@command('filter')" />
 
                                                 </row>
                                                 <row>
 
-                                                    <label value="Content: " hflex="1"/>
+                                                    <label value="Content: " hflex="1" sclass="rowtxt"/>
                                                     <textbox value="@load(vm.tenderSearchCriteria.likeContent) @save(vm.tenderSearchCriteria.likeContent, before='filter')"  hflex="1" onOK="@command('filter')" />
 
                                                 </row>
                                                 <row>
-                                                    <label value="Issuing Date: " hflex="1"/>
+                                                    <label value="Issuing Date: " hflex="1" sclass="rowtxt"/>
                                                     <bandbox autodrop="true" hflex="1" readonly="true">
                                                         <bandpopup hflex="1" height="100%">
                                                             <vlayout>
@@ -111,7 +132,7 @@
                                                     </bandbox>
                                                 </row>
                                                 <row>
-                                                    <label value="Closing Date: " hflex="1"/>
+                                                    <label value="Closing Date: " hflex="1" sclass="rowtxt"/>
                                                     <bandbox autodrop="true" hflex="1" readonly="true">
                                                         <bandpopup hflex="1" height="100%">
                                                             <vlayout>
