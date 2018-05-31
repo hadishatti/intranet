@@ -106,7 +106,7 @@
 													<hlayout>
 														<image
 																sclass="post-avatar"
-																src="@load('/images/staff/'.concat(companyEvent.author.image))" width="60px"/>
+																src="@load(vm.getAuthorImage(companyEvent))" width="60px"/>
 														<vlayout spacing="0">
 															<label
 																	sclass="post-user"

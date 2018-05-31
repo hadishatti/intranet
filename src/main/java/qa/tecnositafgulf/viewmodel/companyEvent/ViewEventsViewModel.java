@@ -11,6 +11,7 @@ import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.sys.PageCtrl;
 import org.zkoss.zk.ui.util.Clients;
 import org.zkoss.zul.Window;
+import qa.tecnositafgulf.config.MyProperties;
 import qa.tecnositafgulf.model.events.CompanyEvent;
 import qa.tecnositafgulf.model.events.EventComment;
 import qa.tecnositafgulf.searchcriteria.companyevents.CompanyEventsSearchCriteria;
@@ -125,7 +126,14 @@ public class ViewEventsViewModel extends IntranetVM{
 		return false;
 	}
 
+	public String getAuthorImage(CompanyEvent companyEvent){
+		String ret = "";
 
+		if (companyEvent.getAuthor() != null && companyEvent.getAuthor().getImage() != null)
+			ret += MyProperties.getInstance().getImagePath() + "/staff/" + companyEvent.getAuthor().getImage();
+
+		return ret;
+	}
 
 	@Command
 	public void newEvent(){
