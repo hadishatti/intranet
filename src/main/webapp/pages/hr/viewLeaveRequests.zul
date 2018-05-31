@@ -212,6 +212,7 @@
                                                         <div align="center" width="100%">
                                                             <button iconSclass="z-icon-eye" tooltiptext="View Details" onClick="@command('viewDetails', request=item)"/>
                                                             <button iconSclass="z-icon-trash" tooltiptext="Delete" visible="@load(vm.isCancellable(item))" onClick="@command('delete', item=item)"/>
+                                                            <button iconSclass="z-icon-download" tooltiptext="Export to PDF" visible="@load(vm.isExportReport(item))" onClick="@command('exportPDF', item=item)"/>
                                                         </div>
                                                     </listcell>
                                                 </listitem>

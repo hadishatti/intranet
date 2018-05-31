@@ -49,6 +49,7 @@ public class SaveLeaveRequestViewModel extends IntranetVM{
     private boolean addPhone2;
     private boolean viewOtherPhone;
     private String otherPhoneNumber;
+    private String casualLeaveReason;
     private Integer selectedPrefixIndex;
     private List<Employee> employees;
 
@@ -124,6 +125,7 @@ public class SaveLeaveRequestViewModel extends IntranetVM{
             request.setMessage(message);
             request.setEmployeeOnBehalf(employeeOnBehalf);
             request.setAddressOnHoliday(addressOnHoliday);
+            request.setCasualLeaveReason(casualLeaveReason);
             if(!getAndValidatePhoneNumbers())
                 return;
             else if(phoneNumber==null || phoneNumber.isEmpty()){
@@ -175,7 +177,6 @@ public class SaveLeaveRequestViewModel extends IntranetVM{
         }
         return true;
     }
-
 
     public String checkNumber(String number, int i){
         if(service.findByNumber(number).size()==0)
@@ -291,6 +292,14 @@ public class SaveLeaveRequestViewModel extends IntranetVM{
 
     public void setOtherPhoneNumber(String otherPhoneNumber) {
         this.otherPhoneNumber = otherPhoneNumber;
+    }
+
+    public String getCasualLeaveReason() {
+        return casualLeaveReason;
+    }
+
+    public void setCasualLeaveReason(String casualLeaveReason) {
+        this.casualLeaveReason = casualLeaveReason;
     }
 
     public Integer getSelectedPrefixIndex() {

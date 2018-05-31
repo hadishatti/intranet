@@ -1,5 +1,6 @@
 package qa.tecnositafgulf.viewmodel.hr;
 
+import net.sf.jasperreports.engine.*;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.zkoss.bind.BindUtils;
 import org.zkoss.bind.annotation.*;
@@ -8,6 +9,7 @@ import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.Sessions;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
+import org.zkoss.zul.Filedownload;
 import org.zkoss.zk.ui.sys.PageCtrl;
 import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Window;
@@ -15,16 +17,16 @@ import qa.tecnositafgulf.config.LeaveRequestStates;
 import qa.tecnositafgulf.model.administration.Company;
 import qa.tecnositafgulf.model.administration.Employee;
 import qa.tecnositafgulf.model.leaves.LeaveRequest;
+import qa.tecnositafgulf.model.reports.LeaveRequestReportDataSource;
 import qa.tecnositafgulf.searchcriteria.hr.LeaveRequestSearchCriteria;
 import qa.tecnositafgulf.service.AdministrationService;
 import qa.tecnositafgulf.service.LeaveRequestService;
 import qa.tecnositafgulf.spring.config.AppConfig;
 import qa.tecnositafgulf.viewmodel.IntranetVM;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.io.InputStream;
+import java.net.URL;
+import java.util.*;
 
 /**
  * Created by hadi on 1/4/18.
@@ -39,7 +41,8 @@ public class ViewEmergencyLeavesViewModel extends IntranetVM {
     private Employee employee;
     private List<Employee> applicants;
     private List<Employee> selectedApplicants;
-
+    private String reportPath;
+    private String leaveRequestReportTemplateName;
 
     @AfterCompose
     public void doAfterCompose(@ContextParam(ContextType.VIEW) Component view){
@@ -57,6 +60,9 @@ public class ViewEmergencyLeavesViewModel extends IntranetVM {
         selectedApplicants = new ArrayList<>(applicants);
         leaveSearchCriteria = new LeaveRequestSearchCriteria();
         load();
+        reportPath = "http://"+Executions.getCurrent().getServerName()+":"+Executions.getCurrent().getServerPort()+Executions.getCurrent().getContextPath()+"/static/reports/";
+        leaveRequestReportTemplateName = "LeaveRequestReport.jrxml";
+
         addCommonTags((PageCtrl) view.getPage());
     }
 
@@ -108,6 +114,25 @@ public class ViewEmergencyLeavesViewModel extends IntranetVM {
             leaveRequests = new ArrayList<>();
         else
             leaveRequests = service.listEmergencyLeavesByApprover(leaveSearchCriteria);
+    }
+
+    @Command
+    public void exportPDF(@BindingParam("item") final LeaveRequest request) {
+        try {
+            HashMap map = new HashMap<>();
+            JRDataSource dataSource = new LeaveRequestReportDataSource(request, service.getLeaveBalance(request.getApplicant(), request.getType()));
+            JasperPrint jasperPrint;
+            URL url = new URL(reportPath + leaveRequestReportTemplateName);
+            InputStream reportTemplate = url.openStream();
+            JasperReport report = JasperCompileManager.compileReport(reportTemplate);
+            jasperPrint = JasperFillManager.fillReport(report, map, dataSource);
+            byte[] document = JasperExportManager.exportReportToPdf(jasperPrint);
+            Filedownload.save(document, "application/pdf", "Emergency_Leave_Report_"+request.getNumber()+"_"+(new Date()).toString());
+        }catch (Exception e){
+            Messagebox.show("An error occurred! \n"+e.getMessage(), "Error", Messagebox.OK, Messagebox.ERROR);
+            return;
+        }
+
     }
 
     public List<LeaveRequest> getLeaveRequests() {

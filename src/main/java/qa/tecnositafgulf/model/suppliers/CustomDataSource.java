@@ -4,14 +4,15 @@ import net.sf.jasperreports.engine.JRDataSource;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JRField;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import qa.tecnositafgulf.config.IntranetProperties;
+import qa.tecnositafgulf.config.MyProperties;
 import qa.tecnositafgulf.service.SupplierService;
 import qa.tecnositafgulf.spring.config.AppConfig;
 
 import java.util.List;
 
 /**
- * @author Teodor Danciu (teodord@users.sourceforge.net)
- * @version $Id: CustomDataSource.java 1229 2006-04-19 10:27:35Z teodord $
+ * @author Ledio
  */
 public class CustomDataSource implements JRDataSource {
 
@@ -50,7 +51,7 @@ public class CustomDataSource implements JRDataSource {
         } else if ("name".equals(fieldName)) {
             value = data.get(index).getName();
         } else if ("imgSrc".equals(fieldName)) {
-            value ="/home/ledio/Documents/Projects/Intranet/src/main/webapp/pages/company-info/" + data.get(index).getImgSrc();
+            value = MyProperties.getInstance().getImagePath() + data.get(index).getImgSrc();
         } else if ("id".equals(fieldName)){
             value = data.get(index).getId();
         }

@@ -23,6 +23,7 @@ public class ReadNotificationManagerViewModel {
     private Employee employee;
     private Desktop desktop;
     public AuthenticationService authenticationService;
+    private String css;
 
     @AfterCompose
     public void afterCompose(@ContextParam(ContextType.VIEW) Component view) {
@@ -34,6 +35,7 @@ public class ReadNotificationManagerViewModel {
             timer.cancel();
         timer = new Timer();
         timer.schedule(readNotifications(),0,1000);
+        css = "/style/intranet.css";
     }
 
     @NotifyChange({"notifications"})
@@ -91,5 +93,9 @@ public class ReadNotificationManagerViewModel {
 
     public String getImagePath(){
         return MyProperties.getInstance().getImagePath();
+    }
+
+    public String getCss() {
+        return css;
     }
 }

@@ -4,7 +4,7 @@
 <?meta name="viewport" content="width=device-width, initial-scale=1"?>
 
 <zk>
-    <window contentStyle="overflow:scroll;" closable="true" title="Your Received the Following New Notifications:" width="80%" height="80%" style="text-align:left;" apply="org.zkoss.bind.BindComposer" viewModel="@id('vm')@init('qa.tecnositafgulf.viewmodel.notification.ReadNotificationManagerViewModel')" validationMessages="@id('vmsgs')" style="@load(vm.css)">
+    <window contentStyle="overflow:scroll;" closable="true" title="Your Received the Following New Notifications:" width="80%" height="80%" apply="org.zkoss.bind.BindComposer" viewModel="@id('vm')@init('qa.tecnositafgulf.viewmodel.notification.ReadNotificationManagerViewModel')" validationMessages="@id('vmsgs')" style="@load(vm.css)">
         
         <listbox model="@load(vm.notifications)" style="align:center;" emptyMessage="No Notification Available">
             <listhead sizable="true">
