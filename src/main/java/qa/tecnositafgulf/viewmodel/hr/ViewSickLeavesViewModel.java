@@ -14,6 +14,7 @@ import org.zkoss.zk.ui.sys.PageCtrl;
 import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Window;
 import qa.tecnositafgulf.config.LeaveRequestStates;
+import qa.tecnositafgulf.config.MyProperties;
 import qa.tecnositafgulf.model.administration.Company;
 import qa.tecnositafgulf.model.administration.Employee;
 import qa.tecnositafgulf.model.leaves.LeaveRequest;
@@ -61,7 +62,7 @@ public class ViewSickLeavesViewModel extends IntranetVM {
         selectedApplicants = new ArrayList<>(applicants);
         leaveSearchCriteria = new LeaveRequestSearchCriteria();
 
-        reportPath = "http://"+Executions.getCurrent().getServerName()+":"+Executions.getCurrent().getServerPort()+Executions.getCurrent().getContextPath()+"/static/reports/";
+        reportPath = MyProperties.getInstance().getProperty("resPath")+"/reports/";
         leaveRequestReportTemplateName = "LeaveRequestReport.jrxml";
 
         load();

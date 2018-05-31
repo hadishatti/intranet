@@ -5,6 +5,7 @@ import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JRField;
 import org.zkoss.zul.Messagebox;
 import qa.tecnositafgulf.config.LeaveRequestStates;
+import qa.tecnositafgulf.config.MyProperties;
 import qa.tecnositafgulf.model.leaves.LeaveRequest;
 
 import java.util.Date;
@@ -37,6 +38,8 @@ public class LeaveRequestReportDataSource implements JRDataSource {
         Object value = null;
         String fieldName = jrField.getName();
 
+        if ("imagePath".equals(fieldName))
+            value = MyProperties.getInstance().getImagePath()+"/gbdg-logo.jpeg";
         if ("number".equals(fieldName))
             value = leaveRequest.getNumber();
         if ("employeeName".equals(fieldName))

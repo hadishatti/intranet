@@ -13,6 +13,7 @@ import org.zkoss.zul.Filedownload;
 import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Window;
 import qa.tecnositafgulf.config.LeaveRequestStates;
+import qa.tecnositafgulf.config.MyProperties;
 import qa.tecnositafgulf.model.administration.Employee;
 import qa.tecnositafgulf.model.leaves.LeaveRequest;
 import qa.tecnositafgulf.model.reports.LeaveRequestReportDataSource;
@@ -82,8 +83,8 @@ public class ViewLeaveRequestsViewModel extends IntranetVM{
         currentCasualLeaveBalance = service.getLeaveBalance(employee,"Casual");
         currentEmergencyLeaveBalance = service.getLeaveBalance(employee,"Emergency");
         currentSickLeaveBalance = service.getLeaveBalance(employee,"Sick");
-        
-        reportPath = "http://"+Executions.getCurrent().getServerName()+":"+Executions.getCurrent().getServerPort()+Executions.getCurrent().getContextPath()+"/static/reports/";
+
+        reportPath = MyProperties.getInstance().getProperty("resPath")+"/reports/";
         leaveRequestReportTemplateName = "LeaveRequestReport.jrxml";
 
         addCommonTags((PageCtrl) view.getPage());
