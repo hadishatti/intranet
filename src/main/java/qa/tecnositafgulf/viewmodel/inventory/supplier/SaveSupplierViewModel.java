@@ -6,6 +6,7 @@ import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
+import org.zkoss.zk.ui.sys.PageCtrl;
 import org.zkoss.zul.Messagebox;
 import qa.tecnositafgulf.model.inventory.supplier.ProductSupplier;
 import qa.tecnositafgulf.service.InventoryService;
@@ -30,6 +31,7 @@ public class SaveSupplierViewModel  extends IntranetVM {
         }else{
             this.selectedProductSupplier = new ProductSupplier();
         }
+        addCommonTags((PageCtrl) view.getPage());
     }
 
     @Command
@@ -40,7 +42,7 @@ public class SaveSupplierViewModel  extends IntranetVM {
             Messagebox.show("OK! Do you want to view all the Product Supplier?", "Warning", Messagebox.OK | Messagebox.CANCEL, Messagebox.INFORMATION, new EventListener<Event>() {
                 public void onEvent(Event event) throws Exception {
                     if (event.getName().equals("onOK")) {
-                        Executions.sendRedirect("/pages/inventory/supplier/viewProductSupplier.zul");
+                        Executions.sendRedirect("/pages/inventory/supplier/viewSupplier.zul");
                     }
                 }
             });

@@ -6,6 +6,7 @@ import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
+import org.zkoss.zk.ui.sys.PageCtrl;
 import org.zkoss.zul.Messagebox;
 import qa.tecnositafgulf.config.MyProperties;
 import qa.tecnositafgulf.dao.administration.profiles.ProfileDao;
@@ -97,6 +98,8 @@ public class SaveLeaveManagementViewModel extends IntranetVM {
         currentCasualLeaveBalance = leaveService.getLeaveBalance(employee,"Casual");
         currentEmergencyLeaveBalance = leaveService.getLeaveBalance(employee,"Emergency");
         currentSickLeaveBalance = leaveService.getLeaveBalance(employee,"Sick");
+
+        addCommonTags((PageCtrl) view.getPage());
     }
 
     @Command

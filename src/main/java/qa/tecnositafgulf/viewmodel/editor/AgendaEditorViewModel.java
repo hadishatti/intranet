@@ -5,14 +5,14 @@ import org.zkoss.bind.BindUtils;
 import org.zkoss.bind.Property;
 import org.zkoss.bind.ValidationContext;
 import org.zkoss.bind.Validator;
-import org.zkoss.bind.annotation.Command;
-import org.zkoss.bind.annotation.Init;
-import org.zkoss.bind.annotation.NotifyChange;
+import org.zkoss.bind.annotation.*;
 import org.zkoss.bind.validator.AbstractValidator;
+import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.Sessions;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
+import org.zkoss.zk.ui.sys.PageCtrl;
 import org.zkoss.zul.Messagebox;
 import qa.tecnositafgulf.model.administration.Employee;
 import qa.tecnositafgulf.model.calendar.IntranetCalendarEvent;
@@ -68,6 +68,11 @@ public class AgendaEditorViewModel  extends IntranetVM {
         QueueUtils.lookupQueue().subscribe(new QueueListener());
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
         service = context.getBean(MeetingService.class);
+    }
+
+    @AfterCompose
+    public void doAfterCompose(@ContextParam(ContextType.VIEW) Component view){
+        addCommonTags((PageCtrl) view.getPage());
     }
 
     private void startEditing(IntranetCalendarEvent calendarEventData, Meeting meeting) {

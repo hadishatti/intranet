@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?init class="qa.tecnositafgulf.init.AuthenticationInit"?>
 <?page title="Suppliers" contentType="text/html;charset=UTF-8" ?>
-<?link rel="stylesheet" type="text/css" href="/style/intranet.css" ?>
 <zk>
 
     <window apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('qa.tecnositafgulf.viewmodel.supplier.JasperReportViewModel')" height="100%" width="100%" style="@load(vm.css)">

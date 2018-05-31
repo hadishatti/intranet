@@ -6,6 +6,7 @@ import org.zkoss.bind.annotation.ContextParam;
 import org.zkoss.bind.annotation.ContextType;
 import org.zkoss.bind.annotation.ExecutionArgParam;
 import org.zkoss.zk.ui.Component;
+import org.zkoss.zk.ui.sys.PageCtrl;
 import qa.tecnositafgulf.model.leaves.LeaveRequest;
 import qa.tecnositafgulf.service.LeaveRequestService;
 import qa.tecnositafgulf.spring.config.AppConfig;
@@ -33,6 +34,7 @@ public class ViewLeaveRequestDetailsViewModel extends IntranetVM{
         leaveBalance = service.getLeaveBalance(leaveRequest.getApplicant(), leaveRequest.getType());
         days = (int) TimeUnit.DAYS.convert(leaveRequest.getLeaveTo().getTime()-leaveRequest.getLeaveFrom().getTime(),TimeUnit.MILLISECONDS)+1;
         newBalance = leaveBalance-days;
+        addCommonTags((PageCtrl) view.getPage());
     }
 
     public LeaveRequest getLeaveRequest() {

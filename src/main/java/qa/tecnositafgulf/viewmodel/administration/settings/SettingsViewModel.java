@@ -3,11 +3,13 @@ package qa.tecnositafgulf.viewmodel.administration.settings;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.zkoss.bind.BindUtils;
 import org.zkoss.bind.annotation.*;
+import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Desktop;
 import org.zkoss.zk.ui.DesktopUnavailableException;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
+import org.zkoss.zk.ui.sys.PageCtrl;
 import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Window;
 import qa.tecnositafgulf.config.MyProperties;
@@ -34,7 +36,7 @@ public class SettingsViewModel extends IntranetVM {
     private Integer totalSize;
 
     @AfterCompose
-    public void afterCompose(){
+    public void afterCompose(@ContextParam(ContextType.VIEW) Component view){
         init();
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
         propertyService = context.getBean(PropertyService.class);
@@ -46,6 +48,7 @@ public class SettingsViewModel extends IntranetVM {
             timer.cancel();
         timer = new Timer();
         timer.schedule(updatePosts(),0,1000);
+        addCommonTags((PageCtrl) view.getPage());
     }
 
     public void loadProperties(){

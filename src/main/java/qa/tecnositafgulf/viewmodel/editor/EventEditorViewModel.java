@@ -13,6 +13,7 @@ import org.zkoss.zk.ui.event.EventListener;
 import org.zkoss.zk.ui.event.UploadEvent;
 import org.zkoss.zk.ui.select.Selectors;
 import org.zkoss.zk.ui.select.annotation.Wire;
+import org.zkoss.zk.ui.sys.PageCtrl;
 import org.zkoss.zul.Image;
 import org.zkoss.zul.Messagebox;
 import qa.tecnositafgulf.model.administration.Employee;
@@ -58,6 +59,7 @@ public class EventEditorViewModel  extends IntranetVM {
         
         if(imagePreview.getSrc()==null || imagePreview.getSrc().isEmpty())
             imageWidth=400;
+        addCommonTags((PageCtrl) view.getPage());
     }
 
     @Command

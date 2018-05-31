@@ -6,6 +6,7 @@ import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
+import org.zkoss.zk.ui.sys.PageCtrl;
 import org.zkoss.zul.Messagebox;
 import qa.tecnositafgulf.model.inventory.productCategory.ProductCategory;
 import qa.tecnositafgulf.service.InventoryService;
@@ -30,6 +31,7 @@ public class SaveProductsCategoryViewModel  extends IntranetVM {
            this.productCategory = productCategory;
         else
             this.productCategory = new ProductCategory();
+        addCommonTags((PageCtrl) view.getPage());
     }
 
     @Command

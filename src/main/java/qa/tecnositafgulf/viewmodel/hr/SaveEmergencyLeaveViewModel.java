@@ -7,6 +7,7 @@ import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.Sessions;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
+import org.zkoss.zk.ui.sys.PageCtrl;
 import org.zkoss.zul.Messagebox;
 import qa.tecnositafgulf.config.MyProperties;
 import qa.tecnositafgulf.model.administration.Employee;
@@ -85,7 +86,7 @@ public class SaveEmergencyLeaveViewModel extends IntranetVM {
             leaveFrom = c.getTime();
             minutes = 30;
         }
-
+        addCommonTags((PageCtrl) view.getPage());
     }
 
     public String checkNumber(String number, int i){

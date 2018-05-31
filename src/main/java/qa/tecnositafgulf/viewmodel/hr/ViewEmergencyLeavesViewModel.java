@@ -3,15 +3,14 @@ package qa.tecnositafgulf.viewmodel.hr;
 import net.sf.jasperreports.engine.*;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.zkoss.bind.BindUtils;
-import org.zkoss.bind.annotation.AfterCompose;
-import org.zkoss.bind.annotation.BindingParam;
-import org.zkoss.bind.annotation.Command;
-import org.zkoss.bind.annotation.NotifyChange;
+import org.zkoss.bind.annotation.*;
+import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.Sessions;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
 import org.zkoss.zul.Filedownload;
+import org.zkoss.zk.ui.sys.PageCtrl;
 import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Window;
 import qa.tecnositafgulf.config.LeaveRequestStates;
@@ -46,7 +45,7 @@ public class ViewEmergencyLeavesViewModel extends IntranetVM {
     private String leaveRequestReportTemplateName;
 
     @AfterCompose
-    public void doAfterCompose(){
+    public void doAfterCompose(@ContextParam(ContextType.VIEW) Component view){
         init();
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
         service = context.getBean(LeaveRequestService.class);
@@ -64,6 +63,7 @@ public class ViewEmergencyLeavesViewModel extends IntranetVM {
         reportPath = "http://"+Executions.getCurrent().getServerName()+":"+Executions.getCurrent().getServerPort()+Executions.getCurrent().getContextPath()+"/static/reports/";
         leaveRequestReportTemplateName = "LeaveRequestReport.jrxml";
 
+        addCommonTags((PageCtrl) view.getPage());
     }
 
     @Command

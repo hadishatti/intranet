@@ -2,14 +2,9 @@ package qa.tecnositafgulf.viewmodel.hr;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.zkoss.bind.BindUtils;
-import org.zkoss.bind.annotation.AfterCompose;
-import org.zkoss.bind.annotation.BindingParam;
-import org.zkoss.bind.annotation.Command;
-import org.zkoss.bind.annotation.NotifyChange;
-import org.zkoss.zk.ui.Desktop;
-import org.zkoss.zk.ui.DesktopUnavailableException;
-import org.zkoss.zk.ui.Executions;
-import org.zkoss.zk.ui.Sessions;
+import org.zkoss.bind.annotation.*;
+import org.zkoss.zk.ui.*;
+import org.zkoss.zk.ui.sys.PageCtrl;
 import org.zkoss.zk.ui.util.Clients;
 import org.zkoss.zul.Window;
 import qa.tecnositafgulf.config.LeaveRequestStates;
@@ -48,7 +43,7 @@ public class ViewLeaveRequestsAsManagerViewModel extends IntranetVM {
     private List<Employee> selectedApprovedApplicants;
 
     @AfterCompose
-    public void doAfterCompose(){
+    public void doAfterCompose(@ContextParam(ContextType.VIEW) Component view){
         init();
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
         service = context.getBean(LeaveRequestService.class);
@@ -109,6 +104,7 @@ public class ViewLeaveRequestsAsManagerViewModel extends IntranetVM {
             timer.cancel();
         timer = new Timer();
         timer.schedule(update(),0,1000);
+        addCommonTags((PageCtrl) view.getPage());
     }
     
     public void load(){

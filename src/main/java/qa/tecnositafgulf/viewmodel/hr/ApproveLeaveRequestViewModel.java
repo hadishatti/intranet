@@ -8,6 +8,7 @@ import org.zkoss.bind.annotation.ContextType;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.Sessions;
+import org.zkoss.zk.ui.sys.PageCtrl;
 import org.zkoss.zul.Window;
 import qa.tecnositafgulf.config.LeaveRequestStates;
 import qa.tecnositafgulf.model.administration.Employee;
@@ -53,6 +54,7 @@ public class ApproveLeaveRequestViewModel extends IntranetVM {
         others = new ArrayList<>();
         if(leaveRequest.getStatus()==LeaveRequestStates.New || leaveRequest.getStatus()==LeaveRequestStates.WaitingForHR)
             checkOtherEmployees();
+        addCommonTags((PageCtrl) view.getPage());
     }
 
     public void checkOtherEmployees(){

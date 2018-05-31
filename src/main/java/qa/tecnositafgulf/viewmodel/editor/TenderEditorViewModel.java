@@ -8,6 +8,7 @@ import org.zkoss.zk.ui.Sessions;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
 import org.zkoss.zk.ui.select.Selectors;
+import org.zkoss.zk.ui.sys.PageCtrl;
 import org.zkoss.zul.Messagebox;
 import qa.tecnositafgulf.config.IntranetProperties;
 import qa.tecnositafgulf.model.administration.Employee;
@@ -55,7 +56,7 @@ public class TenderEditorViewModel  extends IntranetVM {
             closingDate = tenderToEdit.getClosingDate();
             link = tenderToEdit.getLink();
         }
-
+        addCommonTags((PageCtrl) view.getPage());
     }
 
 

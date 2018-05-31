@@ -8,6 +8,7 @@ import org.zkoss.web.servlet.Servlets;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.Sessions;
+import org.zkoss.zk.ui.sys.PageCtrl;
 import org.zkoss.zk.ui.util.Clients;
 import qa.tecnositafgulf.config.MyProperties;
 import qa.tecnositafgulf.service.AuthenticationService;
@@ -54,6 +55,7 @@ public class LoginViewModel extends IntranetVM {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
         service = context.getBean(AuthenticationService.class);
         error = "";
+        addCommonTags((PageCtrl) view.getPage());
     }
 
     @NotifyChange("error")

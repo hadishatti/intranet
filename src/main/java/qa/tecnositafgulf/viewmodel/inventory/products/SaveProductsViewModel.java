@@ -6,6 +6,7 @@ import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
+import org.zkoss.zk.ui.sys.PageCtrl;
 import org.zkoss.zul.Messagebox;
 import qa.tecnositafgulf.model.inventory.location.Location;
 import qa.tecnositafgulf.model.inventory.product.Product;
@@ -47,6 +48,7 @@ public class SaveProductsViewModel  extends IntranetVM {
         }else {
             this.product = new Product();
         }
+        addCommonTags((PageCtrl) view.getPage());
     }
     @Command
     @NotifyChange({"productStock"})

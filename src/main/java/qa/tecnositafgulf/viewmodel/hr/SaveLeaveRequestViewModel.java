@@ -8,6 +8,7 @@ import org.zkoss.zk.ui.Sessions;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
 import org.zkoss.zk.ui.event.Events;
+import org.zkoss.zk.ui.sys.PageCtrl;
 import org.zkoss.zul.Messagebox;
 import qa.tecnositafgulf.model.administration.Employee;
 import qa.tecnositafgulf.model.leaves.LeaveBalance;
@@ -82,6 +83,8 @@ public class SaveLeaveRequestViewModel extends IntranetVM{
         c.add(Calendar.HOUR,9);
         leaveTo = c.getTime();
         viewOtherPhone=false;
+
+        addCommonTags((PageCtrl) view.getPage());
     }
 
     @Command

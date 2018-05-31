@@ -8,6 +8,7 @@ import org.zkoss.zk.ui.Sessions;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
 import org.zkoss.zk.ui.select.Selectors;
+import org.zkoss.zk.ui.sys.PageCtrl;
 import org.zkoss.zul.Messagebox;
 import qa.tecnositafgulf.config.IntranetProperties;
 import qa.tecnositafgulf.model.administration.Employee;
@@ -53,6 +54,7 @@ public class PolicyProcedureEditorVM extends IntranetVM{
                 procedureId = policyProcedureToEdit.getProcedureId();
             else procedureId = null;
         }
+        addCommonTags((PageCtrl) view.getPage());
     }
 
     protected void showInfo(String message) {

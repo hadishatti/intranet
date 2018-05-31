@@ -6,10 +6,7 @@ import qa.tecnositafgulf.model.inventory.productCategory.ProductCategory;
 import qa.tecnositafgulf.model.inventory.stocks.ProductStock;
 import qa.tecnositafgulf.model.inventory.stocks.TransferStock;
 import qa.tecnositafgulf.model.inventory.supplier.ProductSupplier;
-import qa.tecnositafgulf.searchcriteria.inventory.LocationSearchCriteria;
-import qa.tecnositafgulf.searchcriteria.inventory.ProductCategorySearchCriteria;
-import qa.tecnositafgulf.searchcriteria.inventory.ProductSearchCriteria;
-import qa.tecnositafgulf.searchcriteria.inventory.ProductStockSearchCriteria;
+import qa.tecnositafgulf.searchcriteria.inventory.*;
 
 import java.util.List;
 
@@ -50,6 +47,14 @@ public interface InventoryService {
     public ProductStock getProductStockLocationWise(Product product, Location location);
 
     public void saveProductSupplier(ProductSupplier productSupplier);
+
+    public void removeProductSupplier(ProductSupplier productSupplier);
+
+    public List<ProductSupplier> listAllProductSuppliers();
+
+    public List<ProductSupplier> getProductSuppliers(ProductSupplierSearchCriteria productStockSearchCriteria);
+
+    public int getProductSuppliersCount(ProductSupplierSearchCriteria productStockSearchCriteria);
 
     public void saveLocation(Location location);
 

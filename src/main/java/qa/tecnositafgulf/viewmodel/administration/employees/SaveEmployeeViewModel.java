@@ -9,6 +9,7 @@ import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.Sessions;
 import org.zkoss.zk.ui.event.*;
+import org.zkoss.zk.ui.sys.PageCtrl;
 import org.zkoss.zk.ui.util.Clients;
 import org.zkoss.zul.Messagebox;
 import qa.tecnositafgulf.model.leaves.LeaveBalance;
@@ -132,7 +133,7 @@ public class SaveEmployeeViewModel extends IntranetVM{
         DateFormat sdf = new SimpleDateFormat("yyyyMMdd");
         birthConstraint = "no empty, before "+sdf.format(c.getTime());
 
-
+        addCommonTags((PageCtrl) view.getPage());
 
     }
 

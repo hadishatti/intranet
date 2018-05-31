@@ -11,10 +11,7 @@ import qa.tecnositafgulf.model.inventory.productCategory.ProductCategory;
 import qa.tecnositafgulf.model.inventory.stocks.ProductStock;
 import qa.tecnositafgulf.model.inventory.stocks.TransferStock;
 import qa.tecnositafgulf.model.inventory.supplier.ProductSupplier;
-import qa.tecnositafgulf.searchcriteria.inventory.LocationSearchCriteria;
-import qa.tecnositafgulf.searchcriteria.inventory.ProductCategorySearchCriteria;
-import qa.tecnositafgulf.searchcriteria.inventory.ProductSearchCriteria;
-import qa.tecnositafgulf.searchcriteria.inventory.ProductStockSearchCriteria;
+import qa.tecnositafgulf.searchcriteria.inventory.*;
 
 import java.util.List;
 
@@ -125,6 +122,26 @@ public class InventoryServiceImpl implements InventoryService {
     @Transactional
     public void saveProductSupplier(ProductSupplier productSupplier) {
         inventoryDao.saveProductSupplier(productSupplier);
+    }
+
+    @Override
+    public void removeProductSupplier(ProductSupplier productSupplier) {
+        inventoryDao.removeProductSupplier(productSupplier);
+    }
+
+    @Override
+    public List<ProductSupplier> listAllProductSuppliers() {
+        return inventoryDao.listProductSuppliers();
+    }
+
+    @Override
+    public List<ProductSupplier> getProductSuppliers(ProductSupplierSearchCriteria productStockSearchCriteria) {
+        return inventoryDao.getAllProductSuppliers(productStockSearchCriteria);
+    }
+
+    @Override
+    public int getProductSuppliersCount(ProductSupplierSearchCriteria productStockSearchCriteria) {
+        return inventoryDao.getAllProductSuppliersCount(productStockSearchCriteria);
     }
 
     @Override

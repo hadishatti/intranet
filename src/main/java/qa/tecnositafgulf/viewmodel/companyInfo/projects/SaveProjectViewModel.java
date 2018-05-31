@@ -14,6 +14,7 @@ import org.zkoss.zk.ui.event.EventListener;
 import org.zkoss.zk.ui.event.UploadEvent;
 import org.zkoss.zk.ui.select.Selectors;
 import org.zkoss.zk.ui.select.annotation.Wire;
+import org.zkoss.zk.ui.sys.PageCtrl;
 import org.zkoss.zul.Image;
 import org.zkoss.zul.Messagebox;
 import qa.tecnositafgulf.config.MyProperties;
@@ -70,6 +71,7 @@ public class SaveProjectViewModel extends IntranetVM {
         }
 
         employeeList = administrationService.listEmployees();
+        addCommonTags((PageCtrl) view.getPage());
     }
 
     @Command

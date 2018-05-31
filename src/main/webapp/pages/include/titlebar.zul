@@ -1,7 +1,4 @@
 <?meta name="viewport" content="width=device-width, initial-scale=1"?>
-<?link href="assets/css/bootstrap-responsive.css" rel="stylesheet"?>
-<?link rel="stylesheet" type="text/css" href="/pages/company-info/bootstrap/css/bootstrap.min.css" ?>
-<?script src="/pages/company-info/bootstrap/js/bootstrap.min.js"?>
 
 
 <zk xmlns:h="http://www.w3.org/1999/xhtml" xmlns:n="native" xmlns:zk="http://www.zkoss.org/2005/zk" xmlns:ca="client/attribute">
@@ -220,7 +217,7 @@
 
                             <h:li><a href="/pages/company-info/projects/projects.zul"><image style = "max-width:26px;height:auto; img-fluid" src="@load(vm.imagePath.concat('/project.png'))"/> <span style ="color: #1a4280; margin: 2px;" class="titlebar-text"> Projects</span></a></h:li>
 
-                            <h:li><a href="/pages/company-info/suppliers/suppliers.zul"><image style = "max-width:26px;height:auto; img-fluid" src="@load(vm.imagePath.concat('/suppliers.png'))"/> <span style ="color: #1a4280; margin: 2px;" class="titlebar-text"> Suppliers</span></a></h:li>
+                            <h:li><a href="/pages/company-info/suppliers/suppliers.zul"><image style = "max-width:26px;height:auto; img-fluid" src="@load(vm.imagePath.concat('/suppliers.png'))"/> <span style ="color: #1a4280; margin: 2px;" class="titlebar-text"> Suppliers Info</span></a></h:li>
 
                         </h:ul>
                     </h:li>
@@ -265,6 +262,9 @@
                                     <h:li><a href="/pages/inventory/productLocation/transferProductToLocation.zul"><image style = "max-width:26px;height:auto; img-fluid" src="@load(vm.imagePath.concat('/administration/add.png'))"/> <span style ="color: #1a4280; margin: 2px;" class="titlebar-text"> Transfer Product Stock</span></a></h:li>
                                 </h:ul>
                             </h:li>
+
+                            <h:li><a href="/pages/inventory/supplier/viewSupplier.zul"><image style = "max-width:26px;height:auto; img-fluid" src="@load(vm.imagePath.concat('/suppliers.png'))"/> <span style ="color: #1a4280; margin: 2px;" class="titlebar-text"> Suppliers</span></a></h:li>
+
                         </h:ul>
                     </h:li>
                 </h:ul>

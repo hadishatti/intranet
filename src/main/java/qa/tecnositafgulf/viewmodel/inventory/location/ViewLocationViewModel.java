@@ -1,13 +1,12 @@
 package qa.tecnositafgulf.viewmodel.inventory.location;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.zkoss.bind.annotation.AfterCompose;
-import org.zkoss.bind.annotation.BindingParam;
-import org.zkoss.bind.annotation.Command;
-import org.zkoss.bind.annotation.NotifyChange;
+import org.zkoss.bind.annotation.*;
+import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
+import org.zkoss.zk.ui.sys.PageCtrl;
 import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Window;
 import qa.tecnositafgulf.model.inventory.location.Location;
@@ -28,12 +27,13 @@ public class ViewLocationViewModel  extends IntranetVM {
     private Integer activePage;
 
     @AfterCompose
-    public void doAfterCompose() {
+    public void doAfterCompose(@ContextParam(ContextType.VIEW) Component view) {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
         inventoryService = context.getBean(InventoryService.class);
         locationSearchCriteria = new LocationSearchCriteria();
         this.setActivePage(this.locationSearchCriteria.getStartIndex());
         loadData();
+        addCommonTags((PageCtrl) view.getPage());
     }
 
     private void loadData() {

@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?link rel="stylesheet" type="text/css" href="/style/intranet.css" ?>
 
 <window id="win" title="GBDG Chat Room" border="normal" position="center,center" closable="true" width="50%"
         action="show: slideDown;hide: slideUp" apply="qa.tecnositafgulf.controller.chat.ChatComposer" >
