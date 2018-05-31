@@ -10,6 +10,7 @@ import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.select.SelectorComposer;
 import org.zkoss.zk.ui.select.annotation.Listen;
 import org.zkoss.zk.ui.select.annotation.Wire;
+import org.zkoss.zk.ui.sys.PageCtrl;
 import org.zkoss.zkmax.ui.select.annotation.Subscribe;
 import org.zkoss.zul.Button;
 import org.zkoss.zul.Datebox;
@@ -51,6 +52,7 @@ public class AgendaController extends SelectorComposer<Component> {
     private IntranetCalendarModel calendarModel;
     private MeetingService service;
     private String imagePath;
+    private String resourcePath;
 
     //the in editing calendar ui companyEvent
     private CalendarsEvent calendarsEvent = null;
@@ -92,6 +94,13 @@ public class AgendaController extends SelectorComposer<Component> {
         Date start = calendars.getBeginDate();
         Date end = calendars.getEndDate();
         current.setValue(sdf.format(start) + " - " + sdf.format(end));
+        addAdditionalTags((PageCtrl) comp.getPage());
+    }
+
+    public void addAdditionalTags(PageCtrl page){
+        String path = MyProperties.getInstance().getResourcePath();
+        page.addAfterHeadTags("<script src=\"" + path + "/js/jquery.mousewheel.min.js\"></script>");
+        page.addAfterHeadTags("<script src=\"" + path + "/js/scroll.js\"></script>");
     }
 
     @Listen("onChange = #focus")
@@ -295,4 +304,11 @@ public class AgendaController extends SelectorComposer<Component> {
         }
     }
 
+    public String getResourcePath() {
+        return MyProperties.getInstance().getResourcePath();
+    }
+
+    public void setResourcePath(String resourcePath) {
+        this.resourcePath = resourcePath;
+    }
 }

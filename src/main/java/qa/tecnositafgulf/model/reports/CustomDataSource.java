@@ -6,6 +6,7 @@ import net.sf.jasperreports.engine.JRField;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import qa.tecnositafgulf.config.IntranetProperties;
 import qa.tecnositafgulf.config.MyProperties;
+import qa.tecnositafgulf.model.suppliers.Supplier;
 import qa.tecnositafgulf.service.SupplierService;
 import qa.tecnositafgulf.spring.config.AppConfig;
 

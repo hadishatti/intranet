@@ -8,6 +8,7 @@ import net.sf.jasperreports.engine.JRDataSource;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JRField;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import qa.tecnositafgulf.config.MyProperties;
 import qa.tecnositafgulf.model.companyInfo.Client;
 import qa.tecnositafgulf.service.CompanyInfoService;
 import qa.tecnositafgulf.spring.config.AppConfig;
@@ -38,7 +39,7 @@ public class ClientReportDataSource implements JRDataSource {
         if ("description".equals(fieldName)) {
             value = data.get(index).getDescription();
         } else if ("img".equals(fieldName)) {
-            value = "/home/klajdi/Codes/Intranet/src/main/webapp/pages/company-info/" + data.get(index).getImg();
+            value = MyProperties.getInstance().getImagePath() +  "/" + data.get(index).getImg();
         } else if ("name".equals(fieldName)) {
             value = data.get(index).getName();
         } else if ("link".equals(fieldName)) {

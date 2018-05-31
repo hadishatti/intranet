@@ -40,9 +40,9 @@ public class LoginViewModel extends IntranetVM {
 
         // Set the default stylesheet
         if (mobile) {
-            css = "css/tablet.css.dsp";
+            css =MyProperties.getInstance().getResourcePath() + "/css/tablet.css.dsp";
         } else {
-            css = "css/desktop.css.dsp";
+            css =MyProperties.getInstance().getResourcePath() +  "/css/desktop.css.dsp";
         }
     }
     

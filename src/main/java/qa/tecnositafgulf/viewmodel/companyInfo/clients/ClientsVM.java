@@ -34,6 +34,7 @@ public class ClientsVM extends IntranetVM{
     private Integer activePage;
     private Timer timer;
     private Desktop desktop;
+    private String resource = MyProperties.getInstance().getResourcePath();
 
     @AfterCompose
     public void doAfterCompose(@ContextParam(ContextType.VIEW) Component view){
@@ -105,10 +106,10 @@ public class ClientsVM extends IntranetVM{
                 "                                    <title>Intranet</title>\n" +
                 "\n" +
                 "                                    <!-- Bootstrap core CSS -->\n" +
-                "                                    <link href=\"../bootstrap/css/bootstrap.min.css\" rel=\"stylesheet\">\n" +
+                "                                    <link href=\"" + resource + "/bootstrap/css/bootstrap.min.css\" rel=\"stylesheet\">\n" +
                 "\n" +
                 "                                    <!-- Custom styles for this template -->\n" +
-                "                                    <link href=\"../customized/css/partners_thumbnail_gallery.css\" rel=\"stylesheet\">\n" +
+                "                                    <link href=\"" + resource + "/customized/css/partners_thumbnail_gallery.css\" rel=\"stylesheet\">\n" +
                 "\n" +
                 "                                  </head>\n" +
                 "\n" +
@@ -136,8 +137,8 @@ public class ClientsVM extends IntranetVM{
                 "                                    <!-- /.container -->\n" +
                 "\n" +
                 "                                    <!-- Bootstrap core JavaScript -->\n" +
-                "                                    <script src=\"../customized/jquery/jquery.min.js\"></script>\n" +
-                "                                    <script src=\"../bootstrap/js/bootstrap.bundle.min.js\"></script>\n" +
+                "                                    <script src=\"" + resource + "/customized/jquery/jquery.min.js\"></script>\n" +
+                "                                    <script src=\"" + resource + "/bootstrap/js/bootstrap.bundle.min.js\"></script>\n" +
                 "\n" +
                 "                                  </body>";
 

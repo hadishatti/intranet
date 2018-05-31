@@ -1,11 +1,11 @@
-package qa.tecnositafgulf.viewmodel.supplier;
+package qa.tecnositafgulf.viewmodel.companyInfo.suppliers;
 
 import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.NotifyChange;
 import org.zkoss.zul.ListModelList;
-import qa.tecnositafgulf.model.suppliers.CustomDataSource;
-import qa.tecnositafgulf.model.suppliers.ReportConfig;
-import qa.tecnositafgulf.model.suppliers.ReportType;
+import qa.tecnositafgulf.config.ReportConfig;
+import qa.tecnositafgulf.config.ReportType;
+import qa.tecnositafgulf.model.reports.CustomDataSource;
 import qa.tecnositafgulf.viewmodel.IntranetVM;
 
 import java.util.Arrays;

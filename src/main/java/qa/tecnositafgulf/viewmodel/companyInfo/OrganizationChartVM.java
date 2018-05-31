@@ -129,7 +129,6 @@ public class OrganizationChartVM extends IntranetVM {
     }
     
     private String getPath(){
-        String port = ( Executions.getCurrent().getServerPort() == 80 ) ? "" : (":" + Executions.getCurrent().getServerPort());
-        return Executions.getCurrent().getScheme() + "://" + Executions.getCurrent().getServerName() + port + Executions.getCurrent().getContextPath()+"/images/staff/";
+        return MyProperties.getInstance().getImagePath() +"/staff/";
     }
 }

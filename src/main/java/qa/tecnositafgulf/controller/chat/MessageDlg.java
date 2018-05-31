@@ -5,6 +5,7 @@ import org.zkoss.zk.ui.Path;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
 import org.zkoss.zul.*;
+import qa.tecnositafgulf.config.MyProperties;
 import qa.tecnositafgulf.model.chat.ChatRoom;
 import qa.tecnositafgulf.model.chat.Message;
 
@@ -52,7 +53,7 @@ public class MessageDlg extends Window {
         row.setParent(rows);
         Hbox hb = new Hbox();
         hb.setParent(row);
-        Image img = new Image("/images/chat.png");
+        Image img = new Image(MyProperties.getInstance().getImagePath() + "chat.png");
         img.setParent(hb);
         img.setWidth("80px");
         Div contentDiv = new Div();
@@ -86,7 +87,7 @@ public class MessageDlg extends Window {
         Row row = new Row();
         final CKeditor ed = new CKeditor();
         ed.setParent(row);
-        ed.setCustomConfigurationsPath("/js/ckconfig.js");
+        ed.setCustomConfigurationsPath(MyProperties.getInstance().getResourcePath() + "/js/ckconfig.js");
         ed.setWidth("100%");
         ed.setHeight("160px");
         row.setParent(rows);

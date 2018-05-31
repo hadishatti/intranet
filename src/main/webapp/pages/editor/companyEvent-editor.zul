@@ -55,7 +55,7 @@
             </radiogroup>
         </hlayout>
         <separator height="20px"/>
-        <ckeditor id="ed" toolbar="rad.selectedItem.label" value="@load(vm.content)" width="100%" height="300px" filebrowserImageBrowseUrl="@load(vm.imagePath.concat('/wysiwyg_editor/img'))" filebrowserFlashBrowseUrl="/editor/widgets/input/wysiwyg_editor/flash" customConfigurationsPath="/images/wysiwyg_editor/config.js">
+        <ckeditor id="ed" toolbar="rad.selectedItem.label" value="@load(vm.content)" width="100%" height="300px" filebrowserImageBrowseUrl="@load(vm.imagePath.concat('/wysiwyg_editor/img'))" filebrowserFlashBrowseUrl="/editor/widgets/input/wysiwyg_editor/flash" customConfigurationsPath="@load(vm.imagePath.concat('/wysiwyg_editor/config.js'))">
             <attribute name="value" ></attribute>
             <attribute name="toolbar"></attribute>
         </ckeditor>

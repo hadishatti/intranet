@@ -26,7 +26,6 @@ public class TitlebarViewModel extends IntranetVM {
     }
 
     public String getImage(){
-        String port = ( Executions.getCurrent().getServerPort() == 80 ) ? "" : (":" + Executions.getCurrent().getServerPort());
         Employee e = ((Employee) Sessions.getCurrent().getAttribute("employee"));
         return MyProperties.getInstance().getImagePath()+"/staff/"+(e.getImage()==null?"userpic.png":e.getImage());
     }

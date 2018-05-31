@@ -31,6 +31,7 @@ public class ViewPartnersVM extends IntranetVM {
     private Integer activePage;
     private Integer totalSize;
     private PartnerSearchCriteria searchCriteria;
+    private String resource = MyProperties.getInstance().getResourcePath();
 
     @Init
     public void init(){
@@ -57,9 +58,9 @@ public class ViewPartnersVM extends IntranetVM {
                 "<meta name=\"author\" content=\"\">" +
                 "<title>Intranet</title>" +
                 "<!-- Bootstrap core CSS -->" +
-                "<link href=\"bootstrap/css/bootstrap.min.css\" rel=\"stylesheet\">" +
+                "<link href=\"" + resource + "/bootstrap/css/bootstrap.min.css\" rel=\"stylesheet\">" +
                 "<!-- Custom styles for this template -->" +
-                "<link href=\"customized/css/partners_thumbnail_gallery.css\" rel=\"stylesheet\">" +
+                "<link href=\"" + resource + "/customized/css/partners_thumbnail_gallery.css\" rel=\"stylesheet\">" +
                 "</head>" +
                 "<body>" +
                 "<div class=\"container\">" +

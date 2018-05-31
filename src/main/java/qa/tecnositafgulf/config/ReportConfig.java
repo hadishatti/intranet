@@ -43,7 +43,7 @@ public class ReportConfig {
 //    }
 
     public void buildSource(String name){
-        source = "/home/ameljo/JaspersoftWorkspace/MyReports/partner-report.jasper";
+        source = name;
     }
 
     public void setDataSource(JRDataSource reportDataSource) {
