@@ -6,6 +6,10 @@ import java.util.Date;
 
 @Entity(name = "ProductSupplier")
 @Table(name = "productSupplier")
+@NamedQueries({
+        @NamedQuery(name = "ProductSupplier.getAllSuppliers", query = "select productSupplier from ProductSupplier productSupplier")
+
+})
 public class ProductSupplier implements Serializable{
 
     @Id

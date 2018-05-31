@@ -1,12 +1,11 @@
 package qa.tecnositafgulf.viewmodel.hr;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.zkoss.bind.annotation.AfterCompose;
-import org.zkoss.bind.annotation.BindingParam;
-import org.zkoss.bind.annotation.Command;
-import org.zkoss.bind.annotation.NotifyChange;
+import org.zkoss.bind.annotation.*;
+import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.Sessions;
+import org.zkoss.zk.ui.sys.PageCtrl;
 import org.zkoss.zul.Window;
 import qa.tecnositafgulf.model.administration.Employee;
 import qa.tecnositafgulf.searchcriteria.LeaveManagerSearchCriteria;
@@ -29,7 +28,7 @@ public class ViewLeaveManagementViewModel extends IntranetVM {
     private Integer activePage;
 
     @AfterCompose
-    public void doAfterCompose(){
+    public void doAfterCompose(@ContextParam(ContextType.VIEW) Component view){
         init();
         if(!super.isHRLeaveManager() && !super.isAdministrator()){
             Executions.sendRedirect("/pages/home.zul");
@@ -39,6 +38,7 @@ public class ViewLeaveManagementViewModel extends IntranetVM {
         leaveManagerSearchCriteria = new LeaveManagerSearchCriteria();
         this.setActivePage(this.leaveManagerSearchCriteria.getStartIndex());
         loadData();
+        addCommonTags((PageCtrl) view.getPage());
     }
 
     public boolean isLeaveManager(Employee employee){

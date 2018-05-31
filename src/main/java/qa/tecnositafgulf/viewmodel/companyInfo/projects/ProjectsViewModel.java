@@ -2,9 +2,11 @@ package qa.tecnositafgulf.viewmodel.companyInfo.projects;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.zkoss.bind.annotation.*;
+import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
+import org.zkoss.zk.ui.sys.PageCtrl;
 import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Window;
 import qa.tecnositafgulf.config.MyProperties;
@@ -48,7 +50,8 @@ public class ProjectsViewModel extends IntranetVM {
     }
 
     @AfterCompose
-    public void afterCompose(){
+    public void afterCompose(@ContextParam(ContextType.VIEW) Component view){
+        addCommonTags((PageCtrl) view.getPage());
     }
 
     @Command

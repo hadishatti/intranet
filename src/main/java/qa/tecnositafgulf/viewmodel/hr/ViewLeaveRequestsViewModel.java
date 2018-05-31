@@ -2,16 +2,11 @@ package qa.tecnositafgulf.viewmodel.hr;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.zkoss.bind.BindUtils;
-import org.zkoss.bind.annotation.AfterCompose;
-import org.zkoss.bind.annotation.BindingParam;
-import org.zkoss.bind.annotation.Command;
-import org.zkoss.bind.annotation.NotifyChange;
-import org.zkoss.zk.ui.Desktop;
-import org.zkoss.zk.ui.DesktopUnavailableException;
-import org.zkoss.zk.ui.Executions;
-import org.zkoss.zk.ui.Sessions;
+import org.zkoss.bind.annotation.*;
+import org.zkoss.zk.ui.*;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
+import org.zkoss.zk.ui.sys.PageCtrl;
 import org.zkoss.zk.ui.util.Clients;
 import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Window;
@@ -48,7 +43,7 @@ public class ViewLeaveRequestsViewModel extends IntranetVM{
 
 
     @AfterCompose
-    public void doAfterCompose(){
+    public void doAfterCompose(@ContextParam(ContextType.VIEW) Component view){
         init();
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
         service = context.getBean(LeaveRequestService.class);
@@ -81,6 +76,7 @@ public class ViewLeaveRequestsViewModel extends IntranetVM{
         currentEmergencyLeaveBalance = service.getLeaveBalance(employee,"Emergency");
         currentSickLeaveBalance = service.getLeaveBalance(employee,"Sick");
 
+        addCommonTags((PageCtrl) view.getPage());
     }
 
     public void load(){

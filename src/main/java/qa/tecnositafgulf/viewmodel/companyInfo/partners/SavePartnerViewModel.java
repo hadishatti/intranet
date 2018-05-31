@@ -7,6 +7,7 @@ import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.Sessions;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
+import org.zkoss.zk.ui.sys.PageCtrl;
 import org.zkoss.zul.Messagebox;
 import qa.tecnositafgulf.model.companyInfo.Partner;
 import qa.tecnositafgulf.service.CompanyInfoService;
@@ -40,7 +41,7 @@ public class SavePartnerViewModel extends IntranetVM{
             modify = false;
             partner = new Partner();
         }
-
+        addCommonTags((PageCtrl) view.getPage());
     }
 
     @Command

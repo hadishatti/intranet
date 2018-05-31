@@ -8,6 +8,7 @@ import org.zkoss.web.servlet.Servlets;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Sessions;
 import org.zkoss.zk.ui.select.Selectors;
+import org.zkoss.zk.ui.sys.PageCtrl;
 import qa.tecnositafgulf.model.administration.Employee;
 import qa.tecnositafgulf.viewmodel.IntranetVM;
 
@@ -31,6 +32,8 @@ public class HomeViewModel extends IntranetVM {
         ServletRequest request = ServletFns.getCurrentRequest();
         // Detect if client is mobile device (such as Android or iOS devices)
         isMobile = Servlets.getBrowser(request, "mobile") != null;
+		addCommonTags((PageCtrl) view.getPage());
+
 	}
 
 

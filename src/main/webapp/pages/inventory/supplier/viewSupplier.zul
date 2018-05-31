@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?init class="qa.tecnositafgulf.init.AuthenticationInit"?>
+<?page title="View Product Supplier" contentType="text/html;charset=UTF-8" ?>
+<?meta name="viewport" content="width=device-width, initial-scale=1"?>
+
+<zk>
+    <window width="100%" height="100%"
+            apply="org.zkoss.bind.BindComposer"
+            viewModel="@id('vm') @init('qa.tecnositafgulf.viewmodel.inventory.supplier.ProductSupplierViewModel')"
+            style="@load(vm.css)">
+        <!-- Title Bar-->
+        <div width="100%" >
+            <include src="/pages/include/titlebar.zul"/>
+        </div>
+        <borderlayout  animationDisabled="true" width="100%" vflex="1">
+            <center
+                    id="contentPanel"
+                    sclass="contentPanel"
+                    border="0"
+                    style="border: none;"
+                    hflex="1">
+
+                <!-- Content Area -->
+                <borderlayout>
+                    <west border="0" collapsible="true" open="false" style="border: none;" visible="@load(not vm.mobile)">
+                        <caption vflex="1" width="95%">
+                            <include src="/pages/include/panels.zul"/>
+                        </caption>
+                    </west>
+                    <center
+                            border="2"
+                            sclass="newsfeedPanel"
+                            autoscroll="true" >
+                        <vlayout>
+                            <listbox sclass="z-listbox-header-border" model="@load(vm.productSupplierList)" style="align:center;" emptyMessage="No Suppliers Available" hflex="1" vflex="1">
+                                <listhead sizable="true">
+                                    <listheader label="Name" sort="none" onClick="@command('order', orderBy='name')" align="center" />
+                                    <listheader label="Email" sort="none" onClick="@command('order', orderBy='emailId')" align="center" />
+                                    <listheader label="Address" sort="none" onClick="@command('order', orderBy='address')" align="center" />
+                                    <listheader label="Mobile Number" sort="none" onClick="@command('order', orderBy='mobileNumber')" align="center" />
+                                    <listheader label="LandLine Number" sort="none" onClick="@command('order', orderBy='landLineNumber')" align="center" />
+                                    <listheader hflex="max">
+                                        <div align="center">
+                                            <button iconSclass="z-icon-plus" onClick="@command('add')" label="New" visible="true" sclass="add-button"/>
+                                        </div>
+                                    </listheader>
+                                </listhead>
+                                <auxhead>
+                                    <auxheader>
+                                        <textbox value="@load(vm.productSupplierSearchCriteria.likeName) @save(vm.productSupplierSearchCriteria.likeName, before='filter')"  hflex="1" onOK="@command('filter')" />
+                                    </auxheader>
+                                    <auxheader>
+                                        <textbox value="@load(vm.productSupplierSearchCriteria.likeEmail) @save(vm.productSupplierSearchCriteria.likeEmail, before='filter')"  hflex="1" onOK="@command('filter')" />
+                                    </auxheader>
+                                    <auxheader>
+                                        <textbox value="@load(vm.productSupplierSearchCriteria.likeAddress) @save(vm.productSupplierSearchCriteria.likeAddress, before='filter')"  hflex="1" onOK="@command('filter')" />
+                                    </auxheader>
+                                    <auxheader>
+                                        <textbox value="@load(vm.productSupplierSearchCriteria.likeMobileNumber) @save(vm.productSupplierSearchCriteria.likeMobileNumber, before='filter')"  hflex="1" onOK="@command('filter')" />
+                                    </auxheader>
+                                    <auxheader>
+                                        <textbox value="@load(vm.productSupplierSearchCriteria.likeLandlineNumber) @save(vm.productSupplierSearchCriteria.likeLandlineNumber, before='filter')"  hflex="1" onOK="@command('filter')" />
+                                    </auxheader>
+                                    <auxheader align="center">
+                                        <button iconSclass="z-icon-search " sclass="btn-filter" tooltiptext="Filter" onClick=" @command('filter')" />
+                                        <button iconSclass="z-icon-eraser " sclass="btn-filter" tooltiptext="Clear Filter" onClick="@command('clearFilters')" />
+                                    </auxheader>
+                                </auxhead>
+                                <template name="model" var="item">
+                                    <listitem>
+                                        <listcell>
+                                            <label value="@load(item.name)" />
+                                        </listcell>
+                                        <listcell>
+                                            <label value="@load(item.emailId)" />
+                                        </listcell>
+                                        <listcell>
+                                            <label value="@load(item.address)"/>
+                                        </listcell>
+                                        <listcell>
+                                            <label value="@load(item.mobileNumber)"/>
+                                        </listcell>
+                                        <listcell>
+                                            <label value="@load(item.landLineNumber)"/>
+                                        </listcell>
+                                        <listcell>
+                                            <hlayout hflex="1" vflex="1">
+                                                <button iconSclass="z-icon-pencil" tooltiptext="Modify" onClick="@command('modify', item=item)"/>
+                                                <button iconSclass="z-icon-trash" tooltiptext="Delete" onClick="@command('delete', item=item)"/>
+
+                                            </hlayout>
+                                        </listcell>
+                                    </listitem>
+                                </template>
+                            </listbox>
+                            <paging pageSize="@load(vm.productSupplierSearchCriteria.pageSize)" focus="true" totalSize="@load(vm.totalSize)" left="true" detailed="true" activePage="@save(vm.activePage)" />
+                        </vlayout>
+                    </center>
+                </borderlayout>
+            </center>
+        </borderlayout>
+    </window>
+</zk>

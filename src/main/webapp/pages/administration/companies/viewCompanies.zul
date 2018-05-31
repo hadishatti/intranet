@@ -3,10 +3,7 @@
 <?init class="qa.tecnositafgulf.init.AdministratorInit"?>
 <?page title="View Buildings" contentType="text/html;charset=UTF-8" ?>
 <?meta name="viewport" content="width=device-width, initial-scale=1"?>
-<?link href="assets/css/bootstrap-responsive.css" rel="stylesheet"?>
-<?link rel="stylesheet" type="text/css" href="/pages/company-info/bootstrap/css/bootstrap.min.css" ?>
-<?link rel="stylesheet" type="text/css" href="/style/intranet.css" ?>
-<?script src="/pages/company-info/bootstrap/js/bootstrap.min.js"?>
+
 
 
 <zk>
@@ -47,9 +44,24 @@
                                         <listhead sizable="true">
                                             <listheader label="Name" sort="none" />
                                             <listheader label="Address" sort="none"/>
-                                            <listheader hflex="min"/>
+                                            <listheader hflex="max">
+                                                <div align="center">
+                                                    <button iconSclass="z-icon-plus" onClick="@command('add')" label="Add New Building" visible="true" sclass=" btn-footer btn-rmt"/>
+                                                </div>
+                                            </listheader>
                                         </listhead>
-                                    </listbox>
+                                    <auxhead>
+                                        <auxheader>
+                                            <textbox value="@load(vm.companySearchCriteria.likeCompName) @save(vm.companySearchCriteria.likeCompName, before='filter')"  hflex="1" onOK="@command('filter')" />
+                                        </auxheader>
+                                        <auxheader>
+                                            <textbox value="@load(vm.companySearchCriteria.likeCompAddress) @save(vm.companySearchCriteria.likeCompAddress, before='filter')"  hflex="1" onOK="@command('filter')" />
+                                        </auxheader>
+                                        <auxheader align="center">
+                                            <button iconSclass="z-icon-search " sclass="btn-filter" tooltiptext="Filter" onClick=" @command('filter')" />
+                                            <button iconSclass="z-icon-eraser " sclass="btn-filter" tooltiptext="Clear Filter" onClick="@command('clearFilters')" />
+                                        </auxheader>
+                                    </auxhead>
                                     <template name="model" var="item">
                                         <listitem>
                                             <listcell>
@@ -66,11 +78,8 @@
                                             </listcell>
                                         </listitem>
                                     </template>
+                                    </listbox>
                                 </vlayout>
-
-                                <div align="center" sclass="global-footer" width="100%" vflex="min">
-                                    <button iconSclass="z-icon-plus" onClick="@command('add')" label="Add New Building" visible="true" sclass=" btn-footer btn-rmt"/>
-                                </div>
                             </vlayout>
                         </div>
                     </center>

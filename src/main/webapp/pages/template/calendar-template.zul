@@ -2,15 +2,7 @@
 <?init class="qa.tecnositafgulf.init.AuthenticationInit"?>
 <?page title="Home" contentType="text/html;charset=UTF-8" ?>
 <?meta name="viewport" content="width=device-width, initial-scale=1"?>
-<?link href="assets/css/bootstrap-responsive.css" rel="stylesheet"?>
-<?link rel="stylesheet" type="text/css" href="/pages/company-info/bootstrap/css/bootstrap.min.css" ?>
-<?script src="/pages/company-info/bootstrap/js/bootstrap.min.js"?>
-<!--
-<?link rel="stylesheet" type="text/css"	href="/style/bootstrap/v3/bootstrap/themes/bootstrap-${param.theme}.min.css" if="${not empty param.theme}"?>
-<?link rel="stylesheet" type="text/css"	href="/style/bootstrap/v3/bootstrap/themes/bootstrap-default.min.css" if="${empty param.theme}"?>
-<?link rel="stylesheet" type="text/css"	href="/style/bootstrap/v3/assets/css/docs.css" ?>
-<?link rel="stylesheet" type="text/css"	href="/style/bootstrap/v3/assets/css/pygments-manni.css" ?>
--->
+
 <zk>
 
     <window apply="org.zkoss.bind.BindComposer" height="100%" width="100%" style="padding: 0px;">

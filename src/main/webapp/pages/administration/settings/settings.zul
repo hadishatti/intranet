@@ -2,8 +2,8 @@
 
 <?init class="qa.tecnositafgulf.init.AuthenticationInit"?>
 <?init class="qa.tecnositafgulf.init.AdministratorInit"?>
-<?page
-        title="Settings" contentType="text/html;charset=UTF-8" ?>
+<?page title="Settings" contentType="text/html;charset=UTF-8" ?>
+<?meta name="viewport" content="width=device-width, initial-scale=1"?>
 
 <zk>
     <window

@@ -6,6 +6,7 @@ import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
+import org.zkoss.zk.ui.sys.PageCtrl;
 import org.zkoss.zul.Messagebox;
 import qa.tecnositafgulf.model.companyInfo.Client;
 import qa.tecnositafgulf.service.CompanyInfoService;
@@ -34,7 +35,7 @@ public class addClientsVM extends IntranetVM {
         }else{
             client = new Client();
         }
-
+        addCommonTags((PageCtrl) view.getPage());
     }
 
     @Command

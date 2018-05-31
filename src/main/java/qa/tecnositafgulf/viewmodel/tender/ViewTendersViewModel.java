@@ -9,6 +9,7 @@ import org.zkoss.bind.annotation.*;
 import org.zkoss.zk.ui.Desktop;
 import org.zkoss.zk.ui.DesktopUnavailableException;
 import org.zkoss.zk.ui.Executions;
+import org.zkoss.zk.ui.sys.PageCtrl;
 import qa.tecnositafgulf.config.MyProperties;
 import qa.tecnositafgulf.searchcriteria.tender.TenderSearchCriteria;
 import qa.tecnositafgulf.viewmodel.IntranetVM;
@@ -60,6 +61,7 @@ public class ViewTendersViewModel extends IntranetVM{
             timer.cancel();
         timer = new Timer();
         timer.schedule(updatePosts(),0,1000);
+        addCommonTags((PageCtrl) view.getPage());
     }
 
 

@@ -1,10 +1,9 @@
 package qa.tecnositafgulf.viewmodel.administration.settings;
 
-import org.zkoss.bind.annotation.AfterCompose;
-import org.zkoss.bind.annotation.Command;
-import org.zkoss.bind.annotation.ExecutionArgParam;
-import org.zkoss.bind.annotation.NotifyChange;
+import org.zkoss.bind.annotation.*;
+import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Executions;
+import org.zkoss.zk.ui.sys.PageCtrl;
 import org.zkoss.zul.Messagebox;
 import qa.tecnositafgulf.config.MyProperties;
 import qa.tecnositafgulf.model.properties.Property;
@@ -19,13 +18,15 @@ public class SaveSettingsViewModel extends IntranetVM {
     private String propertyPath;
 
     @AfterCompose
-    public void doAfterCompose(@ExecutionArgParam("propertyToModify") Property propertyToModify){
+    public void doAfterCompose(@ExecutionArgParam("propertyToModify") Property propertyToModify, @ContextParam(ContextType.VIEW) Component view){
         init();
         if(propertyToModify != null){
             property = propertyToModify;
         }else{
             property = new Property();
         }
+
+        addCommonTags((PageCtrl) view.getPage());
     }
 
     @Command

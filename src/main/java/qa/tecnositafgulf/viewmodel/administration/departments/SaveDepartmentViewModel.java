@@ -6,6 +6,7 @@ import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
+import org.zkoss.zk.ui.sys.PageCtrl;
 import org.zkoss.zk.ui.util.Clients;
 import org.zkoss.zul.Messagebox;
 import qa.tecnositafgulf.model.administration.Company;
@@ -48,6 +49,8 @@ public class SaveDepartmentViewModel extends IntranetVM{
 			selectedCompany = department.getCompany().toString();
 		else
 			selectedCompany = companies.get(0);
+
+		addCommonTags((PageCtrl) view.getPage());
 	}
 
 	@Command
