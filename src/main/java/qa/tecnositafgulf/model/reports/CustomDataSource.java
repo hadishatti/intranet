@@ -1,4 +1,4 @@
-package qa.tecnositafgulf.model.suppliers;
+package qa.tecnositafgulf.model.reports;
 
 import net.sf.jasperreports.engine.JRDataSource;
 import net.sf.jasperreports.engine.JRException;
