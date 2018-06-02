@@ -1,5 +1,6 @@
 package qa.tecnositafgulf.viewmodel.companyInfo.clients;
 
+import net.sf.jasperreports.engine.*;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.zkoss.bind.BindUtils;
 import org.zkoss.bind.annotation.*;
@@ -10,15 +11,19 @@ import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
 import org.zkoss.zk.ui.sys.PageCtrl;
+import org.zkoss.zul.Filedownload;
 import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Window;
 import qa.tecnositafgulf.config.MyProperties;
 import qa.tecnositafgulf.model.companyInfo.Client;
+import qa.tecnositafgulf.model.reports.ClientReportDataSource;
 import qa.tecnositafgulf.searchcriteria.ClientsSearchCriteira;
 import qa.tecnositafgulf.service.CompanyInfoService;
 import qa.tecnositafgulf.spring.config.AppConfig;
 import qa.tecnositafgulf.viewmodel.IntranetVM;
 
+import java.io.InputStream;
+import java.net.URL;
 import java.util.*;
 
 /**
@@ -35,6 +40,8 @@ public class ClientsVM extends IntranetVM{
     private Timer timer;
     private Desktop desktop;
     private String resource = MyProperties.getInstance().getResourcePath();
+    private String reportPath;
+    private String leaveRequestReportTemplateName;
 
     @AfterCompose
     public void doAfterCompose(@ContextParam(ContextType.VIEW) Component view){
@@ -52,6 +59,27 @@ public class ClientsVM extends IntranetVM{
         timer = new Timer();
         timer.schedule(readNotifications(), 0, 1000);
         addCommonTags((PageCtrl) view.getPage());
+        reportPath = MyProperties.getInstance().getResourcePath()+"/reports/";
+        leaveRequestReportTemplateName = "Clients_Report.jrxml";
+    }
+
+    @Command
+    public void exportPDF() {
+        try {
+            HashMap map = new HashMap<>();
+            JRDataSource dataSource = new ClientReportDataSource();
+            JasperPrint jasperPrint;
+            URL reportTemplateURL = new URL(reportPath+leaveRequestReportTemplateName);
+            InputStream reportTemplate = reportTemplateURL.openStream();
+            JasperReport report = JasperCompileManager.compileReport(reportTemplate);
+            jasperPrint = JasperFillManager.fillReport(report, map, dataSource);
+            byte[] document = JasperExportManager.exportReportToPdf(jasperPrint);
+            Filedownload.save(document, "application/pdf", "Clients_Report");
+        }catch (Exception e){
+            Messagebox.show("An error occurred! \n"+e.toString(), "Error", Messagebox.OK, Messagebox.ERROR);
+            return;
+        }
+
     }
 
     public void loadData(){

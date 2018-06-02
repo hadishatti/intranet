@@ -45,6 +45,8 @@ public class ClientReportDataSource implements JRDataSource {
         } else if ("link".equals(fieldName)) {
             value = data.get(index).getLink();
         }
+        if ("imagePath".equals(fieldName))
+            value = MyProperties.getInstance().getImagePath()+"/gbdg-logo.jpeg";
 
         return value;
     }
