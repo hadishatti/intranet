@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 
 <?init class="qa.tecnositafgulf.init.AuthenticationInit"?>
-<?page title="View Suppliers" contentType="text/html;charset=UTF-8" ?>
+<?page title="Edit Suppliers" contentType="text/html;charset=UTF-8" ?>
 <?meta name="viewport" content="width=device-width, initial-scale=1"?>
 
 
@@ -47,7 +47,7 @@
                                     <listheader hflex="max">
                                         <div align="center">
                                             <button iconSclass="z-icon-plus" onClick="@command('saveSupplier')" label="New" visible="true" sclass="add-button"/>
-                                            <button zclass="z-button" onClick="@command('viewReport')" label="Export" visible="true" sclass="export-button"/>
+                                            <button iconSclass="z-icon-download" onClick="@command('exportPDF')" label="Export" visible="true" sclass="add-button"/>
                                         </div>
                                     </listheader>
                                 </listhead>

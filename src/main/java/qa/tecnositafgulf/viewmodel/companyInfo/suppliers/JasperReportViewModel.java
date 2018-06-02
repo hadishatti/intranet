@@ -5,7 +5,7 @@ import org.zkoss.bind.annotation.NotifyChange;
 import org.zkoss.zul.ListModelList;
 import qa.tecnositafgulf.config.ReportConfig;
 import qa.tecnositafgulf.config.ReportType;
-import qa.tecnositafgulf.model.reports.CustomDataSource;
+import qa.tecnositafgulf.model.reports.SupplierDatasource;
 import qa.tecnositafgulf.viewmodel.IntranetVM;
 
 import java.util.Arrays;
@@ -31,7 +31,7 @@ public class JasperReportViewModel  extends IntranetVM {
     public void showReport() {
         reportConfig = new ReportConfig();
         reportConfig.setType(reportType);
-        reportConfig.setDataSource(new CustomDataSource());
+        reportConfig.setDataSource(new SupplierDatasource());
     }
      
     public ListModelList<ReportType> getReportTypesModel() {

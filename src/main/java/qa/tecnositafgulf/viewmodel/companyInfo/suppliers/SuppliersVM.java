@@ -1,5 +1,6 @@
 package qa.tecnositafgulf.viewmodel.companyInfo.suppliers;
 
+import net.sf.jasperreports.engine.*;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.zkoss.bind.annotation.*;
 import org.zkoss.zk.ui.Component;
@@ -8,9 +9,11 @@ import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
 import org.zkoss.zk.ui.sys.PageCtrl;
 import org.zkoss.zk.ui.util.Clients;
+import org.zkoss.zul.Filedownload;
 import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Window;
 import qa.tecnositafgulf.config.MyProperties;
+import qa.tecnositafgulf.model.reports.SupplierDatasource;
 import qa.tecnositafgulf.model.suppliers.Supplier;
 import qa.tecnositafgulf.searchcriteria.SupplierSearchCriteria;
 import qa.tecnositafgulf.service.AuthenticationService;
@@ -18,6 +21,8 @@ import qa.tecnositafgulf.service.SupplierService;
 import qa.tecnositafgulf.spring.config.AppConfig;
 import qa.tecnositafgulf.viewmodel.IntranetVM;
 
+import java.io.InputStream;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -40,6 +45,8 @@ public class SuppliersVM extends IntranetVM{
     private List<Supplier> suppliers;
     private AuthenticationService authenticationService;
     private SupplierSearchCriteria supplierSearchCriteria;
+    private String reportPath;
+    private String leaveRequestReportTemplateName;
 
     @AfterCompose
     public void createAndPopulateHtml(@ContextParam(ContextType.VIEW) Component view){
@@ -52,6 +59,27 @@ public class SuppliersVM extends IntranetVM{
         visible = false;
         readSuppliers();
         addCommonTags((PageCtrl) view.getPage());
+        reportPath = MyProperties.getInstance().getResourcePath()+"/reports/";
+        leaveRequestReportTemplateName = "Supplier_Report.jrxml";
+    }
+
+    @Command
+    public void exportPDF() {
+        try {
+            HashMap map = new HashMap<>();
+            JRDataSource dataSource = new SupplierDatasource();
+            JasperPrint jasperPrint;
+            URL reportTemplateURL = new URL(reportPath+leaveRequestReportTemplateName);
+            InputStream reportTemplate = reportTemplateURL.openStream();
+            JasperReport report = JasperCompileManager.compileReport(reportTemplate);
+            jasperPrint = JasperFillManager.fillReport(report, map, dataSource);
+            byte[] document = JasperExportManager.exportReportToPdf(jasperPrint);
+            Filedownload.save(document, "application/pdf", "Suppliers_Report");
+        }catch (Exception e){
+            Messagebox.show("An error occurred! \n"+e.toString(), "Error", Messagebox.OK, Messagebox.ERROR);
+            return;
+        }
+
     }
 
     public void loadData(){
@@ -111,7 +139,9 @@ public class SuppliersVM extends IntranetVM{
 
     @Command
     public void saveSupplier(){
-            Executions.sendRedirect("/pages/company-info/suppliers/saveSupplier.zul");
+        final Map<String, Supplier> params = new HashMap<String, Supplier>();
+        params.put("productToModify", null);
+        ((Window) Executions.getCurrent().createComponents("/pages/company-info/suppliers/saveSupplier.zul",null, params)).doModal();
     }
 
     @Command

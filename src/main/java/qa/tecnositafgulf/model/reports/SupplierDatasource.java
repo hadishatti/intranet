@@ -15,7 +15,7 @@ import java.util.List;
 /**
  * @author Ledio
  */
-public class CustomDataSource implements JRDataSource {
+public class SupplierDatasource implements JRDataSource {
 
     private SupplierService supplierService;
 
@@ -26,7 +26,7 @@ public class CustomDataSource implements JRDataSource {
  
     private int index = -1;
  
-    public CustomDataSource() {
+    public SupplierDatasource() {
     }
  
     public boolean next() throws JRException {
@@ -56,6 +56,8 @@ public class CustomDataSource implements JRDataSource {
         } else if ("id".equals(fieldName)){
             value = data.get(index).getId();
         }
+        if ("imagePath".equals(fieldName))
+            value = MyProperties.getInstance().getImagePath()+"/gbdg-logo.jpeg";
 
         return value;
     }

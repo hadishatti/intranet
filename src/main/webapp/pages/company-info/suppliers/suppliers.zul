@@ -76,7 +76,6 @@
                             </html>
                             <div align="center">
                                 <button zclass="z-button" onClick="@command('viewSuppliers')" label="Modify" visible="@load(vm.visible)" sclass=" btn-footer btn-rmt"/>
-                                <button zclass="z-button" onClick="@command('viewReport')" label="View Report" visible="true" sclass=" btn-footer btn-rmt"/>
                             </div>
                         </div>
                     </center>
