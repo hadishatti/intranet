@@ -42,7 +42,11 @@
                                 <listhead sizable="true">
                                     <listheader label="Image" align="center" />
                                     <listheader label="Info" align="center"/>
-                                    <listheader visible="@load(vm.isAdministrator())" hflex="min"/>
+                                    <listheader visible="@load(vm.isAdministrator())" hflex="max">
+                                        <div align="center">
+                                            <button iconSclass="z-icon-plus" onClick="@command('add')" label="New" sclass="add-button"/>
+                                        </div>
+                                    </listheader>
                                 </listhead>
                                 <auxhead>
                                     <auxheader colspan="2" sclass="z-auxheader">
@@ -89,11 +93,7 @@
                                     </listitem>
                                 </template>
                             </listbox>
-
                             <paging pageSize="@load(vm.searchCriteria.pageSize)" focus="true" totalSize="@load(vm.totalSize)" left="true" detailed="true" activePage="@save(vm.activePage)" />
-                            <div align="center">
-                                <button visible="@load(vm.isAdministrator())" iconSclass="z-icon-plus" onClick="@command('add')" label="Add New Contact" sclass=" btn-footer btn-rmt"/>
-                            </div>
                         </vlayout>
                     </center>
                 </borderlayout>

@@ -48,6 +48,8 @@ public class PartnerReportDataSource implements JRDataSource {
         } else if (name.equals("img")) {
             val = MyProperties.getInstance().getImagePath()  + partnerList.get(index).getImg();
         }
+        if ("imagePath".equals(name))
+            val = MyProperties.getInstance().getImagePath()+"/gbdg-logo.jpeg";
 
         return val;
     }

@@ -84,7 +84,7 @@ public class ViewLeaveRequestsViewModel extends IntranetVM{
         currentEmergencyLeaveBalance = service.getLeaveBalance(employee,"Emergency");
         currentSickLeaveBalance = service.getLeaveBalance(employee,"Sick");
 
-        reportPath = MyProperties.getInstance().getProperty("resPath")+"/reports/";
+        reportPath = MyProperties.getInstance().getResourcePath()+"/reports/";
         leaveRequestReportTemplateName = "LeaveRequestReport.jrxml";
 
         addCommonTags((PageCtrl) view.getPage());
@@ -153,6 +153,14 @@ public class ViewLeaveRequestsViewModel extends IntranetVM{
             return;
         }
 
+    }
+
+    @Command
+    @NotifyChange("leaveRequests")
+    public void add(){
+        final Map<String, LeaveRequest> params = new HashMap<>();
+        params.put("emergencyToModify", null);
+        ((Window) Executions.getCurrent().createComponents("/pages/hr/saveLeaveRequest.zul", null, params)).doModal();
     }
 
 

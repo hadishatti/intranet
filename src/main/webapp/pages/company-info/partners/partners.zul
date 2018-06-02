@@ -92,7 +92,6 @@
                                 <html content="@load(vm.htmlContent)"></html>
                             <div visible="@load(vm.isAdministrator())" align="center">
                                 <button href="/pages/company-info/partners/modifyPartner.zul" label="Modify partners" visible="true" sclass=" btn-footer btn-rmt"/>
-                                <button href="/pages/company-info/partners/reportPartner.zul" label="Report" visible="true" sclass=" btn-footer btn-rmt"/>
                             </div>
                         </div>
                         <!-- /.container -->

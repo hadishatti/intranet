@@ -1,5 +1,6 @@
 package qa.tecnositafgulf.viewmodel.companyInfo.partners;
 
+import net.sf.jasperreports.engine.*;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.zkoss.bind.annotation.*;
 import org.zkoss.zk.ui.Component;
@@ -7,15 +8,19 @@ import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
 import org.zkoss.zk.ui.sys.PageCtrl;
+import org.zkoss.zul.Filedownload;
 import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Window;
 import qa.tecnositafgulf.config.MyProperties;
 import qa.tecnositafgulf.model.companyInfo.Partner;
+import qa.tecnositafgulf.model.reports.PartnerReportDataSource;
 import qa.tecnositafgulf.searchcriteria.PartnerSearchCriteria;
 import qa.tecnositafgulf.service.CompanyInfoService;
 import qa.tecnositafgulf.spring.config.AppConfig;
 import qa.tecnositafgulf.viewmodel.IntranetVM;
 
+import java.io.InputStream;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -32,6 +37,8 @@ public class ViewPartnersVM extends IntranetVM {
     private Integer totalSize;
     private PartnerSearchCriteria searchCriteria;
     private String resource = MyProperties.getInstance().getResourcePath();
+    private String reportPath;
+    private String leaveRequestReportTemplateName;
 
     @Init
     public void init(){
@@ -42,6 +49,9 @@ public class ViewPartnersVM extends IntranetVM {
         this.setActivePage(this.searchCriteria.getStartIndex());
         loadData();
         htmlContent = prepareHtml();
+        reportPath = MyProperties.getInstance().getResourcePath()+"/reports/";
+        leaveRequestReportTemplateName = "partner-report.jrxml";
+
     }
 
     @AfterCompose
@@ -86,6 +96,25 @@ public class ViewPartnersVM extends IntranetVM {
         this.setTotalSize(this.service.getPartnersCount(searchCriteria));
         this.searchCriteria.setStartIndex(getActivePage());
         this.partners = this.service.getPartners(searchCriteria);
+    }
+
+    @Command
+    public void exportPDF() {
+        try {
+            HashMap map = new HashMap<>();
+            JRDataSource dataSource = new PartnerReportDataSource();
+            JasperPrint jasperPrint;
+            URL reportTemplateURL = new URL(reportPath+leaveRequestReportTemplateName);
+            InputStream reportTemplate = reportTemplateURL.openStream();
+            JasperReport report = JasperCompileManager.compileReport(reportTemplate);
+            jasperPrint = JasperFillManager.fillReport(report, map, dataSource);
+            byte[] document = JasperExportManager.exportReportToPdf(jasperPrint);
+            Filedownload.save(document, "application/pdf", "Partners_Report");
+        }catch (Exception e){
+            Messagebox.show("An error occurred! \n"+e.toString(), "Error", Messagebox.OK, Messagebox.ERROR);
+            return;
+        }
+
     }
 
     @Command

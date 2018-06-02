@@ -41,7 +41,11 @@
                                                 onClick="@command('order', orderBy='productName')" align="center"/>
                                     <listheader label="Description" sort="none"
                                                 onClick="@command('order', orderBy='productDesc')" align="center"/>
-                                    <listheader hflex="min"/>
+                                    <listheader hflex="max">
+                                        <div align="center">
+                                            <button iconSclass="z-icon-plus" onClick="@command('add')" label="New" visible="true" sclass="add-button"/>
+                                        </div>
+                                    </listheader>
                                 </listhead>
                                 <auxhead>
                                     <auxheader sclass="z-auxheader">
@@ -91,10 +95,6 @@
                             <paging pageSize="@load(vm.productSearchCriteria.pageSize)" focus="true"
                                     totalSize="@load(vm.totalSize)" left="true" detailed="true"
                                     activePage="@save(vm.activePage)"/>
-                            <div align="center" sclass="global-footer" width="100%" vflex="min">
-                                <button iconSclass="z-icon-plus" onClick="@command('add')" label="Add New Product"
-                                        visible="true" sclass=" btn-footer btn-rmt"/>
-                            </div>
                         </vlayout>
                     </center>
                 </borderlayout>

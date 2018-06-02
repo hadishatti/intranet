@@ -61,7 +61,7 @@ public class ViewEmergencyLeavesViewModel extends IntranetVM {
         selectedApplicants = new ArrayList<>(applicants);
         leaveSearchCriteria = new LeaveRequestSearchCriteria();
         load();
-        reportPath = MyProperties.getInstance().getProperty("resPath")+"/reports/";
+        reportPath = MyProperties.getInstance().getResourcePath()+"/reports/";
         leaveRequestReportTemplateName = "LeaveRequestReport.jrxml";
 
         addCommonTags((PageCtrl) view.getPage());

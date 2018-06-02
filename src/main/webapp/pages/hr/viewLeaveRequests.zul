@@ -69,11 +69,6 @@
                             <center>
                                 <vlayout>
                                     <vlayout hflex="1" vflex="1">
-                                        <div align="center" width="100%" vflex="min">
-                                            <vlayout>
-                                                <button iconSclass="z-icon-plus" href="/pages/hr/saveLeaveRequest.zul" label="New Leave Request" visible="@load(vm.isApproverConfigured())"/>
-                                            </vlayout>
-                                        </div>
                                         <separator height="20px"/>
                                         <listbox sclass="z-listbox-header-border" model="@bind(vm.leaveRequests)" style="align:center;" emptyMessage="No Leave Request Available" hflex="1" vflex="1">
                                             <listhead sizable="true">
@@ -85,7 +80,11 @@
                                                 <listheader label="With Tickets" sort="none" onClick="@command('order', orderBy='tickets')" align="center" />
                                                 <listheader label="Status" sort="none" onClick="@command('order', orderBy='status')" align="center" />
                                                 <listheader label="Appr./Ref./Canc. On" tooltiptext="Approved/Refused/Cancelled On" sort="none" onClick="@command('order', orderBy='approvedOn')" align="center" />
-                                                <listheader hflex="max"/>
+                                                <listheader hflex="max">
+                                                    <div align="center">
+                                                        <button iconSclass="z-icon-plus" onClick="@command('add')" label="New" visible="@load(vm.isApproverConfigured())" sclass="add-button"/>
+                                                    </div>
+                                                </listheader>
                                             </listhead>
                                             <auxhead>
                                                 <auxheader>

@@ -62,7 +62,7 @@ public class ViewSickLeavesViewModel extends IntranetVM {
         selectedApplicants = new ArrayList<>(applicants);
         leaveSearchCriteria = new LeaveRequestSearchCriteria();
 
-        reportPath = MyProperties.getInstance().getProperty("resPath")+"/reports/";
+        reportPath = MyProperties.getInstance().getResourcePath()+"/reports/";
         leaveRequestReportTemplateName = "LeaveRequestReport.jrxml";
 
         load();

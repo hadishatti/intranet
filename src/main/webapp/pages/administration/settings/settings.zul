@@ -49,7 +49,7 @@
                                         <listheader label="Path" sort="none" onClick="@command('order', orderBy='value')" align="center"/>
                                         <listheader hflex="min">
                                             <div align="center" sclass="global-footer" width="100%" vflex="min">
-                                                <button iconSclass="z-icon-plus" label="New" onClick="@command('addNew')" sclass="btn-footer"/>
+                                                <button iconSclass="z-icon-plus" label="New" onClick="@command('addNew')" sclass="add-button"/>
                                             </div>
                                         </listheader>
                                     </listhead>

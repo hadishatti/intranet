@@ -48,7 +48,8 @@
                                     <listheader label="Source" sort="none" onClick="@command('order', orderBy='img')"/>
                                     <listheader hflex="max">
                                         <div align="center">
-                                            <button iconSclass="z-icon-plus" onClick="@command('add')" label="Newr" visible="true" sclass="add-button"/>
+                                            <button iconSclass="z-icon-plus" onClick="@command('add')" label="New" visible="true" sclass="add-button"/>
+                                            <button iconSclass="z-icon-download" onClick="@command('exportPDF')" label="Export" visible="true" sclass="add-button"/>
                                         </div>
                                     </listheader>
                                 </listhead>

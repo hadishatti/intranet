@@ -44,6 +44,9 @@
                             <label class="my-4" width="80%" value="Our Projects" style="font-size: 30pt;font-weight:bold;padding: 50px;"/>
                             <separator/>
                             <div width="80%"  style="margin: auto;">
+                                <div align="center" style="padding-top: 20px;">
+                                    <button visible="@load(vm.isAdministrator())" iconSclass="z-icon-plus" onClick="@command('add')" label="Add New Project" sclass=" btn-footer btn-rmt"/>
+                                </div>
                                 <bandbox  autodrop="true" readonly="true" style="float:right;" placeholder="Search...">
                                     <bandpopup  hflex="1" height="100%">
                                         <tablelayout columns="2">
@@ -162,9 +165,6 @@
                                 </template>
                             </listbox>
                             <paging pageSize="@load(vm.searchCriteria.pageSize)" focus="true" totalSize="@load(vm.totalSize)" left="true" detailed="true" activePage="@save(vm.activePage)" />
-                            <div align="center" style="padding-top: 20px;">
-                                <button visible="@load(vm.isAdministrator())" iconSclass="z-icon-plus" onClick="@command('add')" label="Add New Project" sclass=" btn-footer btn-rmt"/>
-                            </div>
                         </div>
                     </center>
                 </borderlayout>
