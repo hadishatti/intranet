@@ -32,7 +32,7 @@
                             sclass="newsfeedPanel"
                             autoscroll="true" >
                                 <vlayout>
-                                    <listbox sclass="z-listbox-header-border" model="@load(vm.productStockList)" style="align:center;" emptyMessage="No Product Available" hflex="1" vflex="1">
+                                    <listbox sclass="z-listbox-header-border" model="@load(vm.productStockList)" emptyMessage="No Product Available" hflex="1" vflex="1">
                                         <listhead sizable="true">
                                             <listheader label="Product Name" sort="none" onClick="@command('order', orderBy='productName')" align="center" />
                                             <listheader label="Location Name" sort="none" onClick="@command('order', orderBy='name')" align="center" />
@@ -76,8 +76,10 @@
                                     <paging pageSize="@load(vm.productStockSearchCriteria.pageSize)" focus="true" totalSize="@load(vm.totalSize)" left="true" detailed="true" activePage="@save(vm.activePage)" />
                                 </vlayout>
                     </center>
+                    <south/>
                 </borderlayout>
             </center>
+            <south/>
         </borderlayout>
     </window>
 </zk>

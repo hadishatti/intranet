@@ -41,12 +41,14 @@
                             autoscroll="true" >
 
                         <vlayout hflex="1" vflex="1">
-                            <listbox sclass="z-listbox-header-border" model="@load(vm.profiles)" style="align:center;" emptyMessage="No Profile Available">
+                            <listbox sclass="z-listbox-header-border" model="@load(vm.profiles)" style="align:center;" emptyMessage="No Profile Available" hflex="1" vflex="1">
                                 <listhead sizable="true">
                                     <listheader hflex="1" label="Name" sort="none" onClick="@command('order', orderBy='name')" align="center" />
                                     <listheader hflex="1" label="Description" sort="none" onClick="@command('order', orderBy='description')" align="center" />
                                     <listheader hflex="max">
-                                        <button iconSclass="z-icon-plus" onClick="@command('add')" label="New" visible="true" sclass="add-button"/>
+                                        <div align="center">
+                                            <button iconSclass="z-icon-plus" onClick="@command('add')" label="New" visible="true" sclass="add-button"/>
+                                        </div>
                                     </listheader>
                                 </listhead>
                                 <auxhead>
@@ -81,9 +83,11 @@
                             <paging pageSize="@load(vm.profileSearchCriteria.pageSize)" focus="true" totalSize="@load(vm.totalSize)" left="true" detailed="true" activePage="@save(vm.activePage)"/>
                         </vlayout>
                     </center>
+                    <south/>
                 </borderlayout>
                 <!--  -->
             </center>
+            <south/>
             <!--  -->
         </borderlayout>
         <!--  -->

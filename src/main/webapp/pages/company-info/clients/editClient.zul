@@ -49,8 +49,8 @@
                                     <listheader label="Link" sort="none"     onClick="@command('order', orderBy='link')" align="center"/>
                                     <listheader hflex="max">
                                         <div align="center">
-                                            <button iconSclass="z-icon-plus" onClick="@command('add')" label="Add New Client" visible="true" sclass="add-button"/>
-                                            <button iconSclass="z-icon-download" tooltiptext="Get Report" label="Export" onClick="@command('report')" sclass="export-button"/>
+                                            <button iconSclass="z-icon-plus" onClick="@command('add')" label="New" visible="true" sclass="add-button"/>
+                                            <button iconSclass="z-icon-download" label="Export" onClick="@command('report')" sclass="export-button"/>
                                         </div>
                                     </listheader>
                                 </listhead>
@@ -101,9 +101,11 @@
                             <paging pageSize="@load(vm.clientsSearchCriteria.pageSize)" focus="true" totalSize="@load(vm.totalSize)" left="true" detailed="true" activePage="@save(vm.activePage)" />
                         </vlayout>
                     </center>
+                    <south/>
                 </borderlayout>
                 <!--  -->
             </center>
+            <south/>
             <!--  -->
         </borderlayout>
         <!--  -->

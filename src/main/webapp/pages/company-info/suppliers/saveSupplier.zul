@@ -10,7 +10,7 @@
     <window
             apply="org.zkoss.bind.BindComposer"
             viewModel="@id('vm') @init('qa.tecnositafgulf.viewmodel.companyInfo.suppliers.SaveSupplierVM')"
-            sclass="intranet-popup" width="80%" closable="true" title="Save Supplier" style="@load(vm.css)">
+            sclass="intranet-popup" width="60%" closable="true" title="Save Supplier" style="@load(vm.css)">
             <vlayout>
                 <groupbox closable="true" mold="3d" form="@id('fx') @load(vm.supplier) @save(vm.supplier, before='saveSupplier')" vflex="1" contentStyle="overflow:auto;">
                     <listbox hflex="1">
@@ -24,7 +24,7 @@
                                 <label value="Supplier"/>
                             </listcell>
                             <listcell>
-                                <textbox constraint="no empty"  value="@load(fx.name) @save(fx.name,before='saveSupplier')"/>
+                                <textbox hflex="1" constraint="no empty"  value="@load(fx.name) @save(fx.name,before='saveSupplier')"/>
                             </listcell>
                         </listitem>
                         <listitem>
@@ -32,7 +32,7 @@
                                 <label value="Domain Url"/>
                             </listcell>
                             <listcell>
-                                <textbox constraint="no empty"  value="@load(fx.domainURL) @save(fx.domainURL,before='saveSupplier')"/>
+                                <textbox hflex="1"constraint="no empty"  value="@load(fx.domainURL) @save(fx.domainURL,before='saveSupplier')"/>
                             </listcell>
                         </listitem>
                         <listitem>
@@ -40,7 +40,7 @@
                                 <label value="Image Source"/>
                             </listcell>
                             <listcell>
-                                <textbox constraint="no empty"  value="@load(fx.imgSrc) @save(fx.imgSrc,before='saveSupplier')"/>
+                                <textbox hflex="1"constraint="no empty"  value="@load(fx.imgSrc) @save(fx.imgSrc,before='saveSupplier')"/>
                             </listcell>
                         </listitem>
                     </listbox>

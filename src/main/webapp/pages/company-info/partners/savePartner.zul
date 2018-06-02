@@ -10,7 +10,7 @@
     <window
             apply="org.zkoss.bind.BindComposer"
             viewModel="@id('vm') @init('qa.tecnositafgulf.viewmodel.companyInfo.partners.SavePartnerViewModel')"
-            sclass="intranet-popup" width="80%" closable="true" title="Save Partner" style="@load(vm.css)">
+            sclass="intranet-popup" width="60%" closable="true" title="Save Partner" style="@load(vm.css)">
             <vlayout>
                 <groupbox closable="true" mold="3d" form="@id('fx') @load(vm.partner) @save(vm.partner, before='savePartner')" vflex="1" contentStyle="overflow:auto;">
                     <listbox hflex="1">
@@ -23,7 +23,7 @@
                                 <label value="Name"/>
                             </listcell>
                             <listcell>
-                                <textbox constraint="no empty"  value="@load(fx.name) @save(fx.name,before='savePartner')"/>
+                                <textbox hflex="1" constraint="no empty"  value="@load(fx.name) @save(fx.name,before='savePartner')"/>
                             </listcell>
                         </listitem>
                         <listitem>
@@ -31,7 +31,7 @@
                                 <label value="Link"/>
                             </listcell>
                             <listcell>
-                                <textbox constraint="no empty"  value="@load(fx.href) @save(fx.href,before='savePartner')"/>
+                                <textbox hflex="1" constraint="no empty"  value="@load(fx.href) @save(fx.href,before='savePartner')"/>
                             </listcell>
                         </listitem>
                         <listitem>
@@ -39,7 +39,7 @@
                                 <label value="Source"/>
                             </listcell>
                             <listcell>
-                                <textbox constraint="no empty"  value="@load(fx.img) @save(fx.img,before='savePartner')"/>
+                                <textbox hflex="1" constraint="no empty"  value="@load(fx.img) @save(fx.img,before='savePartner')"/>
                             </listcell>
                         </listitem>
                     </listbox>

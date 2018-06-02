@@ -39,9 +39,11 @@
                             </html>
                         </div>
                     </center>
+                    <south/>
                 </borderlayout>
                 <!--  -->
             </center>
+            <south/>
             <!--  -->
         </borderlayout>
         <!--  -->

@@ -44,8 +44,8 @@
                                 this.$bind_(a, b, c);
                             }
                         ]]></attribute>
-                        <vbox   hflex="1" align="center">
-                            <grid hflex="1" style="max-width:400px">
+                        <vbox hflex="1" align="center">
+                            <grid hflex="1" style="max-width:400px;border:none;">
                                 <columns>
                                     <column hflex="1" align="right" />
                                     <column hflex="2" />
@@ -64,20 +64,20 @@
                             <label id="error" sclass="warn" value="@bind(vm.error)" />
                             <button label="Login" onClick="@command('login')"/>
                             <script type="text/javascript">
-                                    function loginFailed() { //Shake the window
-                                        var originalLeft = jq("$loginWindow").position().left;
-                                        var loginWin = jq("$loginWindow");
-                                        var previousBackgroundColor = loginWin.css('background-color');
+                                function loginFailed() { //Shake the window
+                                var originalLeft = jq("$loginWindow").position().left;
+                                var loginWin = jq("$loginWindow");
+                                var previousBackgroundColor = loginWin.css('background-color');
 
-                                        loginWin.animate({left : originalLeft - 25, backgroundColor : "red"}, 50)
-                                            .animate({left : originalLeft}, 50)
-                                            .animate({left : originalLeft + 25}, 50)
-                                            .animate({left : originalLeft}, 50)
-                                            .animate({backgroundColor : previousBackgroundColor}, 250,
-                                                function() {
-                                                    loginWin.css('background-color', '');
-                                                } );
-                                    }
+                                loginWin.animate({left : originalLeft - 25, backgroundColor : "red"}, 50)
+                                .animate({left : originalLeft}, 50)
+                                .animate({left : originalLeft + 25}, 50)
+                                .animate({left : originalLeft}, 50)
+                                .animate({backgroundColor : previousBackgroundColor}, 250,
+                                function() {
+                                loginWin.css('background-color', '');
+                                } );
+                                }
                             </script>
                         </vbox>
                     </window>

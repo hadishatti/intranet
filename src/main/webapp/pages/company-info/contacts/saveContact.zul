@@ -10,7 +10,7 @@
     <window
             apply="org.zkoss.bind.BindComposer"
             viewModel="@id('vm') @init('qa.tecnositafgulf.viewmodel.companyInfo.contacts.SaveContactViewModel')"
-            sclass="intranet-popup" width="80%" closable="true" title="Save Contact" style="@load(vm.css)">
+            sclass="intranet-popup" width="60%" closable="true" title="Save Contact" style="@load(vm.css)">
             <vlayout>
                 <groupbox closable="true" mold="3d" form="@id('fx') @load(vm.contact) @save(vm.contact, before='saveContact')" vflex="1" contentStyle="overflow:auto;">
                     <listbox hflex="1">
@@ -23,7 +23,7 @@
                                 <label value="Name"/>
                             </listcell>
                             <listcell>
-                                <textbox constraint="no empty"  value="@load(fx.name) @save(fx.name,before='saveContact')"/>
+                                <textbox hflex="1" constraint="no empty"  value="@load(fx.name) @save(fx.name,before='saveContact')"/>
                             </listcell>
                         </listitem>
                         <listitem>
@@ -31,7 +31,7 @@
                                 <label value="Surname"/>
                             </listcell>
                             <listcell>
-                                <textbox constraint="no empty"  value="@load(fx.surname) @save(fx.surname,before='saveContact')"/>
+                                <textbox hflex="1" constraint="no empty"  value="@load(fx.surname) @save(fx.surname,before='saveContact')"/>
                             </listcell>
                         </listitem>
                         <listitem>
@@ -39,7 +39,7 @@
                                 <label value="Mobile"/>
                             </listcell>
                             <listcell>
-                                <textbox constraint="no empty"  value="@load(fx.number) @save(fx.number,before='saveContact')"/>
+                                <textbox hflex="1" constraint="no empty"  value="@load(fx.number) @save(fx.number,before='saveContact')"/>
                             </listcell>
                         </listitem>
                         <listitem>
@@ -47,7 +47,7 @@
                                 <label value="Email"/>
                             </listcell>
                             <listcell>
-                                <textbox constraint="no empty"  value="@load(fx.email) @save(fx.email,before='saveContact')"/>
+                                <textbox hflex="1" constraint="no empty"  value="@load(fx.email) @save(fx.email,before='saveContact')"/>
                             </listcell>
                         </listitem>
                         <listitem>
@@ -55,7 +55,7 @@
                                 <label value="Position"/>
                             </listcell>
                             <listcell>
-                                <textbox constraint="no empty"  value="@load(fx.position) @save(fx.position,before='saveContact')"/>
+                                <textbox hflex="1" constraint="no empty"  value="@load(fx.position) @save(fx.position,before='saveContact')"/>
                             </listcell>
                         </listitem>
                         <listitem>

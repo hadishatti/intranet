@@ -115,10 +115,11 @@ public class IntranetVM {
     }
 
     public void addCommonTags(PageCtrl page){
-        String path = MyProperties.getInstance().getProperty("resPath");
-        page.addAfterHeadTags("<link rel=\"stylesheet\" type=\"text/css\" href=\"" + path + "/style/intranet.css\" />");
-        page.addAfterHeadTags("<script src=\"" + path + "/bootstrap/js/bootstrap.min.js\"></script>");
-        page.addAfterHeadTags("<link rel=\"stylesheet\" type=\"text/css\" href=\"" + path + "/bootstrap/css/bootstrap.min.css\" />");
+        String stylePath = MyProperties.getInstance().getProperty("stylePath");
+        String resPath = MyProperties.getInstance().getProperty("resPath");
+        page.addAfterHeadTags("<link rel=\"stylesheet\" type=\"text/css\" href=\"" + stylePath+"\" />");
+        page.addAfterHeadTags("<script src=\"" + resPath + "/bootstrap/js/bootstrap.min.js\"></script>");
+        page.addAfterHeadTags("<link rel=\"stylesheet\" type=\"text/css\" href=\"" + resPath + "/bootstrap/css/bootstrap.min.css\" />");
     }
 
     private void toFloatingMenu(){

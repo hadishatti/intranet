@@ -42,7 +42,7 @@
                         <vlayout >
                             <div style="text-align:center;" visible="@bind(vm.viewNewPolicyProcedure)">
                                 <hlayout>
-                                    <button sclass="icon-add" width="200px" label="New Policy or Procedure" onClick="@command('newPolicyProcedure')"/>
+                                    <button sclass="z-icon-plus" width="200px" label="New Policy or Procedure" onClick="@command('newPolicyProcedure')"/>
                                 </hlayout>
                             </div>
                             <listbox children="@bind(vm.policyProcedureModel)">

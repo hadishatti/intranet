@@ -39,7 +39,7 @@
                                         value="HelpDesk"/>
                             </cell>
                             <div style="text-align:center;" visible="@bind(vm.viewNewHelpDesk)">
-                                <button sclass="icon-add" width="200px" label="New HelpDesk" onClick="@command('newHelpDesk')"/>
+                                <button visible="@load(vm.isAdministrator())" sclass="z-icon-plus" width="200px" label="New HelpDesk" onClick="@command('newHelpDesk')"/>
                             </div>
                             <div align="right">
                                 <bandbox autodrop="true" readonly="true">
@@ -140,8 +140,10 @@
                             </listbox>
                         </vlayout>
                     </center>
+                    <south/>
                 </borderlayout>
             </center>
+            <south/>
         </borderlayout>
     </window>
 </zk>

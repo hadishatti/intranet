@@ -5,27 +5,6 @@
 <?meta name="viewport" content="width=device-width, initial-scale=1"?>
 
 <zk xmlns:ca="client/attribute">
-	<style>
-		.z-row-inner:first-child{
-		background: #1a4280;
-		}
-
-		.z-row-inner:first-child:hover{
-		background: #0090cf;
-		}
-
-		.z-row-inner:last-child{
-		background: #0093f9;
-		}
-
-		.z-row-inner:last-child:hover{
-		background: #0090cf;
-		}
-
-		.rowtxt{
-		color: white;
-		}
-	</style>
 	<window
 			id="mainWindow"
 			apply="org.zkoss.bind.BindComposer"
@@ -54,12 +33,12 @@
 					<center border="2" autoscroll="true">
 						<vlayout >
 							<div style="text-align:center;" visible="@bind(vm.viewNewEvent)">
-								<button sclass="icon-add" width="200px" label="New Company Event" onClick="@command('newEvent')"/>
+								<button iconSclass="z-icon-plus" width="200px" label="Post New" onClick="@command('newEvent')"/>
 							</div>
 							<div align="right">
 								<div hflex="4"/>
 								<div hflex="4"/>
-								<bandbox autodrop="true" hflex="2" readonly="true" placeholder="Search...">
+								<bandbox autodrop="true" hflex="2" readonly="true" placeholder="Search..." style="background-color:#0064ed;;color:#ffffff;opacity:0.8;">
 									<bandpopup style="max-width:330px">
 										<grid hflex="1">
 											<columns>
@@ -68,11 +47,11 @@
 											</columns>
 											<rows>
 												<row>
-													<label value="Author: " hflex="1" sclass="rowtxt"/>
+													<label value="Author" hflex="1"/>
 													<textbox value="@load(vm.companyEventsSearchCriteria.likeAuthor) @save(vm.companyEventsSearchCriteria.likeAuthor, before='filter')"  hflex="1" onOK="@command('filter')" />
 												</row>
 												<row>
-													<label value="Created On: " hflex="1" sclass="rowtxt"/>
+													<label value="Created On" hflex="1"/>
 													<bandbox autodrop="true" hflex="1" readonly="true">
 														<bandpopup hflex="1" height="100%">
 															<vlayout>
@@ -89,11 +68,11 @@
 													</bandbox>
 												</row>
 												<row>
-													<label value="Title: " hflex="1" sclass="rowtxt"/>
+													<label value="Title" hflex="1"/>
 													<textbox value="@load(vm.companyEventsSearchCriteria.likeTitle) @save(vm.companyEventsSearchCriteria.likeTitle, before='filter')"  hflex="1" onOK="@command('filter')" />
 												</row>
 												<row>
-													<label value="Content: " hflex="1" sclass="rowtxt"/>
+													<label value="Content" hflex="1"/>
 													<textbox value="@load(vm.companyEventsSearchCriteria.likeContent) @save(vm.companyEventsSearchCriteria.likeContent, before='filter')"  hflex="1" onOK="@command('filter')" />
 												</row>
 												<row>
@@ -109,13 +88,13 @@
 									</bandpopup>
 								</bandbox>
 							</div>
-							<listbox children="@bind(vm.companyEventModel)">
+							<listbox children="@bind(vm.companyEventModel)" sclass="whatsnew">
 								<template name="children" var="companyEvent">
 									<listitem>
 										<listcell>
 											<div>
 												<vlayout>
-													<hlayout>
+													<hlayout sclass="postedby">
 														<image
 																sclass="post-avatar"
 																src="@load(vm.getAuthorImage(companyEvent))" width="60px"/>
@@ -189,11 +168,12 @@
 									</listitem>
 								</template>
 							</listbox>
-							<paging pageSize="@load(vm.companyEventsSearchCriteria.pageSize)" focus="true" totalSize="@load(vm.totalSize)" left="true" detailed="true" activePage="@save(vm.activePage)" />
 						</vlayout>
 					</center>
+					<south/>
 				</borderlayout>
 			</center>
+			<south/>
 		</borderlayout>
 	</window>
 </zk>

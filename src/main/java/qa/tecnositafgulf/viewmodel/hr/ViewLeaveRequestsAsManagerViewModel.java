@@ -49,7 +49,7 @@ public class ViewLeaveRequestsAsManagerViewModel extends IntranetVM {
         service = context.getBean(LeaveRequestService.class);
         adminService = context.getBean(AdministrationService.class);
         employee = (Employee) Sessions.getCurrent().getAttribute("employee");
-        if(!isManager())
+        if(!super.isAdministrator() && !isManager())
             Executions.sendRedirect("/pages/home.zul");
         leaveSearchCriteria = new LeaveRequestSearchCriteria();
         approvedLeaveSearchCriteria = new LeaveRequestSearchCriteria();
@@ -106,32 +106,81 @@ public class ViewLeaveRequestsAsManagerViewModel extends IntranetVM {
         timer.schedule(update(),0,1000);
         addCommonTags((PageCtrl) view.getPage());
     }
-    
-    public void load(){
-        this.leaveSearchCriteria.setApplicants(selectedApplicants);
-        this.leaveSearchCriteria.setApprover(employee);
-        this.setTotalSize(service.listLastLeaveRequestsByApproverCount(leaveSearchCriteria));
-        this.leaveSearchCriteria.setStartIndex(getActivePage());
+
+    private void deleteNotifications(List<LeaveRequest> leaveRequests){
+        for(LeaveRequest request : leaveRequests){
+            service.deleteLeaveRequestManagerNotification(request, employee);
+        }
+    }
+
+    public boolean isUpdate(List<LeaveRequest> newLeaveRequests){
+        if(leaveRequests.size()!=newLeaveRequests.size())
+            return true;
+        else{
+            for(int i=0; i<leaveRequests.size();i++)
+                if(leaveRequests.get(i).equals(newLeaveRequests.get(i)))
+                    return true;
+        }
+        return false;
+
+    }
+
+    public List<LeaveRequest> updateLR(){
+        List<LeaveRequest> leaveRequests;
         if(selectedApplicants.isEmpty())
             leaveRequests = new ArrayList<>();
         else
             leaveRequests = service.listLastLeaveRequestsByApprover(leaveSearchCriteria);
-        for(LeaveRequest request : leaveRequests){
-            service.deleteLeaveRequestManagerNotification(request, employee);
+        return leaveRequests;
+    }
+
+    public boolean isApprovedUpdate(List<LeaveRequest> newLeaveRequests){
+        if(approvedLeaveRequests.size()!=newLeaveRequests.size())
+            return true;
+        else{
+            for(int i=0; i<approvedLeaveRequests.size();i++)
+                if(approvedLeaveRequests.get(i).equals(newLeaveRequests.get(i)))
+                    return true;
         }
-        BindUtils.postNotifyChange(null, null, this, "leaveRequests");
+        return false;
+
+    }
+
+    public List<LeaveRequest> updateApprovedLR(){
+        List<LeaveRequest> leaveRequests;
+        if(selectedApprovedApplicants.isEmpty())
+            leaveRequests = new ArrayList<>();
+        else
+            leaveRequests = service.listLastLeaveRequestsByApprover(approvedLeaveSearchCriteria);
+        return leaveRequests;
+    }
+    
+    public void load(){
+        if(leaveRequests==null)
+            leaveRequests = new ArrayList<>();
+        this.leaveSearchCriteria.setApplicants(selectedApplicants);
+        this.leaveSearchCriteria.setApprover(employee);
+        this.setTotalSize(service.listLastLeaveRequestsByApproverCount(leaveSearchCriteria));
+        this.leaveSearchCriteria.setStartIndex(getActivePage());
+        List<LeaveRequest> newLR = updateLR();
+        if(isUpdate(newLR)) {
+            leaveRequests = newLR;
+            deleteNotifications(leaveRequests);
+            BindUtils.postNotifyChange(null, null, this, "leaveRequests");
+        }
     }
 
     public void loadApproved(){
+        if(approvedLeaveRequests==null)
+            approvedLeaveRequests = new ArrayList<>();
         this.approvedLeaveSearchCriteria.setApplicants(selectedApprovedApplicants);
         this.setTotalSizeApproved(service.listLastLeaveRequestsByApplicantsCount(approvedLeaveSearchCriteria));
         this.approvedLeaveSearchCriteria.setStartIndex(getActivePageApproved());
-        if(selectedApprovedApplicants.isEmpty())
-            approvedLeaveRequests = new ArrayList<>();
-        else
-            approvedLeaveRequests = service.listLastLeaveRequestsByApprover(leaveSearchCriteria);
-        approvedLeaveRequests = service.listLastLeaveRequestsByApplicants(approvedLeaveSearchCriteria);
-        BindUtils.postNotifyChange(null, null, this, "approvedLeaveRequests");
+        List<LeaveRequest> newLR = updateApprovedLR();
+        if(isApprovedUpdate(newLR)) {
+            approvedLeaveRequests = newLR;
+            BindUtils.postNotifyChange(null, null, this, "approvedLeaveRequests");
+        }
     }
 
     @Command

@@ -9,9 +9,9 @@
 
 <zk>
     <window
-            apply="org.zkoss.bind.BindComposer"
+            apply="org.zkoss.bind.BindComposer" sclass="intranet-popup"
             viewModel="@id('vm') @init('qa.tecnositafgulf.viewmodel.companyInfo.projects.SaveProjectViewModel')"
-            height="80%" width="80%" closable="true" title="Save Project" style="@load(vm.css)">
+            width="60%" closable="true" title="Save Project" style="@load(vm.css)">
 
         <zscript><![CDATA[
 	    import qa.tecnositafgulf.config.ProjectsStatusEnum;
@@ -30,7 +30,7 @@
                             <label value="Name"/>
                         </listcell>
                         <listcell>
-                            <textbox constraint="no empty"  value="@load(fx.name) @save(fx.name,before='saveProject')"/>
+                            <textbox hflex="1" constraint="no empty"  value="@load(fx.name) @save(fx.name,before='saveProject')"/>
                         </listcell>
                     </listitem>
                     <listitem>
@@ -38,7 +38,7 @@
                             <label value="Code"/>
                         </listcell>
                         <listcell>
-                            <textbox constraint="no empty"  value="@load(fx.projectCode) @save(fx.projectCode,before='saveProject')"/>
+                            <textbox hflex="1" constraint="no empty"  value="@load(fx.projectCode) @save(fx.projectCode,before='saveProject')"/>
                         </listcell>
                     </listitem>
                     <listitem>
@@ -46,7 +46,7 @@
                             <label value="Manager"/>
                         </listcell>
                         <listcell>
-                            <combobox model="@load(vm.employeeList)" selectedItem="@load(fx.manager) @save(fx.manager,before='saveProject')"/>
+                            <combobox hflex="1" model="@load(vm.employeeList)" selectedItem="@load(fx.manager) @save(fx.manager,before='saveProject')"/>
                         </listcell>
                     </listitem>
                     <listitem>
@@ -54,7 +54,7 @@
                             <label value="Description"/>
                         </listcell>
                         <listcell>
-                            <textbox height = "400px;" width="400px" multiline="true" constraint="no empty"  value="@load(fx.content) @save(fx.content,before='saveProject')"/>
+                            <textbox vflex="max" hflex="1"  multiline="true" constraint="no empty"  value="@load(fx.content) @save(fx.content,before='saveProject')"/>
                         </listcell>
                     </listitem>
                     <listitem>
@@ -62,7 +62,7 @@
                             <label value="Starting Date"/>
                         </listcell>
                         <listcell>
-                            <datebox value="@load(fx.startingDate) @save(fx.startingDate, before='saveProject')"/>
+                            <datebox hflex="1" value="@load(fx.startingDate) @save(fx.startingDate, before='saveProject')"/>
                         </listcell>
                     </listitem>
                     <listitem>
@@ -70,7 +70,7 @@
                             <label value="Actual Starting Date"/>
                         </listcell>
                         <listcell>
-                            <datebox value="@load(fx.actualStartingDate) @save(fx.actualStartingDate, before='saveProject')"/>
+                            <datebox hflex="1" value="@load(fx.actualStartingDate) @save(fx.actualStartingDate, before='saveProject')"/>
                         </listcell>
                     </listitem>
                     <listitem>
@@ -78,7 +78,7 @@
                             <label value="Ending Date"/>
                         </listcell>
                         <listcell>
-                            <datebox value="@load(fx.endingDate) @save(fx.endingDate, before='saveProject')"/>
+                            <datebox hflex="1" value="@load(fx.endingDate) @save(fx.endingDate, before='saveProject')"/>
                         </listcell>
                     </listitem>
                     <listitem>
@@ -86,7 +86,7 @@
                             <label value="Actual Ending Date"/>
                         </listcell>
                         <listcell>
-                            <datebox value="@load(fx.actualEndingDate) @save(fx.actualEndingDate, before='saveProject')"/>
+                            <datebox hflex="1" value="@load(fx.actualEndingDate) @save(fx.actualEndingDate, before='saveProject')"/>
                         </listcell>
                     </listitem>
                     <listitem>
@@ -94,7 +94,7 @@
                             <label value="Status"/>
                         </listcell>
                         <listcell>
-                            <combobox model="${model}" selectedItem="@load(fx.status) @save(fx.status,before='saveProject')"/>
+                            <combobox hflex="1" model="${model}" selectedItem="@load(fx.status) @save(fx.status,before='saveProject')"/>
                         </listcell>
                     </listitem>
                     <listitem>

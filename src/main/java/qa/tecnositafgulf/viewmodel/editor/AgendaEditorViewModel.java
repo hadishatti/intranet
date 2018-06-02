@@ -37,6 +37,7 @@ public class AgendaEditorViewModel  extends IntranetVM {
     private IntranetCalendarEvent calendarEventData;
     private Meeting meeting;
     private String location;
+    private boolean modify;
 
     private boolean visible = false;
 
@@ -77,11 +78,14 @@ public class AgendaEditorViewModel  extends IntranetVM {
 
     private void startEditing(IntranetCalendarEvent calendarEventData, Meeting meeting) {
         this.calendarEventData = calendarEventData;
-        if(meeting==null)
+        if(meeting==null) {
             this.meeting = new Meeting();
+            modify=false;
+        }
         else {
             this.meeting = meeting;
             location = meeting.getLocation();
+            modify=true;
         }
         visible = true;
 
@@ -192,6 +196,14 @@ public class AgendaEditorViewModel  extends IntranetVM {
         }catch (Exception e){
             Messagebox.show("There is already a meeting in the same time with the same name! Check again","Error", Messagebox.OK, Messagebox.EXCLAMATION);
         }
+    }
+
+    public boolean isModify() {
+        return modify;
+    }
+
+    public void setModify(boolean modify) {
+        this.modify = modify;
     }
 
     private class QueueListener implements EventListener<QueueMessage> {

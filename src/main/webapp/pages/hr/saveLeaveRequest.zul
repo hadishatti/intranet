@@ -5,7 +5,7 @@
 
 <zk>
 
-    <window apply="org.zkoss.bind.BindComposer"  viewModel="@id('vm') @init('qa.tecnositafgulf.viewmodel.hr.SaveLeaveRequestViewModel')" sclass="intranet-popup" width="80%" closable="true" title="Save Leave Request" style="@load(vm.css)">
+    <window apply="org.zkoss.bind.BindComposer"  viewModel="@id('vm') @init('qa.tecnositafgulf.viewmodel.hr.SaveLeaveRequestViewModel')" sclass="intranet-popup" width="60%" closable="true" title="Save Leave Request" style="@load(vm.css)">
         <vlayout>
             <groupbox closable="true" mold="3d" contentStyle="overflow:auto;">
                 <listbox hflex="1">
@@ -18,7 +18,7 @@
                             <label value="Type"/>
                         </listcell>
                         <listcell>
-                            <combobox readonly="true" width="250px" model="@load(vm.types)" selectedItem="@bind(vm.selectedType)"/>
+                            <combobox readonly="true" hflex="1"  model="@load(vm.types)" selectedItem="@bind(vm.selectedType)"/>
                         </listcell>
                     </listitem>
                     <listitem>
@@ -26,7 +26,7 @@
                             <label value="From"/>
                         </listcell>
                         <listcell>
-                            <datebox width="250px" constraint="no past,no empty" value="@bind(vm.leaveFrom)"/>
+                            <datebox hflex="1"  constraint="no past,no empty" value="@bind(vm.leaveFrom)"/>
                         </listcell>
                     </listitem>
                     <listitem>
@@ -34,7 +34,7 @@
                             <label value="To"/>
                         </listcell>
                         <listcell>
-                            <datebox width="250px" constraint="no past,no empty" value="@bind(vm.leaveTo)"/>
+                            <datebox hflex="1"  constraint="no past,no empty" value="@bind(vm.leaveTo)"/>
                         </listcell>
                     </listitem>
                     <listitem visible="@bind(vm.selectedType eq 'Casual')">
@@ -42,7 +42,7 @@
                             <label value="Reason for Casual Leave"/>
                         </listcell>
                         <listcell>
-                            <textbox value="@bind(vm.casualLeaveReason)" />
+                            <textbox hflex="1" value="@bind(vm.casualLeaveReason)" />
                         </listcell>
                     </listitem>
                     <listitem>
@@ -50,7 +50,7 @@
                             <label value="Address on Holiday"/>
                         </listcell>
                         <listcell>
-                            <textbox rows="5" cols="30" value="@bind(vm.addressOnHoliday)" />
+                            <textbox hflex="1" rows="5" cols="30" value="@bind(vm.addressOnHoliday)" />
                         </listcell>
                     </listitem>
                     <listitem>
@@ -58,7 +58,7 @@
                             <label value="Phone Number on Holiday"/>
                         </listcell>
                         <listcell>
-                            <hlayout>
+                            <hlayout hflex="1" >
                                 <checkbox label="@load(vm.applicant.phoneNumber1)" checked="@bind(vm.addPhone1)"/>
                                 <checkbox label="@load(vm.applicant.phoneNumber2)" visible="@load(not empty vm.applicant.phoneNumber2)" checked="@bind(vm.addPhone2)"/>
                                 <checkbox id="otherPhone" label="Other" onCheck="@command('viewOtherPhone')"/>
@@ -78,7 +78,7 @@
                             <label value="Acting on my behalf during the holiday"/>
                         </listcell>
                         <listcell>
-                            <combobox model="@load(vm.employees)" selectedItem="@bind(vm.employeeOnBehalf)" constraint="no empty">
+                            <combobox hflex="1" model="@load(vm.employees)" selectedItem="@bind(vm.employeeOnBehalf)" constraint="no empty">
                                 <template name="model">
                                     <comboitem label="@load(each)" />
                                 </template>
@@ -98,7 +98,7 @@
                             <label value="Message To Your Manager (Optional)"/>
                         </listcell>
                         <listcell>
-                            <textbox rows="10" cols="50" value="@bind(vm.message)"/>
+                            <textbox hflex="1" rows="10" cols="50" value="@bind(vm.message)"/>
                         </listcell>
                     </listitem>
                 </listbox>

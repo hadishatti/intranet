@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-
 <?init class="qa.tecnositafgulf.init.AuthenticationInit"?>
 <?init class="qa.tecnositafgulf.init.AdministratorInit"?>
 <?page title="Settings" contentType="text/html;charset=UTF-8" ?>
@@ -40,66 +39,66 @@
                             autoscroll="true" >
 
 
-                        <div>
-                            <vlayout>
-                                <listbox hflex="1" model="@load(vm.propertyModel) @save(vm.propertyModel, before='changeProperties')">
-                                    <listhead sizable="true">
-                                        <listheader label="Key" sort="none" onClick="@command('order', orderBy='key')" align="center"/>
-                                        <listheader label="Description" sort="none" onClick="@command('order', orderBy='description')" align="center"/>
-                                        <listheader label="Path" sort="none" onClick="@command('order', orderBy='value')" align="center"/>
-                                        <listheader hflex="min">
-                                            <div align="center" sclass="global-footer" width="100%" vflex="min">
-                                                <button iconSclass="z-icon-plus" label="New" onClick="@command('addNew')" sclass="btn-footer"/>
-                                            </div>
-                                        </listheader>
-                                    </listhead>
-                                    <auxhead>
-                                        <auxheader sclass="z-auxheader">
-                                            <textbox value="@load(vm.propertySearchCriteria.likeKey) @save(vm.propertySearchCriteria.likeKey, before='filter')"  hflex="1" onOK="@command('filter')" />
-                                        </auxheader>
-                                        <auxheader sclass="z-auxheader">
-                                            <textbox value="@load(vm.propertySearchCriteria.likeDescription) @save(vm.propertySearchCriteria.likeDescription, before='filter')"  hflex="1" onOK="@command('filter')" />
-                                        </auxheader>
-                                        <auxheader sclass="z-auxheader">
-                                            <textbox value="@load(vm.propertySearchCriteria.likeValue) @save(vm.propertySearchCriteria.likeValue, before='filter')"  hflex="1" onOK="@command('filter')" />
-                                        </auxheader>
-                                        <auxheader sclass="z-auxheader" align="center">
-                                            <button iconSclass="z-icon-search " sclass="btn-filter" tooltiptext="Filter" onClick=" @command('filter')" />
-                                            <button iconSclass="z-icon-eraser " sclass="btn-filter" tooltiptext="Clear Filter" onClick="@command('clearFilters')" />
-                                        </auxheader>
-                                    </auxhead>
-                                    <template name="model" var="item">
-                                        <listitem>
-                                            <listcell>
-                                                <label value="@load(item.key)"/>
-                                            </listcell>
-                                            <listcell>
-                                                <label value="@load(item.description)"/>
-                                            </listcell>
-                                            <listcell>
-                                                <textbox constraint="no empty"  value="@load(item.value) @save(item.value,before='changeProperties')"/>
-                                            </listcell>
-                                            <listcell>
-                                                <hlayout>
-                                                    <button iconSclass="z-icon-pencil" tooltiptext="Modify" onClick="@command('modify', item=item)"/>
-                                                    <button iconSclass="z-icon-trash" tooltiptext="Delete" onClick="@command('delete', item=item)"/>
-                                                </hlayout>
-                                            </listcell>
-                                        </listitem>
-                                    </template>
-                                </listbox>
+                        <vlayout hflex="1" vflex="1">
+                            <listbox sclass="z-listbox-header-border" vflex="1" hflex="1" model="@load(vm.propertyModel) @save(vm.propertyModel, before='changeProperties')">
+                                <listhead sizable="true">
+                                    <listheader label="Key" sort="none" onClick="@command('order', orderBy='key')" align="center"/>
+                                    <listheader label="Description" sort="none" onClick="@command('order', orderBy='description')" align="center"/>
+                                    <listheader label="Path" sort="none" onClick="@command('order', orderBy='value')" align="center"/>
+                                    <listheader hflex="max">
+                                        <div align="center">
+                                            <button iconSclass="z-icon-plus" label="New" onClick="@command('addNew')" sclass="add-button"/>
+                                        </div>
+                                    </listheader>
+                                </listhead>
+                                <auxhead>
+                                    <auxheader sclass="z-auxheader">
+                                        <textbox value="@load(vm.propertySearchCriteria.likeKey) @save(vm.propertySearchCriteria.likeKey, before='filter')"  hflex="1" onOK="@command('filter')" />
+                                    </auxheader>
+                                    <auxheader sclass="z-auxheader">
+                                        <textbox value="@load(vm.propertySearchCriteria.likeDescription) @save(vm.propertySearchCriteria.likeDescription, before='filter')"  hflex="1" onOK="@command('filter')" />
+                                    </auxheader>
+                                    <auxheader sclass="z-auxheader">
+                                        <textbox value="@load(vm.propertySearchCriteria.likeValue) @save(vm.propertySearchCriteria.likeValue, before='filter')"  hflex="1" onOK="@command('filter')" />
+                                    </auxheader>
+                                    <auxheader sclass="z-auxheader" align="center">
+                                        <button iconSclass="z-icon-search " sclass="btn-filter" tooltiptext="Filter" onClick=" @command('filter')" />
+                                        <button iconSclass="z-icon-eraser " sclass="btn-filter" tooltiptext="Clear Filter" onClick="@command('clearFilters')" />
+                                    </auxheader>
+                                </auxhead>
+                                <template name="model" var="item">
+                                    <listitem>
+                                        <listcell>
+                                            <label value="@load(item.key)"/>
+                                        </listcell>
+                                        <listcell>
+                                            <label value="@load(item.description)"/>
+                                        </listcell>
+                                        <listcell>
+                                            <textbox constraint="no empty"  value="@load(item.value) @save(item.value,before='changeProperties')"/>
+                                        </listcell>
+                                        <listcell>
+                                            <hlayout>
+                                                <button iconSclass="z-icon-pencil" tooltiptext="Modify" onClick="@command('modify', item=item)"/>
+                                                <button iconSclass="z-icon-trash" tooltiptext="Delete" onClick="@command('delete', item=item)"/>
+                                            </hlayout>
+                                        </listcell>
+                                    </listitem>
+                                </template>
+                            </listbox>
 
-                                <paging pageSize="@load(vm.propertySearchCriteria.pageSize)" focus="true" totalSize="@load(vm.totalSize)" left="true" detailed="true" activePage="@save(vm.activePage)" />
+                            <paging pageSize="@load(vm.propertySearchCriteria.pageSize)" focus="true" totalSize="@load(vm.totalSize)" left="true" detailed="true" activePage="@save(vm.activePage)" />
 
-                                <div align="center" sclass="global-footer" width="100%" vflex="min">
-                                    <button label="Save Settings" onClick="@command('changeProperties')" sclass="btn-footer" style="padding:10px"/>
-                                </div>
-                            </vlayout>
-                        </div>
+                            <div align="center" sclass="global-footer" width="100%" vflex="min">
+                                <button label="Save Settings" onClick="@command('changeProperties')" sclass="btn-footer" style="padding:10px"/>
+                            </div>
+                        </vlayout>
                     </center>
+                    <south/>
                 </borderlayout>
                 <!--  -->
             </center>
+            <south/>
             <!--  -->
         </borderlayout>
         <!--  -->

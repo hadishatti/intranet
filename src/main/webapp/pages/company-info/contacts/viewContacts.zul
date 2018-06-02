@@ -38,11 +38,15 @@
                             sclass="newsfeedPanel"
                             autoscroll="true" >
                         <vlayout hflex="1" vflex="1">
-                            <listbox sclass="z-listbox-header-border" id="contactlist" model="@load(vm.contacts)" style="align:center;" emptyMessage="No Contact Available" hflex="1" vflex="1">
+                            <listbox sclass="z-listbox-header-border" id="contactlist" model="@load(vm.contacts)" emptyMessage="No Contact Available" hflex="1" vflex="1">
                                 <listhead sizable="true">
                                     <listheader label="Image" align="center" />
                                     <listheader label="Info" align="center"/>
-                                    <listheader visible="@load(vm.isAdministrator())" hflex="min"/>
+                                    <listheader hflex="max">
+                                        <div align="center">
+                                            <button visible="@load(vm.isAdministrator())" iconSclass="z-icon-plus" onClick="@command('add')" label="New" sclass="add-button"/>
+                                        </div>
+                                    </listheader>
                                 </listhead>
                                 <auxhead>
                                     <auxheader colspan="2" sclass="z-auxheader">
@@ -91,14 +95,14 @@
                             </listbox>
 
                             <paging pageSize="@load(vm.searchCriteria.pageSize)" focus="true" totalSize="@load(vm.totalSize)" left="true" detailed="true" activePage="@save(vm.activePage)" />
-                            <div align="center">
-                                <button visible="@load(vm.isAdministrator())" iconSclass="z-icon-plus" onClick="@command('add')" label="Add New Contact" sclass=" btn-footer btn-rmt"/>
-                            </div>
+
                         </vlayout>
                     </center>
+                    <south/>
                 </borderlayout>
                 <!--  -->
             </center>
+            <south/>
             <!--  -->
         </borderlayout>
         <!--  -->

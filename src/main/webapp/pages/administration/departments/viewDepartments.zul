@@ -37,13 +37,13 @@
                             sclass="newsfeedPanel"
                             autoscroll="true" >
                         <vlayout hflex="1" vflex="1">
-                            <listbox id="departmentlist" sclass="z-listbox-header-border" model="@load(vm.departments)" style="align:center;" emptyMessage="No Department Available" hflex="1" vflex="1">
+                            <listbox id="departmentlist" sclass="z-listbox-header-border" model="@load(vm.departments)" emptyMessage="No Department Available" hflex="1" vflex="1">
                                 <listhead sizable="true">
                                     <listheader label="Name" sort="none" onClick="@command('order', orderBy='name')" align="center"  />
                                     <listheader label="Building" sort="none" onClick="@command('order', orderBy='company')" align="center"/>
                                     <listheader hflex="max">
                                         <div align="center">
-                                            <button iconSclass="z-icon-plus" onClick="@command('add')" label="Add New Department" visible="true" sclass=" btn-footer btn-rmt"/>
+                                            <button iconSclass="z-icon-plus" onClick="@command('add')" label="New" visible="true" sclass="add-button"/>
                                         </div>
                                     </listheader>
                                 </listhead>
@@ -79,9 +79,11 @@
                             <paging pageSize="@load(vm.departmentsSearchCriteira.pageSize)" focus="true" totalSize="@load(vm.totalSize)" left="true" detailed="true" activePage="@save(vm.activePage)" />
                         </vlayout>
                     </center>
+                    <south/>
                 </borderlayout>
                 <!--  -->
             </center>
+            <south/>
             <!--  -->
         </borderlayout>
         <!--  -->

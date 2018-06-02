@@ -10,6 +10,8 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Maven: com.google.code.gson:gson:2.7" level="project" />
+    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.1.4" level="project" />
     <orderEntry type="library" name="Maven: org.zkoss.zk:zkbind:8.5.0" level="project" />
     <orderEntry type="library" name="Maven: org.zkoss.zk:zul:8.5.0" level="project" />
     <orderEntry type="library" name="Maven: org.zkoss.zk:zk:8.5.0" level="project" />
@@ -27,12 +29,16 @@
     <orderEntry type="library" name="Maven: com.google.errorprone:error_prone_annotations:2.0.18" level="project" />
     <orderEntry type="library" name="Maven: com.google.guava:guava:20.0" level="project" />
     <orderEntry type="library" name="Maven: com.google.protobuf:protobuf-java:3.0.2" level="project" />
-    <orderEntry type="library" name="Maven: com.google.code.gson:gson:2.7" level="project" />
     <orderEntry type="library" name="Maven: com.google.code.findbugs:jsr305:3.0.1" level="project" />
     <orderEntry type="library" name="Maven: com.google.jsinterop:jsinterop-annotations:1.0.0" level="project" />
     <orderEntry type="library" name="Maven: org.javassist:javassist:3.18.2-GA" level="project" />
     <orderEntry type="library" name="Maven: org.zkoss.zk:zkmax:8.5.0" level="project" />
+    <orderEntry type="library" name="Maven: com.google.code.gson:gson:2.3.1" level="project" />
+    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.5.1" level="project" />
     <orderEntry type="library" name="Maven: org.zkoss.zk:zkex:8.5.0" level="project" />
+    <orderEntry type="library" name="Maven: org.jfree:jfreechart:1.0.14" level="project" />
+    <orderEntry type="library" name="Maven: org.jfree:jcommon:1.0.17" level="project" />
+    <orderEntry type="library" name="Maven: com.jhlabs:filters:2.0.235" level="project" />
     <orderEntry type="library" name="Maven: org.zkoss.zk:zkplus:8.5.0" level="project" />
     <orderEntry type="library" name="Maven: org.zkoss.zk:zhtml:8.5.0" level="project" />
     <orderEntry type="library" name="Maven: org.zkoss:zsoup:1.8.2.5" level="project" />
@@ -76,7 +82,6 @@
     <orderEntry type="library" name="Maven: stax:stax:1.2.0" level="project" />
     <orderEntry type="library" name="Maven: javax.xml.stream:stax-api:1.0-2" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-core:2.1.4" level="project" />
-    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.1.4" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.1.4" level="project" />
     <orderEntry type="library" name="Maven: org.apache.lucene:lucene-core:4.5.1" level="project" />
     <orderEntry type="library" name="Maven: org.apache.lucene:lucene-analyzers-common:4.5.1" level="project" />

@@ -1,35 +1,8 @@
 <?init class="qa.tecnositafgulf.init.AuthenticationInit"?>
-<?page
-        title="View Tenders"
-        contentType="text/html;charset=UTF-8" ?>
+<?page title="View Tenders" contentType="text/html;charset=UTF-8" ?>
 <?meta name="viewport" content="width=device-width, initial-scale=1"?>
-<?link href="assets/css/bootstrap-responsive.css" rel="stylesheet"?>
-<?link rel="stylesheet" type="text/css" href="/pages/company-info/bootstrap/css/bootstrap.min.css" ?>
-<?link rel="stylesheet" type="text/css" href="/style/intranet.css" ?>
-<?script src="/pages/company-info/bootstrap/js/bootstrap.min.js"?>
 
 <zk>
-    <style>
-        .z-row-inner:first-child{
-        background: #1a4280;
-        }
-
-        .z-row-inner:first-child:hover{
-        background: #0090cf;
-        }
-
-        .z-row-inner:last-child{
-        background: #0093f9;
-        }
-
-        .z-row-inner:last-child:hover{
-        background: #0090cf;
-        }
-
-        .rowtxt{
-        color: white;
-        }
-    </style>
     <window
             id="mainWindow"
             apply="org.zkoss.bind.BindComposer"
@@ -58,12 +31,12 @@
                     <center border="2" autoscroll="true">
                         <vlayout >
                             <div style="text-align:center;" visible="@bind(vm.viewNewTender)">
-                                <button sclass="icon-add" width="200px" label="New Tender" onClick="@command('newTender')"/>
+                                <button iconSclass="z-icon-plus" width="200px" label="Post New" onClick="@command('newTender')"/>
                             </div>
                             <div align="right">
                                 <div hflex="4"/>
                                 <div hflex="4"/>
-                                <bandbox autodrop="true" hflex="2" readonly="true" placeholder="Search...">
+                                <bandbox autodrop="true" hflex="2" readonly="true" placeholder="Search..." style="background-color:#0064ed;;color:#ffffff;opacity:0.8;">
                                     <bandpopup style="max-width:330px">
                                         <grid hflex="1">
                                             <columns>
@@ -72,14 +45,13 @@
                                             </columns>
                                             <rows>
                                                 <row>
-
-                                                    <label value="Author: " hflex="1" sclass="rowtxt"/>
+                                                    <label value="Author" hflex="1"/>
                                                     <textbox value="@load(vm.tenderSearchCriteria.likeAuthor) @save(vm.tenderSearchCriteria.likeAuthor, before='filter')"  hflex="1" onOK="@command('filter')" />
 
                                                 </row>
                                                 <row>
 
-                                                    <label value="Created On: " hflex="1" sclass="rowtxt"/>
+                                                    <label value="Created On" hflex="1"/>
                                                     <bandbox autodrop="true" hflex="1" readonly="true">
                                                         <bandpopup hflex="1" height="100%">
                                                             <vlayout>
@@ -98,24 +70,24 @@
                                                 </row>
                                                 <row>
 
-                                                    <label value="Number: " hflex="1" sclass="rowtxt"/>
+                                                    <label value="Number" hflex="1"/>
                                                     <textbox value="@load(vm.tenderSearchCriteria.likeNumber) @save(vm.tenderSearchCriteria.likeNumber, before='filter')"  hflex="1" onOK="@command('filter')" />
 
                                                 </row>
                                                 <row>
 
-                                                    <label value="Category: " hflex="1" sclass="rowtxt"/>
+                                                    <label value="Category" hflex="1"/>
                                                     <textbox value="@load(vm.tenderSearchCriteria.likeCategory) @save(vm.tenderSearchCriteria.likeCategory, before='filter')"  hflex="1" onOK="@command('filter')" />
 
                                                 </row>
                                                 <row>
 
-                                                    <label value="Content: " hflex="1" sclass="rowtxt"/>
+                                                    <label value="Content" hflex="1"/>
                                                     <textbox value="@load(vm.tenderSearchCriteria.likeContent) @save(vm.tenderSearchCriteria.likeContent, before='filter')"  hflex="1" onOK="@command('filter')" />
 
                                                 </row>
                                                 <row>
-                                                    <label value="Issuing Date: " hflex="1" sclass="rowtxt"/>
+                                                    <label value="Issuing Date" hflex="1"/>
                                                     <bandbox autodrop="true" hflex="1" readonly="true">
                                                         <bandpopup hflex="1" height="100%">
                                                             <vlayout>
@@ -132,7 +104,7 @@
                                                     </bandbox>
                                                 </row>
                                                 <row>
-                                                    <label value="Closing Date: " hflex="1" sclass="rowtxt"/>
+                                                    <label value="Closing Date" hflex="1"/>
                                                     <bandbox autodrop="true" hflex="1" readonly="true">
                                                         <bandpopup hflex="1" height="100%">
                                                             <vlayout>
@@ -161,13 +133,13 @@
                                     </bandpopup>
                                 </bandbox>
                             </div>
-                            <listbox children="@bind(vm.tenderModel)">
+                            <listbox children="@bind(vm.tenderModel)" sclass="whatsnew">
                                 <template name="children" var="tender">
                                     <listitem>
                                         <listcell>
                                             <div>
                                                 <vlayout>
-                                                    <hlayout>
+                                                    <hlayout sclass="postedby">
                                                         <image
                                                                 sclass="post-avatar"
                                                                 src="@load(vm.getAuthorImage(tender))" width="60px"/>
@@ -266,11 +238,12 @@
                                     </listitem>
                                 </template>
                             </listbox>
-                            <paging pageSize="@load(vm.tenderSearchCriteria.pageSize)" focus="true" totalSize="@load(vm.totalSize)" left="true" detailed="true" activePage="@save(vm.activePage)" />
-                        </vlayout>
+                            </vlayout>
                     </center>
+                    <south/>
                 </borderlayout>
             </center>
+            <south/>
         </borderlayout>
     </window>
 </zk>
