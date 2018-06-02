@@ -149,10 +149,7 @@ public class SuppliersVM extends IntranetVM{
         Executions.sendRedirect("/pages/company-info/suppliers/editSuppliers.zul");
     }
 
-    @Command
-    public void viewReport(){
-        Executions.sendRedirect("/pages/company-info/suppliers/supplierReport.zul");
-    }
+
 
     private void readSuppliers(){
         showButton();

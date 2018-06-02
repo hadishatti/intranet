@@ -159,14 +159,6 @@ public class ClientsVM extends IntranetVM{
     }
 
     @Command
-    public void report(){
-        //Executions.sendRedirect("/pages/company-info/clients/report.zul");
-        //((Window) Executions.createComponents("/pages/company-info/clients/report.zul", null, null)).doModal();
-        Window window = (Window) Executions.createComponents("/pages/company-info/clients/report.zul", null, null);
-        window.doModal();
-    }
-
-    @Command
     @NotifyChange("clients")
     public void delete(@BindingParam("item") final Client client){
 
