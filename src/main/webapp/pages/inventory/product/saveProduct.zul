@@ -20,7 +20,7 @@
                                 <label value="Product Category"/>
                             </listcell>
                             <listcell>
-                                <combobox readonly="true" model="@load(vm.productCategoryList)" selectedItem="@bind(vm.selectedProductCategory)"/>
+                                <combobox hflex="1" readonly="true" model="@load(vm.productCategoryList)" selectedItem="@bind(vm.selectedProductCategory)"/>
                             </listcell>
                         </listitem>
                         <listitem>
@@ -28,7 +28,7 @@
                                 <label value="Product Name"/>
                             </listcell>
                             <listcell>
-                                <textbox constraint="no empty"  value="@load(fx.productName) @save(fx.productName,before='saveProduct')"/>
+                                <textbox hflex="1" constraint="no empty"  value="@load(fx.productName) @save(fx.productName,before='saveProduct')"/>
                             </listcell>
                         </listitem>
                         <listitem>
@@ -36,7 +36,7 @@
                                 <label value="Product Description"/>
                             </listcell>
                             <listcell>
-                                <textbox constraint="no empty" value="@load(fx.productDesc) @save(fx.productDesc, before='saveProduct')" />
+                                <textbox hflex="1" constraint="no empty" value="@load(fx.productDesc) @save(fx.productDesc, before='saveProduct')" />
                             </listcell>
                         </listitem>
                     </listbox>

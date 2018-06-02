@@ -5,7 +5,7 @@
 
 <zk>
 
-    <window apply="org.zkoss.bind.BindComposer"  viewModel="@id('vm') @init('qa.tecnositafgulf.viewmodel.hr.ViewLeaveRequestsViewModel')" height="100%" width="100%" style="padding: 0px;">
+    <window apply="org.zkoss.bind.BindComposer"  viewModel="@id('vm') @init('qa.tecnositafgulf.viewmodel.hr.ViewLeaveRequestsViewModel')" height="100%" width="100%" style="@load(vm.css)">
         <!-- Title Bar-->
         <div width="100%" >
             <include src="/pages/include/titlebar.zul"/>
@@ -34,192 +34,180 @@
                             sclass="newsfeedPanel"
                             autoscroll="true" >
 
-
-                        <borderlayout>
-                            <center>
-                                <vlayout>
-                                    <vlayout hflex="1" vflex="1">
-                                        <div align="center" width="100%" vflex="min">
-                                            <vlayout>
-                                                <button iconSclass="z-icon-plus" href="/pages/hr/saveLeaveRequest.zul" label="New Leave Request" visible="@load(vm.isApproverConfigured())"/>
-                                            </vlayout>
+                        <vlayout hflex="1" vflex="1">
+                            <listbox sclass="z-listbox-header-border" model="@bind(vm.leaveRequests)" style="align:center;" emptyMessage="No Leave Request Available" hflex="1" vflex="1">
+                                <listhead sizable="true">
+                                    <listheader label="Leave ID" sort="none" onClick="@command('order', orderBy='number')" align="center" />
+                                    <listheader label="Created On" sort="none" onClick="@command('order', orderBy='createdOn')" align="center" />
+                                    <listheader label="From" sort="none" onClick="@command('order', orderBy='leaveFrom')" align="center" />
+                                    <listheader label="To" sort="none" onClick="@command('order', orderBy='leaveTo')" align="center" />
+                                    <listheader label="Type" sort="none" onClick="@command('order', orderBy='type')" align="center" />
+                                    <listheader label="With Tickets" sort="none" onClick="@command('order', orderBy='tickets')" align="center" />
+                                    <listheader label="Status" sort="none" onClick="@command('order', orderBy='status')" align="center" />
+                                    <listheader label="Appr./Ref./Canc. On" tooltiptext="Approved/Refused/Cancelled On" sort="none" onClick="@command('order', orderBy='approvedOn')" align="center" />
+                                    <listheader hflex="max">
+                                        <div align="center">
+                                            <button iconSclass="z-icon-plus" onClick="@command('add')" label="New" visible="@load(vm.isApproverConfigured())" sclass="add-button"/>
                                         </div>
-                                        <separator height="20px"/>
-                                        <listbox sclass="z-listbox-header-border" model="@bind(vm.leaveRequests)" style="align:center;" emptyMessage="No Leave Request Available" hflex="1" vflex="1">
-                                            <listhead sizable="true">
-                                                <listheader label="Leave ID" sort="none" onClick="@command('order', orderBy='number')" align="center" />
-                                                <listheader label="Created On" sort="none" onClick="@command('order', orderBy='createdOn')" align="center" />
-                                                <listheader label="From" sort="none" onClick="@command('order', orderBy='leaveFrom')" align="center" />
-                                                <listheader label="To" sort="none" onClick="@command('order', orderBy='leaveTo')" align="center" />
-                                                <listheader label="Type" sort="none" onClick="@command('order', orderBy='type')" align="center" />
-                                                <listheader label="With Tickets" sort="none" onClick="@command('order', orderBy='tickets')" align="center" />
-                                                <listheader label="Status" sort="none" onClick="@command('order', orderBy='status')" align="center" />
-                                                <listheader label="Appr./Ref./Canc. On" tooltiptext="Approved/Refused/Cancelled On" sort="none" onClick="@command('order', orderBy='approvedOn')" align="center" />
-                                                <listheader hflex="max"/>
-                                            </listhead>
-                                            <auxhead>
-                                                <auxheader>
-                                                    <textbox value="@load(vm.leaveSearchCriteria.likeLeaveId) @save(vm.leaveSearchCriteria.likeLeaveId, before='filter')"  hflex="1" onOK="@command('filter')" />
-                                                </auxheader>
-                                                <auxheader>
-                                                    <bandbox autodrop="true" readonly="true">
-                                                        <bandpopup hflex="min" height="100%">
-                                                            <vlayout>
-                                                                <hlayout>
-                                                                    <label value="Filter From"  hflex="1"/>
-                                                                    <datebox value="@load(vm.leaveSearchCriteria.createdOnFrom) @save(vm.leaveSearchCriteria.createdOnFrom, before='filter')"  hflex="1" onChange="@command('filter')"/>
-                                                                </hlayout>
-                                                                <hlayout>
-                                                                    <label value="Filter To"  hflex="1"/>
-                                                                    <datebox value="@load(vm.leaveSearchCriteria.createdOnTo) @save(vm.leaveSearchCriteria.createdOnTo, before='filter')"  hflex="1" onChange="@command('filter')"/>
-                                                                </hlayout>
-                                                            </vlayout>
-                                                        </bandpopup>
-                                                    </bandbox>
-                                                </auxheader>
-                                                <auxheader>
-                                                    <bandbox autodrop="true" readonly="true">
-                                                        <bandpopup hflex="min" height="100%">
-                                                            <vlayout>
-                                                                <hlayout>
-                                                                    <label value="Filter From"  hflex="1"/>
-                                                                    <datebox value="@load(vm.leaveSearchCriteria.leaveFromFrom) @save(vm.leaveSearchCriteria.leaveFromFrom, before='filter')"  hflex="1" onChange="@command('filter')"/>
-                                                                </hlayout>
-                                                                <hlayout>
-                                                                    <label value="Filter To"  hflex="1"/>
-                                                                    <datebox value="@load(vm.leaveSearchCriteria.leaveFromTo) @save(vm.leaveSearchCriteria.leaveFromTo, before='filter')"  hflex="1" onChange="@command('filter')"/>
-                                                                </hlayout>
-                                                            </vlayout>
-                                                        </bandpopup>
-                                                    </bandbox>
-                                                </auxheader>
-                                                <auxheader>
-                                                    <bandbox autodrop="true" readonly="true">
-                                                        <bandpopup hflex="min" height="100%">
-                                                            <vlayout>
-                                                                <hlayout>
-                                                                    <label value="Filter From"  hflex="1"/>
-                                                                    <datebox value="@load(vm.leaveSearchCriteria.leaveToFrom) @save(vm.leaveSearchCriteria.leaveToFrom, before='filter')"  hflex="1" onChange="@command('filter')"/>
-                                                                </hlayout>
-                                                                <hlayout>
-                                                                    <label value="Filter To"  hflex="1"/>
-                                                                    <datebox value="@load(vm.leaveSearchCriteria.leaveToTo) @save(vm.leaveSearchCriteria.leaveToTo, before='filter')"  hflex="1" onChange="@command('filter')"/>
-                                                                </hlayout>
-                                                            </vlayout>
-                                                        </bandpopup>
-                                                    </bandbox>
-                                                </auxheader>
-                                                <auxheader>
-                                                    <combobox hflex="1" model="@load(vm.types)" selectedItem="@bind(vm.leaveSearchCriteria.type)" onSelect="@command('filter')">
-                                                        <template name="model">
-                                                            <comboitem label="@load(each)" />
-                                                        </template>
-                                                    </combobox>
-                                                </auxheader>
-                                                <auxheader>
-                                                    <combobox hflex="1" model="@load(vm.tickets)" selectedItem="@bind(vm.leaveSearchCriteria.tickets)" onSelect="@command('filter')">
-                                                        <template name="model">
-                                                            <comboitem label="@load(each)" />
-                                                        </template>
-                                                    </combobox>
-                                                </auxheader>
-                                                <auxheader>
-                                                    <combobox hflex="1" model="@load(vm.states)" selectedItem="@bind(vm.leaveSearchCriteria.status)" onSelect="@command('filter')">
-                                                        <template name="model">
-                                                            <comboitem label="@load(each)" />
-                                                        </template>
-                                                    </combobox>
-                                                </auxheader>
-                                                <auxheader>
-                                                    <bandbox autodrop="true" readonly="true">
-                                                        <bandpopup hflex="min" height="100%">
-                                                            <vlayout>
-                                                                <hlayout>
-                                                                    <label value="Filter From"  hflex="1"/>
-                                                                    <datebox value="@load(vm.leaveSearchCriteria.approvedOnFrom) @save(vm.leaveSearchCriteria.approvedOnFrom, before='filter')"  hflex="1" onChange="@command('filter')"/>
-                                                                </hlayout>
-                                                                <hlayout>
-                                                                    <label value="Filter To"  hflex="1"/>
-                                                                    <datebox value="@load(vm.leaveSearchCriteria.approvedOnTo) @save(vm.leaveSearchCriteria.approvedOnTo, before='filter')"  hflex="1" onChange="@command('filter')"/>
-                                                                </hlayout>
-                                                            </vlayout>
-                                                        </bandpopup>
-                                                    </bandbox>
-                                                </auxheader>
-
-                                                <auxheader align="center">
-                                                    <button iconSclass="z-icon-search " sclass="btn-filter" tooltiptext="Filter" onClick=" @command('filter')" />
-                                                    <button iconSclass="z-icon-eraser " sclass="btn-filter" tooltiptext="Clear Filter" onClick="@command('clearFilters')" />
-                                                </auxheader>
-                                            </auxhead>
-                                            <template name="model" var="item">
-                                                <listitem onClick="@command('showMessage', item=item)">
-                                                    <listcell hflex="min">
-                                                        <label value="@load(item.number)" />
-                                                    </listcell>
-                                                    <listcell hflex="min">
-                                                        <label value="@load(item.createdOn)"/>
-                                                    </listcell >
-                                                    <listcell hflex="min">
-                                                        <label value="@load(item.leaveFrom)"/>
-                                                    </listcell>
-                                                    <listcell hflex="min">
-                                                        <label value="@load(item.leaveTo)" />
-                                                    </listcell>
-                                                    <listcell hflex="min">
-                                                        <label value="@load(item.type)"/>
-                                                    </listcell>
-                                                    <listcell hflex="min">
-                                                        <label value="@load(item.tickets?'Yes':'No')"/>
-                                                    </listcell>
-                                                    <listcell hflex="min">
-                                                        <label value="@load(vm.getDescription(item.status))"/>
-                                                    </listcell>
-                                                    <listcell hflex="min">
-                                                        <label value="@load(item.approvedOn)"/>
-                                                    </listcell>
-                                                    <listcell hflex="min" >
-                                                        <div align="center" width="100%">
-                                                            <button iconSclass="z-icon-eye" tooltiptext="View Details" onClick="@command('viewDetails', request=item)"/>
-                                                            <button iconSclass="z-icon-trash" tooltiptext="Delete" visible="@load(vm.isCancellable(item))" onClick="@command('delete', item=item)"/>
-                                                            <button iconSclass="z-icon-download" tooltiptext="Export to PDF" visible="@load(vm.isExportReport(item))" onClick="@command('exportPDF', item=item)"/>
-                                                        </div>
-                                                    </listcell>
-                                                </listitem>
+                                    </listheader>
+                                </listhead>
+                                <auxhead>
+                                    <auxheader>
+                                        <textbox value="@load(vm.leaveSearchCriteria.likeLeaveId) @save(vm.leaveSearchCriteria.likeLeaveId, before='filter')"  hflex="1" onOK="@command('filter')" />
+                                    </auxheader>
+                                    <auxheader>
+                                        <bandbox autodrop="true" readonly="true" hflex="1">
+                                            <bandpopup hflex="min" height="100%">
+                                                <vlayout>
+                                                    <hlayout>
+                                                        <label value="Filter From"  hflex="1"/>
+                                                        <datebox value="@load(vm.leaveSearchCriteria.createdOnFrom) @save(vm.leaveSearchCriteria.createdOnFrom, before='filter')"  hflex="1" onChange="@command('filter')"/>
+                                                    </hlayout>
+                                                    <hlayout>
+                                                        <label value="Filter To"  hflex="1"/>
+                                                        <datebox value="@load(vm.leaveSearchCriteria.createdOnTo) @save(vm.leaveSearchCriteria.createdOnTo, before='filter')"  hflex="1" onChange="@command('filter')"/>
+                                                    </hlayout>
+                                                </vlayout>
+                                            </bandpopup>
+                                        </bandbox>
+                                    </auxheader>
+                                    <auxheader>
+                                        <bandbox autodrop="true" readonly="true"  hflex="1">
+                                            <bandpopup hflex="min" height="100%">
+                                                <vlayout>
+                                                    <hlayout>
+                                                        <label value="Filter From"  hflex="1"/>
+                                                        <datebox value="@load(vm.leaveSearchCriteria.leaveFromFrom) @save(vm.leaveSearchCriteria.leaveFromFrom, before='filter')"  hflex="1" onChange="@command('filter')"/>
+                                                    </hlayout>
+                                                    <hlayout>
+                                                        <label value="Filter To"  hflex="1"/>
+                                                        <datebox value="@load(vm.leaveSearchCriteria.leaveFromTo) @save(vm.leaveSearchCriteria.leaveFromTo, before='filter')"  hflex="1" onChange="@command('filter')"/>
+                                                    </hlayout>
+                                                </vlayout>
+                                            </bandpopup>
+                                        </bandbox>
+                                    </auxheader>
+                                    <auxheader>
+                                        <bandbox autodrop="true" readonly="true"  hflex="1">
+                                            <bandpopup hflex="min" height="100%">
+                                                <vlayout>
+                                                    <hlayout>
+                                                        <label value="Filter From"  hflex="1"/>
+                                                        <datebox value="@load(vm.leaveSearchCriteria.leaveToFrom) @save(vm.leaveSearchCriteria.leaveToFrom, before='filter')"  hflex="1" onChange="@command('filter')"/>
+                                                    </hlayout>
+                                                    <hlayout>
+                                                        <label value="Filter To"  hflex="1"/>
+                                                        <datebox value="@load(vm.leaveSearchCriteria.leaveToTo) @save(vm.leaveSearchCriteria.leaveToTo, before='filter')"  hflex="1" onChange="@command('filter')"/>
+                                                    </hlayout>
+                                                </vlayout>
+                                            </bandpopup>
+                                        </bandbox>
+                                    </auxheader>
+                                    <auxheader>
+                                        <combobox hflex="1" model="@load(vm.types)" selectedItem="@bind(vm.leaveSearchCriteria.type)" onSelect="@command('filter')">
+                                            <template name="model">
+                                                <comboitem label="@load(each)" />
                                             </template>
-                                        </listbox>
-                                        <paging pageSize="@load(vm.leaveSearchCriteria.pageSize)" focus="true" totalSize="@load(vm.totalSize)" left="true" detailed="true" activePage="@save(vm.activePage)" />
-                                    </vlayout>
-                                </vlayout>
-                            </center>
-                            <south>
-                                <listbox sclass="z-listbox-header-border" style="align:center;" hflex="1" vflex="1">
-                                    <listhead>
-                                        <listheader label="Casual Leave Balance" sort="none" align="center"/>
-                                        <listheader label="Annual Leave Balance" sort="none" align="center"/>
-                                        <listheader label="Emergency Leave Balance" sort="none" align="center"/>
-                                        <listheader label="Sick Leave Balance" sort="none" align="center"/>
-                                    </listhead>
-                                    <listitem>
+                                        </combobox>
+                                    </auxheader>
+                                    <auxheader>
+                                        <combobox hflex="1" model="@load(vm.tickets)" selectedItem="@bind(vm.leaveSearchCriteria.tickets)" onSelect="@command('filter')">
+                                            <template name="model">
+                                                <comboitem label="@load(each)" />
+                                            </template>
+                                        </combobox>
+                                    </auxheader>
+                                    <auxheader>
+                                        <combobox hflex="1" model="@load(vm.states)" selectedItem="@bind(vm.leaveSearchCriteria.status)" onSelect="@command('filter')">
+                                            <template name="model">
+                                                <comboitem label="@load(each)" />
+                                            </template>
+                                        </combobox>
+                                    </auxheader>
+                                    <auxheader>
+                                        <bandbox autodrop="true" readonly="true"  hflex="1">
+                                            <bandpopup hflex="min" height="100%">
+                                                <vlayout>
+                                                    <hlayout>
+                                                        <label value="Filter From"  hflex="1"/>
+                                                        <datebox value="@load(vm.leaveSearchCriteria.approvedOnFrom) @save(vm.leaveSearchCriteria.approvedOnFrom, before='filter')"  hflex="1" onChange="@command('filter')"/>
+                                                    </hlayout>
+                                                    <hlayout>
+                                                        <label value="Filter To"  hflex="1"/>
+                                                        <datebox value="@load(vm.leaveSearchCriteria.approvedOnTo) @save(vm.leaveSearchCriteria.approvedOnTo, before='filter')"  hflex="1" onChange="@command('filter')"/>
+                                                    </hlayout>
+                                                </vlayout>
+                                            </bandpopup>
+                                        </bandbox>
+                                    </auxheader>
+
+                                    <auxheader align="center">
+                                        <button iconSclass="z-icon-search " sclass="btn-filter" tooltiptext="Filter" onClick=" @command('filter')" />
+                                        <button iconSclass="z-icon-eraser " sclass="btn-filter" tooltiptext="Clear Filter" onClick="@command('clearFilters')" />
+                                    </auxheader>
+                                </auxhead>
+                                <template name="model" var="item">
+                                    <listitem onClick="@command('showMessage', item=item)">
                                         <listcell hflex="min">
-                                            <label value="@bind(vm.currentCasualLeaveBalance)"/><label value=" Days"/>
+                                            <label value="@load(item.number)" />
                                         </listcell>
                                         <listcell hflex="min">
-                                            <label value="@bind(vm.currentAnnualLeaveBalance)"/><label value=" Days"/>
+                                            <label value="@load(item.createdOn)"/>
+                                        </listcell >
+                                        <listcell hflex="min">
+                                            <label value="@load(item.leaveFrom)"/>
                                         </listcell>
                                         <listcell hflex="min">
-                                            <label value="@bind(vm.currentEmergencyLeaveBalance)"/><label value=" Hours"/>
+                                            <label value="@load(item.leaveTo)" />
                                         </listcell>
                                         <listcell hflex="min">
-                                            <label value="@bind(vm.currentSickLeaveBalance)"/><label value=" Days"/>
+                                            <label value="@load(item.type)"/>
+                                        </listcell>
+                                        <listcell hflex="min">
+                                            <label value="@load(item.tickets?'Yes':'No')"/>
+                                        </listcell>
+                                        <listcell hflex="min">
+                                            <label value="@load(vm.getDescription(item.status))"/>
+                                        </listcell>
+                                        <listcell hflex="min">
+                                            <label value="@load(item.approvedOn)"/>
+                                        </listcell>
+                                        <listcell hflex="min" >
+                                            <div align="center" width="100%">
+                                                <button iconSclass="z-icon-eye" tooltiptext="View Details" onClick="@command('viewDetails', request=item)"/>
+                                                <button iconSclass="z-icon-trash" tooltiptext="Delete" visible="@load(vm.isCancellable(item))" onClick="@command('delete', item=item)"/>
+                                                <button iconSclass="z-icon-download" tooltiptext="Export to PDF" visible="@load(vm.isExportReport(item))" onClick="@command('exportPDF', item=item)"/>
+                                            </div>
                                         </listcell>
                                     </listitem>
-                                </listbox>
-                            </south>
-                        </borderlayout>
+                                </template>
+                            </listbox>
+                            <paging pageSize="@load(vm.leaveSearchCriteria.pageSize)" focus="true" totalSize="@load(vm.totalSize)" left="true" detailed="true" activePage="@save(vm.activePage)" />
+                            <listbox style="border:1px solid #0064ed;" hflex="1" vflex="min">
+                                <listhead>
+                                    <listheader label="Casual Leave Balance" sort="none" align="center"/>
+                                    <listheader label="Annual Leave Balance" sort="none" align="center"/>
+                                    <listheader label="Emergency Leave Balance" sort="none" align="center"/>
+                                    <listheader label="Sick Leave Balance" sort="none" align="center"/>
+                                </listhead>
+                                <listitem>
+                                    <listcell hflex="min">
+                                        <label value="@bind(vm.currentCasualLeaveBalance)"/><label value=" Days"/>
+                                    </listcell>
+                                    <listcell hflex="min">
+                                        <label value="@bind(vm.currentAnnualLeaveBalance)"/><label value=" Days"/>
+                                    </listcell>
+                                    <listcell hflex="min">
+                                        <label value="@bind(vm.currentEmergencyLeaveBalance)"/><label value=" Hours"/>
+                                    </listcell>
+                                    <listcell hflex="min">
+                                        <label value="@bind(vm.currentSickLeaveBalance)"/><label value=" Days"/>
+                                    </listcell>
+                                </listitem>
+                            </listbox>
+                        </vlayout>
                     </center>
                     <south/>
-
                 </borderlayout>
                 <!--  -->
             </center>

@@ -5,7 +5,7 @@
 
 <zk>
 
-    <window apply="org.zkoss.bind.BindComposer"  viewModel="@id('vm') @init('qa.tecnositafgulf.viewmodel.hr.SaveSickLeaveViewModel')" sclass="intranet-popup" width="80%" style="@load(vm.css)">
+    <window apply="org.zkoss.bind.BindComposer"  viewModel="@id('vm') @init('qa.tecnositafgulf.viewmodel.hr.SaveSickLeaveViewModel')" sclass="intranet-popup" width="60%" style="@load(vm.css)">
         <vlayout>
             <groupbox closable="true" mold="3d" contentStyle="overflow:auto;">
                 <listbox hflex="1">
@@ -18,7 +18,7 @@
                             <label value="Employee"/>
                         </listcell>
                         <listcell>
-                            <combobox readonly="true" width="250px" model="@load(vm.employees)" selectedItem="@bind(vm.selectedEmployee)"/>
+                            <combobox hflex="1" readonly="true" width="250px" model="@load(vm.employees)" selectedItem="@bind(vm.selectedEmployee)"/>
                         </listcell>
                     </listitem>
                     <listitem>
@@ -26,7 +26,7 @@
                             <label value="From"/>
                         </listcell>
                         <listcell>
-                            <datebox width="250px" constraint="no empty" value="@bind(vm.leaveFrom)"/>
+                            <datebox hflex="1"  constraint="no empty" value="@bind(vm.leaveFrom)"/>
                         </listcell>
                     </listitem>
                     <listitem>
@@ -34,7 +34,7 @@
                             <label value="To"/>
                         </listcell>
                         <listcell>
-                            <datebox width="250px" constraint="no empty" value="@bind(vm.leaveTo)"/>
+                            <datebox hflex="1"  constraint="no empty" value="@bind(vm.leaveTo)"/>
                         </listcell>
                     </listitem>
                     <listitem>
@@ -51,7 +51,7 @@
                             <label value="Remarks"/>
                         </listcell>
                         <listcell>
-                            <textbox rows="10" cols="50" value="@bind(vm.message)"/>
+                            <textbox hflex="1" rows="10" cols="50" value="@bind(vm.message)"/>
                         </listcell>
                     </listitem>
                 </listbox>

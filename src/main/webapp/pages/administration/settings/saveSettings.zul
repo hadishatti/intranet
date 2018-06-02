@@ -10,76 +10,46 @@
     <window closable="true" title="Save Setting"
             apply="org.zkoss.bind.BindComposer" sclass="intranet-popup"
             viewModel="@id('vm') @init('qa.tecnositafgulf.viewmodel.administration.settings.SaveSettingsViewModel')"
-            width="80%" style="@load(vm.css)">
+            width="60%" style="@load(vm.css)">
 
-        <borderlayout  animationDisabled="true">
+        <vlayout>
+            <groupbox closable="true" mold="3d" form="@id('fx') @load(vm.property) @save(vm.property, before='save')" vflex="1" contentStyle="overflow:auto;">
+                <listbox hflex="1">
+                    <listhead sizable="true">
+                        <listheader label=""/>
+                        <listheader label=""/>
+                    </listhead>
+                    <listitem>
+                        <listcell>
+                            <label value="Key"/>
+                        </listcell>
+                        <listcell>
+                            <textbox hflex="1" constraint="no empty"  value="@load(fx.key) @save(fx.key, before='save')"/>
+                        </listcell>
+                    </listitem>
+                    <listitem>
+                        <listcell>
+                            <label value="Description"/>
+                        </listcell>
+                        <listcell>
+                            <textbox hflex="1" value="@load(fx.description) @save(fx.description, before='save')" />
+                        </listcell>
+                    </listitem>
+                    <listitem>
+                        <listcell>
+                            <label value="Path"/>
+                        </listcell>
+                        <listcell>
+                            <textbox hflex="1" constraint="no empty" value="@load(fx.value) @save(fx.value, before='save')" />
+                        </listcell>
+                    </listitem>
+                </listbox>
+            </groupbox>
 
-            <!-- Content Panel -->
-            <center
-                    id="contentPanel"
-                    sclass="contentPanel"
-                    border="0"
-                    style="border: none;"
-                    hflex="1">
-
-                <!-- Content Area -->
-                <borderlayout>
-                    <west border="0"  collapsible="true" open="false" style="border: none;">
-                        <caption vflex="1"  width="95%">
-                            <include src="/pages/include/panels.zul"/>
-                        </caption>
-
-                    </west>
-                    <center
-                            border="2"
-                            sclass="newsfeedPanel"
-                            autoscroll="true" >
-
-
-                            <vlayout>
-                                <groupbox closable="true" mold="3d" form="@id('fx') @load(vm.property) @save(vm.property, before='save')" vflex="1" contentStyle="overflow:auto;">
-                                    <listbox hflex="1">
-                                        <listhead sizable="true">
-                                            <listheader label=""/>
-                                            <listheader label=""/>
-                                        </listhead>
-                                        <listitem>
-                                            <listcell>
-                                                <label value="Key"/>
-                                            </listcell>
-                                            <listcell>
-                                                <textbox constraint="no empty"  value="@load(fx.key) @save(fx.key, before='save')"/>
-                                            </listcell>
-                                        </listitem>
-                                        <listitem>
-                                            <listcell>
-                                                <label value="Description"/>
-                                            </listcell>
-                                            <listcell>
-                                                <textbox value="@load(fx.description) @save(fx.description, before='save')" />
-                                            </listcell>
-                                        </listitem>
-                                        <listitem>
-                                            <listcell>
-                                                <label value="Path"/>
-                                            </listcell>
-                                            <listcell>
-                                                <textbox constraint="no empty" value="@load(fx.value) @save(fx.value, before='save')" />
-                                            </listcell>
-                                        </listitem>
-                                    </listbox>
-                                </groupbox>
-
-                                <div align="center" sclass="global-footer" width="100%" vflex="min">
-                                    <button label="Save Setting" onClick="@command('save')" sclass="btn-footer"/>
-                                </div>
-                            </vlayout>
-                    </center>
-                </borderlayout>
-                <!--  -->
-            </center>
-            <!--  -->
-        </borderlayout>
+            <div align="center" sclass="global-footer" width="100%" vflex="min">
+                <button label="Save Setting" onClick="@command('save')" sclass="btn-footer"/>
+            </div>
+        </vlayout>
         <!--  -->
     </window>
     <!--  -->

@@ -5,7 +5,7 @@
 <zk>
 
     <window apply="org.zkoss.bind.BindComposer"
-            viewModel="@id('vm') @init('qa.tecnositafgulf.viewmodel.hr.ApproveLeaveRequestViewModel')" sclass="intranet-popup" width="80%" closable="true" title="Manage Leave Request" style="@load(vm.css)">
+            viewModel="@id('vm') @init('qa.tecnositafgulf.viewmodel.hr.ApproveLeaveRequestViewModel')" sclass="intranet-popup" width="60%" closable="true" title="Manage Leave Request" style="@load(vm.css)">
             <vlayout>
                 <groupbox closable="true" mold="3d" contentStyle="overflow:auto;">
                     <listbox hflex="1">
@@ -18,7 +18,7 @@
                                 <label value="Leave Request Number"/>
                             </listcell>
                             <listcell>
-                                <label value="@load(vm.leaveRequest.number)"/>
+                                <label hflex="1" value="@load(vm.leaveRequest.number)"/>
                             </listcell>
                         </listitem>
                         <listitem>
@@ -26,7 +26,7 @@
                                 <label value="Employee"/>
                             </listcell>
                             <listcell>
-                                <label value="@load(vm.leaveRequest.applicant)"/>
+                                <label hflex="1" value="@load(vm.leaveRequest.applicant)"/>
                             </listcell>
                         </listitem>
                         <listitem>
@@ -34,7 +34,7 @@
                                 <label value="Type"/>
                             </listcell>
                             <listcell>
-                                <label value="@load(vm.leaveRequest.type)"/>
+                                <label hflex="1" value="@load(vm.leaveRequest.type)"/>
                             </listcell>
                         </listitem>
                         <listitem>
@@ -42,14 +42,14 @@
                                 <label value="Period"/>
                             </listcell>
                             <listcell>
-                                <hlayout>
+                                <hlayout hflex="1" >
                                     <label value="@load(vm.leaveRequest.leaveFrom)"/><label value=" to "/><label value="@load(vm.leaveRequest.leaveTo)"/><label value=" - "/><label value="@load(vm.days)"/><label value=" day(s)"/>
                                 </hlayout>
                             </listcell>
                         </listitem>
                         <listitem visible="@load(vm.leaveRequest.status eq 7?false:true)">
                             <listcell>
-                                <hlayout>
+                                <hlayout hflex="1" >
                                     <label value="Employee's"/><label value="@load(vm.leaveRequest.type)"/><label value="Leave Balance (in "/><label value="@load(vm.leaveRequest.type eq 'Emergency'?'Hours)':'Days)')"/>
                                 </hlayout>
                             </listcell>
@@ -64,7 +64,7 @@
                                 <label value="Warning: the following Employees have a Pending or Approved Leave Request overlapping with the Leave Request" style="font-weight:bold;"/>
                             </listcell>
                             <listcell>
-                                <combobox model="@load(vm.others)" readonly="true">
+                                <combobox hflex="1" model="@load(vm.others)" readonly="true">
                                     <template name="model">
                                         <comboitem label="@load(each)" />
                                     </template>
@@ -76,7 +76,7 @@
                                 <label value="Casual Leave Reason"/>
                             </listcell>
                             <listcell>
-                                <label value="@load(not empty vm.leaveRequest.casualLeaveReason?vm.leaveRequest.casualLeaveReason:'Not Specified')"/>
+                                <label hflex="1" value="@load(not empty vm.leaveRequest.casualLeaveReason?vm.leaveRequest.casualLeaveReason:'Not Specified')"/>
                             </listcell>
                         </listitem>
                         <listitem visible="@load(vm.others.size()>0)">
@@ -84,7 +84,7 @@
                                 <label value="@load(vm.leaveRequest.status eq 1?'Message From Employee':'Message From Manager who Approved')"/>
                             </listcell>
                             <listcell>
-                                <label value="@load(not empty vm.leaveRequest.message?vm.leaveRequest.message:'Not Specified')"/>
+                                <label hflex="1" value="@load(not empty vm.leaveRequest.message?vm.leaveRequest.message:'Not Specified')"/>
                             </listcell>
                         </listitem>
                         <listitem>

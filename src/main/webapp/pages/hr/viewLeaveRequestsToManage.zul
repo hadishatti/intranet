@@ -34,7 +34,7 @@
                             sclass="newsfeedPanel"
                             autoscroll="true" >
 
-                        <vlayout>
+                        <vlayout hflex="1" vflex="1">
                             <div align="right" visible="@load(vm.isLeaveManager())">
                                 <bandbox autodrop="true" readonly="true" placeholder="View Approved/Cancelled/Refused Requests of Managees" width="30%" style="background-color:#0064ed;;color:#ffffff;opacity:0.8;">
                                     <bandpopup hflex="1" height="100%">
@@ -209,7 +209,7 @@
                             </div>
                             <separator/>
                             <vlayout hflex="1" vflex="1">
-                                <listbox sclass="z-listbox-header-border" model="@bind(vm.leaveRequests)" style="align:center;" emptyMessage="No Leave Request Available" hflex="1" vflex="max">
+                                <listbox sclass="z-listbox-header-border" model="@bind(vm.leaveRequests)" style="align:center;" emptyMessage="No Leave Request Available" hflex="1" vflex="1">
                                     <listhead sizable="true">
                                         <listheader label="Leave ID" sort="none" onClick="@command('order', orderBy='number')" align="center" />
                                         <listheader label="Applicant" sort="none" onClick="@command('order', orderBy='applicant')" align="center" />

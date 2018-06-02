@@ -49,7 +49,7 @@ public class SaveEmergencyLeaveViewModel extends IntranetVM {
     public void doAfterCompose(@ContextParam(ContextType.VIEW) Component view, @ExecutionArgParam("emergencyToModify") LeaveRequest emergencyToModify){
         init();
         Employee employee = (Employee) Sessions.getCurrent().getAttribute("employee");
-        if(!authenticationService.isProfilePresent(employee, "HRLM")){
+        if(!super.isAdministrator() && !authenticationService.isProfilePresent(employee, "HRLM")){
             Executions.sendRedirect("/pages/home.zul");
             return;
         }

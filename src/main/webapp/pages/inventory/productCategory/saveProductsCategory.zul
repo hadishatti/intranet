@@ -20,7 +20,7 @@
                             <label value="Product Category Name"/>
                         </listcell>
                         <listcell>
-                            <textbox constraint="no empty"  value="@load(fx.productCatgName) @save(fx.productCatgName,before='saveProductCategory')"/>
+                            <textbox hflex="1" constraint="no empty"  value="@load(fx.productCatgName) @save(fx.productCatgName,before='saveProductCategory')"/>
                         </listcell>
                     </listitem>
                     <listitem>
@@ -28,7 +28,7 @@
                             <label value="Product Category Description"/>
                         </listcell>
                         <listcell>
-                            <textbox constraint="no empty" value="@load(fx.productCatgDesc) @save(fx.productCatgDesc, before='saveProductCategory')" />
+                            <textbox hflex="1" constraint="no empty" value="@load(fx.productCatgDesc) @save(fx.productCatgDesc, before='saveProductCategory')" />
                         </listcell>
                     </listitem>
                 </listbox>

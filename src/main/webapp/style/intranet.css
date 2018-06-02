@@ -6,12 +6,18 @@
     background-color: #0090cf;
     border:solid white 2px;
 }
+.bandbox-listitem .z-listcell {
+    text-align: left!important;
+}
+.bandbox-listitem .z-listcell .z-listcell-content {
+    margin-left:20%!important;
+}
 .blink {
     animation: blink-animation 1s steps(5, start) infinite;
     -webkit-animation: blink-animation 1s steps(5, start) infinite;
 }
 .body {
-    padding: 0 0;  /* 0 padding  on top and bottom and 0 padding on right and left */ }
+padding: 0 0;  /* 0 padding  on top and bottom and 0 padding on right and left */ }
 }
 .bottom-bar {
     position:relative !important;
@@ -90,6 +96,27 @@
 .navbar-brand > .navbar-logo{
     height:100%;
 }
+.plus {
+    position: relative;
+    z-index: 1;
+    width: 80px;
+    height: 80px;
+    color: #1a1a1a;
+    background: #235dba;
+    border-radius: 50%;
+    border: none;
+    transition: box-shadow 400ms cubic-bezier(.2,0,.7,1), transform 200ms cubic-bezier(.2,0,.7,1);
+}
+.plus:hover {
+    box-shadow: 0 0 1px 15px rgba(37, 95, 187, 0.4),
+    0 0 1px 30px rgba(37, 95, 187, 0.1),
+    0 0 1px 45px rgba(37, 95, 187, 0.1);
+}
+.plus:after {
+    content: "+";
+    font-size: 2.5em;
+    line-height: 1.1em;
+}
 .post-article {
     text-align: justify;
 }
@@ -115,8 +142,8 @@
     font-size: 1em;
 }
 .warn {
-   color: red;
-   font-style: italic;
+ color: red;
+ font-style: italic;
 }
 .whatsnew {
     border:none;
@@ -128,10 +155,10 @@
     background-color: #1a4280;
 }
 .z-button:hover {
-        background-color: #0090cf;
+    background-color: #0090cf;
 }
 .z-calevent-header {
-   font-weight: bold;
+ font-weight: bold;
 }
 .z-calevent-text {
     font-weight: bold;
@@ -144,6 +171,9 @@
     margin:auto;
     padding:10px;
     display:block;
+}
+.z-groupbox .z-listbox .z-listitem .z-listcell {
+    text-align: left;
 }
 .z-groupbox-notitle .z-groupbox-content {
     border:none;
@@ -193,9 +223,12 @@
 .z-listheader {
     background-color: #1a4280;
 }
+.z-messagebox {
+    margin:10px!important;
+}
 .z-notification .z-notification-content {
-   color : #1a4280;
-   background-color: #dee9fb;
+ color : #1a4280;
+ background-color: #dee9fb;
 }
 .z-paging {
     background-color: #1a4280;

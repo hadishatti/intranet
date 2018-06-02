@@ -52,7 +52,7 @@ public class ViewSickLeavesViewModel extends IntranetVM {
         service = context.getBean(LeaveRequestService.class);
         adminService = context.getBean(AdministrationService.class);
         employee = (Employee) Sessions.getCurrent().getAttribute("employee");
-        if(!authenticationService.isProfilePresent(employee, "HRLM")){
+        if(!super.isAdministrator() && !authenticationService.isProfilePresent(employee, "HRLM")){
             Executions.sendRedirect("/pages/home.zul");
             return;
         }

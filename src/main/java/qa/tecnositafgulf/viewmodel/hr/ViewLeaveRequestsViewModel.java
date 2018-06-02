@@ -136,6 +136,11 @@ public class ViewLeaveRequestsViewModel extends IntranetVM{
     }
 
     @Command
+    public void add(){
+        ((Window) Executions.getCurrent().createComponents("/pages/hr/saveLeaveRequest.zul", null, null)).doModal();
+    }
+
+    @Command
     public void exportPDF(@BindingParam("item") final LeaveRequest request) {
         try {
             HashMap map = new HashMap<>();
@@ -218,7 +223,8 @@ public class ViewLeaveRequestsViewModel extends IntranetVM{
                 request.getStatus()!= LeaveRequestStates.RefusedByHR &&
                 request.getStatus()!= LeaveRequestStates.RefusedByManagement &&
                 request.getStatus()!= LeaveRequestStates.RefusedByFinanceAfterTicketSelection &&
-                request.getStatus()!= LeaveRequestStates.SickRegistered
+                request.getStatus()!= LeaveRequestStates.SickRegistered &&
+                request.getStatus()!= LeaveRequestStates.EmergencyRegistered
         )
             return true;
         return false;
@@ -230,7 +236,9 @@ public class ViewLeaveRequestsViewModel extends IntranetVM{
                 request.getStatus() == LeaveRequestStates.RefusedByManagement ||
                 request.getStatus() == LeaveRequestStates.RefusedByHR ||
                 request.getStatus() == LeaveRequestStates.RefusedByFinanceAfterTicketSelection ||
-                request.getStatus() == LeaveRequestStates.RefusedByFinance)
+                request.getStatus() == LeaveRequestStates.RefusedByFinance ||
+                request.getStatus()!= LeaveRequestStates.SickRegistered ||
+                request.getStatus()!= LeaveRequestStates.EmergencyRegistered)
             return true;
         return false;
     }

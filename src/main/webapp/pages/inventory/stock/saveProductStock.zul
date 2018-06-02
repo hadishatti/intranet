@@ -7,7 +7,7 @@
 <zk>
     <window  apply="org.zkoss.bind.BindComposer"
        viewModel="@id('vm') @init('qa.tecnositafgulf.viewmodel.inventory.stock.SaveProductStockViewModel')"
-             sclass="intranet-popup" width="80%" closable="true" title="Save Product Stock" style="@load(vm.css)">
+             sclass="intranet-popup" width="60%" closable="true" title="Save Product Stock" style="@load(vm.css)">
        <vlayout>
         <groupbox closable="true" mold="3d" form="@id('fx') @load(vm.productStock) @save(vm.productStock, before='saveProductStock')" vflex="1" contentStyle="overflow:auto;">
             <listbox hflex="1">
@@ -20,7 +20,7 @@
                         <label value="Product"/>
                     </listcell>
                     <listcell>
-                        <combobox readonly="true" model="@load(vm.productList)"
+                        <combobox hflex="1" readonly="true" model="@load(vm.productList)"
                            selectedItem="@bind(vm.selectedProduct)" onChange="@command('onChangeProduct', selectedIndex=self.selectedIndex, selectedProduct = vm.selectedProduct) @save(vm.selectedProduct, before='onChangeProduct')" />
                        </listcell>
                    </listitem>
@@ -29,7 +29,7 @@
                         <label value="Location"/>
                     </listcell>
                     <listcell>
-                        <combobox readonly="true" model="@load(vm.locationList)"
+                        <combobox hflex="1" readonly="true" model="@load(vm.locationList)"
                           selectedItem="@bind(vm.selectedLocation)"/>
                       </listcell>
                   </listitem>
@@ -39,7 +39,7 @@
                         <label value="Current Stock"/>
                     </listcell>
                     <listcell>
-                        <textbox constraint="no empty"  value="@load(vm.productStock.currentStock) @save(vm.productStock.currentStock, before='saveProductStock')"/>
+                        <textbox hflex="1" constraint="no empty"  value="@load(vm.productStock.currentStock) @save(vm.productStock.currentStock, before='saveProductStock')"/>
                     </listcell>
                     </listitem>
                     <listitem>
@@ -47,7 +47,7 @@
                             <label value="Threshold Limit"/>
                         </listcell>
                         <listcell>
-                            <textbox constraint="no empty" value="@load(vm.productStock.thresholdLimit) @save(vm.productStock.thresholdLimit, before='saveProductStock')" />
+                            <textbox hflex="1" constraint="no empty" value="@load(vm.productStock.thresholdLimit) @save(vm.productStock.thresholdLimit, before='saveProductStock')" />
                         </listcell>
                     </listitem>
                     <listitem>
@@ -55,7 +55,7 @@
                             <label value="Unit Price"/>
                         </listcell>
                         <listcell>
-                            <textbox constraint="no empty" value="@load(vm.productStock.unitPrice) @save(vm.productStock.unitPrice, before='saveProductStock')" />
+                            <textbox hflex="1" constraint="no empty" value="@load(vm.productStock.unitPrice) @save(vm.productStock.unitPrice, before='saveProductStock')" />
                         </listcell>
                     </listitem>
                 </listbox>
