@@ -133,6 +133,8 @@ public class ViewTendersViewModel extends IntranetVM{
 
         if (tender.getAuthor() != null && tender.getAuthor().getImage() != null)
             ret += MyProperties.getInstance().getImagePath() + "/staff/" + tender.getAuthor().getImage();
+        else
+            ret += MyProperties.getInstance().getImagePath() + "/staff/userpic.png";
 
         return ret;
     }

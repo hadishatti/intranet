@@ -131,7 +131,7 @@ public class SaveEmployeeViewModel extends IntranetVM{
         Calendar c = Calendar.getInstance();
         c.add(Calendar.YEAR,-18);
         DateFormat sdf = new SimpleDateFormat("yyyyMMdd");
-        birthConstraint = "no empty, before "+sdf.format(c.getTime());
+        birthConstraint = "no empty, after "+sdf.format(c.getTime());
 
         addCommonTags((PageCtrl) view.getPage());
 

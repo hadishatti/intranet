@@ -18,7 +18,7 @@
                             <label value="Employee"/>
                         </listcell>
                         <listcell>
-                            <combobox readonly="true" width="250px" model="@load(vm.employees)" selectedItem="@bind(vm.selectedEmployee)"/>
+                            <combobox readonly="true" hflex="1"  model="@load(vm.employees)" selectedItem="@bind(vm.selectedEmployee)"/>
                         </listcell>
                     </listitem>
                     <listitem>
@@ -26,7 +26,7 @@
                             <label value="Day"/>
                         </listcell>
                         <listcell>
-                            <datebox format="long+medium" displayedTimeZones="GMT+3" timeZonesReadonly="true" width="250px" constraint="no empty" value="@bind(vm.leaveFrom)"/>
+                            <datebox format="long+medium" displayedTimeZones="GMT+3" timeZonesReadonly="true" hflex="1"  constraint="no empty" value="@bind(vm.leaveFrom)"/>
                         </listcell>
                     </listitem>
                     <listitem>
@@ -34,7 +34,7 @@
                             <label value="Minutes in Emergency Leave"/>
                         </listcell>
                         <listcell>
-                            <spinner value="@bind(vm.minutes)" step="30"/>
+                            <spinner hflex="1" value="@bind(vm.minutes)" step="30"/>
                         </listcell>
                     </listitem>
                     <listitem>
@@ -42,7 +42,7 @@
                             <label value="Remarks"/>
                         </listcell>
                         <listcell>
-                            <textbox rows="10" cols="50" value="@bind(vm.message)"/>
+                            <textbox hflex="1" rows="10" cols="50" value="@bind(vm.message)"/>
                         </listcell>
                     </listitem>
                 </listbox>

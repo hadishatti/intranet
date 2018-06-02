@@ -39,7 +39,7 @@
                             sclass="newsfeedPanel"
                             autoscroll="true" >
                                 <vlayout hflex="1" vflex="1">
-                                    <listbox sclass="z-listbox-header-border" model="@load(vm.roles)" style="align:center;" emptyMessage="No Role Available" hflex="1" vflex="1">
+                                    <listbox sclass="z-listbox-header-border" model="@load(vm.roles)" emptyMessage="No Role Available" hflex="1" vflex="1">
                                         <listhead sizable="true">
                                             <listheader label="Name" sort="none" onClick="@command('order', orderBy='name')" align="center" />
                                             <listheader label="Description" sort="none" onClick="@command('order', orderBy='description')" align="center"/>
@@ -81,9 +81,11 @@
                                     <paging pageSize="@load(vm.roleSearchCriteria.pageSize)" focus="true" totalSize="@load(vm.totalSize)" left="true" detailed="true" activePage="@save(vm.activePage)" />
                                 </vlayout>
                     </center>
+                    <south/>
                 </borderlayout>
                 <!--  -->
             </center>
+            <south/>
             <!--  -->
         </borderlayout>
         <!--  -->

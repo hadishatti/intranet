@@ -2,81 +2,6 @@
 
 
 <zk xmlns:h="http://www.w3.org/1999/xhtml" xmlns:n="native" xmlns:zk="http://www.zkoss.org/2005/zk" xmlns:ca="client/attribute">
-    <style>
-
-        $border-size: 0.25em;
-        $border-color: hsl(0, 90, 40);
-
-
-        @include keyframes (pulse) {
-        0%   { box-shadow: 0 0 0 #{$border-size * 0.8} $border-color; }
-        25%  { box-shadow: 0 0 0 #{$border-size * 0.2} $border-color; }
-        50%  { box-shadow: 0 0 0 #{$border-size * 1.5} $border-color; }
-        75%  { box-shadow: 0 0 0 #{$border-size * 0.8} $border-color; }
-        100% { box-shadow: 0 0 0 #{$border-size * 1.2} $border-color; }
-        }
-
-        .managerNotificationLabel{
-        background: hsl(0, 90, 60);
-        box-shadow: 0 0 0 $border-size $border-color;
-        animation: pulse 0.75s infinite;
-        }
-
-        .marginBottom-0 {margin-bottom:0;}
-
-        .dropdown-submenu{position:relative;}
-        .dropdown-submenu>.dropdown-menu{top:0;left:100%;margin-top:-6px;margin-left:-1px;-webkit-border-radius:0 6px 6px 6px;-moz-border-radius:0 6px 6px 6px;border-radius:0 6px 6px 6px;}
-        .dropdown-submenu>a:after{display:block;content:" ";float:right;width:0;height:0;border-color:transparent;border-style:solid;border-width:5px 0 5px 5px;border-left-color:#cccccc;margin-top:5px;margin-right:-10px;}
-        .dropdown-submenu:hover>a:after{border-left-color:#555;}
-        .dropdown-submenu.pull-left{float:none;}.dropdown-submenu.pull-left>.dropdown-menu{left:-100%;margin-left:10px;-webkit-border-radius:6px 0 6px 6px;-moz-border-radius:6px 0 6px 6px;border-radius:6px 0 6px 6px;}
-
-        .container-fluid{
-        padding: 0px;
-        overflow-x: hidden;
-        }
-
-        .row{
-        padding : 0px;
-        }
-
-        body { padding: 0 0;  /* 0 padding  on top and bottom and 0 padding on right and left */ }
-
-        a > img {
-        height: inherit;
-        width: auto;
-        }
-
-        .button-span{
-        background-color: white;
-        }
-
-        @media screen and (max-width:  1400px) {
-        .mobile {
-        display: inline !important;
-        }
-
-        .desktop {
-        display: none !important;
-        }
-        }
-
-        @media screen and (min-width:  1400px) {
-        .mobile {
-        display: none !important;
-        }
-
-        .desktop {
-        display: inline !important;
-        }
-        }
-
-
-
-        .titlebar-text {
-        font-size: 1em;
-        }
-        
-    </style>
     <script type="text/javascript" >
 
         zk.afterMount(function(){
@@ -123,7 +48,9 @@
                                onClick="@command('viewManagerNotifications')"/>
                     </a>
                 </div>
-                <a class="navbar-brand" style ="padding:0px;" image="@load(vm.imagePath.concat('/gbdg-logo.jpeg'))" href="/pages/home.zul" tooltiptext="Home Page"/>
+                <a class="navbar-brand" style ="padding:0px;" href="/pages/home.zul" tooltiptext="Home Page">
+                    <image class="navbar-logo" style ="padding:0px;" src="@load(vm.imagePath.concat('/gbdg-logo.jpeg'))" tooltiptext="Home Page"/>
+                </a>
             </div>
 
             <h:div class="collapse navbar-collapse"  id="toolbarDiv">

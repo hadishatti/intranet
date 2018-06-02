@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?init class="qa.tecnositafgulf.init.AuthenticationInit"?>
 <?init class="qa.tecnositafgulf.init.AdministratorInit"?>
-<?page title="View Buildings" contentType="text/html;charset=UTF-8" ?>
+<?page title="View Companies" contentType="text/html;charset=UTF-8" ?>
 <?meta name="viewport" content="width=device-width, initial-scale=1"?>
 
 
@@ -35,57 +35,54 @@
                             border="2"
                             sclass="newsfeedPanel"
                             autoscroll="true" >
-
-
-                        <div>
-                            <vlayout>
                                 <vlayout hflex="1" vflex="1">
-                                    <listbox model="@load(vm.companies)" style="align:center;" emptyMessage="No Building Available" hflex="1" vflex="1">
+                                    <listbox sclass="z-listbox-header-border" model="@load(vm.companies)" emptyMessage="No Building Available" hflex="1" vflex="1">
                                         <listhead sizable="true">
                                             <listheader label="Name" sort="none" />
                                             <listheader label="Address" sort="none"/>
                                             <listheader hflex="max">
                                                 <div align="center">
-                                                    <button iconSclass="z-icon-plus" onClick="@command('add')" label="Add New Building" visible="true" sclass=" btn-footer btn-rmt"/>
+                                                    <button iconSclass="z-icon-plus" onClick="@command('add')" label="New" visible="true" sclass="add-button"/>
                                                 </div>
                                             </listheader>
                                         </listhead>
-                                    <auxhead>
-                                        <auxheader>
-                                            <textbox value="@load(vm.companySearchCriteria.likeCompName) @save(vm.companySearchCriteria.likeCompName, before='filter')"  hflex="1" onOK="@command('filter')" />
-                                        </auxheader>
-                                        <auxheader>
-                                            <textbox value="@load(vm.companySearchCriteria.likeCompAddress) @save(vm.companySearchCriteria.likeCompAddress, before='filter')"  hflex="1" onOK="@command('filter')" />
-                                        </auxheader>
-                                        <auxheader align="center">
-                                            <button iconSclass="z-icon-search " sclass="btn-filter" tooltiptext="Filter" onClick=" @command('filter')" />
-                                            <button iconSclass="z-icon-eraser " sclass="btn-filter" tooltiptext="Clear Filter" onClick="@command('clearFilters')" />
-                                        </auxheader>
-                                    </auxhead>
-                                    <template name="model" var="item">
-                                        <listitem>
-                                            <listcell>
-                                                <label value="@load(item.name)" />
-                                            </listcell>
-                                            <listcell>
-                                                <label value="@load(item.address)"/>
-                                            </listcell>
-                                            <listcell>
-                                                <hlayout>
-                                                    <button iconSclass="z-icon-pencil" tooltiptext="Modify" onClick="@command('modify', item=item)"/>
-                                                    <button iconSclass="z-icon-trash" tooltiptext="Delete" onClick="@command('delete', item=item)"/>
-                                                </hlayout>
-                                            </listcell>
-                                        </listitem>
-                                    </template>
+                                        <auxhead>
+                                            <auxheader>
+                                                <textbox value="@load(vm.companySearchCriteria.likeCompName) @save(vm.companySearchCriteria.likeCompName, before='filter')"  hflex="1" onOK="@command('filter')" />
+                                            </auxheader>
+                                            <auxheader>
+                                                <textbox value="@load(vm.companySearchCriteria.likeCompAddress) @save(vm.companySearchCriteria.likeCompAddress, before='filter')"  hflex="1" onOK="@command('filter')" />
+                                            </auxheader>
+                                            <auxheader align="center">
+                                                <button iconSclass="z-icon-search " sclass="btn-filter" tooltiptext="Filter" onClick=" @command('filter')" />
+                                                <button iconSclass="z-icon-eraser " sclass="btn-filter" tooltiptext="Clear Filter" onClick="@command('clearFilters')" />
+                                            </auxheader>
+                                        </auxhead>
+                                        <template name="model" var="item">
+                                            <listitem>
+                                                <listcell>
+                                                    <label value="@load(item.name)" />
+                                                </listcell>
+                                                <listcell>
+                                                    <label value="@load(item.address)"/>
+                                                </listcell>
+                                                <listcell>
+                                                    <hlayout>
+                                                        <button iconSclass="z-icon-pencil" tooltiptext="Modify" onClick="@command('modify', item=item)"/>
+                                                        <button iconSclass="z-icon-trash" tooltiptext="Delete" onClick="@command('delete', item=item)"/>
+                                                    </hlayout>
+                                                </listcell>
+                                            </listitem>
+                                        </template>
                                     </listbox>
+                                    <paging pageSize="@load(vm.companySearchCriteria.pageSize)" focus="true" totalSize="@load(vm.totalSize)" left="true" detailed="true" activePage="@save(vm.activePage)" />
                                 </vlayout>
-                            </vlayout>
-                        </div>
                     </center>
+                    <south/>
                 </borderlayout>
                 <!--  -->
             </center>
+            <south/>
             <!--  -->
         </borderlayout>
         <!--  -->

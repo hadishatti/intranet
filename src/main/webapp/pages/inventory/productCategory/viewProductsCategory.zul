@@ -33,11 +33,15 @@
                         sclass="newsfeedPanel"
                         autoscroll="true" >
                     <vlayout>
-                        <listbox sclass="z-listbox-header-border" model="@load(vm.productCategoryList)" style="align:center;" emptyMessage="No Product Category Available" hflex="1" vflex="1">
+                        <listbox sclass="z-listbox-header-border" model="@load(vm.productCategoryList)" emptyMessage="No Product Category Available" hflex="1" vflex="1">
                                     <listhead sizable="true">
                                         <listheader label="Category" sort="none" onClick="@command('order', orderBy='productCatgName')" align="center" />
                                         <listheader label="Description" sort="none" onClick="@command('order', orderBy='productCatgDesc')" align="center" />
-                                        <listheader hflex="min"/>
+                                        <listheader hflex="max">
+                                            <div align="center">
+                                                <button iconSclass="z-icon-plus" onClick="@command('add')" label="New" visible="true" sclass="add-button"/>
+                                            </div>
+                                        </listheader>
                                     </listhead>
                             <auxhead>
                                 <auxheader sclass="z-auxheader">
@@ -71,14 +75,13 @@
                                         </listitem>
                                     </template>
                         </listbox>
-                                <paging pageSize="@load(vm.productCategorySearchCriteria.pageSize)" focus="true" totalSize="@load(vm.totalSize)" left="true" detailed="true" activePage="@save(vm.activePage)" />
-                        <div align="center" sclass="global-footer" width="100%" vflex="min">
-                            <button iconSclass="z-icon-plus" onClick="@command('add')" label="Add New Product Category" visible="true" sclass=" btn-footer btn-rmt"/>
-                        </div>
+                        <paging pageSize="@load(vm.productCategorySearchCriteria.pageSize)" focus="true" totalSize="@load(vm.totalSize)" left="true" detailed="true" activePage="@save(vm.activePage)" />
                     </vlayout>
                 </center>
+                <south/>
             </borderlayout>
         </center>
+        <south/>
     </borderlayout>
 
 </window>

@@ -38,7 +38,7 @@
                             sclass="newsfeedPanel"
                             autoscroll="true" >
                         <vlayout hflex="1" vflex="1">
-                            <listbox sclass="z-listbox-header-border" model="@load(vm.employees)" style="align:center;padding: 0px;" emptyMessage="No Employee Available" hflex="1" vflex="1">
+                            <listbox sclass="z-listbox-header-border" model="@load(vm.employees)" emptyMessage="No Employee Available" hflex="1" vflex="1">
                                 <listhead sizable="true">
                                     <listheader label="Employee" sort="none" onClick="@command('order', orderBy='employeeNumber')" align="center" />
                                     <listheader label="Is LM?" hflex="min" sort="none" onClick="@command('order', orderBy='isLeaveManager')" align="center" />
@@ -129,9 +129,11 @@
                             <paging pageSize="@load(vm.leaveManagerSearchCriteria.pageSize)" focus="true" totalSize="@load(vm.totalSize)" left="true" detailed="true" activePage="@save(vm.activePage)" />
                         </vlayout>
                     </center>
+                    <south/>
                 </borderlayout>
                 <!--  -->
             </center>
+            <south/>
             <!--  -->
         </borderlayout>
         <!--  -->

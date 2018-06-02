@@ -7,7 +7,7 @@
 <zk>
     <window apply="org.zkoss.bind.BindComposer" closable="true" title="Save Location"
             viewModel="@id('vm') @load(vm.location) @init('qa.tecnositafgulf.viewmodel.inventory.location.SaveLocationViewModel')"
-            sclass="intranet-popup" width="80%" style="@load(vm.css)">
+            sclass="intranet-popup" width="60%" style="@load(vm.css)">
             <vlayout>
                 <groupbox closable="true" mold="3d"
                   vflex="1" contentStyle="overflow:auto;">
@@ -21,7 +21,7 @@
                             <label value="Company Name"/>
                         </listcell>
                         <listcell>
-                            <combobox readonly="true" model="@load(vm.companyList)"
+                            <combobox hflex="1" readonly="true" model="@load(vm.companyList)"
                               selectedItem="@bind(vm.selectedCompany)"/>
                           </listcell>
                       </listitem>
@@ -30,7 +30,7 @@
                             <label value="Location Name"/>
                         </listcell>
                         <listcell>
-                            <textbox constraint="no empty"
+                            <textbox hflex="1" constraint="no empty"
                                value="@load(vm.location.name) @save(vm.location.name, before='saveLocation')"/>
                            </listcell>
                        </listitem>
@@ -39,7 +39,7 @@
                             <label value="Description"/>
                         </listcell>
                         <listcell>
-                            <textbox constraint="no empty"
+                            <textbox hflex="1" constraint="no empty"
                                value="@load(vm.location.description) @save(vm.location.description, before='saveLocation')"/>
                            </listcell>
                        </listitem>
@@ -48,7 +48,7 @@
                             <label value="Address"/>
                         </listcell>
                         <listcell>
-                            <textbox constraint="no empty"
+                            <textbox hflex="1" constraint="no empty"
                                value="@load(vm.location.address) @save(vm.location.address, before='saveLocation')"/>
                            </listcell>
                        </listitem>

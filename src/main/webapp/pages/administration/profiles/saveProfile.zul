@@ -12,7 +12,7 @@
     <window closable="true" title="Save Profile" sclass="intranet-popup"
             apply="org.zkoss.bind.BindComposer"
             viewModel="@id('vm') @init('qa.tecnositafgulf.viewmodel.administration.profiles.SaveProfileViewModel')"
-            width="80%" style="@load(vm.css)">
+            width="60%" style="@load(vm.css)">
             <vlayout>
                 <groupbox closable="true" mold="3d" vflex="1" contentStyle="overflow:auto;">
                     <listbox hflex="1">
@@ -25,7 +25,7 @@
                                 <label value="Name"/>
                             </listcell>
                             <listcell>
-                                <textbox constraint="no empty"  value="@bind(vm.profile.name)"/>
+                                <textbox hflex="1" constraint="no empty"  value="@bind(vm.profile.name)"/>
                             </listcell>
                         </listitem>
                         <listitem>
@@ -33,7 +33,7 @@
                                 <label value="Description"/>
                             </listcell>
                             <listcell>
-                                <textbox constraint="no empty" value="@bind(vm.profile.description)" />
+                                <textbox hflex="1" constraint="no empty" value="@bind(vm.profile.description)" />
                             </listcell>
                         </listitem>
                         <listitem>

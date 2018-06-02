@@ -12,7 +12,7 @@
 <window closable="true" title="Save Company"
         apply="org.zkoss.bind.BindComposer"
         viewModel="@id('vm') @init('qa.tecnositafgulf.viewmodel.administration.companies.SaveCompanyViewModel')"
-        sclass="intranet-popup" width="80%" style="@load(vm.css)">
+        sclass="intranet-popup" width="60%" style="@load(vm.css)">
         <vlayout>
             <groupbox closable="true" mold="3d" form="@id('fx') @load(vm.company) @save(vm.company, before='saveCompany')" vflex="1" contentStyle="overflow:auto;">
                 <listbox hflex="1">
@@ -25,7 +25,7 @@
                             <label value="Name"/>
                         </listcell>
                         <listcell>
-                            <textbox constraint="no empty"  value="@load(fx.name) @save(fx.name,before='saveCompany')"/>
+                            <textbox constraint="no empty" hflex="1" value="@load(fx.name) @save(fx.name,before='saveCompany')"/>
                         </listcell>
                     </listitem>
                     <listitem>
@@ -33,7 +33,7 @@
                             <label value="Address"/>
                         </listcell>
                         <listcell>
-                            <textbox constraint="no empty" value="@load(fx.address) @save(fx.address,before='saveCompany')" />
+                            <textbox constraint="no empty" hflex="1" value="@load(fx.address) @save(fx.address,before='saveCompany')" />
                         </listcell>
                     </listitem>
                 </listbox>

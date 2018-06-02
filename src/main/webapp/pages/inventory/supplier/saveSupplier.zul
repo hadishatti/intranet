@@ -7,7 +7,7 @@
 <zk>
     <window  apply="org.zkoss.bind.BindComposer"
              viewModel="@id('vm') @load(vm.selectedProductSupplier) @init('qa.tecnositafgulf.viewmodel.inventory.supplier.SaveSupplierViewModel')"
-             sclass="intranet-popup" width="80%" closable="true" title="Save Supplier" style="@load(vm.css)">
+             sclass="intranet-popup" width="60%" closable="true" title="Save Supplier" style="@load(vm.css)">
              <vlayout>
                 <groupbox closable="true" mold="3d" vflex="1" contentStyle="overflow:auto;">
                     <listbox hflex="1">
@@ -20,7 +20,7 @@
                                 <label value="Name"/>
                             </listcell>
                             <listcell>
-                                <textbox constraint="no empty"  value="@load(vm.selectedProductSupplier.name) @save(vm.selectedProductSupplier.name, before='saveProductSupplier')"/>
+                                <textbox hflex="1" constraint="no empty"  value="@load(vm.selectedProductSupplier.name) @save(vm.selectedProductSupplier.name, before='saveProductSupplier')"/>
                             </listcell>
                         </listitem>
                         <listitem>
@@ -28,7 +28,7 @@
                                 <label value="Address"/>
                             </listcell>
                             <listcell>
-                                <textbox constraint="no empty"  value="@load(vm.selectedProductSupplier.address) @save(vm.selectedProductSupplier.address, before='saveProductSupplier')"/>
+                                <textbox hflex="1" constraint="no empty"  value="@load(vm.selectedProductSupplier.address) @save(vm.selectedProductSupplier.address, before='saveProductSupplier')"/>
                             </listcell>
                         </listitem>
                         <listitem>
@@ -36,7 +36,7 @@
                                 <label value="Mobile Number"/>
                             </listcell>
                             <listcell>
-                                <textbox constraint="no empty, /[0-9]+/: Please enter a valid phone number" value="@load(vm.selectedProductSupplier.mobileNumber) @save(vm.selectedProductSupplier.mobileNumber, before='saveProductSupplier')" />
+                                <textbox hflex="1" constraint="no empty, /[0-9]+/: Please enter a valid phone number" value="@load(vm.selectedProductSupplier.mobileNumber) @save(vm.selectedProductSupplier.mobileNumber, before='saveProductSupplier')" />
                             </listcell>
                         </listitem>
                         <listitem>
@@ -44,7 +44,7 @@
                                 <label value="Land Line Number"/>
                             </listcell>
                             <listcell>
-                                <textbox constraint="no empty, /[0-9]+/: Please enter a valid phone number" value="@load(vm.selectedProductSupplier.landLineNumber) @save(vm.selectedProductSupplier.landLineNumber, before='saveProductSupplier')" />
+                                <textbox hflex="1" constraint="no empty, /[0-9]+/: Please enter a valid phone number" value="@load(vm.selectedProductSupplier.landLineNumber) @save(vm.selectedProductSupplier.landLineNumber, before='saveProductSupplier')" />
                             </listcell>
                         </listitem>
                         <listitem>
@@ -52,7 +52,7 @@
                                 <label value="Email Id"/>
                             </listcell>
                             <listcell>
-                                <textbox constraint="no empty, /.+@.+\.[a-z]+/: Please enter a valid e-mail address" value="@load(vm.selectedProductSupplier.emailId) @save(vm.selectedProductSupplier.emailId, before='saveProductSupplier')" />
+                                <textbox hflex="1" constraint="no empty, /.+@.+\.[a-z]+/: Please enter a valid e-mail address" value="@load(vm.selectedProductSupplier.emailId) @save(vm.selectedProductSupplier.emailId, before='saveProductSupplier')" />
                             </listcell>
                         </listitem>
                     </listbox>

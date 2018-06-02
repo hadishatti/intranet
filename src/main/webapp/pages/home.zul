@@ -4,7 +4,7 @@
 <?meta name="viewport" content="width=device-width, initial-scale=1"?>
 
 <zk xmlns:h="http://www.w3.org/1999/xhtml" xmlns:n="native" xmlns:zk="http://www.zkoss.org/2005/zk" xmlns:ca="client/attribute">
-    <div height = "100%" width = "100%" apply="org.zkoss.bind.BindComposer"
+    <window height = "100%" width = "100%" apply="org.zkoss.bind.BindComposer" contentStyle="overflow:auto;"
          viewModel="@id('vm') @init('qa.tecnositafgulf.viewmodel.home.HomeViewModel')">
 
         <div width="100%" >
@@ -13,8 +13,8 @@
         <div visible="@load(vm.mobile)">
             <include src="/pages/mobile_layout.zul" />
         </div>
-        <div height = "100%" visible="@load(not vm.mobile)">
+        <div vflex="1" visible="@load(not vm.mobile)">
             <include src="/pages/desktop.zul" />
         </div>
-    </div>
+    </window>
 </zk>

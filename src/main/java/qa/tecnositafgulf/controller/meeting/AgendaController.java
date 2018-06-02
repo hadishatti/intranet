@@ -210,6 +210,11 @@ public class AgendaController extends SelectorComposer<Component> {
     }
 
     //control the filter
+    @Listen("onOK = #filter")
+    public void okFilter(){
+        applyFilter();
+    }
+    
     @Listen("onClick = #applyFilter")
     public void applyFilter(){
         calendarModel.setFilterText(filter.getValue());
