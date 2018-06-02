@@ -89,16 +89,42 @@ public class ViewLeaveRequestsViewModel extends IntranetVM{
         addCommonTags((PageCtrl) view.getPage());
     }
 
-    public void load(){
-        this.leaveSearchCriteria.setApplicant(employee);
-        this.setTotalSize(service.listLastLeaveRequestsByApplicantCount(leaveSearchCriteria));
-        this.leaveSearchCriteria.setStartIndex(getActivePage());
-        this.leaveRequests = service.listLastLeaveRequestsByApplicant(leaveSearchCriteria);
+    public boolean isUpdate(List<LeaveRequest> newLeaveRequests){
+        if(leaveRequests.size()!=newLeaveRequests.size())
+            return true;
+        else{
+            for(int i=0; i<leaveRequests.size();i++)
+                if(leaveRequests.get(i).equals(newLeaveRequests.get(i)))
+                    return true;
+        }
+        return false;
+
+    }
+
+    public List<LeaveRequest> updateLR(){
+        List<LeaveRequest> leaveRequests;
+        leaveRequests = service.listLastLeaveRequestsByApplicant(leaveSearchCriteria);
+        return leaveRequests;
+    }
+
+    public void deleteNotifications(){
         for(LeaveRequest request : leaveRequests){
             service.deleteLeaveRequestEmployeeNotification(request, employee);
         }
-        BindUtils.postNotifyChange(null, null, this, "leaveRequests");
+    }
 
+    public void load(){
+        if(leaveRequests==null)
+            leaveRequests = new ArrayList<>();
+        this.leaveSearchCriteria.setApplicant(employee);
+        this.setTotalSize(service.listLastLeaveRequestsByApplicantCount(leaveSearchCriteria));
+        this.leaveSearchCriteria.setStartIndex(getActivePage());
+        List<LeaveRequest> newLR = updateLR();
+        if(isUpdate(newLR)) {
+            leaveRequests = newLR;
+            deleteNotifications();
+            BindUtils.postNotifyChange(null, null, this, "leaveRequests");
+        }
     }
 
     @Command
@@ -158,19 +184,6 @@ public class ViewLeaveRequestsViewModel extends IntranetVM{
         }
 
     }
-
-
-    private int requestSize(){
-        List<LeaveRequest> leaveRequests = service.listLastLeaveRequestsByApplicant(leaveSearchCriteria);
-        return leaveRequests.size();
-    }
-
-    private boolean update(){
-        if(requestSize()!=leaveRequests.size())
-            return true;
-        return false;
-    }
-
 
     public List<LeaveRequest> getLeaveRequests() {
         return leaveRequests;
@@ -339,8 +352,7 @@ public class ViewLeaveRequestsViewModel extends IntranetVM{
                     }
                     Executions.activate(desktop);
                     try {
-                        if(update())
-                            load();
+                        load();
                     } finally {
                         Executions.deactivate(desktop);
                     }
