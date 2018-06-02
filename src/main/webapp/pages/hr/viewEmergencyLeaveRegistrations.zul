@@ -65,7 +65,7 @@
                                         <button iconSclass="z-icon-plus" onClick="@command('add', item=item)" label="New Emergency Leave Registration"/>
                                     </div>
                                     <separator height="20px"/>
-                                    <listbox model="@bind(vm.leaveRequests)" style="align:center;" emptyMessage="No Leave Request Available" hflex="1" vflex="1">
+                                    <listbox  sclass="z-listbox-header-border" model="@bind(vm.leaveRequests)" emptyMessage="No Leave Request Available" hflex="1" vflex="1">
                                         <listhead sizable="true">
                                             <listheader label="Leave ID" sort="none" onClick="@command('order', orderBy='number')" align="center" />
                                             <listheader label="Applicant" sort="none" onClick="@command('order', orderBy='applicant')" align="center" />
@@ -181,9 +181,11 @@
                             </vlayout>
                         </div>
                     </center>
+                    <south/>
                 </borderlayout>
                 <!--  -->
             </center>
+            <south/>
             <!--  -->
         </borderlayout>
         <!--  -->

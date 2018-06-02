@@ -12,7 +12,7 @@
     <window closable="true" title="Save Role"
             apply="org.zkoss.bind.BindComposer"
             viewModel="@id('vm') @init('qa.tecnositafgulf.viewmodel.administration.roles.SaveRoleViewModel')"
-            sclass="intranet-popup" width="100%" style="@load(vm.css)">
+            sclass="intranet-popup" width="80%" style="@load(vm.css)">
         
             <vlayout>
                 <groupbox closable="true" mold="3d" form="@id('fx') @load(vm.role) @save(vm.role, before='saveRole')" vflex="1" contentStyle="overflow:auto;">

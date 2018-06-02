@@ -131,6 +131,8 @@ public class ViewEventsViewModel extends IntranetVM{
 
 		if (companyEvent.getAuthor() != null && companyEvent.getAuthor().getImage() != null)
 			ret += MyProperties.getInstance().getImagePath() + "/staff/" + companyEvent.getAuthor().getImage();
+		else
+			ret += MyProperties.getInstance().getImagePath() + "/staff/userpic.png";
 
 		return ret;
 	}

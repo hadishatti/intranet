@@ -9,9 +9,9 @@
 
 <zk>
     <window
-            apply="org.zkoss.bind.BindComposer"
+            apply="org.zkoss.bind.BindComposer" sclass="intranet-popup"
             viewModel="@id('vm') @init('qa.tecnositafgulf.viewmodel.companyInfo.projects.SaveProjectViewModel')"
-            height="80%" width="80%" closable="true" title="Save Project" style="@load(vm.css)">
+            width="80%" closable="true" title="Save Project" style="@load(vm.css)">
 
         <zscript><![CDATA[
 	    import qa.tecnositafgulf.config.ProjectsStatusEnum;

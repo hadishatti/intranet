@@ -12,37 +12,6 @@
 <zk>
 
     <window apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('qa.tecnositafgulf.viewmodel.companyInfo.clients.ClientsVM')" height="100%" width="100%" style="@load(vm.css)">
-        <style>
-            .z-button {
-            background-color: #1a4280;
-            }
-            .z-button:hover {
-            background-color: #0090cf;
-            }
-            .z-icon-angle-double-left {
-            color: #1a4280;
-            font-size:30px;
-            }
-            .z-west-collapsed>.z-borderlayout-icon {
-            top: 0; bottom: 0; right: 0; left: 0;
-            width: 100%; height: 100%;
-            }
-            .z-west-collapsed>.z-borderlayout-icon::before {
-            color: #1a4280;
-            font-size:30px;
-            }
-            .z-listheader {
-            background-color: #1a4280;
-            }
-            .z-notification .z-notification-content {
-            color : #1a4280;
-            background-color: #dee9fb;
-            }
-            .z-icon-info-circle::before{
-            color : #1a4280;
-            }
-        </style>
-
         <!-- Title Bar-->
         <div width="100%" >
             <include src="/pages/include/titlebar.zul"/>

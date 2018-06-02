@@ -39,7 +39,7 @@
                             sclass="newsfeedPanel"
                             autoscroll="true" >
                         <vlayout hflex="1" vflex="1">
-                            <listbox sclass="z-listbox-header-border" id="supplierlist" model="@load(vm.suppliers)" style="align:center;" emptyMessage="No Supplier Available" hflex="1" vflex="1">
+                            <listbox sclass="z-listbox-header-border" id="supplierlist" model="@load(vm.suppliers)" emptyMessage="No Supplier Available" hflex="1" vflex="1">
                                 <listhead sizable="true">
                                     <listheader label="Name" sort="none" onClick="@command('order', orderBy='name')" align="center" />
                                     <listheader label="Domain Url" sort="none" onClick="@command('order', orderBy='domainURL')" align="center"/>
@@ -89,9 +89,11 @@
                             <paging pageSize="@load(vm.supplierSearchCriteria.pageSize)" focus="true" totalSize="@load(vm.totalSize)" left="true" detailed="true" activePage="@save(vm.activePage)" />
                         </vlayout>
                     </center>
+                    <south/>
                 </borderlayout>
                 <!--  -->
             </center>
+            <south/>
             <!--  -->
         </borderlayout>
         <!--  -->

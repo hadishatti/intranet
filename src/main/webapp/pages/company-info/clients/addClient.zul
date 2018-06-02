@@ -8,7 +8,7 @@
 
 
 <zk>
-    <window
+    <window closable="true" title="Save Client"
             apply="org.zkoss.bind.BindComposer"
             viewModel="@id('vm') @init('qa.tecnositafgulf.viewmodel.companyInfo.clients.addClientsVM')"
             sclass="intranet-popup" width="80%" style="@load(vm.css)">

@@ -39,7 +39,7 @@
                                 <bandbox autodrop="true" readonly="true" placeholder="View Approved/Cancelled/Refused Requests of Managees" width="30%" style="background-color:#0064ed;;color:#ffffff;opacity:0.8;">
                                     <bandpopup hflex="1" height="100%">
                                         <vlayout hflex="1">
-                                            <listbox sclass="z-listbox-header-border" model="@bind(vm.approvedLeaveRequests)" style="align:center;" emptyMessage="No Leave Request Available" hflex="1" vflex="1">
+                                            <listbox sclass="z-listbox-header-border" model="@bind(vm.approvedLeaveRequests)" emptyMessage="No Leave Request Available" hflex="1" vflex="1">
                                                 <listhead sizable="true">
                                                     <listheader label="Leave ID" sort="none" onClick="@command('orderApproved', orderBy='number')" align="center" />
                                                     <listheader label="Applicant" sort="none" onClick="@command('orderApproved', orderBy='applicant')" align="center" />
@@ -378,9 +378,11 @@
 
                         </vlayout>
                     </center>
+                    <south/>
                 </borderlayout>
                 <!--  -->
             </center>
+            <south/>
             <!--  -->
         </borderlayout>
         <!--  -->
