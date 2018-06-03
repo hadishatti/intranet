@@ -77,6 +77,10 @@ public class SaveEmployeeViewModel extends IntranetVM{
             modify=false;
             employee = new Employee();
             selectedPrefix1Index = new Integer(179);
+            Calendar c = Calendar.getInstance();
+            c.add(Calendar.YEAR,-18);
+            DateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+            birthConstraint = "no empty, after "+sdf.format(c.getTime());
         }
         if(employee.getBirthDate()==null){
             Calendar c = Calendar.getInstance();
@@ -127,11 +131,6 @@ public class SaveEmployeeViewModel extends IntranetVM{
             selectedProfiles = new ArrayList<>();
             selectedProfiles.add(profilesDB.get(0).toString());
         }
-
-        Calendar c = Calendar.getInstance();
-        c.add(Calendar.YEAR,-18);
-        DateFormat sdf = new SimpleDateFormat("yyyyMMdd");
-        birthConstraint = "no empty, after "+sdf.format(c.getTime());
 
         addCommonTags((PageCtrl) view.getPage());
 
@@ -242,18 +241,16 @@ public class SaveEmployeeViewModel extends IntranetVM{
             employee.setPassword(service.MD5(employee.getPassword()));
         }
 
-        if(currentEmployee){
-            Employee employee = (Employee) Sessions.getCurrent().getAttribute("employee");
-            Sessions.getCurrent().setAttribute("employee",employee);
-        }
         try {
-            if(employee.getId()==null){
-                LeaveBalance balance = new LeaveBalance();
-                balance.setValue(21);
-                balance.setEmployee(employee);
-                leaveService.updateLeaveBalance(balance);
-            }
             service.saveEmployee(employee);
+            if(currentEmployee){
+                Sessions.getCurrent().setAttribute("employee",employee);
+                Messagebox.show("Your data may be changed. Logout Needed", "Warning", Messagebox.OK , Messagebox.EXCLAMATION, new org.zkoss.zk.ui.event.EventListener<Event>() {
+                    public void onEvent(Event event) throws Exception {
+                        logout();
+                    }
+                });
+            }
             Messagebox.show("OK! Do you want to view all the Employees?", "Warning", Messagebox.OK | Messagebox.CANCEL, Messagebox.INFORMATION, new org.zkoss.zk.ui.event.EventListener<Event>() {
                 public void onEvent(Event event) throws Exception {
                     if (event.getName().equals("onOK")) {
