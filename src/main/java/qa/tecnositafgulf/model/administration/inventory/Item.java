@@ -19,9 +19,9 @@ public class Item implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String serialNr;
+    private String serialNumber;
 
-    private String Category;
+    private String category;
 
     private String name;
 
@@ -31,7 +31,7 @@ public class Item implements Serializable{
 
     private String status;
 
-    private String desc;
+    private String description;
 
     private Employee employee;
 
