@@ -5,8 +5,9 @@ package qa.tecnositafgulf.config.inventoryEnums;
  */
 public enum ItemStatusEnum {
     STOCK("In Stock"),
-    INUSE("In Use"),
-    DEFECTIVE("Defective");
+    IN_USE("In Use"),
+    DEFECTIVE("Defective"),
+    DELETED("Deleted");
 
     private final String status;
 

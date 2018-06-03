@@ -133,6 +133,8 @@
                                     <h:li><a href="/pages/administration/inventory/warehouses/viewWarehouses.zul"><image style = "max-width:26px;height:auto;" src="@load(vm.imagePath.concat('/inventory/warehouse.png'))"/><span style ="color: #1a4280; margin: 2px;" class="titlebar-text">Manage Warehouses</span></a></h:li>
                                     <!-- Manage Transfers Dropdown -->
                                     <h:li><a href="/pages/administration/inventory/transfers/viewTransfers.zul"><image style = "max-width:26px;height:auto;" src="@load(vm.imagePath.concat('/inventory/transfers.png'))"/><span style ="color: #1a4280; margin: 2px;" class="titlebar-text"> Manage Transfers</span></a></h:li>
+                                    <!-- Log Dropdown -->
+                                    <h:li><a href="/pages/administration/inventory/viewInventoryLog.zul"><image style = "max-width:26px;height:auto;" src="@load(vm.imagePath.concat('/inventory/log.png'))"/><span style ="color: #1a4280; margin: 2px;" class="titlebar-text"> Log</span></a></h:li>
                                 </h:ul>
                             </h:li>
                         </h:ul>

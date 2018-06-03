@@ -10,7 +10,7 @@ public enum InventoryActionEnum {
     BULK_ITEM_ADDITION("Bulk Addition"),
     BULK_ITEM_REMOVAL("Bulk Removal"),
     ITEM_STATUS_CHANGE("Item Status Change"),
-    TRANSFER("Transfer");
+    TRANSFER_ITEMS("Transfer Items");
 
     private final String action;
 
