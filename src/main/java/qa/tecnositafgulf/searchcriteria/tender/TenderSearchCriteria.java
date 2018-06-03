@@ -8,7 +8,7 @@ import java.util.List;
 
 public class TenderSearchCriteria {
 
-    private static final int DEFAULTPAGESIZE = 10;
+    private static final int DEFAULTPAGESIZE = 5;
     private static final int DEFAULTPAGESTARTINDEX = 0;
     private static final String DEFAULTPAGEORDER = "date";
     private static final String DEFAULTPAGEORDERMODE = "desc";

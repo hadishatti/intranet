@@ -39,7 +39,7 @@
 								<div hflex="4"/>
 								<div hflex="4"/>
 								<bandbox autodrop="true" hflex="2" readonly="true" placeholder="Search..." style="background-color:#0064ed;;color:#ffffff;opacity:0.8;">
-									<bandpopup style="max-width:330px">
+									<bandpopup style="max-width:330px" height="100%">
 										<grid hflex="1">
 											<columns>
 												<column hflex="1" align="right"/>
@@ -88,6 +88,8 @@
 									</bandpopup>
 								</bandbox>
 							</div>
+							<separator/>
+							<paging pageSize="@load(vm.companyEventsSearchCriteria.pageSize)" focus="true" totalSize="@load(vm.totalSize)" left="true" detailed="true" activePage="@save(vm.activePage)" />
 							<listbox children="@bind(vm.companyEventModel)" sclass="whatsnew">
 								<template name="children" var="companyEvent">
 									<listitem>
@@ -168,6 +170,7 @@
 									</listitem>
 								</template>
 							</listbox>
+							<paging pageSize="@load(vm.companyEventsSearchCriteria.pageSize)" focus="true" totalSize="@load(vm.totalSize)" left="true" detailed="true" activePage="@save(vm.activePage)" />
 						</vlayout>
 					</center>
 					<south/>
