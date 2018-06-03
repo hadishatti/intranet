@@ -1,5 +1,6 @@
 package qa.tecnositafgulf.model.administration.inventory;
 
+import qa.tecnositafgulf.config.inventoryEnums.ItemStatusEnum;
 import qa.tecnositafgulf.model.administration.Employee;
 import qa.tecnositafgulf.model.suppliers.Supplier;
 
@@ -29,7 +30,7 @@ public class Item implements Serializable{
 
     private String unit;
 
-    private String status;
+    private ItemStatusEnum status;
 
     private String description;
 
