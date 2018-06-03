@@ -148,6 +148,9 @@ padding: 0 0;  /* 0 padding  on top and bottom and 0 padding on right and left *
 .whatsnew {
     border:none;
 }
+.whatsnew .z-listcell{
+    border-bottom: 1px solid #c0d4ef!important;
+}
 .z-auxheader {
     background-color: #0090cf;
 }
