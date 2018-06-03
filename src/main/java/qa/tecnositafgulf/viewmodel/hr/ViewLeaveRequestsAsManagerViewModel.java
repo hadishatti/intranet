@@ -118,7 +118,7 @@ public class ViewLeaveRequestsAsManagerViewModel extends IntranetVM {
             return true;
         else{
             for(int i=0; i<leaveRequests.size();i++)
-                if(leaveRequests.get(i).equals(newLeaveRequests.get(i)))
+                if(!leaveRequests.get(i).equals(newLeaveRequests.get(i)))
                     return true;
         }
         return false;
@@ -139,7 +139,7 @@ public class ViewLeaveRequestsAsManagerViewModel extends IntranetVM {
             return true;
         else{
             for(int i=0; i<approvedLeaveRequests.size();i++)
-                if(approvedLeaveRequests.get(i).equals(newLeaveRequests.get(i)))
+                if(!approvedLeaveRequests.get(i).equals(newLeaveRequests.get(i)))
                     return true;
         }
         return false;

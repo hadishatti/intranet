@@ -316,7 +316,7 @@
                                             </combobox>
                                         </auxheader>
                                         <auxheader sclass="z-auxheader">
-                                            <bandbox autodrop="true" readonly="true">
+                                            <bandbox autodrop="true" readonly="true" hflex="1">
                                                 <bandpopup hflex="min" height="100%">
                                                     <vlayout>
                                                         <hlayout>
