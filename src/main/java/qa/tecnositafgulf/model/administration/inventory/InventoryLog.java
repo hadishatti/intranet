@@ -1,5 +1,6 @@
 package qa.tecnositafgulf.model.administration.inventory;
 
+import qa.tecnositafgulf.config.inventoryEnums.InventoryActionEnum;
 import qa.tecnositafgulf.model.administration.Employee;
 
 import javax.persistence.GeneratedValue;
@@ -21,7 +22,7 @@ public class InventoryLog implements Serializable{
 
     private Date actionDate;
 
-    private String action;
+    private InventoryActionEnum action;
 
     private String description;
 }
