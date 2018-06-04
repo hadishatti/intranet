@@ -9,7 +9,7 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "warehouse_inventory")
-public class WarehouseInventory implements Serializable{
+public class InventoryCategory implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,14 +23,9 @@ public class WarehouseInventory implements Serializable{
 
     private String unit;
 
-    private int inUse;
-
-    private int defective;
-
-    private int inStorage;
-
     private int minQuantity;
 
     @ManyToOne
+    @JoinColumn(name = "warehouse_id")
     private Warehouse warehouse;
 }

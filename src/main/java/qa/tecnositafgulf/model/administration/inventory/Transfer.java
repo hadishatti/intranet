@@ -3,6 +3,7 @@ package qa.tecnositafgulf.model.administration.inventory;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by ameljo on 6/3/18.
@@ -29,4 +30,11 @@ public class Transfer implements Serializable{
     private String itemName;
 
     private String itemCategory;
+
+    @JoinTable(
+            name = "item_transfer",
+            joinColumns = {@JoinColumn(name = "transferId", referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "itemId", referencedColumnName = "id")}
+    )
+    private List<Item> items;
 }
