@@ -11,6 +11,7 @@ public enum InventoryActionEnum {
     BULK_ITEM_REMOVAL("Bulk Removal"),
     ITEM_STATUS_CHANGE("Item Status Change"),
     TRANSFER_ITEMS("Transfer Items");
+    //TODO other actions might be needed or some might be redundant
 
     private final String action;
 

@@ -2,6 +2,7 @@ package qa.tecnositafgulf.service;
 
 import qa.tecnositafgulf.model.administration.inventory.Item;
 import qa.tecnositafgulf.model.administration.inventory.Transfer;
+import qa.tecnositafgulf.model.administration.inventory.InventoryLog;
 import qa.tecnositafgulf.model.administration.inventory.Warehouse;
 import qa.tecnositafgulf.model.inventory.location.Location;
 import qa.tecnositafgulf.model.inventory.product.Product;
@@ -18,6 +19,10 @@ public interface InventoryService {
     //TODO define all methods
 
     List<Warehouse> getWarehouseList();
+
+    public void saveWarehouse(Warehouse warehouse);
+
+    public List<InventoryLog> getAllInventoryLogs();
 
     void removeItem(Item item);
 

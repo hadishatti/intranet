@@ -6,10 +6,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import qa.tecnositafgulf.dao.administration.inventory.item.ItemDao;
 import qa.tecnositafgulf.dao.administration.inventory.transfer.TransferDao;
+import qa.tecnositafgulf.dao.administration.inventory.inventoryLog.InventoryLogDao;
 import qa.tecnositafgulf.dao.administration.inventory.warehouse.WarehouseDao;
 import qa.tecnositafgulf.dao.inventory.InventoryDao;
 import qa.tecnositafgulf.model.administration.inventory.Item;
 import qa.tecnositafgulf.model.administration.inventory.Transfer;
+import qa.tecnositafgulf.model.administration.inventory.InventoryLog;
 import qa.tecnositafgulf.model.administration.inventory.Warehouse;
 import qa.tecnositafgulf.model.inventory.location.Location;
 import qa.tecnositafgulf.model.inventory.product.Product;
@@ -28,6 +30,9 @@ public class InventoryServiceImpl implements InventoryService {
     WarehouseDao warehouseDao;
 
     @Autowired
+    InventoryLogDao inventoryLogDao;
+
+    @Autowired
     ItemDao itemDao;
 
     @Autowired
@@ -36,6 +41,17 @@ public class InventoryServiceImpl implements InventoryService {
     @Override
     public List<Warehouse> getWarehouseList() {
         return warehouseDao.listAllWarehouses();
+    }
+
+    @Override
+    @Transactional
+    public void saveWarehouse(Warehouse warehouse) {
+        warehouseDao.save(warehouse);
+    }
+
+    @Override
+    public List<InventoryLog> getAllInventoryLogs() {
+        return inventoryLogDao.getAllLogs();
     }
 
     @Override
