@@ -5,13 +5,15 @@ import qa.tecnositafgulf.model.administration.inventory.Transfer;
 import java.util.List;
 
 /**
- * Created by ameljo on 6/3/18.
+ * Created by ledio on 6/5/18.
  */
 public interface TransferDao {
 
-    void saveTransfer(Transfer transfer);
+    void save(Transfer transfer);
 
-    void deleteTransfer(Transfer transfer);
+    void remove(Transfer transfer);
 
-    List<Transfer> getAll();
+    List<Transfer> getAllTransfers();
+
+    Integer countAllTransfers();
 }
