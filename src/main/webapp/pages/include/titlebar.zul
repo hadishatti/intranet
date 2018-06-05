@@ -161,50 +161,50 @@
                     </h:li>
                     <h:li><a href="#" onClick="@command('chat')"><image style = "max-width:26px;height:auto;" src="@load(vm.imagePath.concat('/chat.png'))"/> <span style ="color: #1a4280; margin: 2px;" class="titlebar-text"> Chat Room</span></a></h:li>
                     <!-- Inventory Dropdown -->
-                    <h:li class="dropdown"><a href="#" class="dropdown-toggle titlebar-text" ca:data-toggle="dropdown"><image style = "max-width:26px;height:auto;" src="@load(vm.imagePath.concat('/inventory/mainInventory.png'))"/> <span style ="color: #1a4280; margin: 2px;" class="titlebar-text"> Inventory</span><h:b class="caret"></h:b></a>
-                        <h:ul class="dropdown-menu">
-                            <!-- Manage Product Category Dropdown -->
-                            <h:li class="dropdown dropdown-submenu" ><a href="#" class="dropdown-toggle" ca:data-toggle="dropdown"><image style = "max-width:26px;height:auto;" src="@load(vm.imagePath.concat('/inventory/invent_product_cat.png'))"/><span style ="color: #1a4280; margin: 2px;" class="titlebar-text"> Manage Product Category</span></a>
-                                <h:ul class="dropdown-menu">
-                                    <h:li><a href="/pages/inventory/productCategory/viewProductsCategory.zul"><image style = "max-width:26px;height:auto; img-fluid" src="@load(vm.imagePath.concat('/administration/view.png'))"/> <span style ="color: #1a4280; margin: 2px;" class="titlebar-text"> View Product Category</span></a></h:li>
+                    <!--<h:li class="dropdown"><a href="#" class="dropdown-toggle titlebar-text" ca:data-toggle="dropdown"><image style = "max-width:26px;height:auto;" src="@load(vm.imagePath.concat('/inventory/mainInventory.png'))"/> <span style ="color: #1a4280; margin: 2px;" class="titlebar-text"> Inventory</span><h:b class="caret"></h:b></a>-->
+                        <!--<h:ul class="dropdown-menu">-->
+                            <!--&lt;!&ndash; Manage Product Category Dropdown &ndash;&gt;-->
+                            <!--<h:li class="dropdown dropdown-submenu" ><a href="#" class="dropdown-toggle" ca:data-toggle="dropdown"><image style = "max-width:26px;height:auto;" src="@load(vm.imagePath.concat('/inventory/invent_product_cat.png'))"/><span style ="color: #1a4280; margin: 2px;" class="titlebar-text"> Manage Product Category</span></a>-->
+                                <!--<h:ul class="dropdown-menu">-->
+                                    <!--<h:li><a href="/pages/inventory/productCategory/viewProductsCategory.zul"><image style = "max-width:26px;height:auto; img-fluid" src="@load(vm.imagePath.concat('/administration/view.png'))"/> <span style ="color: #1a4280; margin: 2px;" class="titlebar-text"> View Product Category</span></a></h:li>-->
 
-                                    <h:li><a href="/pages/inventory/productCategory/saveProductsCategory.zul"><image style = "max-width:26px;height:auto; img-fluid" src="@load(vm.imagePath.concat('/administration/add.png'))"/> <span style ="color: #1a4280; margin: 2px;" class="titlebar-text"> Create New Product Category</span></a></h:li>
-                                </h:ul>
-                            </h:li>
+                                    <!--<h:li><a href="/pages/inventory/productCategory/saveProductsCategory.zul"><image style = "max-width:26px;height:auto; img-fluid" src="@load(vm.imagePath.concat('/administration/add.png'))"/> <span style ="color: #1a4280; margin: 2px;" class="titlebar-text"> Create New Product Category</span></a></h:li>-->
+                                <!--</h:ul>-->
+                            <!--</h:li>-->
 
-                            <!-- Manage Products Dropdown -->
-                            <h:li  class="dropdown dropdown-submenu" ><a href="#" class="dropdown-toggle" ca:data-toggle="dropdown"><image style = "max-width:26px;height:auto;" src="@load(vm.imagePath.concat('/inventory/INV-Product_create.png'))"/><span style ="color: #1a4280; margin: 2px;" class="titlebar-text"> Manage Products</span></a>
-                                <h:ul class="dropdown-menu">
-                                    <h:li><a href="/pages/inventory/product/viewProducts.zul"><image style = "max-width:26px;height:auto; img-fluid" src="@load(vm.imagePath.concat('/administration/view.png'))"/> <span style ="color: #1a4280; margin: 2px;" class="titlebar-text"> View Products</span></a></h:li>
+                            <!--&lt;!&ndash; Manage Products Dropdown &ndash;&gt;-->
+                            <!--<h:li  class="dropdown dropdown-submenu" ><a href="#" class="dropdown-toggle" ca:data-toggle="dropdown"><image style = "max-width:26px;height:auto;" src="@load(vm.imagePath.concat('/inventory/INV-Product_create.png'))"/><span style ="color: #1a4280; margin: 2px;" class="titlebar-text"> Manage Products</span></a>-->
+                                <!--<h:ul class="dropdown-menu">-->
+                                    <!--<h:li><a href="/pages/inventory/product/viewProducts.zul"><image style = "max-width:26px;height:auto; img-fluid" src="@load(vm.imagePath.concat('/administration/view.png'))"/> <span style ="color: #1a4280; margin: 2px;" class="titlebar-text"> View Products</span></a></h:li>-->
 
-                                    <h:li><a href="/pages/inventory/product/saveProduct.zul"><image style = "max-width:26px;height:auto; img-fluid" src="@load(vm.imagePath.concat('/administration/add.png'))"/> <span style ="color: #1a4280; margin: 2px;" class="titlebar-text"> Create New Products</span></a></h:li>
-                                </h:ul>
-                            </h:li>
+                                    <!--<h:li><a href="/pages/inventory/product/saveProduct.zul"><image style = "max-width:26px;height:auto; img-fluid" src="@load(vm.imagePath.concat('/administration/add.png'))"/> <span style ="color: #1a4280; margin: 2px;" class="titlebar-text"> Create New Products</span></a></h:li>-->
+                                <!--</h:ul>-->
+                            <!--</h:li>-->
 
-                            <!-- Manage Location Dropdown -->
-                            <h:li  class="dropdown dropdown-submenu" ><a href="#" class="dropdown-toggle" ca:data-toggle="dropdown"><image style = "max-width:26px;height:auto;" src="@load(vm.imagePath.concat('/inventory/InventoryLocker.png'))"/><span style ="color: #1a4280; margin: 2px;" class="titlebar-text"> Manage Location</span></a>
-                                <h:ul class="dropdown-menu">
-                                    <h:li><a href="/pages/inventory/location/viewLocation.zul"><image style = "max-width:26px;height:auto; img-fluid" src="@load(vm.imagePath.concat('/administration/view.png'))"/> <span style ="color: #1a4280; margin: 2px;" class="titlebar-text"> View Location</span></a></h:li>
+                            <!--&lt;!&ndash; Manage Location Dropdown &ndash;&gt;-->
+                            <!--<h:li  class="dropdown dropdown-submenu" ><a href="#" class="dropdown-toggle" ca:data-toggle="dropdown"><image style = "max-width:26px;height:auto;" src="@load(vm.imagePath.concat('/inventory/InventoryLocker.png'))"/><span style ="color: #1a4280; margin: 2px;" class="titlebar-text"> Manage Location</span></a>-->
+                                <!--<h:ul class="dropdown-menu">-->
+                                    <!--<h:li><a href="/pages/inventory/location/viewLocation.zul"><image style = "max-width:26px;height:auto; img-fluid" src="@load(vm.imagePath.concat('/administration/view.png'))"/> <span style ="color: #1a4280; margin: 2px;" class="titlebar-text"> View Location</span></a></h:li>-->
 
-                                    <h:li><a href="/pages/inventory/location/saveLocation.zul"><image style = "max-width:26px;height:auto; img-fluid" src="@load(vm.imagePath.concat('/administration/add.png'))"/> <span style ="color: #1a4280; margin: 2px;" class="titlebar-text"> Create New Location</span></a></h:li>
-                                </h:ul>
-                            </h:li>
+                                    <!--<h:li><a href="/pages/inventory/location/saveLocation.zul"><image style = "max-width:26px;height:auto; img-fluid" src="@load(vm.imagePath.concat('/administration/add.png'))"/> <span style ="color: #1a4280; margin: 2px;" class="titlebar-text"> Create New Location</span></a></h:li>-->
+                                <!--</h:ul>-->
+                            <!--</h:li>-->
 
-                            <!-- Manage Product Stock Dropdown -->
-                            <h:li  class="dropdown dropdown-submenu" ><a href="#" class="dropdown-toggle" ca:data-toggle="dropdown"><image style = "max-width:26px;height:auto;" src="@load(vm.imagePath.concat('/inventory/ProductStock.jpg'))"/><span style ="color: #1a4280; margin: 2px;" class="titlebar-text"> Manage Product Stock</span></a>
-                                <h:ul class="dropdown-menu">
-                                    <h:li><a href="/pages/inventory/productLocation/viewProductLocation.zul"><image style = "max-width:26px;height:auto; img-fluid" src="@load(vm.imagePath.concat('/administration/view.png'))"/> <span style ="color: #1a4280; margin: 2px;" class="titlebar-text"> View Product Stock</span></a></h:li>
+                            <!--&lt;!&ndash; Manage Product Stock Dropdown &ndash;&gt;-->
+                            <!--<h:li  class="dropdown dropdown-submenu" ><a href="#" class="dropdown-toggle" ca:data-toggle="dropdown"><image style = "max-width:26px;height:auto;" src="@load(vm.imagePath.concat('/inventory/ProductStock.jpg'))"/><span style ="color: #1a4280; margin: 2px;" class="titlebar-text"> Manage Product Stock</span></a>-->
+                                <!--<h:ul class="dropdown-menu">-->
+                                    <!--<h:li><a href="/pages/inventory/productLocation/viewProductLocation.zul"><image style = "max-width:26px;height:auto; img-fluid" src="@load(vm.imagePath.concat('/administration/view.png'))"/> <span style ="color: #1a4280; margin: 2px;" class="titlebar-text"> View Product Stock</span></a></h:li>-->
 
-                                    <h:li><a href="/pages/inventory/productLocation/saveProductLocation.zul"><image style = "max-width:26px;height:auto; img-fluid" src="@load(vm.imagePath.concat('/administration/add.png'))"/> <span style ="color: #1a4280; margin: 2px;" class="titlebar-text"> Create New Product Stock</span></a></h:li>
+                                    <!--<h:li><a href="/pages/inventory/productLocation/saveProductLocation.zul"><image style = "max-width:26px;height:auto; img-fluid" src="@load(vm.imagePath.concat('/administration/add.png'))"/> <span style ="color: #1a4280; margin: 2px;" class="titlebar-text"> Create New Product Stock</span></a></h:li>-->
 
-                                    <h:li><a href="/pages/inventory/productLocation/transferProductToLocation.zul"><image style = "max-width:26px;height:auto; img-fluid" src="@load(vm.imagePath.concat('/administration/add.png'))"/> <span style ="color: #1a4280; margin: 2px;" class="titlebar-text"> Transfer Product Stock</span></a></h:li>
-                                </h:ul>
-                            </h:li>
+                                    <!--<h:li><a href="/pages/inventory/productLocation/transferProductToLocation.zul"><image style = "max-width:26px;height:auto; img-fluid" src="@load(vm.imagePath.concat('/administration/add.png'))"/> <span style ="color: #1a4280; margin: 2px;" class="titlebar-text"> Transfer Product Stock</span></a></h:li>-->
+                                <!--</h:ul>-->
+                            <!--</h:li>-->
 
-                            <h:li><a href="/pages/inventory/supplier/viewSupplier.zul"><image style = "max-width:26px;height:auto; img-fluid" src="@load(vm.imagePath.concat('/suppliers.png'))"/> <span style ="color: #1a4280; margin: 2px;" class="titlebar-text"> Suppliers</span></a></h:li>
+                            <!--<h:li><a href="/pages/inventory/supplier/viewSupplier.zul"><image style = "max-width:26px;height:auto; img-fluid" src="@load(vm.imagePath.concat('/suppliers.png'))"/> <span style ="color: #1a4280; margin: 2px;" class="titlebar-text"> Suppliers</span></a></h:li>-->
 
-                        </h:ul>
-                    </h:li>
+                        <!--</h:ul>-->
+                    <!--</h:li>-->
                 </h:ul>
 
                 <h:ul class="nav navbar-nav navbar-right desktop">

@@ -1,5 +1,7 @@
 package qa.tecnositafgulf.model.administration.inventory;
 
+import qa.tecnositafgulf.model.administration.Employee;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
@@ -10,7 +12,7 @@ import java.util.List;
  */
 
 @Entity
-@Table(name = "transfers")
+@Table(name = "transfer")
 public class Transfer implements Serializable{
 
     @Id
@@ -31,10 +33,15 @@ public class Transfer implements Serializable{
 
     private String itemCategory;
 
+    @ManyToMany
     @JoinTable(
             name = "item_transfer",
-            joinColumns = {@JoinColumn(name = "transferId", referencedColumnName = "id")},
-            inverseJoinColumns = {@JoinColumn(name = "itemId", referencedColumnName = "id")}
+            joinColumns = {@JoinColumn(name = "transferID", referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "itemID", referencedColumnName = "id")}
     )
     private List<Item> items;
+
+    @ManyToOne
+    @JoinColumn(name = "employeeID")
+    private Employee employee;
 }

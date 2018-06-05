@@ -1,6 +1,9 @@
 package qa.tecnositafgulf.model.administration;
 
 import qa.tecnositafgulf.common.PhonePrefix;
+import qa.tecnositafgulf.model.administration.inventory.InventoryLog;
+import qa.tecnositafgulf.model.administration.inventory.Item;
+import qa.tecnositafgulf.model.administration.inventory.Transfer;
 import qa.tecnositafgulf.model.meetings.Meeting;
 
 import javax.persistence.*;
@@ -149,6 +152,15 @@ public class Employee implements Serializable {
     @OneToOne
     @JoinColumn(name = "departmentID")
     private Department department;
+
+    @OneToMany(mappedBy = "employee")
+    List<Item> items;
+
+    @OneToMany(mappedBy = "employee")
+    List<Transfer> transfers;
+
+    @OneToMany(mappedBy = "employee")
+    List<InventoryLog> inventoryLogs;
 
     public Long getId() {
         return id;

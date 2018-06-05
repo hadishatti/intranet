@@ -13,7 +13,7 @@ import java.util.List;
  */
 
 @Entity
-@Table(name = "items")
+@Table(name = "item")
 @NamedQueries({
         @NamedQuery(name = "Item.listAllItems", query = "SELECT item FROM Item item"),
         @NamedQuery(name = "Item.countAllItems", query = "SELECT COUNT(item) FROM Item item"),
@@ -48,8 +48,6 @@ public class Item implements Serializable{
     @Lob
     private String description;
 
-    private Employee employee;
-
     private double price;
 
     @ManyToOne
@@ -61,5 +59,9 @@ public class Item implements Serializable{
 
     @ManyToMany(mappedBy = "items")
     private List<Transfer> transfers;
+
+    @ManyToOne
+    @JoinColumn(name = "employeeID")
+    private Employee employee;
 
 }

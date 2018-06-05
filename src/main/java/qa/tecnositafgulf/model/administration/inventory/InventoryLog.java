@@ -27,8 +27,6 @@ public class InventoryLog implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Employee employee;
-
     private Date actionDate;
 
     private InventoryActionEnum action;
@@ -41,4 +39,8 @@ public class InventoryLog implements Serializable{
     @ManyToOne
     @JoinColumn(name = "warehouse_id")
     private Warehouse warehouse;
+
+    @ManyToOne
+    @JoinColumn(name = "employeeID")
+    private Employee employee;
 }
