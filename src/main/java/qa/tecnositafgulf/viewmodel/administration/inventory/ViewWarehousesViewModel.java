@@ -28,5 +28,6 @@ public class ViewWarehousesViewModel extends IntranetVM {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
         inventoryService = context.getBean(InventoryService.class);
         authenticationService = context.getBean(AuthenticationService.class);
+        warehouses = inventoryService.getWarehouseList();
     }
 }

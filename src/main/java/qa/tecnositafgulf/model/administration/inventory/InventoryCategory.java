@@ -9,6 +9,10 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "warehouse_inventory")
+@NamedQueries({
+        @NamedQuery(name = "InventoryCategory.getAllByWarehouse", query = "SELECT inventoryCategory FROM InventoryCategory inventoryCategory WHERE inventoryCategory.warehouse = :warehouse"),
+        @NamedQuery(name = "InventoryCategory.countAllByWarehouse", query = "SELECT COUNT(inventoryCategory) FROM InventoryCategory inventoryCategory WHERE inventoryCategory.warehouse = :warehouse")
+})
 public class InventoryCategory implements Serializable{
 
     @Id

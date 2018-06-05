@@ -13,6 +13,10 @@ import java.util.List;
 
 @Entity
 @Table(name = "transfer")
+@NamedQueries({
+        @NamedQuery(name = "Transfer.getAllTransfers", query = "SELECT transfer FROM Transfer transfer"),
+        @NamedQuery(name = "Transfer.countAllTransfers", query = "SELECT COUNT(transfer) FROM Transfer transfer")
+})
 public class Transfer implements Serializable{
 
     @Id

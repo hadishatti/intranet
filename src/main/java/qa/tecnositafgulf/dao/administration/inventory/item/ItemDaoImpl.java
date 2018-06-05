@@ -1,5 +1,6 @@
 package qa.tecnositafgulf.dao.administration.inventory.item;
 
+import org.springframework.stereotype.Repository;
 import qa.tecnositafgulf.config.inventoryEnums.ItemStatusEnum;
 import qa.tecnositafgulf.model.administration.inventory.Item;
 
@@ -12,6 +13,8 @@ import java.util.List;
 /**
  * Created by ledio on 6/4/18.
  */
+
+@Repository
 public class ItemDaoImpl implements ItemDao{
 
     @PersistenceContext

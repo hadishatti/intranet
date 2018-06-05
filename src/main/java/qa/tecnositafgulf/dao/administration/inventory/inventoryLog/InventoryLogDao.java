@@ -20,12 +20,12 @@ public interface InventoryLogDao {
     List<InventoryLog> getAllLogs();
     Integer countAllLogs();
 
-    List<InventoryLog> getAllLogsByEmployee(Employee employee);
-
-    List<InventoryLog> getAllLogsByActionDate(Date actionDate);
-
-    List<InventoryLog> getAllLogsByAction(InventoryActionEnum action);
-
-    List<InventoryLog> getAllLogsByWarehouse(Warehouse warehouse);
+//    List<InventoryLog> getAllLogsByEmployee(Employee employee);
+//
+//    List<InventoryLog> getAllLogsByActionDate(Date actionDate);
+//
+//    List<InventoryLog> getAllLogsByAction(InventoryActionEnum action);
+//
+//    List<InventoryLog> getAllLogsByWarehouse(Warehouse warehouse);
 
 }

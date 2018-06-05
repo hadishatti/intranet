@@ -1,5 +1,6 @@
 package qa.tecnositafgulf.dao.administration.inventory.warehouse;
 
+import org.springframework.stereotype.Repository;
 import qa.tecnositafgulf.model.administration.inventory.Warehouse;
 
 import javax.persistence.*;
@@ -8,6 +9,8 @@ import java.util.List;
 /**
  * Created by ledio on 6/4/18.
  */
+
+@Repository
 public class WarehouseDaoImpl implements WarehouseDao {
 
     @PersistenceContext
