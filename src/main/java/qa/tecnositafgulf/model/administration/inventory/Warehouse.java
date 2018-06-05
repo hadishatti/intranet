@@ -37,4 +37,7 @@ public class Warehouse implements Serializable{
 
     @OneToMany(mappedBy = "warehouse")
     List<InventoryCategory> categories;
+
+    @OneToMany(mappedBy = "warehouse")
+    List<InventoryLog> inventoryLogs;
 }

@@ -3,6 +3,7 @@ package qa.tecnositafgulf.dao.administration.inventory.inventoryLog;
 import qa.tecnositafgulf.config.inventoryEnums.InventoryActionEnum;
 import qa.tecnositafgulf.model.administration.Employee;
 import qa.tecnositafgulf.model.administration.inventory.InventoryLog;
+import qa.tecnositafgulf.model.administration.inventory.Warehouse;
 
 import java.util.Date;
 import java.util.List;
@@ -20,12 +21,11 @@ public interface InventoryLogDao {
     Integer countAllLogs();
 
     List<InventoryLog> getAllLogsByEmployee(Employee employee);
-    Integer countAllLogsByEmployee(Employee employee);
 
     List<InventoryLog> getAllLogsByActionDate(Date actionDate);
-    Integer countAllLogsByActionDate(Date actionDate);
 
-    List<InventoryLog> getAllLogsByAction(InventoryActionEnum actionEnum);
-    Integer countAllLogsByAction(InventoryActionEnum actionEnum);
+    List<InventoryLog> getAllLogsByAction(InventoryActionEnum action);
+
+    List<InventoryLog> getAllLogsByWarehouse(Warehouse warehouse);
 
 }

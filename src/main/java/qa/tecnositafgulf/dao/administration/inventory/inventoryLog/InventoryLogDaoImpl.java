@@ -3,10 +3,9 @@ package qa.tecnositafgulf.dao.administration.inventory.inventoryLog;
 import qa.tecnositafgulf.config.inventoryEnums.InventoryActionEnum;
 import qa.tecnositafgulf.model.administration.Employee;
 import qa.tecnositafgulf.model.administration.inventory.InventoryLog;
+import qa.tecnositafgulf.model.administration.inventory.Warehouse;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.TypedQuery;
+import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
@@ -16,7 +15,7 @@ import java.util.List;
 public class InventoryLogDaoImpl implements InventoryLogDao {
 
     @PersistenceContext
-    private EntityManager em; //TODO implement all queries
+    private EntityManager em;
 
 
     @Override
@@ -37,36 +36,35 @@ public class InventoryLogDaoImpl implements InventoryLogDao {
 
     @Override
     public Integer countAllLogs() {
-        return null;
+        Query query = em.createNamedQuery("InventoryLog.countAllLogs");
+        return ((Long)query.getSingleResult()).intValue();
     }
 
     @Override
     public List<InventoryLog> getAllLogsByEmployee(Employee employee) {
-        return null;
-    }
-
-    @Override
-    public Integer countAllLogsByEmployee(Employee employee) {
-        return null;
+        TypedQuery<InventoryLog> query = em.createNamedQuery("InventoryLog.getAllLogsByEmployee", InventoryLog.class);
+        query.setParameter("employee", employee);
+        return query.getResultList();
     }
 
     @Override
     public List<InventoryLog> getAllLogsByActionDate(Date actionDate) {
-        return null;
+        TypedQuery<InventoryLog> query = em.createNamedQuery("InventoryLog.getAllLogsByActionDate", InventoryLog.class);
+        query.setParameter("actionDate", actionDate);
+        return query.getResultList();
     }
 
     @Override
-    public Integer countAllLogsByActionDate(Date actionDate) {
-        return null;
+    public List<InventoryLog> getAllLogsByAction(InventoryActionEnum action) {
+        TypedQuery<InventoryLog> query = em.createNamedQuery("InventoryLog.getAllLogsByAction", InventoryLog.class);
+        query.setParameter("action", action);
+        return query.getResultList();
     }
 
     @Override
-    public List<InventoryLog> getAllLogsByAction(InventoryActionEnum actionEnum) {
-        return null;
-    }
-
-    @Override
-    public Integer countAllLogsByAction(InventoryActionEnum actionEnum) {
-        return null;
+    public List<InventoryLog> getAllLogsByWarehouse(Warehouse warehouse) {
+        TypedQuery<InventoryLog> query = em.createNamedQuery("InventoryLog.getAllLogsByWarehouse", InventoryLog.class);
+        query.setParameter("warehouse", warehouse);
+        return query.getResultList();
     }
 }
