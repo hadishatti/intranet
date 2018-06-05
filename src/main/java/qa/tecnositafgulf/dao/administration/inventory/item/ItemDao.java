@@ -2,6 +2,7 @@ package qa.tecnositafgulf.dao.administration.inventory.item;
 
 import qa.tecnositafgulf.config.inventoryEnums.ItemStatusEnum;
 import qa.tecnositafgulf.model.administration.inventory.Item;
+import qa.tecnositafgulf.model.administration.inventory.Warehouse;
 
 import java.util.List;
 
@@ -29,5 +30,6 @@ public interface ItemDao {
     List<Item> getItemsByBrand(String brand);
     Integer countItemsByBrand(String brand);
 
-
+    List<Item> getDistinctItemGroups(Warehouse warehouse);
+    int countDistinctItemGroups(Warehouse warehouse);
 }

@@ -1,7 +1,14 @@
 package qa.tecnositafgulf.dao.administration.inventory.item;
 
+import org.hibernate.Criteria;
+import org.hibernate.Session;
+import org.hibernate.criterion.ProjectionList;
+import org.hibernate.criterion.Projections;
+import org.hibernate.criterion.Restrictions;
+import org.zkoss.zkplus.hibernate.HibernateUtil;
 import qa.tecnositafgulf.config.inventoryEnums.ItemStatusEnum;
 import qa.tecnositafgulf.model.administration.inventory.Item;
+import qa.tecnositafgulf.model.administration.inventory.Warehouse;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -20,12 +27,12 @@ public class ItemDaoImpl implements ItemDao{
     @Override
     public void save(Item item) {
         em.merge(item);
-    }
+    } //TODO Save new categories
 
     @Override
     public void remove(Item item) {
         em.remove(em.contains(item) ? item : em.merge(item));
-    }
+    } //TODO Don't remove from db.
 
     @Override
     public List<Item> listAllItems() {
@@ -94,4 +101,28 @@ public class ItemDaoImpl implements ItemDao{
         query.setParameter("brand", brand);
         return ((Long)query.getSingleResult()).intValue();
     }
+
+    @Override
+    public List<Item> getDistinctItemGroups(Warehouse warehouse) {
+        //TODO May not be needed. Used to get Inventory Categories of a Warehouse
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Criteria criteria = session.createCriteria(Item.class);
+        criteria.add(Restrictions.eq("warehouse", warehouse));
+        ProjectionList projectionList = Projections.projectionList();
+        projectionList.add(Projections.property("category"));
+        projectionList.add(Projections.property("name"));
+        projectionList.add(Projections.property("brand"));
+
+        criteria.setProjection(projectionList);
+        criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
+
+        return criteria.list();
+    }
+
+    @Override
+    public int countDistinctItemGroups(Warehouse warehouse) {
+        return 0;
+    }
+
+
 }
